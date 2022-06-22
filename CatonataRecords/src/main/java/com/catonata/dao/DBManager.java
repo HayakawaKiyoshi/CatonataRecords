@@ -25,7 +25,7 @@ public class DBManager {
 		// DBへ接続
 		Connection conn = DriverManager.getConnection(
 				"jdbc:oracle:thin:@localhost:1521:XE",
-				"jdbcuser", "12345");
+				"catonatarecords", "catonata0630");
 		System.out.println("接続されました");
 
 		return conn;
