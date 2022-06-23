@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.catonata.bean.ProductBean;
 import com.catonata.dao.ExecDao;
 import com.catonata.validation.ProductForm;
 
@@ -36,7 +35,7 @@ public class ProductDeleteController {
 //		mav.addObject("user", user);
 
 		//検索のDaoを呼び出す
-		ProductBean delete = ExecDao.profind(name);
+		ProductForm delete = ExecDao.profind(name);
 
 		session.setAttribute("delete", delete);
 		mav.addObject("delete", delete);
