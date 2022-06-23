@@ -19,7 +19,6 @@ public class AdminRegisterUserController {
 	@Autowired
 	HttpSession session;
 
-	//なぜコミットしてくれないのか
 	/*
 	 * 一般者の登録
 	 */
