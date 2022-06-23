@@ -18,7 +18,8 @@ import com.catonata.validation.UserInformationForm;
 public class AdminRegisterUserController {
 	@Autowired
 	HttpSession session;
-//test
+
+	//なぜコミットしてくれないのか
 	/*
 	 * 一般者の登録
 	 */
