@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>削除商品選択画面</title>
 </head>
 <body>
-
+<div layout:fragment="content">
+<form action="" method="">
+<input type=text name="">
+<input type="submit" value="検索" class="btn btn-primary"><br>
+削除する商品を選択してください。
+<font size="4">＜商品一覧＞</font>
+<form action=""
+<table>
+<tr><th>チェック</th><th>No</th><th>タイトル</th><th>アーティスト名</th><th>発売日</th><th>価格</th>
+</tr><th:block th:each="items : ${　}">
+<tr><th><input type="checkbox" name=""></th><th>No</th><th>タイトル</th><th>アーティスト名</th><th>発売日</th><th>価格</th>
+</tr>
+</table>
+</form>
+</div>
 </body>
 </html>
