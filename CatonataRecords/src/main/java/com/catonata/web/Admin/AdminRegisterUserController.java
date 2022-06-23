@@ -85,7 +85,7 @@ public class AdminRegisterUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
-//		UserInfoDao.insert(uif);
+//		UserInfoDao.execInsert(uif);
 		return "admin/register/Complete";
 	}
 
