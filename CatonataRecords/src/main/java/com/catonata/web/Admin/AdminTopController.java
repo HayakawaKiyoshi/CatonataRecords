@@ -5,8 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.catonata.bean.UserInformationBean;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/Admin")
@@ -16,14 +15,17 @@ public class AdminTopController {
 
 //テスト
 	@RequestMapping("/top")
-	private String admintop () {
+	private String admintop (@RequestParam("name")String name, @RequestParam("pass")String pass) {
+//		UserInformationBean LoginUser = CommonDao.find(name,pass);
+//		session.setAttribute("LoginUser", LoginUser);
 		//一般ユーザーの情報一覧取得、セッション保存
-//		ArrayList<UserInformationBean> alluser = UserInfoDao.allippanuserSerach(alluser);
+//		ArrayList<UserInformationBean> alluser = UserInfoDao.allGeneralUserSerach(alluser);
 		//経営者のユーザー情報一覧取得、セッション保存
 //		ArrayList<UserInformationBean> allexec = UserInfoDao.allExecUser();
-		//ログインユーザーの情報ゲット→保存
-		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
-		session.setAttribute("LoginUser", LoginUser);
+
+//		//ログインユーザーの情報ゲット→保存
+//		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+//		session.setAttribute("LoginUser", LoginUser);
 		return "admin/mypage/UserTop";
 	}
 }
