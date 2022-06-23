@@ -19,7 +19,6 @@ public class AdminUpdateUserController {
 	@Autowired
 	HttpSession session;
 
-	//test
 	/*
 	 * 一般者更新
 	 */
