@@ -8,10 +8,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/Catonata")
 public class testController {
 
-//	http://localhost:10000/Catonata/leyout/test
+//	http://localhost:10000/Catonata/layout/test
 	@RequestMapping("/layout/test")
 	public ModelAndView layoutTest(ModelAndView mav){
-		mav.setViewName("/layout/LayoutTest");
+		mav.setViewName("layout/LayoutTest");
 		return mav;
 	}
 }
