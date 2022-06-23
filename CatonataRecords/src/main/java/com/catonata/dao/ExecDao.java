@@ -2,6 +2,7 @@ package com.catonata.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.catonata.validation.ProductForm;
@@ -46,7 +47,7 @@ public class ExecDao {
 		}
 	}
 
-	public void productUpdate(ProductForm form) {
+	public void productUpdate(ProductForm update) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		DBManager manager = new DBManager();
@@ -60,14 +61,14 @@ public class ExecDao {
 					+ "WHERE PROD_NAME = ?";
 			ps = conn.prepareStatement(SQL);
 			//引数を?にバインド
-			ps.setString(1, form.getArtist());
-			ps.setString(2, form.getMedia());
-			ps.setString(3, form.getPrice());
-			ps.setString(4, form.getRelease_date());
-			ps.setString(5, form.getLabel());
-			ps.setString(6, form.getSold());
-			ps.setString(7, form.getStock());
-			ps.setString(8, form.getPro_name());
+			ps.setString(1, update.getArtist());
+			ps.setString(2, update.getMedia());
+			ps.setString(3, update.getPrice());
+			ps.setString(4, update.getRelease_date());
+			ps.setString(5, update.getLabel());
+			ps.setString(6, update.getSold());
+			ps.setString(7, update.getStock());
+			ps.setString(8, update.getPro_name());
 			ps.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
@@ -77,6 +78,52 @@ public class ExecDao {
 			e.printStackTrace();
 
 		}
+	}
+
+	public static ProductForm profind(String name) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		//DBManagerをインスタンス化
+		DBManager manager = new DBManager();
+		final String LOGIN_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_NAME = ?";
+
+		ProductForm form = null;
+
+		try {
+			conn = manager.getConn();
+			ps = conn.prepareStatement(LOGIN_SQL);
+			//引数を?にバインド
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				form = new ProductForm();
+				form.setPro_name(rs.getString("PROD_NAME"));
+				form.setArtist(rs.getString("ARTIST"));
+				form.setMedia(rs.getString("MEDIA"));
+				form.setPrice(rs.getString("PRICE"));
+				form.setRelease_date(rs.getString("RELEASE_DATE"));
+				form.setLabel(rs.getString("LABEL"));
+				form.setSold(rs.getString("SOLD"));
+				form.setStock(rs.getString("STOCK"));
+			} else {
+				return null;
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			manager.close(conn);
+		}
+		return form;
+
 	}
 
 }
