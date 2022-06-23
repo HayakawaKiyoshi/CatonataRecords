@@ -26,7 +26,7 @@
         在庫数：<input type="text" name="stock" th:field="*{stock}">
         <span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}" th:errorclass="error-field">error!</span><br>
 
-        <p><input type="submit" value="変更確認画面へ"></p>
+        <input type="submit" value="変更確認画面へ">
     </form>
 </body>
 </html>
