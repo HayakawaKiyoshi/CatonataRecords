@@ -6,12 +6,13 @@
 </head>
 <body>
 
+	<th:block th:text = *{msg}></th:block>
 	<form role="form" action="/login" th:action="@{/login}" th:object="${loginForm}" method="post">
 		氏名：
-		  <input type="text" name="name" th:value="*{name}">
+		  <input type="text" th:field="*{name}">
 		  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="error-field">error!</span><br>
 		パスワード：
-		  <input type="password" name="password" th:value="*{password}">
+		  <input type="password" th:field="*{password}">
 		  <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="error-field">error!</span><br>
 		  <input type="submit" value="ログイン画面へ">
 	</form>
