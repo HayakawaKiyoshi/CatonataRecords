@@ -18,7 +18,6 @@ public class UserInformationBean implements Serializable{
 	private String label;
 	private String banknumber;
 	private String bankname;
-
 	public String getId() {
 		return id;
 	}
@@ -103,9 +102,6 @@ public class UserInformationBean implements Serializable{
 	public void setBankname(String bankname) {
 		this.bankname = bankname;
 	}
-
-
-
 
 
 
