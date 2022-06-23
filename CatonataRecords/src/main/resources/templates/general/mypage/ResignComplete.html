@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ユーザー情報削除完了画面</title>
 </head>
 <body>
+    <p style="text-align: center; border: solid 1px black;">ユーザー情報削除</p>
 
+    <p>
+        削除が完了しました。<br>
+        トップページに戻ります。<br>
+    </p>
+
+    <form role="form" action="/" th:action="@{/}" method="">
+        <input type="submit" value="トップページへ">
+    </form>
 </body>
 </html>
