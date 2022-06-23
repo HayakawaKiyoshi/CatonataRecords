@@ -15,7 +15,9 @@ public class UserInformationBean implements Serializable{
 	private String creditnumber;
 	private String cregitspan;
 	private String securitycode;
-
+	private String label;
+	private String banknumber;
+	private String bankname;
 	public String getId() {
 		return id;
 	}
@@ -82,9 +84,24 @@ public class UserInformationBean implements Serializable{
 	public void setSecuritycode(String securitycode) {
 		this.securitycode = securitycode;
 	}
-
-
-
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	public String getBanknumber() {
+		return banknumber;
+	}
+	public void setBanknumber(String banknumber) {
+		this.banknumber = banknumber;
+	}
+	public String getBankname() {
+		return bankname;
+	}
+	public void setBankname(String bankname) {
+		this.bankname = bankname;
+	}
 
 
 
