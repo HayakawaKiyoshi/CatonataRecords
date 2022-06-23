@@ -18,7 +18,7 @@ public class LoginLogoutController {
 //			ModelAndView mav) {
 //
 //
-//			//バリデーションエラーの確認
+//			//バリデーションエラ-
 //			if (bindingResult.hasErrors()) {
 //				mav.setViewName("login/login");
 //
