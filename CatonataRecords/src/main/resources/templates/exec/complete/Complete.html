@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
+<span th:text="${msg}"></span>削除完了画面
+<div layout:fragment="content">
+<div class="container">
+<p>削除が完了しました</p>
+<input type="submit" value="メイン画面に戻る" class="btn btn-primary">
+</div>
+</div>
 </body>
 </html>
