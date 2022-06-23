@@ -42,7 +42,7 @@ public class CommonDao {
 				String crespan = rs.getString("SPAN");
 				String security = rs.getString("SECURITY_CODE");
 				String banknumber = rs.getString("BANK_NUMBER");
-				String bankname = sdf.format(rs.getDate("BANK_NAME"));
+				String bankname = rs.getString("BANK_NAME");
 				String label = rs.getString("LABEL");
 
 				user = new UserInformationBean(id, pass, username,age, gender,birthday, address,
