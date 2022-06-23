@@ -1,7 +1,7 @@
 package com.catonata.web.Common;
 
 //@Controller
-//public class LoginLogoutController {
+public class LoginLogoutController {
 //
 //	@Autowired
 //	HttpSession session;
@@ -42,4 +42,4 @@ package com.catonata.web.Common;
 //
 //	}
 //
-//}
+}
