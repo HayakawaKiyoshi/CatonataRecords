@@ -18,7 +18,7 @@ import com.catonata.validation.UserInformationForm;
 public class AdminRegisterUserController {
 	@Autowired
 	HttpSession session;
-
+//test
 	/*
 	 * 一般者の登録
 	 */
