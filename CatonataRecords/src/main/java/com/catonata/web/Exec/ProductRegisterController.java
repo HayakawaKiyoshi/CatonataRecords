@@ -57,6 +57,7 @@ public class ProductRegisterController {
 
 		//登録を実行するDaoを呼び出す
 		ExecDao.productRegister(proForm);
+		mav.addObject("msg", "登録");
 
 
 		//セッションインスタンスの削除
