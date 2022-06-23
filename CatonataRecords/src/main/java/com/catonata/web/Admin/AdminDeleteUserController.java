@@ -51,7 +51,7 @@ public class AdminDeleteUserController {
 		return "admin/delete/ExecCheck";
 	}
 
-	@RequestMapping("/Complete")
+	@RequestMapping("/ExecComplete")
 	private String ExecdeleteComplete(@RequestParam("id")String id, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
