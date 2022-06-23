@@ -1,6 +1,116 @@
 package com.catonata.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.catonata.bean.ExecInformationBean;
+import com.catonata.bean.UserInformationBean;
+
+/**
+ * ユーザー情報を処理するDAOのクラス
+ *
+ * 目次
+ * allGeneralUserSearch 一般者全件検索
+ * allExecUserSearch 経営者全件検索
+ * @author 伊藤 馨
+ *
+ */
 public class UserInfoDao {
 
+	/**
+	 * 一般情報全件検索
+	 * @return
+	 */
+	public static ArrayList<UserInformationBean> allGeneralUserSerach () {
+		DBManager manager = new DBManager();
+		Connection conn = null;
+		PreparedStatement ps = null;
+//		SqlTemplates sqls = new SqlTemplates();
+		ArrayList<UserInformationBean> userList = new ArrayList<UserInformationBean>();
+		try {
+			// 接続する
+			conn = manager.getConn();
+			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 1 ORDER BY id ASC");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				UserInformationBean uib = new UserInformationBean();
+				uib.setId(rs.getString("id"));
+				uib.setPassword(rs.getString("password"));
+				uib.setName(rs.getString("name"));
+				uib.setGender(rs.getString("gender"));
+				uib.setAddress(rs.getString("birthday"));
+				uib.setBirthday(rs.getString("address"));
+				uib.setAuthority(rs.getString("authority"));
+				uib.setCreditnumber(rs.getString("creditnumber"));
+				uib.setCreditspan(rs.getString("creditspan"));
+				uib.setSecuritycode(rs.getString("securitycode"));
+				userList.add(uib);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return userList;
+	}
 
+	/**
+	 * 経営者全件検索
+	 * @return
+	 */
+	public static ArrayList<ExecInformationBean> allExecUser () {
+		DBManager manager = new DBManager();
+		Connection conn = null;
+		PreparedStatement ps = null;
+//		SqlTemplates sqls = new SqlTemplates();
+		ArrayList<ExecInformationBean> execList = new ArrayList<ExecInformationBean>();
+		try {
+			// 接続する
+			conn = manager.getConn();
+			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 3 ORDER BY id ASC");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ExecInformationBean eib = new ExecInformationBean();
+				eib.setName(rs.getString("name"));
+				eib.setLabel(rs.getString("label"));
+				eib.setPassword(rs.getString("password"));
+				eib.setMail(rs.getString("email"));
+				eib.setAddress(rs.getString("address"));
+				eib.setBanknumber(rs.getString("banknumber"));
+				eib.setBankname(rs.getString("bankname"));
+				eib.setAuthority(rs.getString("authority"));
+				execList.add(eib);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return execList;
+	}
 }

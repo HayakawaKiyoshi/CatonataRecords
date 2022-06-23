@@ -1,11 +1,19 @@
 package com.catonata.web.Admin;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.catonata.bean.ExecInformationBean;
+import com.catonata.bean.UserInformationBean;
+import com.catonata.dao.CommonDao;
+import com.catonata.dao.UserInfoDao;
 
 @Controller
 @RequestMapping("/Admin")
@@ -15,17 +23,16 @@ public class AdminTopController {
 
 //テスト
 	@RequestMapping("/top")
-	private String admintop (@RequestParam("name")String name, @RequestParam("pass")String pass) {
-//		UserInformationBean LoginUser = CommonDao.find(name,pass);
-//		session.setAttribute("LoginUser", LoginUser);
+	private String admintop (@RequestParam("name")String name, @RequestParam("pass")String pass
+			, Model model) {
+		UserInformationBean LoginUser = CommonDao.find(name,pass);
+		session.setAttribute("LoginUser", LoginUser);
 		//一般ユーザーの情報一覧取得、セッション保存
-//		ArrayList<UserInformationBean> alluser = UserInfoDao.allGeneralUserSerach(alluser);
+		ArrayList<UserInformationBean> alluser = UserInfoDao.allGeneralUserSerach();
+		session.setAttribute("AllGeneralUser", alluser);
 		//経営者のユーザー情報一覧取得、セッション保存
-//		ArrayList<UserInformationBean> allexec = UserInfoDao.allExecUser();
-
-//		//ログインユーザーの情報ゲット→保存
-//		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
-//		session.setAttribute("LoginUser", LoginUser);
+		ArrayList<ExecInformationBean> allexec = UserInfoDao.allExecUser();
+		session.setAttribute("AllExecUser", allexec);
 		return "admin/mypage/UserTop";
 	}
 }
