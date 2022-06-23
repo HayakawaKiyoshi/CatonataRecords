@@ -76,6 +76,7 @@ public class ProductUpdateController {
 		//セッションに保存された情報を取得
 		ProductForm update = (ProductForm) session.getAttribute("update");
 		ExecDao.productUpdate(update);
+		mav.setViewName("exec/complete/Complete");
 
 		//セッションインスタンスの削除
 		session.removeAttribute("update");
