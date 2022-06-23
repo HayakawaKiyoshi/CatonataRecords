@@ -10,13 +10,13 @@ import com.catonata.bean.UserInformationBean;
 
 public class CommonDao {
 
-	public static UserInformationBean find(String name) {
+	public static UserInformationBean find(String name,String password) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		//DBManagerをインスタンス化
 		DBManager manager = new DBManager();
-		final String LOGIN_SQL = "SELECT * FROM USER_TABLE WHERE user_name = ?";
+		final String LOGIN_SQL = "SELECT * FROM USER_TABLE WHERE user_name = ? AND password = ?";
 
 		UserInformationBean user = null;
 
@@ -25,6 +25,7 @@ public class CommonDao {
 			ps = conn.prepareStatement(LOGIN_SQL);
 			//引数を?にバインド
 			ps.setString(1, name);
+			ps.setString(2, password);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -65,7 +66,7 @@ public class CommonDao {
 
 	}
 
-//	public static List<ProductBean> findAll() {
+//	public static List<ProductBean> allProduct() {
 //
 //		Connection conn = null;
 //		PreparedStatement ps = null;
