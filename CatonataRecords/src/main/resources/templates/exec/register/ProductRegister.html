@@ -8,24 +8,24 @@
     <p style="text-align: center; border: solid 1px black;">自社商品登録</p>
 
     <form role="form" action="/exec/register" th:action="@{/exec/register}" th:object="${productForm}" method="post">
-        商品名：<input type="text" name="pro_name" th:field="*{pro_name}">
+        商品名：<input type="text"  th:field="*{pro_name}">
         <span th:if="${#fields.hasErrors('pro_name')}" th:errors="*{pro_name}" th:errorclass="error-field">error!</span><br>
 
-        アーティスト名：<input type="text" name="artist" th:field="*{artist}">
+        アーティスト名：<input type="text" th:field="*{artist}">
         <span th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}" th:errorclass="error-field">error!</span><br>
 
-        商品媒体：<input type="text" name="media" th:field="*{media}">
+        商品媒体：<input type="text"  th:field="*{media}">
         <span th:if="${#fields.hasErrors('media')}" th:errors="*{media}" th:errorclass="error-field">error!</span><br>
 
-        商品価格：<input type="text" name="price" th:field="*{price}">
+        商品価格：<input type="text"  th:field="*{price}">
         <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" th:errorclass="error-field">error!</span><br>
-        発売日：<input type="text" name="release_date" th:field="*{release_date}">
+        発売日：<input type="text"  th:field="*{release_date}">
         <span th:if="${#fields.hasErrors('release_date')}" th:errors="*{release_date}" th:errorclass="error-field">error!</span><br>
 
-        レコード会社名：<input type="text" name="label" th:field="*{label}">
+        レコード会社名：<input type="text" th:field="*{label}">
         <span th:if="${#fields.hasErrors('label')}" th:errors="*{label}" th:errorclass="error-field">error!</span><br>
 
-        在庫数：<input type="text" name="stock" th:field="*{stock}">
+        在庫数：<input type="text" th:field="*{stock}">
         <span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}" th:errorclass="error-field">error!</span><br>
 
         <p><input type="submit" value="登録確認画面へ"></p>
