@@ -12,7 +12,6 @@ public class ProductBean implements Serializable{
 	private String label;
 	private String sold;
 	private String stock;
-
 	public String getPro_name() {
 		return pro_name;
 	}
@@ -61,6 +60,7 @@ public class ProductBean implements Serializable{
 	public void setStock(String stock) {
 		this.stock = stock;
 	}
+
 
 
 
