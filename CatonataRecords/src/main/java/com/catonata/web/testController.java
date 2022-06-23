@@ -11,7 +11,7 @@ public class testController {
 //	http://localhost:10000/Catonata/layout/test
 	@RequestMapping("/layout/test")
 	public ModelAndView layoutTest(ModelAndView mav){
-		mav.setViewName("exec/complete/Complete");
+		mav.setViewName("exec/delete/Check");
 		return mav;
 	}
 }
