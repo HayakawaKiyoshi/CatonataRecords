@@ -11,6 +11,7 @@ public class UserInformationBean implements Serializable{
 	private String gender;
 	private String birthday;
 	private String address;
+	private String email;
 	private String authority;
 	private String creditnumber;
 	private String cregitspan;
@@ -18,6 +19,27 @@ public class UserInformationBean implements Serializable{
 	private String label;
 	private String banknumber;
 	private String bankname;
+
+	public UserInformationBean(String id,String password,String name,
+			String age,String gender,String birthday,String address,String email,
+			String authority,String creditnumber,String cregitspan,
+			String securitycode,String label,String banknumber,String bankname) {
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.address = address;
+		this.email = email;
+		this.authority = authority;
+		this.creditnumber = creditnumber;
+		this.cregitspan = cregitspan;
+		this.securitycode = securitycode;
+		this.label = label;
+		this.banknumber = banknumber;
+		this.bankname = bankname;
+	}
 	public String getId() {
 		return id;
 	}
@@ -101,6 +123,12 @@ public class UserInformationBean implements Serializable{
 	}
 	public void setBankname(String bankname) {
 		this.bankname = bankname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 
