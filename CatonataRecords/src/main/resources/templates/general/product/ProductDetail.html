@@ -2,9 +2,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>商品内容詳細画面</title>
 </head>
 <body>
+	<div style="border: solid 1px black; width: 500px; height: 250px; position: relative;">
+		<form role="form" action="/" th:action="@{/}" method="">
+			<input type="submit" value="戻る">
+		</form>
 
+		<p style="text-align: center; border: solid 1px black;">(商品タイトル)</p>
+
+		<div style="border: solid 1px black; width: 150px; height: 80px;
+		  position: absolute; top: 120px; left: 30px;">(画像)</div>
+
+        <div style="position: absolute; top: 120px; left: 250px;">
+		  <span>価格：〇〇〇〇円</span><br>
+		  <span>アーティスト：〇〇〇〇</span><br>
+		  <span>発売日：yyyy年MM月dd日</span><br>
+		  <form role="form" action="/" th:action="@{/}" method="">
+            <input type="submit" value="購入する">
+          </form>
+		</div>
+	</div>
 </body>
 </html>
