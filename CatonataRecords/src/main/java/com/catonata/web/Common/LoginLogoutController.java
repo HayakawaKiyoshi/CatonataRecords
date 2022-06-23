@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.catonata.bean.UserInformationBean;
+import com.catonata.dao.CommonDao;
 import com.catonata.validation.LoginForm;
 
 @Controller
@@ -35,18 +37,25 @@ public class LoginLogoutController {
 			} else {
 
 				//id検索するDAOを呼び出す
+				UserInformationBean user = CommonDao.find(form.getName());
 
+				boolean isLogin = (user != null && form.getName().equals(user.getName()))
+						&& form.getPassword().equals(user.getPassword());
+				if (isLogin) {
+					//ログイン情報をセッションに保存
+					session.setAttribute("LoginUser", user);
+					if(user.getAuthority().equals("1")) {
+						mav.setViewName("/general/product/AllDisplay");
+					}else if(user.getAuthority().equals("2")) {
+						mav.setViewName("/admin/mypage/UserTop");
+					}else if(user.getAuthority().equals("3")) {
+						mav.setViewName("/exec/mypage/UserTop");
+					}
+				} else {
+					mav.setViewName("login/login");
+					mav.addObject("msg", "ログインに失敗しました");
+				}
 
-//				boolean isLogin = ();
-//				if (isLogin) {
-//					//ログイン情報をセッションに保存
-//					session.setAttribute("LoginUser", emp);
-//					mav.setViewName("redirect:/display");
-//				} else {
-//					mav.setViewName("login/login");
-//					mav.addObject("msg", "ログインに失敗しました");
-//				}
-//
 			}
 
 
