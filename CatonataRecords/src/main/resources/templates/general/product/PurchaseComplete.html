@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>商品購入確定画面</title>
 </head>
 <body>
+    <div style="border: solid 1px black; width: 500px; height: 250px; text-align: center;">
 
+        <p>購入が完了しました。</p>
+
+        <form role="form" action="/" th:action="@{/}" method="">
+            <input type="submit" value="一覧へ戻る">
+        </form>
+
+        <form role="form" action="/" th:action="@{/}" method="">
+            <input type="submit" value="購入履歴へ">
+        </form>
+    </div>
 </body>
 </html>

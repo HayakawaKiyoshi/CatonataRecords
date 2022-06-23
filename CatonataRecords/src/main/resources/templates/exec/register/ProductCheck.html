@@ -1,10 +1,27 @@
+
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>商品登録確認画面</title>
 </head>
 <body>
+    <p style="text-align: center; border: solid 1px black;">自社商品登録</p>
+    <p>以下の内容で登録します。よろしいですか？</p>
 
+    <form action="/" method="" th:object="${session.}">
+        商品名：<span th:text="*{pro_name}"></span><br>
+        アーティスト名：<span th:text="*{artist}"></span><br>
+        商品媒体：<span th:text="*{media}"></span><br>
+        商品価格：<span th:text="*{price}"></span><br>
+        レコード会社名：<span th:text="*{label}"></span><br>
+        在庫数：<span th:text="*{stock}"></span><br>
+
+        <p><input type="submit" value="登録"></p>
+    </form>
+
+    <form role="form" action="/" th:action="@{/}" method="">
+        <input type="submit" value="戻る">
+    </form>
 </body>
 </html>
