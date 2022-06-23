@@ -1,5 +1,9 @@
 package com.catonata.bean;
 
-public class UserInformationBean {
+import java.io.Serializable;
+
+public class UserInformationBean implements Serializable{
+
+
 
 }
