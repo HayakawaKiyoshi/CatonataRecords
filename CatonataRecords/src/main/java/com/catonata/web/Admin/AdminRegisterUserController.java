@@ -41,11 +41,12 @@ public class AdminRegisterUserController {
 	}
 
 	@RequestMapping("/Complete")
-	private String registerComplete (UserInformationForm uif) {
+	private String registerComplete (UserInformationForm uif, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 //		UserInfoDao.insert(uif);
+		model.addAttribute("msg","登録");
 		return "admin/register/Complete";
 	}
 
@@ -80,11 +81,12 @@ public class AdminRegisterUserController {
 	}
 
 	@RequestMapping("/ExecComplete")
-	private String registerExecComplete (UserInformationForm uif) {
+	private String registerExecComplete (UserInformationForm uif, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 //		UserInfoDao.execInsert(uif);
+		model.addAttribute("msg","登録");
 		return "admin/register/Complete";
 	}
 

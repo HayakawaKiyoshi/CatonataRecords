@@ -36,6 +36,7 @@ public class AdminDeleteUserController {
 //		if (id.equals(au.getId())) {
 //			model.addAttribute("step", "1");
 //		}
+		model.addAttribute("msg","削除");
 		return "admin/delete/Complete";
 	}
 
@@ -59,6 +60,7 @@ public class AdminDeleteUserController {
 //		if (id.equals(au.getId())) {
 //			model.addAttribute("step", "1");
 //		}
+		model.addAttribute("msg","削除");
 		return "admin/delete/Complete";
 	}
 }
