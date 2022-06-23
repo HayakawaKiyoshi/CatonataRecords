@@ -22,14 +22,14 @@ public class AdminRegisterUserController {
 	/*
 	 * 一般者の登録
 	 */
-	@RequestMapping("/start")
-	private String registerstart (@ModelAttribute UserInformationForm uif) {
+	@RequestMapping("")
+	private String registerUser (@ModelAttribute UserInformationForm uif) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		return "admin/register/GeneralRegister";
 	}
 
-	@RequestMapping("/check")
+	@RequestMapping("/Check")
 	private String registerCheck (@Validated UserInformationForm uif, BindingResult result) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
@@ -46,7 +46,7 @@ public class AdminRegisterUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 //		UserInfoDao.insert(uif);
-		return "register/RegisterComplete";
+		return "admin/register/Complete";
 	}
 
 	@RequestMapping("/Back")
@@ -55,10 +55,45 @@ public class AdminRegisterUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		model.addAttribute("UserInformationForm", uif);
-		 return "register/Register";
+		return "admin/register/GeneralRegister";
 	}
 
 	/*
 	 * 経営者登録
 	 */
+	@RequestMapping("/Exec")
+	private String registerExec (@ModelAttribute UserInformationForm uif) {
+		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", LoginUser);
+		return "admin/register/ExecRegister";
+	}
+
+	@RequestMapping("/ExecCheck")
+	private String registerExecCheck (@Validated UserInformationForm uif, BindingResult result) {
+		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", LoginUser);
+		if (result.hasErrors()) {
+			return "admin/register/ExecRegister";
+		}
+		session.setAttribute("uif", uif);
+		return "admin/register/ExecCheck";
+	}
+
+	@RequestMapping("/ExecComplete")
+	private String registerExecComplete (UserInformationForm uif) {
+		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", LoginUser);
+		uif = (UserInformationForm)session.getAttribute("uif");
+//		UserInfoDao.insert(uif);
+		return "admin/register/Complete";
+	}
+
+	@RequestMapping("/ExecBack")
+	private String registerExecBack(UserInformationForm uif, Model model) {
+		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", LoginUser);
+		uif = (UserInformationForm)session.getAttribute("uif");
+		model.addAttribute("UserInformationForm", uif);
+		return "admin/register/ExecRegister";
+	}
 }
