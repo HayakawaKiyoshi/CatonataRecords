@@ -85,6 +85,8 @@ public class ProductUpdateController {
 		ExecDao.productUpdate(update);
 		mav.setViewName("exec/complete/Complete");
 
+		mav.addObject("msg", "更新が完了しました。");
+
 		//セッションインスタンスの削除
 		session.removeAttribute("update");
 
