@@ -8,25 +8,35 @@
 </head>
 <body>
 	<div layout:fragment="navigation">
-	<div id="navidation">
-	<font size="4">商品カテゴリー</font>
-		<form action="">
-		一覧
-		</form>
-		<form action="">
-		・ⅭⅮ
-		</form>
-		<form action="">
-		・ＤＶＤ
-		</form>
-		<form action="">
-		・本/書籍
-		</form>
-		<form action="">
-		・グッズ
-		</form>
+		<div id="navidation">
+			<th:block th:if="general">
+				<font size="4">商品カテゴリー</font>
+				<form action="">・一覧</form>
+				<form action="">・ⅭⅮ</form>
+				<form action="">・ＤＶＤ</form>
+				<form action="">・本/書籍</form>
+				<form action="">・グッズ</form>
+			</th:block>
+
+<!--
+			<th:block th:if="admin">
+				<form action="">メニュー</form>
+				<form action="">一般ユーザー新規登録</form>
+				<form action="">経営者ユーザー新規登録</form>
+				<form action="">商品削除</form>
+			</th:block>
+ -->
+ <!--
+			<th:block th:if="exec">
+				<form action="">メニュー</form>
+				<form action="">商品登録</form>
+				<form action="">
+				売上一覧
+				<input type="hidden" name="会社名" th:value="会社ID？">
+				</form>
+			</th:block>
+-->
 		</div>
-		]
 	</div>
 </body>
 </html>

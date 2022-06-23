@@ -36,7 +36,7 @@ public class LoginLogoutController {
 
 			} else {
 
-				//id検索するDAOを呼び出す
+				//name検索するDAOを呼び出す
 				UserInformationBean user = CommonDao.find(form.getName());
 
 				boolean isLogin = (user != null && form.getName().equals(user.getName()))

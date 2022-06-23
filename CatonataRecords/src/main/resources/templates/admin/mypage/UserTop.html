@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>管理者トップページ</title>
 </head>
 <body>
+<!--
 	検索：
 	<form role="form" action="/" th:action="@{/}" method="/">
 		<input type="text" name="product" th:field="*{}" th:errorclass="fieldError">
 	</form>
+-->
+
+	<th:block th:object="${session.LoginUser}">
+	   氏名：<span th:text="*{name}"></span><br>
+	   パスワード：<span th:text="*{password}"></span><br>
+	   権限：<span th:text="*{authority}"></span>
+	</th:block>
 
 	<!-- ユーザー権限により表示内容が異なる -->
+	<!--
 	<p>一般ユーザー一覧</p>
 	<table>
 	   <tr>
@@ -65,5 +74,8 @@
             </tr>
         </th:block>
     </table>
+
+    -->
+
 </body>
 </html>

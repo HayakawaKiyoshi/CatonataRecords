@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ログイン画面</title>
 </head>
 <body>
+
+	<form role="form" action="/login" th:action="@{/login}" th:object="${loginForm}" method="post">
+		氏名：
+		  <input type="text" name="name" th:value="*{name}">
+		  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="error-field">error!</span><br>
+		パスワード：
+		  <input type="password" name="password" th:value="*{password}">
+		  <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="error-field">error!</span><br>
+		  <input type="submit" value="ログイン画面へ">
+	</form>
 
 </body>
 </html>
