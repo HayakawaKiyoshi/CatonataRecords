@@ -15,6 +15,13 @@ public class AdminTopController {
 //テスト
 	@RequestMapping(path="/top")
 	private String admintop () {
+		//一般ユーザーの情報一覧取得、セッション保存
+
+		//経営者のユーザー情報一覧取得、セッション保存
+
+		//ログインユーザーの情報ゲット→保存
+//		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+//		session.setAttribute("LoginUser", LoginUser);
 		return "admin/mypage/UserTop";
 	}
 }
