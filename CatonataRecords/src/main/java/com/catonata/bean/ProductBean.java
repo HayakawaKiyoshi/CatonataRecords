@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class ProductBean implements Serializable{
 
+	private String pro_id;
 	private String pro_name;
 	private String artist;
 	private String media;
@@ -59,6 +60,12 @@ public class ProductBean implements Serializable{
 	}
 	public void setStock(String stock) {
 		this.stock = stock;
+	}
+	public String getPro_id() {
+		return pro_id;
+	}
+	public void setPro_id(String pro_id) {
+		this.pro_id = pro_id;
 	}
 
 

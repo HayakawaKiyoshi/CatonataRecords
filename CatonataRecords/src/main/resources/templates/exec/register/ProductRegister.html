@@ -7,7 +7,7 @@
 <body>
     <p style="text-align: center; border: solid 1px black;">自社商品登録</p>
 
-    <form role="form" action="/" th:action="@{/}" th:object="${productForm}" method="">
+    <form role="form" action="/register" th:action="@{/register}" th:object="${productForm}" method="post">
         商品名：<input type="text" name="pro_name" th:field="*{pro_name}">
         <span th:if="${#fields.hasErrors('pro_name')}" th:errors="*{pro_name}" th:errorclass="error-field">error!</span><br>
 
