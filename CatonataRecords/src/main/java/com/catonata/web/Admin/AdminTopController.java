@@ -12,6 +12,7 @@ public class AdminTopController {
 	@Autowired
 	HttpSession session;
 
+//テスト
 	@RequestMapping(path="/top")
 	private String admintop () {
 		return "admin/mypage/UserTop";
