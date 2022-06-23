@@ -69,7 +69,7 @@ public class ProductUpdateController {
 	 * @param mav
 	 * @return
 	 */
-	@RequestMapping(path = "/execute", method = RequestMethod.POST)
+	@RequestMapping(path = "update/execute", method = RequestMethod.POST)
 	public ModelAndView send(ModelAndView mav) {
 //		InsertForm user = (InsertForm) session.getAttribute("user");
 //		mav.addObject("user", user);
@@ -88,7 +88,7 @@ public class ProductUpdateController {
 	 * @param mav
 	 * @return
 	 */
-	@RequestMapping("/back")
+	@RequestMapping("update/back")
 	public ModelAndView back(ModelAndView mav) {
 		//ログイン情報の取得
 //		InsertForm user = (InsertForm) session.getAttribute("user");
