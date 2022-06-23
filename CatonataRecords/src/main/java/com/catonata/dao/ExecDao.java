@@ -55,11 +55,11 @@ public class ExecDao {
 		try {
 			conn = manager.getConn();
 
-			final String SQL = "UPDATE PRODUCT_TABLE \r\n"
+			final String PRO_UPDATE_SQL = "UPDATE PRODUCT_TABLE \r\n"
 					+ "SET ARTIST = ?, MEDIA = ?,PRICE = ?,\r\n"
 					+ "RELEASE_DATE= ?, LABEL= ?,SOLD = ?,STOCK =? \r\n"
 					+ "WHERE PROD_NAME = ?";
-			ps = conn.prepareStatement(SQL);
+			ps = conn.prepareStatement(PRO_UPDATE_SQL);
 			//引数を?にバインド
 			ps.setString(1, update.getArtist());
 			ps.setString(2, update.getMedia());
@@ -86,13 +86,13 @@ public class ExecDao {
 		ResultSet rs = null;
 		//DBManagerをインスタンス化
 		DBManager manager = new DBManager();
-		final String LOGIN_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_NAME = ?";
+		final String PROD_NAME_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_NAME = ?";
 
 		ProductForm form = null;
 
 		try {
 			conn = manager.getConn();
-			ps = conn.prepareStatement(LOGIN_SQL);
+			ps = conn.prepareStatement(PROD_NAME_SQL);
 			//引数を?にバインド
 			ps.setString(1, name);
 			rs = ps.executeQuery();
@@ -124,6 +124,32 @@ public class ExecDao {
 		}
 		return form;
 
+	}
+	/**
+	 * 削除するメソッド
+	 * @param user
+	 */
+
+	public static void productDelete(ProductForm form) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		DBManager manager = new DBManager();
+
+		try {
+			conn = manager.getConn();
+			final String PRO_DELETE_SQL = "DELETE FROM PRODUCT_FORM WHERE PROD_NAME = ? ";
+			ps = conn.prepareStatement(PRO_DELETE_SQL);
+			//引数を?にバインド
+			ps.setString(1, form.getPro_name());
+			ps.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
 	}
 
 }
