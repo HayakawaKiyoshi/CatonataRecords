@@ -18,9 +18,9 @@ public class AdminTopController {
 	@RequestMapping("/top")
 	private String admintop () {
 		//一般ユーザーの情報一覧取得、セッション保存
-
+//		ArrayList<UserInformationBean> alluser = UserInfoDao.allippanuserSerach(alluser);
 		//経営者のユーザー情報一覧取得、セッション保存
-
+//		ArrayList<UserInformationBean> allexec = UserInfoDao.allExecUser();
 		//ログインユーザーの情報ゲット→保存
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
