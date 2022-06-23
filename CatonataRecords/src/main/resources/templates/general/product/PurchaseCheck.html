@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>商品購入確認画面</title>
 </head>
 <body>
+    <div style="border: solid 1px black; width: 500px; height: 250px; position: relative;">
+        <form role="form" action="/" th:action="@{/}" method="">
+            <input type="submit" value="戻る">
+        </form>
 
+        <p style="text-align: center; border: solid 1px black;">(商品タイトル)</p>
+
+        <div style="border: solid 1px black; width: 150px; height: 80px;
+          position: absolute; top: 120px; left: 30px;">(画像)</div>
+
+        <div style="position: absolute; top: 120px; left: 250px;">
+          <span>価格：〇〇〇〇円</span><br>
+          <span>支払い：クレジットカード</span><br>
+          <span>番号：****-****-****-1111</span><br>
+          <form role="form" action="/" th:action="@{/}" method="">
+            <input type="submit" value="確定">
+          </form>
+        </div>
+    </div>
 </body>
 </html>
