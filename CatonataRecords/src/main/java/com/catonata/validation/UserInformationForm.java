@@ -22,12 +22,7 @@ public class UserInformationForm {
 	private String email;
 	@NotEmpty
 	private String authority;
-	@NotEmpty
-	private String creditnumber;
-	@NotEmpty
-	private String cregitspan;
-	@NotEmpty
-	private String securitycode;
+
 	public String getId() {
 		return id;
 	}
@@ -76,24 +71,7 @@ public class UserInformationForm {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-	public String getCreditnumber() {
-		return creditnumber;
-	}
-	public void setCreditnumber(String creditnumber) {
-		this.creditnumber = creditnumber;
-	}
-	public String getCregitspan() {
-		return cregitspan;
-	}
-	public void setCregitspan(String cregitspan) {
-		this.cregitspan = cregitspan;
-	}
-	public String getSecuritycode() {
-		return securitycode;
-	}
-	public void setSecuritycode(String securitycode) {
-		this.securitycode = securitycode;
-	}
+
 	public String getEmail() {
 		return email;
 	}
