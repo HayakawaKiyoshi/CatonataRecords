@@ -3,7 +3,7 @@ package com.catonata.validation;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class ExecInformationForm {
-
+//テスト
 	@NotEmpty
 	private String name;
 	@NotEmpty
