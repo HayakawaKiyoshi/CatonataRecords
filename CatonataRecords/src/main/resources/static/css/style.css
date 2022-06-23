@@ -1,0 +1,40 @@
+* {
+	padding:0px;
+	margin:0px;
+}
+
+div#container {
+	margin: auto;
+	padding: 10px;
+	width: 900px;
+	background-color: white;
+
+}
+
+div#header {
+	padding:30px;
+	margin: 10px;
+	text-align:center;
+	color:black;
+	background-color: gray;
+
+}
+
+div#navidation {
+	padding: 10px;
+	margin:5px;
+	float:left;
+	width:100px;
+	height: 230px;
+	background-color: bisque;
+	position: relative;
+}
+
+div#footer {
+	padding: 20px;
+	margin:10px;
+	clear: both;
+	height: 10px;
+	text-align: center;
+	background-color: gainsboro;
+}
