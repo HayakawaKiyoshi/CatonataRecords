@@ -17,7 +17,7 @@ public class ProductForm {
 	private String release_date;
 	@NotEmpty
 	private String label;
-	@NotEmpty
+
 	private String sold;
 	@NotEmpty
 	private String stock;

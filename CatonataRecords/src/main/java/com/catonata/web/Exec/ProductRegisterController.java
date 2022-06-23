@@ -21,6 +21,11 @@ public class ProductRegisterController {
 	@Autowired
 	HttpSession session;
 
+	@RequestMapping(path = "/register", method = RequestMethod.GET)
+	public String index(ProductForm form) {
+		return "exec/register/ProductRegister";
+	}
+
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
 	public ModelAndView index2(@Validated ProductForm form,BindingResult result, ModelAndView mav) {
 //		InsertForm user = (InsertForm) session.getAttribute("user");

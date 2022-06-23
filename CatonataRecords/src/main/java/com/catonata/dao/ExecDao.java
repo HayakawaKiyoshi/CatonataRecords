@@ -21,7 +21,7 @@ public class ExecDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		DBManager manager = new DBManager();
-		final String PRO_REGISTER_SQL = "INSERT INTO PRODUCT_TABLE VALUES (pro_seq.nextval?,?,?,?,?,?,?,?)";
+		final String PRO_REGISTER_SQL = "INSERT INTO PRODUCT_TABLE VALUES (pro_seq.nextval,?,?,?,?,?,?,?,?)";
 
 		try {
 			conn = manager.getConn();
@@ -33,7 +33,7 @@ public class ExecDao {
 			ps.setString(4, form.getPrice());
 			ps.setString(5, form.getRelease_date());
 			ps.setString(6, form.getLabel());
-			ps.setString(7, form.getSold());
+			ps.setString(7, "0");
 			ps.setString(8, form.getStock());
 			ps.executeUpdate();
 
