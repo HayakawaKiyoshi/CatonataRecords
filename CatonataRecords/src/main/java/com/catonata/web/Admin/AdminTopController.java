@@ -15,8 +15,8 @@ public class AdminTopController {
 
 //テスト
 	@RequestMapping("/top")
-	private String admintop (@RequestParam("id")String id, @RequestParam("pass")String pass) {
-//		UserInformationBean LoginUser = UserInfoDao.searchUser(id,pass);
+	private String admintop (@RequestParam("name")String name, @RequestParam("pass")String pass) {
+//		UserInformationBean LoginUser = CommonDao.find(name,pass);
 //		session.setAttribute("LoginUser", LoginUser);
 		//一般ユーザーの情報一覧取得、セッション保存
 //		ArrayList<UserInformationBean> alluser = UserInfoDao.allGeneralUserSerach(alluser);
