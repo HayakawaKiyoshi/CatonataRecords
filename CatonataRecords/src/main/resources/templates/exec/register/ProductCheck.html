@@ -9,7 +9,7 @@
     <p style="text-align: center; border: solid 1px black;">自社商品登録</p>
     <p>以下の内容で登録します。よろしいですか？</p>
 
-    <form action="/register/execute" method="post" th:object="${session.proForm}">
+    <form action="/exec/register/execute" method="post" th:object="${session.proForm}">
         商品名：<span th:text="*{pro_name}"></span><br>
         アーティスト名：<span th:text="*{artist}"></span><br>
         商品媒体：<span th:text="*{media}"></span><br>

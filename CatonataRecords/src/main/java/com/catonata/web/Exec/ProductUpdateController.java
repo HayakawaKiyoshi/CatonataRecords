@@ -8,10 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.catonata.bean.ProductBean;
 import com.catonata.dao.ExecDao;
 import com.catonata.validation.ProductForm;
 
@@ -23,16 +21,20 @@ public class ProductUpdateController {
 	@Autowired
 	HttpSession session;
 
+	@RequestMapping(path = "/up", method = RequestMethod.GET)
+	public String index(ProductForm form) {
+		return "redirect";
+	}
+
 	@RequestMapping(path = "/update", method = RequestMethod.GET)
-	public ModelAndView send(@RequestParam("id") String id,
-			ProductForm form,ModelAndView mav) {
+	public ModelAndView send(ProductForm form,ModelAndView mav) {
 
 //		//ログイン情報の取得
 //		InsertForm user = (InsertForm) session.getAttribute("user");
 //		mav.addObject("user", user);
 
 		//社員情報をid検索するDAOを呼び出す
-		ProductBean update = ExecDao.profind(id);
+		ProductForm update = ExecDao.profind("3");
 
 		//検索結果の情報をセッションに保存
 		session.setAttribute("update", update);
@@ -58,11 +60,13 @@ public class ProductUpdateController {
 		if (result.hasErrors()) {
 			mav.setViewName("exec/update/ProductUpdate");
 		} else {
-			ProductBean update = (ProductBean) session.getAttribute("update");
+			ProductForm update = (ProductForm) session.getAttribute("update");
 			form.setPro_id(update.getPro_id());
+			form.setSold(update.getSold());
+			session.setAttribute("update", form);
 			mav.addObject("update", form);
 
-			mav.setViewName("exec/update/ExecCheck");
+			mav.setViewName("exec/update/ProductCheck");
 		}
 
 		return mav;

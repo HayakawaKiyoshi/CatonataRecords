@@ -7,7 +7,7 @@
 <body>
     <p style="text-align: center; border: solid 1px black;">自社商品登録</p>
 
-    <form role="form" action="/register" th:action="@{/register}" th:object="${productForm}" method="post">
+    <form role="form" action="/exec/register" th:action="@{/exec/register}" th:object="${productForm}" method="post">
         商品名：<input type="text" name="pro_name" th:field="*{pro_name}">
         <span th:if="${#fields.hasErrors('pro_name')}" th:errors="*{pro_name}" th:errorclass="error-field">error!</span><br>
 
@@ -19,6 +19,8 @@
 
         商品価格：<input type="text" name="price" th:field="*{price}">
         <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" th:errorclass="error-field">error!</span><br>
+        発売日：<input type="text" name="release_date" th:field="*{release_date}">
+        <span th:if="${#fields.hasErrors('release_date')}" th:errors="*{release_date}" th:errorclass="error-field">error!</span><br>
 
         レコード会社名：<input type="text" name="label" th:field="*{label}">
         <span th:if="${#fields.hasErrors('label')}" th:errors="*{label}" th:errorclass="error-field">error!</span><br>
