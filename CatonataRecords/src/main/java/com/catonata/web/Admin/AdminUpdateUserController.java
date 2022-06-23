@@ -19,6 +19,7 @@ public class AdminUpdateUserController {
 	@Autowired
 	HttpSession session;
 
+	//コミット確認コメント
 	/*
 	 * 一般者更新
 	 */
