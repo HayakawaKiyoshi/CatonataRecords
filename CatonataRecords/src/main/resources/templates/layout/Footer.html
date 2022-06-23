@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/MenuLayout">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div layout:fragment="footer">
+		<div id="footer" class="fixed-bottom"
+			style="height: 40px; display: flex; justify-content: center; align-items: center;">
+			A Copyright &copy; TokyoMethod All Rights Reserved.</div>
+	</div>
 </body>
 </html>
