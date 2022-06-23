@@ -47,7 +47,7 @@ public class ExecDao {
 		}
 	}
 
-	public void productUpdate(ProductForm update) {
+	public static void productUpdate(ProductForm update) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		DBManager manager = new DBManager();
