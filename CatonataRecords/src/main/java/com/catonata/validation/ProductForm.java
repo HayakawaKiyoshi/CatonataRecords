@@ -3,6 +3,7 @@ package com.catonata.validation;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class ProductForm {
+	private String pro_id;
 
 	@NotEmpty
 	private String pro_name;
@@ -68,6 +69,12 @@ public class ProductForm {
 	}
 	public void setStock(String stock) {
 		this.stock = stock;
+	}
+	public String getPro_id() {
+		return pro_id;
+	}
+	public void setPro_id(String pro_id) {
+		this.pro_id = pro_id;
 	}
 
 

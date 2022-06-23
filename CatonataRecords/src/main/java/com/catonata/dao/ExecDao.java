@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.catonata.bean.ProductBean;
 import com.catonata.validation.ProductForm;
 
 
@@ -20,7 +21,7 @@ public class ExecDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		DBManager manager = new DBManager();
-		final String PRO_REGISTER_SQL = "INSERT INTO PRODUCT_TABLE VALUES (?,?,?,?,?,?,?,?)";
+		final String PRO_REGISTER_SQL = "INSERT INTO PRODUCT_TABLE VALUES (pro_seq.nextval?,?,?,?,?,?,?,?)";
 
 		try {
 			conn = manager.getConn();
@@ -57,8 +58,8 @@ public class ExecDao {
 
 			final String PRO_UPDATE_SQL = "UPDATE PRODUCT_TABLE \r\n"
 					+ "SET ARTIST = ?, MEDIA = ?,PRICE = ?,\r\n"
-					+ "RELEASE_DATE= ?, LABEL= ?,SOLD = ?,STOCK =? \r\n"
-					+ "WHERE PROD_NAME = ?";
+					+ "RELEASE_DATE= ?, LABEL= ?,SOLD = ?,STOCK =?,PROD_NAME = ? \r\n"
+					+ "WHERE PROD_ID = ?";
 			ps = conn.prepareStatement(PRO_UPDATE_SQL);
 			//引数を?にバインド
 			ps.setString(1, update.getArtist());
@@ -69,6 +70,7 @@ public class ExecDao {
 			ps.setString(6, update.getSold());
 			ps.setString(7, update.getStock());
 			ps.setString(8, update.getPro_name());
+			ps.setString(9, update.getPro_id());
 			ps.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
@@ -80,26 +82,27 @@ public class ExecDao {
 		}
 	}
 
-	public static ProductForm profind(String name) {
+	public static ProductBean profind(String id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		//DBManagerをインスタンス化
 		DBManager manager = new DBManager();
-		final String PROD_NAME_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_NAME = ?";
+		final String PROD_NAME_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_ID = ?";
 
-		ProductForm form = null;
+		ProductBean form = null;
 
 		try {
 			conn = manager.getConn();
 			ps = conn.prepareStatement(PROD_NAME_SQL);
 			//引数を?にバインド
-			ps.setString(1, name);
+			ps.setString(1, id);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
 
-				form = new ProductForm();
+				form = new ProductBean();
+				form.setPro_id(rs.getString("PROD_ID"));
 				form.setPro_name(rs.getString("PROD_NAME"));
 				form.setArtist(rs.getString("ARTIST"));
 				form.setMedia(rs.getString("MEDIA"));
@@ -137,10 +140,10 @@ public class ExecDao {
 
 		try {
 			conn = manager.getConn();
-			final String PRO_DELETE_SQL = "DELETE FROM PRODUCT_FORM WHERE PROD_NAME = ? ";
+			final String PRO_DELETE_SQL = "DELETE FROM PRODUCT_FORM WHERE PROD_ID = ? ";
 			ps = conn.prepareStatement(PRO_DELETE_SQL);
 			//引数を?にバインド
-			ps.setString(1, form.getPro_name());
+			ps.setString(1, form.getPro_id());
 			ps.executeUpdate();
 
 		} catch (ClassNotFoundException e) {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.catonata.bean.ProductBean;
 import com.catonata.dao.ExecDao;
 import com.catonata.validation.ProductForm;
 
@@ -23,7 +24,7 @@ public class ProductUpdateController {
 	HttpSession session;
 
 	@RequestMapping(path = "/update", method = RequestMethod.GET)
-	public ModelAndView send(@RequestParam("name") String name,
+	public ModelAndView send(@RequestParam("id") String id,
 			ProductForm form,ModelAndView mav) {
 
 //		//ログイン情報の取得
@@ -31,7 +32,7 @@ public class ProductUpdateController {
 //		mav.addObject("user", user);
 
 		//社員情報をid検索するDAOを呼び出す
-		ProductForm update = ExecDao.profind(name);
+		ProductBean update = ExecDao.profind(id);
 
 		//検索結果の情報をセッションに保存
 		session.setAttribute("update", update);
@@ -57,6 +58,8 @@ public class ProductUpdateController {
 		if (result.hasErrors()) {
 			mav.setViewName("exec/update/ProductUpdate");
 		} else {
+			ProductBean update = (ProductBean) session.getAttribute("update");
+			form.setPro_id(update.getPro_id());
 			mav.addObject("update", form);
 
 			mav.setViewName("exec/update/ExecCheck");

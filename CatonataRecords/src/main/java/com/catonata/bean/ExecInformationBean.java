@@ -2,7 +2,6 @@ package com.catonata.bean;
 
 public class ExecInformationBean {
 
-	private String pro_id;
 	private String name;
 	private String label;
 	private String password;
@@ -28,11 +27,6 @@ public class ExecInformationBean {
 	public void setAuthority(String authority) {this.authority = authority;}
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}
-	public String getPro_id() {
-		return pro_id;
-	}
-	public void setPro_id(String pro_id) {
-		this.pro_id = pro_id;
-	}
+
 
 }
