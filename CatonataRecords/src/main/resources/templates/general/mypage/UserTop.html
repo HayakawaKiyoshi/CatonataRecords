@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
+    <th:block th:object="${session.LoginUser}">
+       氏名：<span th:text="*{name}"></span><br>
+       パスワード：<span th:text="*{password}"></span><br>
+       権限：<span th:text="*{authority}"></span>
+    </th:block>
 
 </body>
 </html>
