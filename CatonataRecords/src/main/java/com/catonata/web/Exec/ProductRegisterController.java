@@ -43,7 +43,7 @@ public class ProductRegisterController {
 
 	@RequestMapping(path = "/register/execute", method = RequestMethod.POST)
 	public ModelAndView insert(ModelAndView mav) {
-		mav.setViewName("exec/register/ProductComplete");
+		mav.setViewName("exec/complete/Complete");
 //		InsertForm user = (InsertForm) session.getAttribute("user");
 //		mav.addObject("user", user);
 
