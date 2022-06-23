@@ -42,11 +42,12 @@ public class AdminUpdateUserController {
 	}
 
 	@RequestMapping("/Complete")
-	private String updateComplete (UserInformationForm uif) {
+	private String updateComplete (UserInformationForm uif,Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 //		UserInfoDao.update(uif);
+		model.addAttribute("msg","更新");
 		return "admin/update/GeneralComplete";
 	}
 
@@ -81,11 +82,12 @@ public class AdminUpdateUserController {
 	}
 
 	@RequestMapping("/ExecComplete")
-	private String updateExecComplete (UserInformationForm uif) {
+	private String updateExecComplete (UserInformationForm uif, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 //		UserInfoDao.execUpdate(uif);
+		model.addAttribute("msg","更新");
 		return "admin/update/ExecComplete";
 	}
 
