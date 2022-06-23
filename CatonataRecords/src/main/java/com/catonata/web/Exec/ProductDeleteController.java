@@ -59,6 +59,7 @@ public class ProductDeleteController {
 		ExecDao.productDelete(delete);
 
 		mav.setViewName("exec/complete/Complete");
+		mav.addObject("msg", "削除が完了しました");
 
 		//セッションインスタンスの削除
 		session.removeAttribute("delete");
