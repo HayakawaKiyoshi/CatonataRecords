@@ -10,7 +10,9 @@
 	<table>
 		<tr>
 			<td>商品番号</td>
-			<td><input type="text"></td>
+			<td><input type="text" name="address" th:field="*{address}" /> <span
+								th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
+								th:errorclass="error-field">error!</span></td>
 		</tr>
 		<tr>
 			<td>商品名</td>

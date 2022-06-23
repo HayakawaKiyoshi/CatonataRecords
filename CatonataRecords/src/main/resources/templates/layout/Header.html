@@ -7,8 +7,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div layout:fragment="header">
-<div id="header">～CARONATA RECORDS～</div>
-</div>
+	<div layout:fragment="header">
+		<div class="container">
+			<div style="margin-left:80%">
+				<th:block th:if="ログイン前">
+					<div style="display: inline-flex">
+						<form action="" method="post">
+							<input type="submit" value="新規登録" class="btn btn-primary">
+						</form>
+						<form action="" method="post">
+							<input type="submit" value="ログイン" class="btn btn-primary">
+						</form>
+					</div>
+					<!--</th:block>
+		<th:block th:if="ログイン後">
+			<div style="display: inline-flex">
+				<form action="" method="post">
+					<input type="submit" value="マイページ" class="btn btn-primary">
+				</form>
+				<form action="" method="post">
+					<input type="submit" value="ログアウト" class="btn btn-primary">
+				</form>
+			</div>
+		</th:block>
+		 -->
+			</div>
+			<div id="header">～CARONATA RECORDS～</div>
+		</div>
+	</div>
 </body>
 </html>
