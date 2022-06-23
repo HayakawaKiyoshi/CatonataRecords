@@ -14,12 +14,15 @@ public class UserInformationBean implements Serializable{
 	private String email;
 	private String authority;
 	private String creditnumber;
-	private String cregitspan;
+	private String creditspan;
 	private String securitycode;
 	private String label;
 	private String banknumber;
 	private String bankname;
 
+	public UserInformationBean () {
+		//デフォルトコンストラクタ
+	}
 	public UserInformationBean(String id,String password,String name,
 			String age,String gender,String birthday,String address,String email,
 			String authority,String creditnumber,String cregitspan,
@@ -34,7 +37,7 @@ public class UserInformationBean implements Serializable{
 		this.email = email;
 		this.authority = authority;
 		this.creditnumber = creditnumber;
-		this.cregitspan = cregitspan;
+		this.creditspan = cregitspan;
 		this.securitycode = securitycode;
 		this.label = label;
 		this.banknumber = banknumber;
@@ -94,11 +97,11 @@ public class UserInformationBean implements Serializable{
 	public void setCreditnumber(String creditnumber) {
 		this.creditnumber = creditnumber;
 	}
-	public String getCregitspan() {
-		return cregitspan;
+	public String getCreditspan() {
+		return creditspan;
 	}
-	public void setCregitspan(String cregitspan) {
-		this.cregitspan = cregitspan;
+	public void setCreditspan(String creditspan) {
+		this.creditspan = creditspan;
 	}
 	public String getSecuritycode() {
 		return securitycode;
