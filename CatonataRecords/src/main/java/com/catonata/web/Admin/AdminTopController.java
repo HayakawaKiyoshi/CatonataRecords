@@ -13,7 +13,7 @@ public class AdminTopController {
 	HttpSession session;
 
 //テスト
-	@RequestMapping(path="/top")
+	@RequestMapping("/top")
 	private String admintop () {
 		//一般ユーザーの情報一覧取得、セッション保存
 
