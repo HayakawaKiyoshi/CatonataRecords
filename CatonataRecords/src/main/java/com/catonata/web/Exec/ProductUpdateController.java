@@ -60,9 +60,10 @@ public class ProductUpdateController {
 		} else {
 			ProductBean update = (ProductBean) session.getAttribute("update");
 			form.setPro_id(update.getPro_id());
+			session.setAttribute("update", form);
 			mav.addObject("update", form);
 
-			mav.setViewName("exec/update/ExecCheck");
+			mav.setViewName("exec/update/ProductCheck");
 		}
 
 		return mav;
