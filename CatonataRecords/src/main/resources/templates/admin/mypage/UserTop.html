@@ -16,6 +16,7 @@
 	<!-- 一般ユーザー一覧と経営者ユーザー一覧を別々に表示 -->
 	<p>一般ユーザー一覧</p>
 	<table>
+	   <th:block th:if="*{authority == '1'}">
 	   <tr>
             <th>No</th><th>ユーザー名</th><th>メールアドレス</th><th>住所</th><th>性別</th><th>権限</th>
             <th>変更</th><th>削除</th>
@@ -40,10 +41,12 @@
                 </td>
 			</tr>
 		</th:block>
+		</th:block>
 	</table>
 
 	<p>経営者ユーザー一覧</p>
     <table>
+        <th:block th:if="*{authority == '3'}">
         <tr>
             <th>No</th><th>ユーザー名</th><th>レコード会社名</th><th>メールアドレス</th><th>権限</th>
             <th>変更</th><th>削除</th>
@@ -66,6 +69,7 @@
                     </a>
                 </td>
             </tr>
+        </th:block>
         </th:block>
     </table>
 
