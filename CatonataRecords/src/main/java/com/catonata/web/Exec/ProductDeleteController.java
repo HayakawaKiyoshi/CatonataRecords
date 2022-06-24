@@ -1,5 +1,6 @@
 package com.catonata.web.Exec;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -32,7 +33,7 @@ public class ProductDeleteController {
 	}
 
 	@RequestMapping(path = "/delete/select", method = RequestMethod.GET)
-	public ModelAndView get(@RequestParam("check") String check, ProductForm form,ModelAndView mav) {
+	public ModelAndView get(@RequestParam("check") String[] check, ProductForm form,ModelAndView mav) {
 		mav.setViewName("exec/delete/Check");
 
 //		//ログイン情報を取得する
@@ -40,9 +41,11 @@ public class ProductDeleteController {
 //		mav.addObject("user", user);
 
 		//検索のDaoを呼び出す
-		ProductForm delete = ExecDao.profind(check);
+		ArrayList<ProductForm> delete = ExecDao.profind2(check);
+
 
 		session.setAttribute("delete", delete);
+		session.setAttribute("check", check);
 		mav.addObject("delete", delete);
 
 		return mav;
@@ -63,6 +66,7 @@ public class ProductDeleteController {
 //		InsertForm user = (InsertForm) session.getAttribute("user");
 //		mav.addObject("user", user);
 
+
 		//検索のDaoを呼び出す
 		ProductForm delete = ExecDao.profind(name);
 
@@ -82,10 +86,10 @@ public class ProductDeleteController {
 
 //		InsertForm user = (InsertForm) session.getAttribute("user");
 //		mav.addObject("user", user);
-		ProductForm delete = (ProductForm) session.getAttribute("delete");
+		String[] check = (String[]) session.getAttribute("check");
 
 		//削除のDaoを呼び出す
-		ExecDao.productDelete(delete);
+		ExecDao.productDelete(check);
 
 		mav.setViewName("exec/complete/Complete");
 		mav.addObject("msg", "削除が完了しました");

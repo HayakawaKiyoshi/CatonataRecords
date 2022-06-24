@@ -140,18 +140,21 @@ public class ExecDao {
 	 * @param user
 	 */
 
-	public static void productDelete(ProductForm form) {
+	public static void productDelete(String[] id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		DBManager manager = new DBManager();
 
 		try {
 			conn = manager.getConn();
-			final String PRO_DELETE_SQL = "DELETE FROM PRODUCT_FORM WHERE PROD_ID = ? ";
+			final String PRO_DELETE_SQL = "DELETE FROM PRODUCT_TABLE WHERE PROD_ID = ? ";
+
+			for(int i = 0; i < id.length; i++) {
 			ps = conn.prepareStatement(PRO_DELETE_SQL);
 			//引数を?にバインド
-			ps.setString(1, form.getPro_id());
+			ps.setString(1, id[i]);
 			ps.executeUpdate();
+			}
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -203,6 +206,61 @@ public class ExecDao {
 			return null;
 		}
 		return empList;
+
+	}
+
+	public static ArrayList<ProductForm> profind2(String[] id) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		//DBManagerをインスタンス化
+		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		final String PROD_NAME_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_ID = ?";
+
+		ArrayList<ProductForm> productList = new ArrayList<ProductForm>();
+		ProductForm form = null;
+
+		try {
+			System.out.println(id);
+			conn = manager.getConn();
+			for(int i = 0; i < id.length; i++) {
+
+
+			ps = conn.prepareStatement(PROD_NAME_SQL);
+			//引数を?にバインド
+			ps.setString(1, id[i]);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				form = new ProductForm();
+				form.setPro_id(rs.getString("PROD_ID"));
+				form.setPro_name(rs.getString("PROD_NAME"));
+				form.setArtist(rs.getString("ARTIST"));
+				form.setMedia(rs.getString("MEDIA"));
+				form.setPrice(rs.getString("PRICE"));
+				form.setRelease_date(sdf.format(rs.getDate("RELEASE_DATE")));
+				form.setLabel(rs.getString("LABEL"));
+				form.setSold(rs.getString("SOLD"));
+				form.setStock(rs.getString("STOCK"));
+				productList.add(form);
+
+				System.out.println(form.getArtist());
+			}
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			manager.close(conn);
+		}
+		return productList;
 
 	}
 
