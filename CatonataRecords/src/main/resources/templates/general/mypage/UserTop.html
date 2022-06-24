@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8">
 <title>マイページ画面(一般ユーザー)</title>
 </head>
 <body>
+    <div layout:fragment="content">
     <div style="border: solid 1px black; width: 500px; height: 300px;">
         <p>ユーザー情報</p>
         <th:block th:object="${session.LoginUser}">
@@ -34,6 +36,7 @@
                 </th:block>
             </table>
         </div>
+    </div>
     </div>
 </body>
 </html>
