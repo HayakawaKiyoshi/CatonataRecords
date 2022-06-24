@@ -9,8 +9,7 @@
 <body>
 	<div layout:fragment="content">
 		<div class="container">
-			<p
-				style="text-align: center; border: solid 1px black; margin-left: 15%;">自社商品削除</p>
+			<p style="text-align: center; border: solid 1px black; margin-left: 15%;">自社商品削除</p>
 
 			<p>以下の商品情報を削除します。よろしいですか？</p>
 
@@ -35,7 +34,7 @@
 					</tr>
 					<tr>
 						<td>レコード会社名</td>
-						<td span th:text="*{label}"></td>
+						<td th:text="*{label}"></td>
 					</tr>
 					<tr>
 						<td>在庫数</td>
@@ -50,5 +49,6 @@
 
 			</form>
 		</div>
+	</div>
 </body>
 </html>
