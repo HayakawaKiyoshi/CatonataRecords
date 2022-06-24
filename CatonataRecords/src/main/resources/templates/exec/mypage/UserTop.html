@@ -6,10 +6,42 @@
 </head>
 <body>
 
-    <th:block th:object="${session.LoginUser}">
+    <!-- <th:block th:object="${session.LoginUser}">
        氏名：<span th:text="*{name}"></span><br>
        パスワード：<span th:text="*{password}"></span><br>
        権限：<span th:text="*{authority}"></span>
-    </th:block>
+    </th:block> -->
+
+	<table>
+				   	<tr>
+				   		<th>商品ID</th>
+				   		<th>商品名</th>
+				   		<th>アーティスト</th>
+				   		<th>商品媒体</th>
+				   		<th>価格</th>
+				   		<th>発売日</th>
+				   		<th>レコード会社</th>
+				   		<th>在庫</th>
+				   		<th>変更</th>
+				   	</tr>
+
+							<tr th:each = "item :${emplist}">
+								<td th:text="*{item.pro_id}"></td>
+								<td th:text="*{item.pro_name}"></td>
+								<td th:text="*{item.artist}"></td>
+								<td th:text="*{item.media}"></td>
+								<td th:text="*{item.price}"></td>
+								<td th:text="*{item.release_date}"></td>
+								<td th:text="*{item.label}"></td>
+								<td th:text="*{item.stock}"></td>
+								<td>
+								<form action = "/exec/update/" method = "get">
+								<input type = "hidden" name = "id" th:value = "*{item.pro_id}">
+								<input type = "submit" value = "変更" class="btn btn-primary">
+								</form>
+								</td>
+							</tr>
+
+						</table>
 </body>
 </html>
