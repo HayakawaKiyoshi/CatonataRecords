@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.UserInfoDao;
@@ -25,9 +26,10 @@ public class AdminUpdateUserController {
 	 * 一般者更新
 	 */
 	@RequestMapping("")
-	private String updateUser (@ModelAttribute UserInformationForm uif) {
+	private String updateUser (@RequestParam("name")String name,@RequestParam("password")String password,@ModelAttribute UserInformationForm uif) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
+		uif = UserInfoDao.find(name, password);
 		return "admin/update/GeneralUpdate";
 	}
 
@@ -49,7 +51,7 @@ public class AdminUpdateUserController {
 		uif = (UserInformationForm)session.getAttribute("uif");
 		UserInfoDao.adminUpdate(uif);
 		model.addAttribute("msg","更新");
-		return "admin/update/GeneralComplete";
+		return "admin/complete/Complete";
 	}
 
 	@RequestMapping("/Back")
@@ -62,7 +64,7 @@ public class AdminUpdateUserController {
 	}
 
 	/*
-	 * 経営者登録
+	 * 経営者更新
 	 */
 	@RequestMapping("/Exec")
 	private String updateExec (@ModelAttribute ExecInformationForm eif) {
