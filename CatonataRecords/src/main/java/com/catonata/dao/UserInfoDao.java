@@ -308,23 +308,15 @@ public class UserInfoDao {
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				String id = rs.getString("ID");
-				String pass = rs.getString("PASSWORD");
-				String username = rs.getString("USER_NAME");
-				String age = rs.getString("AGE");
-				String gender = rs.getString("GENDER");
-				String birthday = rs.getString("BIRTHDAY");
-				String address = rs.getString("ADDRESS");
-				String email = rs.getString("EMAIL");
-				String authority = rs.getString("AUTHORITY");
-				String crenum = rs.getString("CREDIT_NUMBER");
-				String crespan = rs.getString("SPAN");
-				String security = rs.getString("SECURITY_CODE");
-				String banknumber = rs.getString("BANK_NUMBER");
-				String bankname = rs.getString("BANK_NAME");
-				String label = rs.getString("LABEL");
-
-				user.setId(id);
+				user.setId(rs.getString("id"));
+				user.setPassword(rs.getString("password"));
+				user.setName(rs.getString("user_name"));
+				user.setAge(rs.getString("age"));
+				user.setGender(rs.getString("gender"));
+				user.setBirthday(rs.getString("birthday"));
+				user.setAddress(rs.getString("address"));
+				user.setEmail(rs.getString("email"));
+				user.setAuthority(rs.getString("authority"));
 
 			} else {
 				return null;
