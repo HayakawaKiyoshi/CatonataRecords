@@ -13,6 +13,18 @@ public class ProductBean implements Serializable{
 	private String label;
 	private String sold;
 	private String stock;
+
+	public ProductBean(String pro_id,String pro_name,String artist,String media,
+			String price, String release_date,String label,String stock) {
+		this.pro_id = pro_id;
+		this.pro_name = pro_name;
+		this.artist = artist;
+		this.media = media;
+		this.price = price;
+		this.release_date = release_date;
+		this.label = label;
+		this.stock = stock;
+	}
 	public String getPro_name() {
 		return pro_name;
 	}
