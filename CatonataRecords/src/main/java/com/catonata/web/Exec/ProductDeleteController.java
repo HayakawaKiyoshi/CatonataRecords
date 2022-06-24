@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.catonata.dao.ExecDao;
+import com.catonata.validation.LoginForm;
 import com.catonata.validation.ProductForm;
 
 @Controller
@@ -18,6 +19,11 @@ public class ProductDeleteController {
 
 	@Autowired
 	HttpSession session;
+
+	@RequestMapping(path = "/select", method = RequestMethod.GET)
+	public String index(LoginForm form) {
+		return "exec/delete/Select";
+	}
 
 	@RequestMapping(path = "/delete/select", method = RequestMethod.GET)
 	public ModelAndView send(@RequestParam("check") ProductForm check, ProductForm form,ModelAndView mav) {
