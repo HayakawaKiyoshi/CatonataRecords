@@ -9,11 +9,12 @@
 <body>
 	<div layout:fragment="content">
 		<div class="container">
-			<p style="text-align: center; border: solid 1px black; margin-left: 15%;">自社商品削除</p>
+			<p
+				style="text-align: center; border: solid 1px black; margin-left: 15%;">自社商品削除</p>
 
 			<p>以下の商品情報を削除します。よろしいですか？</p>
 
-			<form action="/" method="get">
+			<form action="/exec/delete/execute" method="post" th:object=${delete}>
 
 				<table border="1">
 					<tr>
@@ -41,14 +42,15 @@
 						<td th:text="*{stock}"></td>
 					</tr>
 				</table>
+				<p><input type="submit" value="削除する"></p>
 
 			</form>
 
-			<form role="form" action="/" method="">
+			<!-- <form role="form" action="/" method="">
 				<input type="submit" value="戻る">
 
-			</form>
+			</form> -->
 		</div>
-	</div>
+		</div>
 </body>
 </html>
