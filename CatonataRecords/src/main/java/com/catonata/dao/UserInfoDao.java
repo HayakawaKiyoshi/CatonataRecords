@@ -127,6 +127,97 @@ public class UserInfoDao {
 	}
 
 	/**
+	 * 管理者用一般更新メソッド
+	 * @param uif
+	 */
+	public static void adminUpdate (UserInformationForm uif) {
+		DBManager manager = new DBManager();
+		Connection conn = null;
+		PreparedStatement ps = null;
+//		SqlTemplates sqls = new SqlTemplates();
+		try {
+			// 接続する
+			conn = manager.getConn();
+			ps = conn.prepareStatement("UPDATE USER_TABLE SET PASSWORD = ?,"
+					+ "USER_NAME = ? , AGE = ? , GENDER = ? , BIRTHDAY = ? ,"
+					+ "ADDRESS = ? , EMAIL = ?"
+					+ " WHERE USER_ID = ?");
+			ps.setString(1, uif.getPassword());
+			ps.setString(2, uif.getName());
+			ps.setString(3, uif.getAge());
+			ps.setString(4, uif.getGender());
+			ps.setString(5, uif.getBirthday());
+			ps.setString(6, uif.getAddress());
+			ps.setString(7, uif.getEmail());
+			ps.setString(8, uif.getId());
+			int cnt =ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件のデータを登録しました。");
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
+	/**
+	 * 管理者用経営者情報更新メソッド
+	 * @param uif
+	 */
+	public static void execUpdate (ExecInformationForm eif) {
+		DBManager manager = new DBManager();
+		Connection conn = null;
+		PreparedStatement ps = null;
+//		SqlTemplates sqls = new SqlTemplates();
+		try {
+			// 接続する
+			conn = manager.getConn();
+			ps = conn.prepareStatement("UPDATE USER_TABLE SET PASSWORD = ? ,"
+					+ "USER_NAME = ? , ADDRESS = ? , EMAIL = ? , BANKNUMBER = ? ,"
+					+ "BANKNAME = ? , LABEL = ? , USER_ID = ?");
+			ps.setString(1, eif.getPassword());
+			ps.setString(2, eif.getName());
+			ps.setString(3, eif.getAddress());
+			ps.setString(4, eif.getEmail());
+			ps.setString(5, eif.getBanknumber());
+			ps.setString(6, eif.getBankname());
+			ps.setString(7, eif.getLabel());
+			ps.setString(8, eif.getId());
+			int cnt =ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件のデータを登録しました。");
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
+	/**
 	 * 一般情報全件検索
 	 * @return
 	 */

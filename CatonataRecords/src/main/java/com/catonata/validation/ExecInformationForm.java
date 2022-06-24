@@ -4,6 +4,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ExecInformationForm {
 //テスト
+
+	private String id;
 	@NotEmpty
 	private String name;
 	@NotEmpty
@@ -19,6 +21,13 @@ public class ExecInformationForm {
 	@NotEmpty
 	private String bankname;
 
+
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
