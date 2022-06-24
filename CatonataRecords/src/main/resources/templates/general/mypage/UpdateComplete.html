@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ユーザー情報更新完了画面</title>
 </head>
 <body>
+    <p style="text-align: center; border: solid 1px black;">ユーザー情報更新</p>
 
+    <p>変更が完了しました。<br></p>
+
+    <form role="form" action="/" th:action="@{/}" method="">
+        <input type="submit" value="マイページへ">
+    </form>
 </body>
 </html>
