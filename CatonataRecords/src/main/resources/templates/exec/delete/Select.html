@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-	<p style="text-align: center; border: solid 1px black; margin-left: 15%;">商品削除確認画面</p>
+	<div id="content_bar">商品削除確認画面</div>
 		<form action="" method="">
 			<input type=text name=""> <input type="submit" value="検索"
 				class="btn btn-primary"><br>
@@ -19,20 +19,27 @@
 			<table border="1">
 				<tr>
 					<th>チェック</th>
-					<th>No</th>
-					<th>タイトル</th>
-					<th>アーティスト名</th>
-					<th>発売日</th>
-					<th>価格</th>
+					<th>商品ID</th>
+				   	<th>商品名</th>
+				   	<th>アーティスト</th>
+				   	<th>商品媒体</th>
+				   	<th>価格</th>
+				   	<th>発売日</th>
+				   	<th>レコード会社</th>
+				   	<th>在庫</th>
+				   	<th>変更</th>
 				</tr>
-				<th:block th:each="items : ${productForm}">
+				<th:block th:each="item : ${productForm}">
 					<tr>
 						<td><input type="checkbox" name = "check"></td>
-						<td><span th:text="*{items.prono}">商品番号</span></td>
-						<td><span th:text="*{items.proname}">商品名</span></td>
-						<td><span th:text="*{items.artist}">アーティスト名</span></td>
-						<td><span th:text="*{items.release_date}">発売日</span></td>
-						<td><span th:text="*{items.price}">価格</span></td>
+							<td th:text="*{item.pro_id}"></td>
+							<td th:text="*{item.pro_name}"></td>
+							<td th:text="*{item.artist}"></td>
+							<td th:text="*{item.media}"></td>
+							<td th:text="*{item.price}"></td>
+							<td th:text="*{item.release_date}"></td>
+							<td th:text="*{item.label}"></td>
+							<td th:text="*{item.stock}"></td>
 					</tr>
 			</table>
 			<input type="submit" value="削除確認画面へ" class="btn btn-primary">

@@ -1,5 +1,7 @@
 package com.catonata.web.Exec;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.catonata.bean.ProductBean;
 import com.catonata.dao.ExecDao;
 import com.catonata.validation.LoginForm;
 import com.catonata.validation.ProductForm;
@@ -21,8 +24,11 @@ public class ProductDeleteController {
 	HttpSession session;
 
 	@RequestMapping(path = "/select", method = RequestMethod.GET)
-	public String index(LoginForm form) {
-		return "exec/delete/Select";
+	public ModelAndView index(LoginForm form, ModelAndView mav) {
+		List<ProductBean> empList = ExecDao.findAll();
+		mav.setViewName("exec/delete/Select");
+		mav.addObject("productForm",empList);
+		return mav;
 	}
 
 	@RequestMapping(path = "/delete/select", method = RequestMethod.GET)
