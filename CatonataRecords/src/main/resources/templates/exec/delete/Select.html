@@ -28,11 +28,11 @@
 				<th:block th:each="items : ${}">
 					<tr>
 						<td><input type="checkbox"></td>
-						<td><span th:text="${items.prono}">商品番号</span></td>
-						<td><span th:text="${items.proname}">商品名</span></td>
-						<td><span th:text="${items.artist}">アーティスト名</span></td>
-						<td><span th:text="${items.release_date}">発売日</span></td>
-						<td><span th:text="${items.price}">価格</span></td>
+						<td><span th:text="*{items.prono}">商品番号</span></td>
+						<td><span th:text="*{items.proname}">商品名</span></td>
+						<td><span th:text="*{items.artist}">アーティスト名</span></td>
+						<td><span th:text="*{items.release_date}">発売日</span></td>
+						<td><span th:text="*{items.price}">価格</span></td>
 					</tr>
 			</table>
 			<input type="submit" value="削除確認画面へ" class="btn btn-primary">
