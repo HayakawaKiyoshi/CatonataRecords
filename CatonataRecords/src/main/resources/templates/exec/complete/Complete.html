@@ -10,7 +10,9 @@
 <div layout:fragment="content">
 <div class="container">
 <span th:text="${msg}"></span><br>
+<form role="form" action="/exec/top" th:action="@{/exec/top}" method="get">
 <input type="submit" value="メイン画面へ戻る" class="btn btn-primary">
+</form>
 </div>
 </div>
 </body>
