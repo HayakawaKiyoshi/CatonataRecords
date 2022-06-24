@@ -19,6 +19,23 @@ public class ProductDeleteController {
 	@Autowired
 	HttpSession session;
 
+	@RequestMapping(path = "/delete/select", method = RequestMethod.GET)
+	public ModelAndView send(@RequestParam("check") ProductForm check, ProductForm form,ModelAndView mav) {
+		mav.setViewName("exec/delete/Check");
+
+//		//ログイン情報を取得する
+//		InsertForm user = (InsertForm) session.getAttribute("user");
+//		mav.addObject("user", user);
+
+		//検索のDaoを呼び出す
+		ProductForm delete = ExecDao.profind(check.getPro_name());
+
+		session.setAttribute("delete", delete);
+		mav.addObject("delete", delete);
+
+		return mav;
+	}
+
 	/**
 	 * 削除する情報を検索して確認画面に遷移するメソッド
 	 * @param empid

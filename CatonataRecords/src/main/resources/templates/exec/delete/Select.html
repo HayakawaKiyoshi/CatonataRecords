@@ -27,7 +27,7 @@
 				</tr>
 				<th:block th:each="items : ${}">
 					<tr>
-						<td><input type="checkbox"></td>
+						<td><input type="checkbox" name = "check"></td>
 						<td><span th:text="*{items.prono}">商品番号</span></td>
 						<td><span th:text="*{items.proname}">商品名</span></td>
 						<td><span th:text="*{items.artist}">アーティスト名</span></td>
