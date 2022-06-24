@@ -7,20 +7,35 @@
 <title>削除商品選択画面</title>
 </head>
 <body>
-<div layout:fragment="content">
-<form action="" method="">
-<input type=text name="">
-<input type="submit" value="検索" class="btn btn-primary"><br>
-削除する商品を選択してください。
-<font size="4">＜商品一覧＞</font>
-<form action=""
-<table>
-<tr><th>チェック</th><th>No</th><th>タイトル</th><th>アーティスト名</th><th>発売日</th><th>価格</th>
-</tr><th:block th:each="items : ${　}">
-<tr><th><input type="checkbox" name=""></th><th>No</th><th>タイトル</th><th>アーティスト名</th><th>発売日</th><th>価格</th>
-</tr>
-</table>
-</form>
-</div>
+	<div layout:fragment="content">
+		<form action="" method="">
+			<input type=text name=""> <input type="submit" value="検索"
+				class="btn btn-primary"><br>
+		</form>
+		削除する商品を選択してください。<br>
+		<font size="4">＜商品一覧＞</font>
+		<form action="" method="">
+			<table>
+				<tr>
+					<th>チェック</th>
+					<th>No</th>
+					<th>タイトル</th>
+					<th>アーティスト名</th>
+					<th>発売日</th>
+					<th>価格</th>
+				</tr>
+				<th:block th:each="items : ${}">
+					<tr>
+						<td><input type="checkbox"></td>
+						<td><span th:text="${items.prono}">商品番号</span></td>
+						<td><span th:text="${items.proname}">商品名</span></td>
+						<td><span th:text="${items.artist}">アーティスト名</span></td>
+						<td><span th:text="${items.release_date}">発売日</span></td>
+						<td><span th:text="${items.price}">価格</span></td>
+					</tr>
+			</table>
+			<input type="submit" value="削除確認画面へ" class="btn btn-primary">
+		</form>
+	</div>
 </body>
 </html>
