@@ -22,11 +22,24 @@ public class AdminTopController {
 	HttpSession session;
 
 //テスト
-	@RequestMapping("/top")
+	@RequestMapping("/Top")
 	private String admintop (@RequestParam("name")String name, @RequestParam("pass")String pass
 			, Model model) {
 		UserInformationBean LoginUser = CommonDao.find(name,pass);
 		session.setAttribute("LoginUser", LoginUser);
+		//一般ユーザーの情報一覧取得、セッション保存
+		ArrayList<UserInformationBean> alluser = UserInfoDao.allGeneralUserSerach();
+		session.setAttribute("AllGeneralUser", alluser);
+		//経営者のユーザー情報一覧取得、セッション保存
+		ArrayList<ExecInformationBean> allexec = UserInfoDao.allExecUser();
+		session.setAttribute("AllExecUser", allexec);
+		return "admin/mypage/UserTop";
+	}
+
+	@RequestMapping("/Start")
+	private String adminStart (UserInformationBean uib, Model model) {
+		uib = (UserInformationBean)model.asMap().get("LoginUser");
+		session.setAttribute("LoginUser", uib);
 		//一般ユーザーの情報一覧取得、セッション保存
 		ArrayList<UserInformationBean> alluser = UserInfoDao.allGeneralUserSerach();
 		session.setAttribute("AllGeneralUser", alluser);

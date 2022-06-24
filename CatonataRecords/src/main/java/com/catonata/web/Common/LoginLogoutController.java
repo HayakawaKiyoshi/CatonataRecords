@@ -28,7 +28,7 @@ public class LoginLogoutController {
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	public ModelAndView index2(@Validated LoginForm form, BindingResult bindingResult,
-			RedirectAttributes redirectAttributes,ModelAndView mav) {
+			RedirectAttributes redirect,ModelAndView mav) {
 
 
 			//バリデーションエラ-
@@ -48,7 +48,8 @@ public class LoginLogoutController {
 					if(user.getAuthority().equals("1")) {
 						mav.setViewName("/general/product/AllDisplay");
 					}else if(user.getAuthority().equals("2")) {
-						mav.setViewName("/admin/mypage/UserTop");
+						redirect.addFlashAttribute("LoginUser", user);
+						mav.setViewName("redirect:/Admin/Start");
 					}else if(user.getAuthority().equals("3")) {
 						mav.setViewName("redirect:/exec/logintop");
 					}
