@@ -22,19 +22,19 @@ public class AdminDeleteUserController {
 	 * 一般削除
 	 */
 	@RequestMapping("/Check")
-	private String deleteCheck(@RequestParam("id")String id, @RequestParam("pass")String pass, Model model ) {
+	private String deleteCheck(@RequestParam("name")String name, @RequestParam("pass")String pass, Model model ) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		UserInformationBean DeleteUser = CommonDao.find(id, pass);
+		UserInformationBean DeleteUser = CommonDao.find(name, pass);
 		model.addAttribute("delete", DeleteUser);
 		return "admin/delete/GeneralCheck";
 	}
 
 	@RequestMapping("/Complete")
-	private String deleteComplete(@RequestParam("id")String id, Model model) {
+	private String deleteComplete(@RequestParam("name")String name, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		UserInfoDao.adminDelete(id);
+		UserInfoDao.adminDelete(name);
 //		if (id.equals(au.getId())) {
 //			model.addAttribute("step", "1");
 //		}
@@ -46,19 +46,19 @@ public class AdminDeleteUserController {
 	 * 経営者削除
 	 */
 	@RequestMapping("/ExecCheck")
-	private String ExecdeleteCheck(@RequestParam("id")String id, @RequestParam("pass")String pass, Model model ) {
+	private String ExecdeleteCheck(@RequestParam("name")String name, @RequestParam("pass")String pass, Model model ) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		UserInformationBean DeleteUser = CommonDao.find(id, pass);
+		UserInformationBean DeleteUser = CommonDao.find(name, pass);
 		model.addAttribute("delete", DeleteUser);
 		return "admin/delete/ExecCheck";
 	}
 
 	@RequestMapping("/ExecComplete")
-	private String ExecdeleteComplete(@RequestParam("id")String id, Model model) {
+	private String ExecdeleteComplete(@RequestParam("name")String name, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		UserInfoDao.execDelete(id);
+		UserInfoDao.execDelete(name);
 //		if (id.equals(au.getId())) {
 //			model.addAttribute("step", "1");
 //		}
