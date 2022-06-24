@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>マイページ</title>
 </head>
 <body>
+	<h3>クレジットカード情報変更</h3>
+	<div layout:fragment="content">
+	<p>更新したい項目を書き換えてください。</p>
+		<form action="" th:action="@{}"
+			method="post" th:object="${creditCardInformationForm}">
+			<input type="hidden" name="id" th:value="*{id}">
+				<table class="table table-striped table-bordered table-sm">
+					<tr>
+						<td>クレジットカード番号</td>
+						<td><input type="text" name="creditnumber" th:value="*{creditnumber}">
+						<span th:if="${#fields.hasErrors('creditnumber')}"
+							th:errors="*{creditnumber}" th:errorclass="error-field"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>有効期限</td>
+						<td>
+							<input type="text" name="creditspan" th:value="*{creditspan}">
+							<span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span>
+							<span th:if="${#fields.hasErrors('creditspan')}"
+							th:errors="*{creditspan}" th:errorclass="error-field"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>セキュリティコード</td>
+						<td><input type="password" name="security" th:value="*{security}">
+						<span th:if="${#fields.hasErrors('security')}"
+							th:errors="*{security}" th:errorclass="error-field"></span>
+						</td>
+					</tr>
 
+				</table>
+				<p><input type="submit" value="変更内容確認へ" class="btn btn-primary"></p>
+			</form>
+	</div>
 </body>
 </html>

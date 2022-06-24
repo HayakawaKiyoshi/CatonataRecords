@@ -27,7 +27,7 @@
 						<div class="form-group">
 							<input type="text" creditnumber="creditnumber" th:field="*{creditnumber}" /> <span
 								th:if="${#fields.hasErrors('creditnumber')}" th:errors="*{creditnumber}"
-								th:errorclass="error-field">error!</span>
+								th:errorclass="error-field"></span>
 						</div>
 					</td>
 
@@ -39,9 +39,9 @@
 					<td>有効期限</td>
 					<td>
 						<div class="form-group">
-							<input type="text" name="age" th:field="*{age}" /> <span
-								th:if="${#fields.hasErrors('age')}" th:errors="*{age}"
-								th:errorclass="error-field">error!</span>
+							<input type="text" name="creditspan" th:field="*{creditspan}" /> <span
+								th:if="${#fields.hasErrors('creditspan')}" th:errors="*{creditspan}"
+								th:errorclass="error-field"></span>
 						</div>
 					</td>
 				</tr>
@@ -52,7 +52,7 @@
 						<div class="form-group">
 							<input type="password" name="security" th:field="*{security}" />
 							<span th:if="${#fields.hasErrors('security')}"
-								th:errors="*{security}" th:errorclass="error-field">error!</span>
+								th:errors="*{security}" th:errorclass="error-field"></span>
 						</div>
 					</td>
 				</tr>
