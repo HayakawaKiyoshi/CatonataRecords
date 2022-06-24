@@ -4,13 +4,15 @@
 	>
 	<head>
 		<meta charset="UTF-8">
-		<title>登録完了画面</title>
+		<title>完了画面</title>
 	</head>
 	<body>
-		<h3>登録完了</h3>
+		<h3><span th:text="${msg}"></span>完了</h3>
 		<p><span th:text="${msg}"></span>が完了しました</p>
-		<form action="/Admin/top" th:action="@{/Admin/top}"
-			method="post" th:object="${session.}">
+		<form action="/Admin/Top" th:action="@{/Admin/Top}"
+			method="post" th:object="${session.LoginUser}">
+			<input type="hidden" name="name" th:value="*{name}">
+			<input type="hidden" name="password" th:value="*{password}">
 		<input type="submit" value="管理者メイン画面へ" class="btn btn-primary">
 		</form>
 	</body>

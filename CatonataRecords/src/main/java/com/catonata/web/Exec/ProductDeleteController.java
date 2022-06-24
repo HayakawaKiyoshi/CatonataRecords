@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.catonata.bean.ProductBean;
+import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.ExecDao;
 import com.catonata.validation.LoginForm;
 import com.catonata.validation.ProductForm;
@@ -26,7 +27,8 @@ public class ProductDeleteController {
 
 	@RequestMapping(path = "/select", method = RequestMethod.GET)
 	public ModelAndView index(LoginForm form, ModelAndView mav) {
-		List<ProductBean> empList = ExecDao.findAll();
+		UserInformationBean user = (UserInformationBean)session.getAttribute("LoginUser");
+		List<ProductBean> empList = ExecDao.findAll(user.getLabel());
 		mav.setViewName("exec/delete/Select");
 		mav.addObject("productForm",empList);
 		return mav;

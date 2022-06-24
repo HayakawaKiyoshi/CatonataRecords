@@ -23,8 +23,10 @@ public class ExecTopController {
 	@RequestMapping("/logintop")
 	public String top(Model model) {
 
-	//全件表示のDaoを呼び出すメソッド
-			List<ProductBean> empList = ExecDao.findAll();
+		String label = (String) model.asMap().get("label");
+
+			//全件表示のDaoを呼び出すメソッド
+			List<ProductBean> empList = ExecDao.findAll(label);
 
 			//全件をセッションに保存
 			session.setAttribute("emplist", empList);
@@ -43,8 +45,9 @@ public class ExecTopController {
 	@RequestMapping("/top")
 	public String disp(Model model) {
 
+		UserInformationBean user = (UserInformationBean)session.getAttribute("LoginUser");
 	//全件表示のDaoを呼び出すメソッド
-			List<ProductBean> empList = ExecDao.findAll();
+			List<ProductBean> empList = ExecDao.findAll(user.getLabel());
 
 			//全件をセッションに保存
 			session.setAttribute("emplist", empList);

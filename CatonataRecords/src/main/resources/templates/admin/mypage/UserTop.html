@@ -59,14 +59,14 @@
                 <td><span th:text="${items.email}">4</span></td>
                 <td><span th:text="${items.authority}">5</span></td>
                 <td>
-                    <a href="/AdminUpdate" th:href="@{/AdminUpdate}">
+                    <a href="/AdminUpdate/Exec" th:href="@{/AdminUpdate/Exec}">
                     	<input type="hidden" name="name" th:value="${items.name}">
 				    	<input type="hidden" name="password" th:value="${items.password}">
                        <input type="submit" value="変更">
                     </a>
                 </td>
                 <td>
-                    <a href="/AdminDelete" th:href="@{/AdminDelete}">
+                    <a href="/AdminDelete/Exec" th:href="@{/AdminDelete/Exec}">
                     	<input type="hidden" name="name" th:value="${items.name}">
 				    	<input type="hidden" name="password" th:value="${items.password}">
 						<input type="submit" value="削除">
