@@ -50,7 +50,7 @@ public class AdminRegisterUserController {
 		uif = (UserInformationForm)session.getAttribute("uif");
 		UserInfoDao.adminInsert(uif);
 		model.addAttribute("msg","登録");
-		return "admin/register/Complete";
+		return "admin/rcomplete/Complete";
 	}
 
 	@RequestMapping("/Back")
@@ -58,7 +58,7 @@ public class AdminRegisterUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
-		model.addAttribute("UserInformationForm", uif);
+		model.addAttribute("userInformationForm", uif);
 		return "admin/register/GeneralRegister";
 	}
 
@@ -90,7 +90,7 @@ public class AdminRegisterUserController {
 		eif = (ExecInformationForm)session.getAttribute("uif");
 		UserInfoDao.execInsert(eif);
 		model.addAttribute("msg","登録");
-		return "admin/register/Complete";
+		return "admin/complete/Complete";
 	}
 
 	@RequestMapping("/ExecBack")
@@ -98,7 +98,7 @@ public class AdminRegisterUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		eif = (ExecInformationForm)session.getAttribute("eif");
-		model.addAttribute("ExecInformationForm", eif);
+		model.addAttribute("execInformationForm", eif);
 		return "admin/register/ExecRegister";
 	}
 }
