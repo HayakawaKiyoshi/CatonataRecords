@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.catonata.bean.ExecInformationBean;
 import com.catonata.bean.UserInformationBean;
+import com.catonata.validation.ExecInformationForm;
 import com.catonata.validation.UserInformationForm;
 
 /**
@@ -16,13 +17,20 @@ import com.catonata.validation.UserInformationForm;
  * 目次
  * insert 引き数二つの登録
  * adminInsert 引数一つの管理者用登録
+ * execInsert 引数一つの管理者用経営者登録
  * allGeneralUserSearch 一般者全件検索
  * allExecUserSearch 経営者全件検索
+ *
  * @author 伊藤 馨
  *
  */
 public class UserInfoDao {
 
+	/**
+	 * 管理者用一般登録メソッド
+	 *
+	 * @param uif クレカ情報以外の基本情報の入ったフォーム
+	 */
 	public static void adminInsert (UserInformationForm uif) {
 		DBManager manager = new DBManager();
 		Connection conn = null;
@@ -41,6 +49,51 @@ public class UserInfoDao {
 			ps.setString(6, uif.getAddress());
 			ps.setString(7, uif.getEmail());
 			ps.setString(8, "1");
+			int cnt =ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件のデータを登録しました。");
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
+	/**
+	 * 管理者用経営者登録メソッド
+	 *
+	 * @param uif 経営者の基本情報が入ったフォーム
+	 */
+	public static void execInsert (ExecInformationForm eif) {
+		DBManager manager = new DBManager();
+		Connection conn = null;
+		PreparedStatement ps = null;
+//		SqlTemplates sqls = new SqlTemplates();
+		try {
+			// 接続する
+			conn = manager.getConn();
+			ps = conn.prepareStatement("INSERT INTO USER_TABLE VALUES (user_seq.nextval,"
+					+ "?, ? , ? , ? , ? , ? , ?, ?, ?, ? , ?, ?, ?, ?)");
+			ps.setString(1, eif.getPassword());
+			ps.setString(2, eif.getName());
+			ps.setString(6, eif.getAddress());
+			ps.setString(7, eif.getEmail());
+			ps.setString(13, eif.getBanknumber());
+			ps.setString(14, eif.getBankname());
+			ps.setString(15, eif.getLabel());
+			ps.setString(8, "3");
 			int cnt =ps.executeUpdate();
 			conn.commit();
 			System.out.println(cnt + "件のデータを登録しました。");
