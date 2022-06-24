@@ -356,16 +356,14 @@ public class UserInfoDao {
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-//				user.setId(rs.getString("id"));
-//				user.setPassword(rs.getString("password"));
-//				user.setName(rs.getString("user_name"));
-//				user.setAge(rs.getString("age"));
-//				user.setGender(rs.getString("gender"));
-//				user.setBirthday(rs.getString("birthday"));
-//				user.setAddress(rs.getString("address"));
-//				user.setEmail(rs.getString("email"));
-//				user.setAuthority(rs.getString("authority"));
-
+				user.setId(rs.getString("id"));
+				user.setName(rs.getString("name"));
+				user.setPassword(rs.getString("password"));
+				user.setLabel(rs.getString("label"));
+				user.setEmail(rs.getString("email"));
+				user.setAddress(rs.getString("address"));
+				user.setBanknumber(rs.getString("banknumber"));
+				user.setBankname(rs.getString("bankname"));
 
 			} else {
 				return null;
