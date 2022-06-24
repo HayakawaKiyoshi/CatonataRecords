@@ -15,9 +15,19 @@ import com.catonata.validation.UserInformationForm;
  * ユーザー情報を処理するDAOのクラス
  *
  * 目次
+ * >登録
  * insert 引き数二つの登録
  * adminInsert 引数一つの管理者用登録
  * execInsert 引数一つの管理者用経営者登録
+ * >更新
+ * update 引数二つの変更
+ * adminUpdate 引数一つの管理者用変更
+ * execUpdate 引数一つの管理者用経営者変更
+ * >削除
+ * delete 引数二つの削除
+ * adminDelete 引数一つの管理者用削除
+ * execDelete 引数一つの管理者用経営者削除
+ * >全件検索
  * allGeneralUserSearch 一般者全件検索
  * allExecUserSearch 経営者全件検索
  *
