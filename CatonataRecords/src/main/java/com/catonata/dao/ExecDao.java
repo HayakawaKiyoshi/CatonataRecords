@@ -285,7 +285,7 @@ public class ExecDao {
 		try {
 			conn = manager.getConn();
 
-			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE LABEL = ? AND ARTIST LIKE ? OR PROD_NAME LIKE ?";
+			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE LABEL = ? AND (ARTIST LIKE ? OR PROD_NAME LIKE ?)";
 			ps = conn.prepareStatement(SQL);
 			//引数を?にバインド
 			ps.setString(1, labelname);

@@ -104,9 +104,11 @@ public class ProductDeleteController {
 	@RequestMapping(path = "delete/search", method = RequestMethod.POST)
 	public ModelAndView search(@RequestParam("msg") String msg,ModelAndView mav) {
 
-		UserInformationBean user = (UserInformationBean) session.getAttribute("user");
+		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 
 		System.out.println(msg);
+		System.out.println(user.getLabel());
+
 		List<ProductBean> proname = ExecDao.proSearch(msg,user.getLabel());
 
 		mav.addObject("productForm",proname);
