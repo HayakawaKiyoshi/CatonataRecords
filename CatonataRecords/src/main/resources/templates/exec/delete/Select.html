@@ -2,45 +2,46 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/LayoutTest">
+<link rel="stylesheet" th:href="@{/css/style.css}">
 <head>
 <meta charset="UTF-8">
 <title>削除商品選択画面</title>
 </head>
 <body>
 	<div layout:fragment="content">
-	<div id="content_bar">商品削除確認画面</div>
+		<div id="content_bar">商品削除確認画面</div>
 		<form action="" method="">
 			<input type=text name=""> <input type="submit" value="検索"
 				class="btn btn-primary"><br>
 		</form>
-		削除する商品を選択してください。<br>
-		<font size="4">＜商品一覧＞</font>
+		削除する商品を選択してください。<br> <font size="4">＜商品一覧＞</font>
 		<form action="/exec/delete/select" method="get">
 			<table border="1">
 				<tr>
 					<th>チェック</th>
 					<th>商品ID</th>
-				   	<th>商品名</th>
-				   	<th>アーティスト</th>
-				   	<th>商品媒体</th>
-				   	<th>価格</th>
-				   	<th>発売日</th>
-				   	<th>レコード会社</th>
-				   	<th>在庫</th>
+					<th>商品名</th>
+					<th>アーティスト</th>
+					<th>商品媒体</th>
+					<th>価格</th>
+					<th>発売日</th>
+					<th>レコード会社</th>
+					<th>在庫</th>
 				</tr>
 				<th:block th:each="item : ${productForm}">
 					<tr>
-						<td><input type="checkbox" name = "check" th:value = "*{item.pro_id}"></td>
-							<td th:text="*{item.pro_id}"></td>
-							<td th:text="*{item.pro_name}"></td>
-							<td th:text="*{item.artist}"></td>
-							<td th:text="*{item.media}"></td>
-							<td th:text="*{item.price}"></td>
-							<td th:text="*{item.release_date}"></td>
-							<td th:text="*{item.label}"></td>
-							<td th:text="*{item.stock}"></td>
+						<td><input type="checkbox" name="check"
+							th:value="*{item.pro_id}"></td>
+						<td th:text="*{item.pro_id}"></td>
+						<td th:text="*{item.pro_name}"></td>
+						<td th:text="*{item.artist}"></td>
+						<td th:text="*{item.media}"></td>
+						<td th:text="*{item.price}"></td>
+						<td th:text="*{item.release_date}"></td>
+						<td th:text="*{item.label}"></td>
+						<td th:text="*{item.stock}"></td>
 					</tr>
-					</th:block>
+				</th:block>
 			</table>
 			<input type="submit" value="削除確認画面へ" class="btn btn-primary">
 		</form>

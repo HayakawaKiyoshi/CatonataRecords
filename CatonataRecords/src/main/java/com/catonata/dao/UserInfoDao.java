@@ -221,7 +221,7 @@ public class UserInfoDao {
 	 * 管理者用一般削除メソッド
 	 * @param uif
 	 */
-	public static void adminDelete (String id) {
+	public static void adminDelete (String name) {
 		DBManager manager = new DBManager();
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -229,8 +229,8 @@ public class UserInfoDao {
 		try {
 			// 接続する
 			conn = manager.getConn();
-			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE USER_ID = ?");
-			ps.setString(1, id);
+			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE USER_NAME = ?");
+			ps.setString(1, name);
 			int cnt =ps.executeUpdate();
 			conn.commit();
 			System.out.println(cnt + "件のデータを登録しました。");
@@ -257,7 +257,7 @@ public class UserInfoDao {
 	 * 管理者用経営者情報削除メソッド
 	 * @param uif
 	 */
-	public static void execDelete (String id) {
+	public static void execDelete (String name) {
 		DBManager manager = new DBManager();
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -265,8 +265,8 @@ public class UserInfoDao {
 		try {
 			// 接続する
 			conn = manager.getConn();
-			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE USER_ID = ?");
-			ps.setString(1, id);
+			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE USER_NAME = ?");
+			ps.setString(1, name);
 			int cnt =ps.executeUpdate();
 			conn.commit();
 			System.out.println(cnt + "件のデータを登録しました。");
