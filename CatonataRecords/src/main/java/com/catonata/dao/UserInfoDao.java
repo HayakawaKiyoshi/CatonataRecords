@@ -337,6 +337,52 @@ public class UserInfoDao {
 
 	}
 
+	public static ExecInformationForm execFind(String name,String password) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		//DBManagerをインスタンス化
+		DBManager manager = new DBManager();
+		final String LOGIN_SQL = "SELECT * FROM USER_TABLE WHERE user_name = ? AND password = ?";
+
+		ExecInformationForm user = new ExecInformationForm();
+
+		try {
+			conn = manager.getConn();
+			ps = conn.prepareStatement(LOGIN_SQL);
+			//引数を?にバインド
+			ps.setString(1, name);
+			ps.setString(2, password);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				user.setId(rs.getString("id"));
+				user.setName(rs.getString("name"));
+				user.setPassword(rs.getString("password"));
+				user.setLabel(rs.getString("label"));
+				user.setEmail(rs.getString("email"));
+				user.setAddress(rs.getString("address"));
+				user.setBanknumber(rs.getString("banknumber"));
+				user.setBankname(rs.getString("bankname"));
+
+			} else {
+				return null;
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			manager.close(conn);
+		}
+		return user;
+
+	}
+
 	/**
 	 * 一般情報全件検索
 	 * @return
