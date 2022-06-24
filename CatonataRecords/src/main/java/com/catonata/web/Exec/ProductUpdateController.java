@@ -54,6 +54,7 @@ public class ProductUpdateController {
 //		InsertForm user = (InsertForm) session.getAttribute("user");
 //		mav.addObject("user", user);
 
+		System.out.println(form.getPro_name());
 		//バリデーションエラーの確認
 		if (result.hasErrors()) {
 			mav.setViewName("exec/update/ProductUpdate");
