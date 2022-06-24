@@ -51,7 +51,12 @@ public class LoginLogoutController {
 						redirect.addFlashAttribute("LoginUser", user);
 						mav.setViewName("redirect:/Admin/Start");
 					}else if(user.getAuthority().equals("3")) {
+						redirect.addFlashAttribute("LoginUser", user);
+						redirect.addFlashAttribute("label",user.getLabel());
+						System.out.println("ここだよ");
+						System.out.println(user.getLabel());
 						mav.setViewName("redirect:/exec/logintop");
+
 					}
 				} else {
 					mav.setViewName("login/login");

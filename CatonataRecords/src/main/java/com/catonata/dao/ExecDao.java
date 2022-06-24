@@ -176,6 +176,8 @@ public class ExecDao {
 		//ArrayListを初期化
 		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
 
+		System.out.println(labelname);
+
 		try {
 			conn = manager.getConn();
 
