@@ -10,8 +10,8 @@
 	</head>
 	<body>
 		<h3>新規会員登録</h3>
-		<form role="form" action="" th:action="@{}"
-						 th:object="${execInformationForm}" method="">
+		<form role="form" action="/AdminRegister/ExecCheck" th:action="@{/AdminRegister/ExecCheck}"
+						 th:object="${execInformationForm}" method="get">
 							<table class="table table-striped table-bordered">
 
 								<tbody>
