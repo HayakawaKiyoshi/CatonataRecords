@@ -29,7 +29,7 @@
 				   	<th>在庫</th>
 				   	<th>変更</th>
 				</tr>
-				<th:block th:each="items : ${productForm}">
+				<th:block th:each="item : ${productForm}">
 					<tr>
 						<td><input type="checkbox" name = "check"></td>
 							<td th:text="*{item.pro_id}"></td>
