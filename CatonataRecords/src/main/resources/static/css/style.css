@@ -39,14 +39,20 @@ div#footer {
 
 div#header_beforelogin {
 	display: inline-flex;
-	position:absolute;
-	top:25px;
-	left:780px;
+	position: relative;
+	top: 40px;
+	left: 50px;
 }
 
 div#header_afterlogin {
 	display: inline-flex;
-	position:absolute;
-	top:24px;
-	left:755px;
+	position: relative;
+	top: 40px;
+	left: 20px;
+}
+
+div#cotent_bar {
+	text-align: center;
+	border: solid 1px black;
+	margin-left: 15%;
 }
