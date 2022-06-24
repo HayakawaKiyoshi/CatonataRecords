@@ -396,7 +396,7 @@ public class UserInfoDao {
 		try {
 			// 接続する
 			conn = manager.getConn();
-			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 1 ORDER BY id ASC");
+			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 1 ORDER BY user_id ASC");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				UserInformationBean uib = new UserInformationBean();
@@ -444,7 +444,7 @@ public class UserInfoDao {
 		try {
 			// 接続する
 			conn = manager.getConn();
-			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 3 ORDER BY id ASC");
+			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 3 ORDER BY user_id ASC");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ExecInformationBean eib = new ExecInformationBean();
