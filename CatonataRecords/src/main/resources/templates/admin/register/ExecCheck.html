@@ -13,7 +13,7 @@
 			<p>以下の内容を確認の上、登録ボタンを押してください。</p>
 							<table class="table table-striped table-bordered">
 
-							<th:block th:object="${session.LoginUser}">
+							<th:block th:object="${session.eif}">
 								<tr>
 									<td>氏名</td>
 									<td><span th:text="*{name}"></span></td>
@@ -40,7 +40,7 @@
 
 							</table>
 							<form role="form" action="/AdminRegister/ExecComplete" th:action="@{/AdminRegister/ExecComplete}"
-						 	method="get">
+						 	method="post">
 							<p>
 							<input type="submit" value="登録" class="btn btn-primary">
 							</p>
