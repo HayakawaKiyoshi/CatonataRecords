@@ -396,20 +396,20 @@ public class UserInfoDao {
 		try {
 			// 接続する
 			conn = manager.getConn();
-			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 1 ORDER BY user_id ASC");
+			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 1 ORDER BY id ASC");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				UserInformationBean uib = new UserInformationBean();
 				uib.setId(rs.getString("id"));
 				uib.setPassword(rs.getString("password"));
-				uib.setName(rs.getString("name"));
+				uib.setName(rs.getString("user_name"));
 				uib.setGender(rs.getString("gender"));
 				uib.setAddress(rs.getString("birthday"));
 				uib.setBirthday(rs.getString("address"));
 				uib.setAuthority(rs.getString("authority"));
-				uib.setCreditnumber(rs.getString("creditnumber"));
-				uib.setCreditspan(rs.getString("creditspan"));
-				uib.setSecuritycode(rs.getString("securitycode"));
+				uib.setCreditnumber(rs.getString("credit_number"));
+				uib.setCreditspan(rs.getString("span"));
+				uib.setSecuritycode(rs.getString("security_code"));
 				userList.add(uib);
 			}
 		} catch (ClassNotFoundException e) {
@@ -445,11 +445,11 @@ public class UserInfoDao {
 		try {
 			// 接続する
 			conn = manager.getConn();
-			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 3 ORDER BY user_id ASC");
+			ps = conn.prepareStatement("SELECT * FROM USER_TABLE WHERE authority = 3 ORDER BY id ASC");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ExecInformationBean eib = new ExecInformationBean();
-				eib.setName(rs.getString("name"));
+				eib.setName(rs.getString("user_name"));
 				eib.setLabel(rs.getString("label"));
 				eib.setPassword(rs.getString("password"));
 				eib.setMail(rs.getString("email"));
