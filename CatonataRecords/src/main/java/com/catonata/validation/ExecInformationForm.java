@@ -11,7 +11,7 @@ public class ExecInformationForm {
 	@NotEmpty
 	private String label;
 	@NotEmpty
-	private String mail;
+	private String email;
 	@NotEmpty
 	private String address;
 	@NotEmpty
@@ -37,11 +37,11 @@ public class ExecInformationForm {
 	public void setLabel(String label) {
 		this.label = label;
 	}
-	public String getMail() {
-		return mail;
+	public String getEmail() {
+		return email;
 	}
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getAddress() {
 		return address;

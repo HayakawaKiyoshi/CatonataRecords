@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.catonata.bean.UserInformationBean;
+import com.catonata.validation.ExecInformationForm;
 import com.catonata.validation.UserInformationForm;
 
 @Controller
@@ -46,7 +47,7 @@ public class AdminUpdateUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
-//		UserInfoDao.update(uif);
+//		UserInfoDao.adminUpdate(uif);
 		model.addAttribute("msg","更新");
 		return "admin/update/GeneralComplete";
 	}
@@ -64,39 +65,39 @@ public class AdminUpdateUserController {
 	 * 経営者登録
 	 */
 	@RequestMapping("/Exec")
-	private String updateExec (@ModelAttribute UserInformationForm uif) {
+	private String updateExec (@ModelAttribute ExecInformationForm eif) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		return "admin/update/ExecUpdate";
 	}
 
 	@RequestMapping("/ExecCheck")
-	private String updateExecCheck (@Validated UserInformationForm uif, BindingResult result) {
+	private String updateExecCheck (@Validated ExecInformationForm eif, BindingResult result) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
 			return "admin/register/ExecRegister";
 		}
-		session.setAttribute("uif", uif);
+		session.setAttribute("eif", eif);
 		return "admin/update/ExecCheck";
 	}
 
 	@RequestMapping("/ExecComplete")
-	private String updateExecComplete (UserInformationForm uif, Model model) {
+	private String updateExecComplete (ExecInformationForm eif, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		uif = (UserInformationForm)session.getAttribute("uif");
-//		UserInfoDao.execUpdate(uif);
+		eif = (ExecInformationForm)session.getAttribute("eif");
+//		UserInfoDao.execUpdate(eif);
 		model.addAttribute("msg","更新");
 		return "admin/update/ExecComplete";
 	}
 
 	@RequestMapping("/ExecBack")
-	private String updateExecBack(UserInformationForm uif, Model model) {
+	private String updateExecBack(ExecInformationForm eif, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		uif = (UserInformationForm)session.getAttribute("uif");
-		model.addAttribute("UserInformationForm", uif);
+		eif = (ExecInformationForm)session.getAttribute("eif");
+		model.addAttribute("ExecInformationForm", eif);
 		return "admin/update/ExecUpdate";
 	}
 }
