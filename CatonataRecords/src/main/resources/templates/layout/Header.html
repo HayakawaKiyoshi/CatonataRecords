@@ -37,6 +37,9 @@
 		</div>
 
 		<div id="header">～CARONATA RECORDS～</div>
+		<th:block th:object="${session.loginuser}">
+		ようこそ<span th:text="*{name}"></span>さん
+		</th:block>
 	</div>
 	</div>
 </body>
