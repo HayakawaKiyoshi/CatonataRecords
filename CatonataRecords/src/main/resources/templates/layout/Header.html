@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout/MenuLayout">
+	layout:decorate="layout/LayoutTest">
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <head>
 <meta charset="UTF-8">
@@ -36,10 +36,10 @@
 -->
 		</div>
 
-		<div id="header">～CARONATA RECORDS～</div>
+		<!-- <div id="header">～CARONATA RECORDS～</div>
 		<th:block th:object="${session.loginuser}">
 		ようこそ<span th:text="*{name}"></span>さん
-		</th:block>
+		</th:block> -->
 	</div>
 	</div>
 </body>
