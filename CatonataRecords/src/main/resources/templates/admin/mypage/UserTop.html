@@ -1,25 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
 <title>管理者トップページ</title>
 </head>
 <body>
-<!--
+    <div layout:fragment="content">
 	検索：
 	<form role="form" action="/" th:action="@{/}" method="/">
 		<input type="text" name="product" th:field="*{}" th:errorclass="fieldError">
 	</form>
--->
 
-	<th:block th:object="${session.LoginUser}">
-	   氏名：<span th:text="*{name}"></span><br>
-	   パスワード：<span th:text="*{password}"></span><br>
-	   権限：<span th:text="*{authority}"></span>
-	</th:block>
-
-	<!-- ユーザー権限により表示内容が異なる -->
-	<!--
+	<!-- 一般ユーザー一覧と経営者ユーザー一覧を別々に表示 -->
 	<p>一般ユーザー一覧</p>
 	<table>
 	   <tr>
@@ -75,7 +69,14 @@
         </th:block>
     </table>
 
+    <!-- テストの際に使用 -->
+    <!--
+    <th:block th:object="${session.LoginUser}">
+       氏名：<span th:text="*{name}"></span><br>
+       パスワード：<span th:text="*{password}"></span><br>
+       権限：<span th:text="*{authority}"></span>
+    </th:block>
     -->
-
+    </div>
 </body>
 </html>
