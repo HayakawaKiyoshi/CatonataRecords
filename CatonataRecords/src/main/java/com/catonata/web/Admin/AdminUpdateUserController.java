@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.catonata.bean.UserInformationBean;
+import com.catonata.dao.UserInfoDao;
 import com.catonata.validation.ExecInformationForm;
 import com.catonata.validation.UserInformationForm;
 
@@ -20,7 +21,6 @@ public class AdminUpdateUserController {
 	@Autowired
 	HttpSession session;
 
-	//コミット確認コメント
 	/*
 	 * 一般者更新
 	 */
@@ -47,7 +47,7 @@ public class AdminUpdateUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
-//		UserInfoDao.adminUpdate(uif);
+		UserInfoDao.adminUpdate(uif);
 		model.addAttribute("msg","更新");
 		return "admin/update/GeneralComplete";
 	}
@@ -87,7 +87,7 @@ public class AdminUpdateUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		eif = (ExecInformationForm)session.getAttribute("eif");
-//		UserInfoDao.execUpdate(eif);
+		UserInfoDao.execUpdate(eif);
 		model.addAttribute("msg","更新");
 		return "admin/update/ExecComplete";
 	}
