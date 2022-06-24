@@ -73,7 +73,7 @@ public class AdminUpdateUserController {
 			@ModelAttribute ExecInformationForm eif, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-//		eif = UserInfoDao.execFind(name, password);
+		eif = UserInfoDao.execFind(name, password);
 		model.addAttribute("execInformationForm", eif);
 		return "admin/update/ExecUpdate";
 	}

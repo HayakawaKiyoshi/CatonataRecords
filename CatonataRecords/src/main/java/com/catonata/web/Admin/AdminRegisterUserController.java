@@ -33,13 +33,14 @@ public class AdminRegisterUserController {
 	}
 
 	@RequestMapping("/Check")
-	private String registerCheck (@Validated UserInformationForm uif, BindingResult result) {
+	private String registerCheck (@Validated UserInformationForm uif, BindingResult result,Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
 			return "admin/register/GeneralRegister";
 		}
 		session.setAttribute("uif", uif);
+		model.addAttribute("send","/AdminRegister/Complete");
 		return "admin/register/GeneralCheck";
 	}
 

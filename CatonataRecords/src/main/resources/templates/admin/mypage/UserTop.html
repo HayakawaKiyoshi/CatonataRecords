@@ -19,7 +19,7 @@
             <th>No</th><th>ユーザー名</th><th>メールアドレス</th><th>住所</th><th>性別</th><th>権限</th>
             <th>変更</th><th>削除</th>
         </tr>
-		<th:block th:each="items : ${session.allGeneralUser}">
+		<th:block th:each="items : ${session.AllGeneralUser}">
 			<tr>
 				<td><span th:text="${items.id}">1</span></td>
 				<td><span th:text="${items.name}">2</span></td>
@@ -51,7 +51,7 @@
             <th>No</th><th>ユーザー名</th><th>レコード会社名</th><th>メールアドレス</th><th>権限</th>
             <th>変更</th><th>削除</th>
         </tr>
-        <th:block th:each="items : ${session.allExecUser}">
+        <th:block th:each="items : ${session.AllExecUser}">
             <tr>
                 <td><span th:text="${items.id}">1</span></td>
                 <td><span th:text="${items.name}">2</span></td>
