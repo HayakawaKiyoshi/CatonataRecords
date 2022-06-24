@@ -454,8 +454,8 @@ public class UserInfoDao {
 				eib.setPassword(rs.getString("password"));
 				eib.setMail(rs.getString("email"));
 				eib.setAddress(rs.getString("address"));
-				eib.setBanknumber(rs.getString("banknumber"));
-				eib.setBankname(rs.getString("bankname"));
+				eib.setBanknumber(rs.getString("bank_number"));
+				eib.setBankname(rs.getString("bank_name"));
 				eib.setAuthority(rs.getString("authority"));
 				execList.add(eib);
 			}
