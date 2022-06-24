@@ -23,6 +23,7 @@ public class ExecTopController {
 	@RequestMapping("/logintop")
 	public String top(Model model) {
 
+		UserInformationBean user = (UserInformationBean) model.asMap().get("LoginUser");
 		String label = (String) model.asMap().get("label");
 
 			//全件表示のDaoを呼び出すメソッド
@@ -30,7 +31,7 @@ public class ExecTopController {
 
 			//全件をセッションに保存
 			session.setAttribute("emplist", empList);
-			UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
+			session.setAttribute("LoginUser", user);
 
 			//ログインしているかどうかの確認
 			if (user != null) {
