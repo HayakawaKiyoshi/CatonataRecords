@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ユーザー削除確認画面（一般）</title>
 </head>
 <body>
+	<div layout:fragment="content">
+		以下のユーザーを削除します。よろしいですか？
 
+		<table class="table table-striped table-bordered table-sm">
+
+				<th:block th:object="${session.LoginUser}">
+								<tr>
+									<td>氏名</td>
+									<td><span th:text="*{name}"></span></td>
+								</tr>
+								<tr>
+									<td>レコード会社</td>
+									<td><span th:text="*{label}"></span></td>
+
+								</tr>
+								<tr>
+									<td>パスワード</td>
+									<td><span th:text="*{password}"></span></td>
+								</tr>
+								<tr>
+									<td>メールアドレス</td>
+									<td><span th:text="*{mail}"></span></td>
+								</tr>
+								<tr>
+									<td>住所</td>
+									<td><span th:text="*{address}"></span></td>
+								</tr>
+								<tr>
+									<td>振込口座番号</td>
+									<td><span th:text="*{banknumber}"></span></td>
+								</tr>
+								<tr>
+									<td>支店名</td>
+									<td><span th:text="*{bankname}"></span></td>
+								</tr>
+
+							</th:block>
+
+		</table>
+		<form action="/AdminDelete/ExecComplete" th:action="@{/AdminDelete/ExecComplete}"
+		method="post" th:object="${delete}">
+			<input type="hidden" name="id" th:value="*{id}">
+			<input type="submit" value="ユーザーを削除する" class="btn btn-danger"><br>
+		</form>
+		<form action="" th:action="@{}"
+		method="post" th:object="${session.}">
+			<!-- <input type="hidden" name="id" th:value="*{id}">
+			<input type="hidden" name="pass" th:value="*{pass}"> -->
+			<input type="submit" value="戻る" class="btn btn-warning">
+		</form>
+	</div>
 </body>
 </html>
