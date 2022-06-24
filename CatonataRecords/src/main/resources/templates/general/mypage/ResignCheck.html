@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8">
 <title>ユーザー情報削除画面(退会)</title>
 </head>
 <body>
+    <div layout:fragment="content">
     <p style="text-align: center; border: solid 1px black;">ユーザー情報削除</p>
 
     <p>ユーザー情報を削除しますか？</p>
@@ -12,5 +14,6 @@
     <form role="form" action="/" th:action="@{/}" method="">
         <input type="submit" value="削除する">
     </form>
+    </div>
 </body>
 </html>
