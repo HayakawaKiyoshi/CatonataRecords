@@ -433,6 +433,7 @@ public class UserInfoDao {
 
 	/**
 	 * 経営者全件検索
+	 *
 	 * @return
 	 */
 	public static ArrayList<ExecInformationBean> allExecUser () {
