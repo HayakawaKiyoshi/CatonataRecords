@@ -106,17 +106,11 @@ public class ProductDeleteController {
 
 		UserInformationBean user = (UserInformationBean) session.getAttribute("user");
 
-		List<ProductBean> proname = ExecDao.pronameSearch(msg,user.getLabel());
+		System.out.println(msg);
+		List<ProductBean> proname = ExecDao.proSearch(msg,user.getLabel());
+
 		mav.addObject("productForm",proname);
-
-		if(proname == null || proname.size() == 0) {
-			List<ProductBean> artist = ExecDao.proSearch(msg,user.getLabel());
-			mav.addObject("productForm",artist);
-		}
 		mav.setViewName("exec/delete/Select");
-
-		//セッションインスタンスの削除
-		session.removeAttribute("delete");
 
 		return mav;
 	}

@@ -269,7 +269,7 @@ public class ExecDao {
 
 	}
 
-	public static List<ProductBean> proSearch(String artistname,String labelname) {
+	public static List<ProductBean> proSearch(String msg,String labelname) {
 
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -285,11 +285,12 @@ public class ExecDao {
 		try {
 			conn = manager.getConn();
 
-			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE LABEL = ? AND ARTIST LIKE ?";
+			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE LABEL = ? AND ARTIST LIKE ? OR PROD_NAME LIKE ?";
 			ps = conn.prepareStatement(SQL);
 			//引数を?にバインド
 			ps.setString(1, labelname);
-			ps.setString(1,"%" + artistname + "%");
+			ps.setString(2,"%" + msg + "%");
+			ps.setString(3,"%" + msg + "%");
 			rs = ps.executeQuery();
 			rs = ps.executeQuery();
 
@@ -330,6 +331,7 @@ public class ExecDao {
 		//ArrayListを初期化
 		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
 
+		System.out.println("Daoです");
 		System.out.println(labelname);
 
 		try {
@@ -339,12 +341,13 @@ public class ExecDao {
 			ps = conn.prepareStatement(SQL);
 			//引数を?にバインド
 			ps.setString(1, labelname);
-			ps.setString(1,"%" + prodname + "%");
+			ps.setString(2,"%" + prodname + "%");
 			rs = ps.executeQuery();
 			rs = ps.executeQuery();
 
 			//結果をuserインスタンスに設定し、
 			//ArrayListインスタンスに追加
+
 			while (rs.next()) {
 				String proid = rs.getString("PROD_ID");
 				String proname = rs.getString("PROD_NAME");
@@ -358,6 +361,7 @@ public class ExecDao {
 						releasedate, label, stock);
 				empList.add(bean);
 			}
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 
