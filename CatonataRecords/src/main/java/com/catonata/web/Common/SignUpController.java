@@ -26,11 +26,13 @@ public class SignUpController {
 	 * @return
 	 */
 	@RequestMapping("")
-	private String SignupUser (@ModelAttribute UserInformationForm uif) {
+	private String SignupUser (@ModelAttribute UserInformationForm uif,Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
+		model.addAttribute("send","/SignUp/CreditRegister");
 		return "/newregister/PersonalRegister";
 	}
+
 
 	/**
 	 * 基本情報の入力チェック及びクレジットカード情報入力画面に遷移するメソッド
