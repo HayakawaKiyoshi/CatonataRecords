@@ -101,6 +101,26 @@ public class ProductDeleteController {
 		return mav;
 	}
 
+	@RequestMapping(path = "delete/search", method = RequestMethod.POST)
+	public ModelAndView search(@RequestParam("msg") String msg,ModelAndView mav) {
+
+		UserInformationBean user = (UserInformationBean) session.getAttribute("user");
+
+		List<ProductBean> proname = ExecDao.pronameSearch(msg,user.getLabel());
+		mav.addObject("productForm",proname);
+
+		if(proname == null || proname.size() == 0) {
+			List<ProductBean> artist = ExecDao.proSearch(msg,user.getLabel());
+			mav.addObject("productForm",artist);
+		}
+		mav.setViewName("exec/delete/Select");
+
+		//セッションインスタンスの削除
+		session.removeAttribute("delete");
+
+		return mav;
+	}
+
 }
 
 
