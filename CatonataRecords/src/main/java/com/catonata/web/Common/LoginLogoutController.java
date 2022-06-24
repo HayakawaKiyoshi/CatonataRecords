@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.CommonDao;
@@ -27,7 +28,7 @@ public class LoginLogoutController {
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	public ModelAndView index2(@Validated LoginForm form, BindingResult bindingResult,
-			ModelAndView mav) {
+			RedirectAttributes redirectAttributes,ModelAndView mav) {
 
 
 			//バリデーションエラ-
@@ -49,7 +50,7 @@ public class LoginLogoutController {
 					}else if(user.getAuthority().equals("2")) {
 						mav.setViewName("/admin/mypage/UserTop");
 					}else if(user.getAuthority().equals("3")) {
-						mav.setViewName("/exec/mypage/UserTop");
+						mav.setViewName("redirect:/exec/logintop");
 					}
 				} else {
 					mav.setViewName("login/login");
