@@ -8,17 +8,60 @@ import java.util.ArrayList;
 
 import com.catonata.bean.ExecInformationBean;
 import com.catonata.bean.UserInformationBean;
+import com.catonata.validation.UserInformationForm;
 
 /**
  * ユーザー情報を処理するDAOのクラス
  *
  * 目次
+ * insert 引き数二つの登録
+ * adminInsert 引数一つの管理者用登録
  * allGeneralUserSearch 一般者全件検索
  * allExecUserSearch 経営者全件検索
  * @author 伊藤 馨
  *
  */
 public class UserInfoDao {
+
+	public static void adminInsert (UserInformationForm uif) {
+		DBManager manager = new DBManager();
+		Connection conn = null;
+		PreparedStatement ps = null;
+//		SqlTemplates sqls = new SqlTemplates();
+		try {
+			// 接続する
+			conn = manager.getConn();
+			ps = conn.prepareStatement("INSERT INTO USER_TABLE VALUES (user_seq.nextval,"
+					+ "?, ? , ? , ? , ? , ? , ?, ?, ?, ? , ?, ?, ?, ?)");
+			ps.setString(1, uif.getPassword());
+			ps.setString(2, uif.getName());
+			ps.setString(3, uif.getAge());
+			ps.setString(4, uif.getGender());
+			ps.setString(5, uif.getBirthday());
+			ps.setString(6, uif.getAddress());
+			ps.setString(7, uif.getEmail());
+			ps.setString(8, "1");
+			int cnt =ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件のデータを登録しました。");
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
 
 	/**
 	 * 一般情報全件検索

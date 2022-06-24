@@ -46,7 +46,7 @@ public class AdminRegisterUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
-//		UserInfoDao.insert(uif);
+//		UserInfoDao.adminInsert(uif);
 		model.addAttribute("msg","登録");
 		return "admin/register/Complete";
 	}
