@@ -1,3 +1,4 @@
+
 package com.catonata.web.Exec;
 
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.catonata.dao.ExecDao;
@@ -21,20 +23,16 @@ public class ProductUpdateController {
 	@Autowired
 	HttpSession session;
 
-	@RequestMapping(path = "/up", method = RequestMethod.GET)
-	public String index(ProductForm form) {
-		return "redirect";
-	}
 
 	@RequestMapping(path = "/update", method = RequestMethod.GET)
-	public ModelAndView send(ProductForm form,ModelAndView mav) {
+	public ModelAndView send(@RequestParam("id") String id,ProductForm form,ModelAndView mav) {
 
 //		//ログイン情報の取得
 //		InsertForm user = (InsertForm) session.getAttribute("user");
 //		mav.addObject("user", user);
 
 		//社員情報をid検索するDAOを呼び出す
-		ProductForm update = ExecDao.profind("3");
+		ProductForm update = ExecDao.profind(id);
 
 		//検索結果の情報をセッションに保存
 		session.setAttribute("update", update);
