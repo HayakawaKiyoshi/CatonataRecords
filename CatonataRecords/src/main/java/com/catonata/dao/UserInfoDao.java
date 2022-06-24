@@ -318,6 +318,7 @@ public class UserInfoDao {
 				user.setEmail(rs.getString("email"));
 				user.setAuthority(rs.getString("authority"));
 
+
 			} else {
 				return null;
 			}
