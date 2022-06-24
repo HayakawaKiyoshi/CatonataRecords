@@ -43,7 +43,6 @@ public class ProductDeleteController {
 		//検索のDaoを呼び出す
 		ArrayList<ProductForm> delete = ExecDao.profind2(check);
 
-
 		session.setAttribute("delete", delete);
 		session.setAttribute("check", check);
 		mav.addObject("delete", delete);
