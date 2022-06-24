@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.catonata.bean.ProductBean;
 import com.catonata.bean.UserInformationBean;
 
 
@@ -66,60 +70,47 @@ public class CommonDao {
 
 	}
 
-//	public static List<ProductBean> allProduct() {
-//
-//		Connection conn = null;
-//		PreparedStatement ps = null;
-//		ResultSet rs = null;
-//		DBManager manager = new DBManager();
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-//		Sql sql = new Sql();
-//
-//		//ArrayListを初期化
-//		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
-//
-//		try {
-//			conn = manager.getConn();
-//
-//			ps = conn.prepareStatement(sql.getALLDISPSQL());
-//			rs = ps.executeQuery();
-//
-//			//結果をuserインスタンスに設定し、
-//			//ArrayListインスタンスに追加
-//			while (rs.next()) {
-//				String empid = rs.getString("emp_id");
-//				String pass = rs.getString("emp_pass");
-//				String empname = rs.getString("emp_name");
-//				String gender;
-//				if (rs.getString("gender").equals("1")) {
-//					gender = "男";
-//				} else {
-//					gender = "女";
-//				}
-//				String address = rs.getString("adress");
-//				String birthday = sdf.format(rs.getDate("birthday"));
-//				String authority;
-//				if (rs.getString("authority").equals("1")) {
-//					authority = "管理者";
-//				} else {
-//					authority = "一般";
-//				}
-//				String deptname = rs.getString("dept_name");
-//				ProductBean user = new ProductBean(empid, pass, empname, gender, address,
-//						birthday, authority, deptname);
-//				empList.add(user);
-//			}
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return null;
-//		}finally {
-//			manager.close(conn);
-//		}
-//		return empList;
-//
-//	}
+	public static List<ProductBean> findAll() {
 
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+
+		//ArrayListを初期化
+		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
+
+		try {
+			conn = manager.getConn();
+
+			final String SQL = "SELECT * FROM PRODUCT_TABLE";
+			ps = conn.prepareStatement(SQL);
+			rs = ps.executeQuery();
+
+			//結果をuserインスタンスに設定し、
+			//ArrayListインスタンスに追加
+			while (rs.next()) {
+				String proid = rs.getString("PROD_ID");
+				String proname = rs.getString("PROD_NAME");
+				String artist = rs.getString("ARTIST");
+				String media = rs.getString("MEDIA");
+				String price = rs.getString("PRICE");
+				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
+				String label = rs.getString("LABEL");
+				String stock = rs.getString("STOCK");
+				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
+						releasedate, label, stock);
+				empList.add(bean);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return empList;
+
+	}
 }
