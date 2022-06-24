@@ -4,7 +4,7 @@
 	layout:decorate="">
 <head>
 <meta charset="UTF-8">
-<title>ユーザー変更画面（一般）</title>
+<title>マイページ</title>
 </head>
 <body>
 	<h3>ユーザー情報変更</h3>
@@ -24,10 +24,17 @@
 					<tr>
 						<td>パスワード</td>
 						<td>
-							<input type="passwordword" name="password" id="password1" th:value="*{password}">
+							<input type="password" name="password" id="password1" th:value="*{password}">
 							<span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span>
 							<span th:if="${#fields.hasErrors('password')}"
 							th:errors="*{password}" th:errorclass="error-field">error!</span>
+						</td>
+					</tr>
+					<tr>
+						<td>年齢</td>
+						<td><input type="text" name="age" th:value="*{age}">
+						<span th:if="${#fields.hasErrors('age')}"
+							th:errors="*{age}" th:errorclass="error-field"></span>
 						</td>
 					</tr>
 

@@ -11,6 +11,7 @@
 	<div layout:fragment="header">
 		<div class="container">
 			<div style="margin-left: 80%">
+	<!--
 				<th:block th:if="ログイン前">
 					<div id="header_beforelogin">
 						<form action="" method="">
@@ -20,26 +21,28 @@
 							<input type="submit" value="新規登録" class="btn btn-primary">
 						</form>
 					</div>
-<!--
-				</th:block>
-				<th:block th:if="ログイン後">
-					<div id="header_afterlogin">
-						<form action="" method="post">
-							<input type="submit" value="マイページ" class="btn btn-primary">
-						</form>
-						<form action="" method="post">
-							<input type="submit" value="ログアウト" class="btn btn-primary">
-						</form>
-					</div>
-			</div>
-			</th:block>
+	</th:block>
 -->
+	<th:block th:if="ログイン後">
+		<div id="header_afterlogin">
+			<form action="" method="post">
+				<input type="submit" value="マイページ" class="btn btn-primary">
+			</form>
+			<form action="" method="post">
+				<input type="submit" value="ログアウト" class="btn btn-primary">
+			</form>
 		</div>
+		</div>
+	</th:block>
 
-		<!-- <div id="header">～CARONATA RECORDS～</div>
-		<th:block th:object="${session.loginuser}">
-		ようこそ<span th:text="*{name}"></span>さん
-		</th:block> -->
+	</div>
+
+	<div id="header">～CATONATA RECORDS～
+	<th:block th:object="${session.loginuser}">
+	<div class="session_user">ようこそ○○さん</div>
+		<!--  ようこそ<span th:text="*{name}"></span>さん -->
+	</th:block>
+	</div>
 	</div>
 	</div>
 </body>
