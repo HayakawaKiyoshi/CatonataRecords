@@ -31,7 +31,7 @@
 				</tr>
 				<th:block th:each="item : ${productForm}">
 					<tr>
-						<td><input type="checkbox" name = "check"></td>
+						<td><input type="checkbox" name = "check" th:value = "*{item.pro_id}"></td>
 							<td th:text="*{item.pro_id}"></td>
 							<td th:text="*{item.pro_name}"></td>
 							<td th:text="*{item.artist}"></td>

@@ -5,37 +5,38 @@
 <title>経営者トップページ(商品管理画面)</title>
 </head>
 <body>
-        検索：
-        <form role="form" action="/" th:action="@{/}" method="post">
-            <input type="text" name="product" th:field="*{}" th:errorclass="fieldError">
-        </form>
+
 
         <p>商品一覧</p>
         <table>
             <tr>
-                <th>No</th><th>タイトル</th><th>アーティスト名</th><th>商品媒体</th>
-                <th>価格</th><th>レコード会社名</th><th>在庫数</th><th>変更</th><th>削除</th>
+					<th>商品ID</th>
+				   	<th>商品名</th>
+				   	<th>アーティスト</th>
+				   	<th>商品媒体</th>
+				   	<th>価格</th>
+				   	<th>発売日</th>
+				   	<th>レコード会社</th>
+				   	<th>在庫</th>
+				   	<th>変更</th>
             </tr>
-            <th:block th:each="items : ${}">
-                <tr>
-                    <td><span th:text="${items.}">1</span></td>
-                    <td><span th:text="${items.}">2</span></td>
-                    <td><span th:text="${items.}">3</span></td>
-                    <td><span th:text="${items.}">4</span></td>
-                    <td><span th:text="${items.}">5</span></td>
-                    <td><span th:text="${items.}">6</span></td>
-                    <td><span th:text="${items.}">7</span></td>
+            <th:block th:each="item : ${emplist}">
+            <tr>
+                   <td th:text="*{item.pro_id}"></td>
+							<td th:text="*{item.pro_name}"></td>
+							<td th:text="*{item.artist}"></td>
+							<td th:text="*{item.media}"></td>
+							<td th:text="*{item.price}"></td>
+							<td th:text="*{item.release_date}"></td>
+							<td th:text="*{item.label}"></td>
+							<td th:text="*{item.stock}"></td>
                     <td>
-                        <a href="/" th:href="@{/}">
-                            <button type="submit">変更</button>
-                        </a>
+                        <form action="/exec/update" th:action="@{/exec/update}" method = "get">
+                        	<input type = "hidden" name = "id" th:value = "*{item.pro_id}">
+                           <input type = "submit" value = "変更">
+                        </form>
                     </td>
-                    <td>
-                        <a href="/" th:href="@{/}">
-                            <button type="button">削除</button>
-                        </a>
-                    </td>
-                </tr>
+              </tr>
             </th:block>
         </table>
 </body>
