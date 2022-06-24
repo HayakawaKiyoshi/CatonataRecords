@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<h3>登録完了</h3>
-		<p><span th:text="${msg}"></span>が完了しました。</p>
+		<p><span th:text="${msg}"></span>が完了しました</p>
 		<form action="/Admin/top" th:action="@{/Admin/top}"
 			method="post" th:object="${session.}">
 		<input type="submit" value="管理者メイン画面へ" class="btn btn-primary">
