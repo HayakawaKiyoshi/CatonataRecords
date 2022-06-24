@@ -32,7 +32,7 @@ public class ProductDeleteController {
 	}
 
 	@RequestMapping(path = "/delete/select", method = RequestMethod.GET)
-	public ModelAndView send(@RequestParam("check") ProductForm check, ProductForm form,ModelAndView mav) {
+	public ModelAndView get(@RequestParam("check") String check, ProductForm form,ModelAndView mav) {
 		mav.setViewName("exec/delete/Check");
 
 //		//ログイン情報を取得する
@@ -40,7 +40,7 @@ public class ProductDeleteController {
 //		mav.addObject("user", user);
 
 		//検索のDaoを呼び出す
-		ProductForm delete = ExecDao.profind(check.getPro_name());
+		ProductForm delete = ExecDao.profind(check);
 
 		session.setAttribute("delete", delete);
 		mav.addObject("delete", delete);
