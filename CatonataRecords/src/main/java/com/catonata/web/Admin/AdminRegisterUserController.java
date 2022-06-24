@@ -23,10 +23,11 @@ public class AdminRegisterUserController {
 	 * 一般者の登録
 	 */
 	@RequestMapping("")
-	private String registerUser (@ModelAttribute UserInformationForm uif) {
+	private String registerUser (@ModelAttribute UserInformationForm uif,Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		return "admin/register/GeneralRegister";
+		model.addAttribute("send","/AdminRegister/Check");
+		return "newregister/PersonalRegister";
 	}
 
 	@RequestMapping("/Check")
