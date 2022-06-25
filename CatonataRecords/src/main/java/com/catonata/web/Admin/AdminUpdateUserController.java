@@ -48,19 +48,14 @@ public class AdminUpdateUserController {
 
 	@RequestMapping("/Complete")
 	private String updateComplete (UserInformationForm uif,Model model) {
-		String send = null;
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		uif.setId(LoginUser.getId());
 		UserInfoDao.adminUpdate(uif);
 		model.addAttribute("msg","更新");
-		if(LoginUser.getAuthority() =="1") {
-			send =  "general/mypage/Complete";
-		}else if(LoginUser.getAuthority() =="2"){
-			send =  "admin/complete/Complete";
-		}
-		return send;
+
+		return  "admin/complete/Complete";
 
 	}
 
