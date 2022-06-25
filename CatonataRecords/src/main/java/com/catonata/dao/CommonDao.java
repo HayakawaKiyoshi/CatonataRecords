@@ -113,4 +113,50 @@ public class CommonDao {
 		return empList;
 
 	}
+
+	public static List<ProductBean> allProduct() {
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+
+		//ArrayListを初期化
+		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
+
+		try {
+			conn = manager.getConn();
+
+			final String SQL = "SELECT * FROM PRODUCT_TABLE= ?";
+			ps = conn.prepareStatement(SQL);
+			//引数を?にバインド
+			rs = ps.executeQuery();
+
+			//結果をuserインスタンスに設定し、
+			//ArrayListインスタンスに追加
+			while (rs.next()) {
+				String proid = rs.getString("PROD_ID");
+				String proname = rs.getString("PROD_NAME");
+				String artist = rs.getString("ARTIST");
+				String media = rs.getString("MEDIA");
+				String price = rs.getString("PRICE");
+				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
+				String label = rs.getString("LABEL");
+				String stock = rs.getString("STOCK");
+				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
+						releasedate, label, stock);
+				empList.add(bean);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return empList;
+
+	}
+
 }
