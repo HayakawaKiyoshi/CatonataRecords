@@ -6,22 +6,28 @@
 <title>商品登録確認画面</title>
 </head>
 <body>
-    <p style="text-align: center; border: solid 1px black;">自社商品登録</p>
-    <p>以下の内容で登録します。よろしいですか？</p>
+	<div class="container">
+		<div layout:fragment="content">
+			<p style="text-align: center; border: solid 1px black;">自社商品登録</p>
+			<p>以下の内容で登録します。よろしいですか？</p>
 
-    <form action="/exec/register/execute" method="post" th:object="${session.proForm}">
-        商品名：<span th:text="*{pro_name}"></span><br>
-        アーティスト名：<span th:text="*{artist}"></span><br>
-        商品媒体：<span th:text="*{media}"></span><br>
-        商品価格：<span th:text="*{price}"></span><br>
-        レコード会社名：<span th:text="*{label}"></span><br>
-        在庫数：<span th:text="*{stock}"></span><br>
+			<form action="/exec/register/execute" method="post"
+				th:object="${session.proForm}">
+				商品名：<span th:text="*{pro_name}"></span><br> アーティスト名：<span
+					th:text="*{artist}"></span><br> 商品媒体：<span th:text="*{media}"></span><br>
+				商品価格：<span th:text="*{price}"></span><br> レコード会社名：<span
+					th:text="*{label}"></span><br> 在庫数：<span th:text="*{stock}"></span><br>
 
-        <p><input type="submit" value="登録"></p>
-    </form>
+				<p>
+					<input type="submit" value="登録">
+				</p>
+			</form>
 
-    <form role="form" action="/exec/register/back" th:action="@{/exec/register/back}" method="">
-        <input type="submit" value="戻る">
-    </form>
+			<form role="form" action="/exec/register/back"
+				th:action="@{/exec/register/back}" method="">
+				<input type="submit" value="戻る">
+			</form>
+		</div>
+	</div>
 </body>
 </html>
