@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
 <title>トップ画面</title>
 </head>
 <body>
-
+<div class="container">
+<div layout:fragment="content">
 <th:block th:unless="${LoginUser == null}">
 	<th:block th:text="*{name}"></th:block>
 
@@ -52,6 +55,7 @@
     <input type = "hidden" name = "category" value = "DVD">
     <input type="submit" value="DVD" class="btn btn-primary">
     </form>
-
+</div>
+</div>
 </body>
 </html>

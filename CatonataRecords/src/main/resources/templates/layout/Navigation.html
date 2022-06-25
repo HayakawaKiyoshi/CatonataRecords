@@ -11,15 +11,17 @@
 		<div id="navidation">
 			<th:block th:if="general">
 				<font size="4">商品カテゴリー</font>
-				<form action="">
-					<input type="submit" value="一覧">
-				</form>
-				<form action="">
-					<input type="submit" value="CD">
-				</form>
-				<form action="">
-					<input type="submit" value="DVD">
-				</form>
+				<form action ="/top/TopPage" method = "post" >
+    <input type="submit" value="一覧" class="btn btn-primary">
+    </form>
+				<form action ="/top/category/search" method = "post" >
+    <input type = "hidden" name = "category" value = "CD">
+    <input type="submit" value="CD" class="btn btn-primary">
+    </form>
+				<form action ="/top/category/search" method = "post" >
+    <input type = "hidden" name = "category" value = "DVD">
+    <input type="submit" value="DVD" class="btn btn-primary">
+    </form>
 				<form action="">
 					<input type="submit" value="本/書籍">
 				</form>
