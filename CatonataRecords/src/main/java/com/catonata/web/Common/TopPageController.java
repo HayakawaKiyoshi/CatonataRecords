@@ -27,6 +27,7 @@ public class TopPageController {
 		List<ProductBean> ap = CommonDao.allProduct();
 		session.setAttribute("allproduct", ap);
 		mav.addObject("allproduct",ap);
+		mav.addObject("send","/top/search");
 
 		return mav;
 	}
@@ -39,6 +40,7 @@ public class TopPageController {
 
 		mav.addObject("allproduct",proname);
 		mav.setViewName("sitetop/SiteTop");
+		mav.addObject("send","/top/search");
 
 		return mav;
 	}
@@ -46,12 +48,30 @@ public class TopPageController {
 	@PostMapping("/category/search")
 	public ModelAndView searchctdr(@RequestParam("category") String category,ModelAndView mav) {
 
+		session.setAttribute("category", category);
+
 		//カテゴリ―別に全件表示
 		List<ProductBean> proname = CommonDao.proSearchCategory(category);
 
 		mav.addObject("allproduct",proname);
 		mav.setViewName("sitetop/SiteTop");
-		mav.addObject("send","/");
+		mav.addObject("send","/top/category");
+
+		return mav;
+	}
+
+	@PostMapping("/category")
+	public ModelAndView category(@RequestParam("msg") String msg,ModelAndView mav) {
+
+		String ctgr= (String)session.getAttribute("category");
+
+		//カテゴリ―別に全件表示
+		List<ProductBean> proname = CommonDao.proCategory(msg,ctgr);
+
+		mav.addObject("allproduct",proname);
+		mav.setViewName("sitetop/SiteTop");
+		mav.addObject("send","/top/category");
+
 
 		return mav;
 	}
