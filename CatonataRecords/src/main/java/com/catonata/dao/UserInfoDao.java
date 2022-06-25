@@ -452,7 +452,7 @@ public class UserInfoDao {
 				eib.setName(rs.getString("user_name"));
 				eib.setLabel(rs.getString("label"));
 				eib.setPassword(rs.getString("password"));
-				eib.setMail(rs.getString("email"));
+				eib.setEmail(rs.getString("email"));
 				eib.setAddress(rs.getString("address"));
 				eib.setBanknumber(rs.getString("bank_number"));
 				eib.setBankname(rs.getString("bank_name"));
