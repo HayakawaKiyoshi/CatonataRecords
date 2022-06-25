@@ -65,7 +65,7 @@ public class ProductDetailController {
 		return "general/product/PurchaseCheck";
 	}
 
-	//配送日のセレクトボックス作成メソッド
+	//配送日の変数作成メソッド
 	private String[] delivaryDateCreate (Calendar calendar) {
 		String [] delivaryDate = new String[7];
 		int date = 1;
@@ -81,10 +81,19 @@ public class ProductDetailController {
 			}
 		}
 		//問題点：13月が存在してしまう可能性がある。
-
 		return delivaryDate;
 	}
 
+	/**
+	 * 購入確認から購入完了画面に遷移するメソッド
+	 * 在庫数が0より下回ってしまった場合には、確認画面に戻します。
+	 * 問題がなければ、DAOで購入処理を行い完了画面に遷移します。
+	 *
+	 * @param delivaryDate
+	 * @param pur_number
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/PurchaseComplete")
 	private String purchaseComplete (@RequestParam("delivary")String delivaryDate,
 			@RequestParam("purchase_number")String pur_number , Model model) {
@@ -122,9 +131,8 @@ public class ProductDetailController {
 		String newSold = String.valueOf(sold += purNumber);
 		ExecDao.stockUpdate(product.getPro_id(), newStock, newSold);
 
-		//購入処理が完了したら完了画面へ
-		//未変更
-		return "general/product/PurchaseCheck";
+		//購入処理が完了したら完了画面へ遷移
+		return "general/product/PurchaseComplete";
 	}
 
 }
