@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.catonata.bean.ProductBean;
+import com.catonata.bean.UserInformationBean;
 import com.catonata.validation.ProductForm;
 
 
@@ -199,6 +200,84 @@ public class ExecDao {
 		return form;
 
 	}
+
+	/**
+	 * 商品購入処理
+	 * 購入履歴テーブルにデータセット
+	 *
+	 * @param id
+	 * @return
+	 */
+	public static void purchaseHistory(UserInformationBean LoginUser, ProductBean product
+			,String purcahseDate, String delivaryDate) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		//DBManagerをインスタンス化
+		DBManager manager = new DBManager();
+		final String PURCHASEHISTORY_SQL = "INSERT INTO PURCHASE_TABLE VALUES (?,?,?,?,?)";
+		try {
+			conn = manager.getConn();
+			ps = conn.prepareStatement(PURCHASEHISTORY_SQL);
+			//引数を?にバインド
+			ps.setString(1, LoginUser.getId());
+			ps.setString(2, product.getLabel());
+			ps.setString(3, purcahseDate);
+			ps.setString(4, delivaryDate);
+			ps.setString(5, product.getPro_id());
+			int cnt =ps.executeUpdate();
+			System.out.println(cnt + "件のデータを登録しました。");
+			conn.commit();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			manager.close(conn);
+		}
+	}
+
+	/**
+	 * 在庫数と販売数を更新するメソッド
+	 * @param id
+	 * @param newStock
+	 * @param newSold
+	 */
+	public static void stockUpdate (String id, String newStock, String newSold) {
+		DBManager manager = new DBManager();
+		Connection conn = null;
+		PreparedStatement ps = null;
+//		SqlTemplates sqls = new SqlTemplates();
+		try {
+			// 接続する
+			conn = manager.getConn();
+			ps = conn.prepareStatement("UPDATE PRODUCT_TABLE SET"
+					+ " SOLD = ?, STOCK = ? WHERE PROD_ID = ?");
+			ps.setString(1, newSold);
+			ps.setString(2, newStock);
+			ps.setString(3, id);
+			int cnt =ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件のデータを登録しました。");
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
 	/**
 	 * 削除するメソッド
 	 * @param user
