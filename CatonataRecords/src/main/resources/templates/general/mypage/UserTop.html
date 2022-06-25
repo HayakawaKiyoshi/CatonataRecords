@@ -21,26 +21,11 @@
             生年月日：<span th:text="*{birthday}"></span><br>
             住所：<span th:text="*{address}"></span>&emsp;&emsp;
             メールアドレス：<span th:text="*{email}"></span>&emsp;&emsp;&emsp;
-            <a href="/" th:href="@{/〇(〇=${〇})}">
+            <a href="/AdminUpdate/Check" th:href="@{/AdminUpdate/Check}">
                 <button type="submit">変更</button>
             </a>
         </th:block>
-        <p>購入履歴</p>
-        <div style="border: solid 1px black; width: 450px;">
-            <table>
-                <tr>
-                    <th>No</th><th>タイトル</th><th>価格</th><th>購入日時</th>
-                </tr>
-                <th:block th:each="items : ${}">
-                    <tr>
-                        <td><span th:text="${items.}">1</span></td>
-                        <td><span th:text="${items.}">2</span></td>
-                        <td><span th:text="${items.}">3</span></td>
-                        <td><span th:text="${items.}">4</span></td>
-                    </tr>
-                </th:block>
-            </table>
-        </div>
+
     </div>
     </div>
 </body>

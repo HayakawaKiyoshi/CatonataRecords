@@ -46,15 +46,14 @@ public class LoginLogoutController {
 					//ログイン情報をセッションに保存
 					session.setAttribute("LoginUser", user);
 					if(user.getAuthority().equals("1")) {
-						mav.setViewName("/general/product/AllDisplay");
+						mav.setViewName("redirect:/top/TopPage");
+						redirect.addFlashAttribute("LoginUser", user);
 					}else if(user.getAuthority().equals("2")) {
 						redirect.addFlashAttribute("LoginUser", user);
 						mav.setViewName("redirect:/Admin/Start");
 					}else if(user.getAuthority().equals("3")) {
 						redirect.addFlashAttribute("LoginUser", user);
 						redirect.addFlashAttribute("label",user.getLabel());
-						System.out.println("ここだよ");
-						System.out.println(user.getLabel());
 						mav.setViewName("redirect:/exec/logintop");
 
 					}
