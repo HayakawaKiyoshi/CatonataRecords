@@ -22,7 +22,7 @@
             生年月日：<span th:text="*{birthday}"></span><br>
             住所：<span th:text="*{address}"></span>&emsp;&emsp;
             メールアドレス：<span th:text="*{email}"></span>&emsp;&emsp;&emsp;
-            <form action ="/AdminUpdate" method = "post" >
+            <form action ="/mypageUpdate" method = "post" >
     		<input type = "hidden" name = "name" th:value = "*{name}">
     		<input type = "hidden" name = "password" th:value = "*{password}">
     		<input type="submit" value="変更" class="btn btn-primary">
