@@ -28,6 +28,7 @@ public class ProceedsCheckController {
 		return "exec/profit/ProfitCheck";
 	}
 
+	//区間検索の部分はなしで
 //	@RequestMapping(path="/formTo")
 //	private String fromToSearch (@RequestParam("from_period")String from,
 //			@RequestParam("to_period")String to,
