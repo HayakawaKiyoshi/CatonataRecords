@@ -329,7 +329,6 @@ public class ExecDao {
 			//引数を?にバインド
 			ps.setString(1, labelname);
 			rs = ps.executeQuery();
-			rs = ps.executeQuery();
 
 			//結果をuserインスタンスに設定し、
 			//ArrayListインスタンスに追加
