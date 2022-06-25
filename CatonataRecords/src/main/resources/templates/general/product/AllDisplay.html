@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout/LayoutTest">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
-        <link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
 <title>商品情報一覧画面</title>
 </head>
 <body>
-    <div layout:fragment="content">
-    <!--
+	<div layout:fragment="content">
+		<!--
     検索：
     <form role="form" action="/" th:action="@{/}" method="post">
         <input type="text" name="product" th:field="*{}" th:errorclass="fieldError">
     </form>
     -->
 
-        <p>カテゴリー名一覧</p>
-        <table>
-            <tr>
-                <th>No</th><th>タイトル</th><th>アーティスト</th><th>発売日</th><th>価格</th>
-            </tr>
-            <th:block th:each="items : ${}">
-                <tr>
-                    <td><span th:text="${items.}">1</span></td>
-                    <td><span th:text="${items.}">2</span></td>
-                    <td><span th:text="${items.}">3</span></td>
-                    <td><span th:text="${items.}">4</span></td>
-                    <td><span th:text="${items.}">5</span></td>
-                </tr>
-            </th:block>
-        </table>
-    </div>
+		<p>カテゴリー名一覧</p>
+		<table>
+			<tr>
+				<th>No</th>
+				<th>商品名</th>
+				<th>アーティスト</th>
+				<th>発売日</th>
+				<th>価格</th>
+			</tr>
+			<th:block th:each="items : ${allproduct}">
+				<tr>
+					<td><span th:text="${items.pro_id}">1</span></td>
+					<td><span th:text="${items.pro_name}">2</span></td>
+					<td><span th:text="${items.artist}">3</span></td>
+					<td><span th:text="${items.release_date}">4</span></td>
+					<td><span th:text="${items.price}">5</span></td>
+				</tr>
+			</th:block>
+		</table>
+	</div>
 </body>
 </html>
