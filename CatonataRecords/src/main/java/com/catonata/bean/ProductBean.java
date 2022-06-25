@@ -14,6 +14,7 @@ public class ProductBean implements Serializable{
 	private String sold;
 	private String stock;
 
+	public ProductBean () {}	//デフォルトコンストラクタ
 	public ProductBean(String pro_id,String pro_name,String artist,String media,
 			String price, String release_date,String label,String stock) {
 		this.pro_id = pro_id;

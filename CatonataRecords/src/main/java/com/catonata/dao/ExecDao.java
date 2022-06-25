@@ -15,6 +15,9 @@ import com.catonata.validation.ProductForm;
 /**
  * 1.productRegister()：商品登録
  * 2.productUpdate()：商品更新
+ * 3.pro_find 商品検索(戻り値ProductBean)
+ * 4.profind 商品検索(戻り値ProductForm)
+ *
  * @author akutsu
  *
  */
@@ -85,6 +88,67 @@ public class ExecDao {
 		}
 	}
 
+	/**
+	 * 商品単体検索
+	 * 戻り値の方はProductBean型
+	 * @param id
+	 * @return
+	 */
+	public static ProductBean pro_find(String id) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		//DBManagerをインスタンス化
+		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		final String PROD_NAME_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_ID = ?";
+
+		ProductBean pb = new ProductBean();
+
+		try {
+			System.out.println(id);
+			conn = manager.getConn();
+			ps = conn.prepareStatement(PROD_NAME_SQL);
+			//引数を?にバインド
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				pb.setPro_id(rs.getString("PROD_ID"));
+				pb.setPro_name(rs.getString("PROD_NAME"));
+				pb.setArtist(rs.getString("ARTIST"));
+				pb.setMedia(rs.getString("MEDIA"));
+				pb.setPrice(rs.getString("PRICE"));
+				pb.setRelease_date(sdf.format(rs.getDate("RELEASE_DATE")));
+				pb.setLabel(rs.getString("LABEL"));
+				pb.setSold(rs.getString("SOLD"));
+				pb.setStock(rs.getString("STOCK"));
+
+				System.out.println(pb.getArtist());
+			} else {
+				return null;
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			manager.close(conn);
+		}
+		return pb;
+
+	}
+
+	/**
+	 * 商品単体検索
+	 * 戻り値の方はProductForm型
+	 * @param id
+	 * @return
+	 */
 	public static ProductForm profind(String id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
