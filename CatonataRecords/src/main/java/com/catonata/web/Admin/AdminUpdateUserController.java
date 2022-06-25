@@ -31,7 +31,6 @@ public class AdminUpdateUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = UserInfoDao.find(name, password);
-		System.out.println(uif.getId());
 		model.addAttribute("userInformationForm", uif);
 		return "admin/update/GeneralUpdate";
 	}
@@ -49,6 +48,7 @@ public class AdminUpdateUserController {
 
 	@RequestMapping("/Complete")
 	private String updateComplete (UserInformationForm uif,Model model) {
+		String send = null;
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
@@ -56,10 +56,11 @@ public class AdminUpdateUserController {
 		UserInfoDao.adminUpdate(uif);
 		model.addAttribute("msg","更新");
 		if(LoginUser.getAuthority() =="1") {
-			return "general/mypage/Complete";
-		}else{
-			return "admin/complete/Complete";
+			send =  "general/mypage/Complete";
+		}else if(LoginUser.getAuthority() =="2"){
+			send =  "admin/complete/Complete";
 		}
+		return send;
 
 	}
 
