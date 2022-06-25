@@ -6,12 +6,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.catonata.bean.ProductBean;
+import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.CommonDao;
 
 @Controller
@@ -31,6 +33,24 @@ public class TopPageController {
 
 		return mav;
 	}
+
+	@RequestMapping(path="/general/TopPage")
+	private ModelAndView  toppagegene (ModelAndView mav,Model model) {
+
+		UserInformationBean user = (UserInformationBean) model.asMap().get("LoginUser");
+		session.setAttribute("LoginUser",user);
+		//表示するものは商品全件表示
+		mav.setViewName("sitetop/SiteTop");
+		List<ProductBean> ap = CommonDao.allProduct();
+		session.setAttribute("allproduct", ap);
+		mav.addObject("allproduct",ap);
+		mav.addObject("LoginUser",user);
+		mav.addObject("send","/top/search");
+
+		return mav;
+	}
+
+
 
 	@PostMapping("/search")
 	public ModelAndView search(@RequestParam("msg") String msg,ModelAndView mav) {

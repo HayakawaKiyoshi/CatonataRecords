@@ -23,7 +23,7 @@ public class LoginLogoutController {
 
 	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String index(LoginForm form) {
-		return "login/login";
+		return "login/Login";
 	}
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
@@ -46,7 +46,7 @@ public class LoginLogoutController {
 					//ログイン情報をセッションに保存
 					session.setAttribute("LoginUser", user);
 					if(user.getAuthority().equals("1")) {
-						mav.setViewName("redirect:/top/TopPage");
+						mav.setViewName("redirect:/top/general/TopPage");
 						redirect.addFlashAttribute("LoginUser", user);
 					}else if(user.getAuthority().equals("2")) {
 						redirect.addFlashAttribute("LoginUser", user);

@@ -5,6 +5,12 @@
 <title>トップ画面</title>
 </head>
 <body>
+
+<th:block th:unless="${LoginUser == null}">
+	<th:block th:text="*{name}"></th:block>
+
+</th:block>
+
     検索：
    <form action="/top/search" th:action = "@{${send}}" method="post">
 			<input type=text name="msg" value = "商品名またはアーティスト名を入力してください"> <input type="submit" value="検索"
