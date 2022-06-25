@@ -6,10 +6,11 @@
 </head>
 <body>
 
-<th:block th:unless="${LoginUser == null}">
-	<th:block th:text="*{name}"></th:block>
-
+<div th:if="${LoginUser} != null">
+<th:block th:object = "${LoginUser}">
+	<div th:text="*{name}"></div>
 </th:block>
+</div>
 
     検索：
    <form action="/top/search" th:action = "@{${send}}" method="post">
@@ -51,6 +52,9 @@
     <form action ="/top/category/search" method = "post" >
     <input type = "hidden" name = "category" value = "DVD">
     <input type="submit" value="DVD" class="btn btn-primary">
+    </form>
+     <form action ="/mypage/top" method = "post" >
+    <input type="submit" value="マイページ" class="btn btn-primary">
     </form>
 
 </body>

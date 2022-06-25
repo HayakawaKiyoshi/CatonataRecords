@@ -45,6 +45,7 @@ public class TopPageController {
 		session.setAttribute("allproduct", ap);
 		mav.addObject("allproduct",ap);
 		mav.addObject("LoginUser",user);
+		System.out.println(user.getName());
 		mav.addObject("send","/top/search");
 
 		return mav;
