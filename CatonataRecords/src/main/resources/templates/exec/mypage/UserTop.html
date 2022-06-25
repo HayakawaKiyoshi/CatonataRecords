@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
 <title>経営者トップページ(商品管理画面)</title>
 </head>
 <body>
-
+		<div class="container">
+<div layout:fragment="content">
 
         <p>商品一覧</p>
         <table>
@@ -42,5 +45,8 @@
                         <form action="/exec/select" th:action="@{/exec/select}" method = "get">
                            <input type = "submit" value = "削除">
                         </form>
+                        </div>
+                        </div>
+
 </body>
 </html>
