@@ -15,15 +15,17 @@
     <div style="border: solid 1px black; width: 500px; height: 300px;">
         <p>ユーザー情報</p>
         <th:block th:object="${session.LoginUser}">
+        	氏名:<span th:text="*{name}"></span><br>
             ID：<span th:text="*{id}"></span>&emsp;&emsp;
             年齢：<span th:text="*{age}"></span><br>
             性別：<span th:text="*{gender}"></span>&emsp;&emsp;
             生年月日：<span th:text="*{birthday}"></span><br>
             住所：<span th:text="*{address}"></span>&emsp;&emsp;
             メールアドレス：<span th:text="*{email}"></span>&emsp;&emsp;&emsp;
-            <a href="/AdminUpdate/Check" th:href="@{/AdminUpdate/Check}">
-                <button type="submit">変更</button>
-            </a>
+            <form action ="/AdminUpdate/Check" method = "post" >
+    		<input type = "hidden" name = "name" th:value = "*{name}">
+    		<input type="submit" value="変更" class="btn btn-primary">
+    		</form>
         </th:block>
         <p>購入履歴</p>
         <div style="border: solid 1px black; width: 450px;">
