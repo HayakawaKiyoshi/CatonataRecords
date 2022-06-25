@@ -27,4 +27,16 @@ public class ProceedsCheckController {
 		model.addAttribute("proceeds",proceedsCheck);
 		return "exec/profit/ProfitCheck";
 	}
+
+	//区間検索の部分はなしで
+//	@RequestMapping(path="/formTo")
+//	private String fromToSearch (@RequestParam("from_period")String from,
+//			@RequestParam("to_period")String to,
+//			@RequestParam("label")String label, Model model) {
+//
+//		//区間を追加した商品テーブルの検索を行う。
+//		List<ProductBean> proceedsCheck = ExecDao.findAll(label);
+//		model.addAttribute("proceeds",proceedsCheck);
+//		return "exec/profit/ProfitCheck";
+//	}
 }

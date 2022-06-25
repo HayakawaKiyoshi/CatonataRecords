@@ -6,7 +6,7 @@
 </head>
 <body>
     検索：
-   <form action="/top/search"  method="post">
+   <form action="/top/search" th:action = "@{${send}}" method="post">
 			<input type=text name="msg" value = "商品名またはアーティスト名を入力してください"> <input type="submit" value="検索"
 				class="btn btn-primary"><br>
 		</form>
@@ -35,6 +35,9 @@
               </tr>
         </th:block>
     </table>
+    <form action ="/top/TopPage" method = "post" >
+    <input type="submit" value="一覧" class="btn btn-primary">
+    </form>
     <form action ="/top/category/search" method = "post" >
     <input type = "hidden" name = "category" value = "CD">
     <input type="submit" value="CD" class="btn btn-primary">
