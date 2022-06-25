@@ -144,7 +144,7 @@ public class UserInfoDao {
 			ps = conn.prepareStatement("UPDATE USER_TABLE SET PASSWORD = ?,"
 					+ "USER_NAME = ? , AGE = ? , GENDER = ? , BIRTHDAY = ? ,"
 					+ "ADDRESS = ? , EMAIL = ?"
-					+ " WHERE USER_ID = ?");
+					+ " WHERE ID = ?");
 			ps.setString(1, uif.getPassword());
 			ps.setString(2, uif.getName());
 			ps.setString(3, uif.getAge());
@@ -189,7 +189,7 @@ public class UserInfoDao {
 			conn = manager.getConn();
 			ps = conn.prepareStatement("UPDATE USER_TABLE SET PASSWORD = ? ,"
 					+ "USER_NAME = ? , ADDRESS = ? , EMAIL = ? , BANKNUMBER = ? ,"
-					+ "BANKNAME = ? , LABEL = ? , USER_ID = ?");
+					+ "BANKNAME = ? , LABEL = ? , ID = ?");
 			ps.setString(1, eif.getPassword());
 			ps.setString(2, eif.getName());
 			ps.setString(3, eif.getAddress());
@@ -298,6 +298,7 @@ public class UserInfoDao {
 		ResultSet rs = null;
 		//DBManagerをインスタンス化
 		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		final String LOGIN_SQL = "SELECT * FROM USER_TABLE WHERE user_name = ? AND password = ?";
 
 		UserInformationForm user = new UserInformationForm();
@@ -316,7 +317,7 @@ public class UserInfoDao {
 				user.setName(rs.getString("user_name"));
 				user.setAge(rs.getString("age"));
 				user.setGender(rs.getString("gender"));
-				user.setBirthday(rs.getString("birthday"));
+				user.setBirthday(sdf.format(rs.getDate("birthday")));
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
 				user.setAuthority(rs.getString("authority"));

@@ -20,7 +20,7 @@ public class UserInformationForm {
 	private String address;
 	@NotEmpty
 	private String email;
-	@NotEmpty
+
 	private String authority;
 
 	public String getId() {
