@@ -2,7 +2,9 @@
 <!-- 一般の新規会員登録と管理者の新規会員登録用 -->
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +14,7 @@
 <title>新規会員登録（一般）</title>
 </head>
 <body>
+	<div layout:fragment="content">
 	<h3>新規会員登録</h3>
 	<form role="form" action = "/AdminRegister" th:action = "@{${send}}"
 		th:object="${userInformationForm}" method="post">
@@ -98,5 +101,6 @@
 			<input type="submit" value="次へ" class="btn btn-primary">
 		</p>
 	</form>
+	</div>
 </body>
 </html>
