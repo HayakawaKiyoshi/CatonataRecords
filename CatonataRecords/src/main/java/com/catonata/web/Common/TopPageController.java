@@ -27,15 +27,14 @@ public class TopPageController {
 		List<ProductBean> ap = CommonDao.allProduct();
 		session.setAttribute("allproduct", ap);
 		mav.addObject("allproduct",ap);
+
 		return mav;
 	}
 
 	@PostMapping("/search")
 	public ModelAndView search(@RequestParam("msg") String msg,ModelAndView mav) {
 
-
-		System.out.println(msg);
-
+		//検索
 		List<ProductBean> proname = CommonDao.proSearch(msg);
 
 		mav.addObject("allproduct",proname);
@@ -47,10 +46,12 @@ public class TopPageController {
 	@PostMapping("/category/search")
 	public ModelAndView searchctdr(@RequestParam("category") String category,ModelAndView mav) {
 
+		//カテゴリ―別に全件表示
 		List<ProductBean> proname = CommonDao.proSearchCategory(category);
 
 		mav.addObject("allproduct",proname);
 		mav.setViewName("sitetop/SiteTop");
+		mav.addObject("send","/");
 
 		return mav;
 	}
