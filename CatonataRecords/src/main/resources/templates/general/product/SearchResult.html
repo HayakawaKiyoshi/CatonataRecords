@@ -12,10 +12,12 @@
 </head>
 <body>
     <div layout:fragment="content">
+    <!--
     検索：
     <form role="form" action="/" th:action="@{/}" method="post">
         <input type="text" name="product" th:field="*{}" th:errorclass="fieldError">
     </form>
+    -->
 
     <p>検索結果：〇〇〇</p>
 
@@ -25,13 +27,13 @@
             <th>No</th><th>タイトル</th><th>アーティスト</th><th>発売日</th><th>価格</th>
         </tr>
         <th:block th:each="items : ${}">
-        <tr>
-            <td><span th:text="${items.}">1</span></td>
-            <td><span th:text="${items.}">2</span></td>
-            <td><span th:text="${items.}">3</span></td>
-            <td><span th:text="${items.}">4</span></td>
-            <td><span th:text="${items.}">5</span></td>
-        </tr>
+            <tr>
+                <td><span th:text="${items.}">1</span></td>
+                <td><span th:text="${items.}">2</span></td>
+                <td><span th:text="${items.}">3</span></td>
+                <td><span th:text="${items.}">4</span></td>
+                <td><span th:text="${items.}">5</span></td>
+            </tr>
         </th:block>
     </table>
     </div>
