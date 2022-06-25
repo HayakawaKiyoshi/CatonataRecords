@@ -29,14 +29,18 @@
         <div style="border: solid 1px black; width: 450px;">
             <table>
                 <tr>
-                    <th>No</th><th>タイトル</th><th>価格</th><th>購入日時</th>
+                    <th>購入日</th><th>配送日</th><th>商品名</th><th>アーティスト</th>
+                    <th>商品媒体</th><th>価格</th><th>レコード会社</th>
                 </tr>
-                <th:block th:each="items : ${}">
+                <th:block th:each="items : ${purchase}">
                     <tr>
-                        <td><span th:text="${items.}">1</span></td>
-                        <td><span th:text="${items.}">2</span></td>
-                        <td><span th:text="${items.}">3</span></td>
-                        <td><span th:text="${items.}">4</span></td>
+                    	<td><span th:text="${items.purchase_date}">2</span></td>
+                        <td><span th:text="${items.delivery_date}">3</span></td>
+                        <td><span th:text="${items.pro_name}">1</span></td>
+                        <td><span th:text="${items.artist}">2</span></td>
+                        <td><span th:text="${items.media}">3</span></td>
+                        <td><span th:text="${items.price}">4</span></td>
+                        <td><span th:text="${items.label}">4</span></td>
                     </tr>
                 </th:block>
             </table>

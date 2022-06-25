@@ -5,6 +5,7 @@ public class PurchaseBean {
 	private String id;
 	private String pro_name;
 	private String artist;
+	private String media;
 	private String price;
 	private String label;
 	private String purchase_date;
@@ -35,6 +36,12 @@ public class PurchaseBean {
 	}
 	public void setArtist(String artist) {
 		this.artist = artist;
+	}
+	public String getMedia() {
+		return media;
+	}
+	public void setMedia(String media) {
+		this.media = media;
 	}
 
 }

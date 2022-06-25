@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.catonata.bean.ExecInformationBean;
+import com.catonata.bean.PurchaseBean;
 import com.catonata.bean.UserInformationBean;
 import com.catonata.validation.ExecInformationForm;
 import com.catonata.validation.UserInformationForm;
@@ -477,4 +480,48 @@ public class UserInfoDao {
 		}
 		return execList;
 	}
+
+	public static List<PurchaseBean> findPurchase(String id) {
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+
+		//ArrayListを初期化
+		ArrayList<PurchaseBean> empList = new ArrayList<PurchaseBean>();
+
+		try {
+			conn = manager.getConn();
+
+			final String SQL = "SELECT E.LABEL,PURCHASE_DATE,DELIVERY_DATE,E.PROD_ID,D.PROD_NAME,D.ARTIST,D.MEDIA,D.PRICE FROM PURCHASE_TABLE E INNER JOIN PRODUCT_TABLE D ON D.PROD_ID = E.PROD_ID  WHERE E.ID = ?";
+			ps = conn.prepareStatement(SQL);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+
+			//結果をuserインスタンスに設定し、
+			//ArrayListインスタンスに追加
+			while (rs.next()) {
+				PurchaseBean bean = new PurchaseBean();
+				bean.setPro_name(rs.getString("PROD_NAME"));
+				bean.setArtist(rs.getString("ARTIST"));
+				bean.setMedia(rs.getString("MEDIA"));
+				bean.setPrice(rs.getString("PRICE"));
+				bean.setPurchase_date(sdf.format(rs.getDate("PURCHASE_DATE")));
+				bean.setDelivery_date(sdf.format(rs.getDate("DELIVERY_DATE")));
+				bean.setLabel(rs.getString("LABEL"));
+				empList.add(bean);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return empList;
+
+	}
+
 }
