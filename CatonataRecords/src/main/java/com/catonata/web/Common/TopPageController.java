@@ -44,4 +44,16 @@ public class TopPageController {
 		return mav;
 	}
 
+	@PostMapping("/category/search")
+	public ModelAndView searchctdr(@RequestParam("category") String category,ModelAndView mav) {
+
+		List<ProductBean> proname = CommonDao.proSearchCategory(category);
+
+		mav.addObject("allproduct",proname);
+		mav.setViewName("sitetop/SiteTop");
+
+		return mav;
+	}
+
+
 }

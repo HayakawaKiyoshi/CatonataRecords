@@ -160,6 +160,20 @@ public class CommonDao {
 	}
 
 	public static List<ProductBean> proSearch(String msg) {
+		List <ProductBean> empList = new ArrayList<ProductBean>();
+		final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE ARTIST LIKE ? OR PROD_NAME LIKE ?";
+		 empList = executeTwo(SQL,msg);
+		 return empList;
+	}
+	public static List<ProductBean> proSearchCategory(String msg) {
+		List <ProductBean> empList = new ArrayList<ProductBean>();
+		System.out.println(msg);
+		final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE MEDIA LIKE ?";
+		 empList = executeOne(SQL,msg);
+		 return empList;
+	}
+
+	public static List<ProductBean> executeOne(String sql,String msg) {
 
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -172,9 +186,52 @@ public class CommonDao {
 
 		try {
 			conn = manager.getConn();
+			ps = conn.prepareStatement(sql);
+			//引数を?にバインド
+			ps.setString(1,"%" + msg + "%");
+			rs = ps.executeQuery();
+			rs = ps.executeQuery();
 
-			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE ARTIST LIKE ? OR PROD_NAME LIKE ?";
-			ps = conn.prepareStatement(SQL);
+			//結果をuserインスタンスに設定し、
+			//ArrayListインスタンスに追加
+			while (rs.next()) {
+				String proid = rs.getString("PROD_ID");
+				String proname = rs.getString("PROD_NAME");
+				String artist = rs.getString("ARTIST");
+				String media = rs.getString("MEDIA");
+				String price = rs.getString("PRICE");
+				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
+				String label = rs.getString("LABEL");
+				String stock = rs.getString("STOCK");
+				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
+						releasedate, label, stock);
+				empList.add(bean);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return empList;
+
+	}
+
+	public static List<ProductBean> executeTwo(String sql,String msg) {
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+
+		//ArrayListを初期化
+		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
+
+		try {
+			conn = manager.getConn();
+			ps = conn.prepareStatement(sql);
 			//引数を?にバインド
 			ps.setString(1,"%" + msg + "%");
 			ps.setString(2,"%" + msg + "%");
