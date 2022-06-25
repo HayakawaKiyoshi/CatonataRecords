@@ -16,6 +16,7 @@ div#header {
 	text-align: center;
 	color: black;
 	background-color: gray;
+    font-family: 'Century Gothic', serif;
 }
 
 div#navidation {
@@ -62,3 +63,8 @@ div#footer {
 	left :auto;
 	top	:25px;
 }
+
+#btn01 {
+    font-family: 'ＭＳ 明朝', serif;
+}
+
