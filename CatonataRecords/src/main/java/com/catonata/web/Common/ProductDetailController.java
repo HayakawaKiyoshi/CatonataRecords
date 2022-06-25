@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.catonata.bean.ProductBean;
 import com.catonata.bean.UserInformationBean;
-import com.catonata.dao.ExecDao;
 
 /**
  * 商品詳細/商品購入/商品購入完了処理
@@ -36,7 +35,7 @@ public class ProductDetailController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		//商品名で商品詳細を検索→セッションに保存
-		ProductBean product = ExecDao.pro_find(id);
+//		ProductBean product = ExecDao.pro_find(id);
 //		session.setAttribute("product", product);
 		return "general/product/ProductDetail";
 	}
