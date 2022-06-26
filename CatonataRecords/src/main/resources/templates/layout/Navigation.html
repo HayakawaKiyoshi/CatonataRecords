@@ -11,8 +11,8 @@
 	<div layout:fragment="navigation">
 		<div id="navidation">
 			<th:block th:object=${session.LoginUser}>
-				<th:block th:switch="*{LoginUser.Authority}">
-					<th:block th:case="'1'">
+				<th:block th:switch="*{Authority}">
+					<th:block th:case="1">
 						<font size="4">商品カテゴリー</font>
 						<form action="/top/TopPage" method="post">
 							<input type="submit" value="一覧" class="btn btn-primary">
@@ -35,7 +35,7 @@
 
 
 
-					<th:block th:case="'2'">
+					<th:block th:case="2">
 						<form action="">
 							<input type="submit" value="メニュー" class="btn btn-primary">
 						</form>
@@ -50,7 +50,7 @@
 						</form>
 					</th:block>
 
-					<th:block th:case="'3'">
+					<th:block th:case="3">
 						<form action="">
 							<input type="submit" value="メニュー" class="btn btn-primary">
 						</form>
