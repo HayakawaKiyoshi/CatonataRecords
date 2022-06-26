@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout/MenuLayout">
+	layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -11,7 +11,8 @@
 	<div layout:fragment="navigation">
 		<div id="navidation">
 			<th:block th:object=${session.LoginUser}>
-				<th:block th:switch="*{Authority}">
+				<th:block th:switch="*{authority}">
+				<!-- 一般者ユーザー -->
 					<th:block th:case="1">
 						<font size="4">商品カテゴリー</font>
 						<form action="/top/TopPage" method="post">
@@ -25,17 +26,20 @@
 							<input type="hidden" name="category" value="DVD"> <input
 								type="submit" value="DVD" class="btn btn-primary">
 						</form>
+						<!--
 						<form action="">
 							<input type="submit" value="本/書籍" class="btn btn-primary">
 						</form>
 						<form action="">
 							<input type="submit" value="グッズ" class="btn btn-primary">
 						</form>
+						 -->
 					</th:block>
 
-
-
+					<!-- 管理者ユーザー -->
 					<th:block th:case="2">
+					管理者確認コメント
+					<!--
 						<form action="">
 							<input type="submit" value="メニュー" class="btn btn-primary">
 						</form>
@@ -48,9 +52,13 @@
 						<form action="">
 							<input type="submit" value="商品削除" class="btn btn-primary">
 						</form>
+						  -->
 					</th:block>
 
+					<!-- 経営者ユーザー -->
 					<th:block th:case="3">
+					経営者ユーザー確認コメント
+					<!--
 						<form action="">
 							<input type="submit" value="メニュー" class="btn btn-primary">
 						</form>
@@ -64,8 +72,10 @@
 						<form action="">
 							<input type="submit" value="売上確認" class="btn btn-primary">
 						</form>
+					 -->
 					</th:block>
 
+					<!-- ログインなし -->
 					<th:block th:case="*">
 						<font size="4">商品カテゴリー</font>
 						<form action="/top/TopPage" method="post">
