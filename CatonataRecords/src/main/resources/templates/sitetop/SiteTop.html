@@ -7,18 +7,13 @@
 <title>トップ画面</title>
 </head>
 <body>
-<<<<<<< HEAD
 <div class="container">
 <div layout:fragment="content">
 <th:block th:unless="${LoginUser == null}">
 	<th:block th:text="*{name}"></th:block>
-
-=======
-
 <div th:if="${LoginUser} != null">
 <th:block th:object = "${LoginUser}">
 	<div th:text="*{name}"></div>
->>>>>>> branch 'origin' of https://github.com/HayakawaKiyoshi/CatonataRecords.git
 </th:block>
 </div>
 
@@ -66,11 +61,7 @@
      <form action ="/mypage/top" method = "post" >
     <input type="submit" value="マイページ" class="btn btn-primary">
     </form>
-<<<<<<< HEAD
 </div>
 </div>
-=======
-
->>>>>>> branch 'origin' of https://github.com/HayakawaKiyoshi/CatonataRecords.git
 </body>
 </html>
