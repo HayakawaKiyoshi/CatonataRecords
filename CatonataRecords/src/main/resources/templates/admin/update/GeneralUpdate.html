@@ -4,11 +4,15 @@
 	layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
-<title>ユーザー変更画面（一般）</title>
+<title>ユーザー情報変更画面（一般者）</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
 </head>
 <body>
-	<h3>ユーザー情報変更</h3>
 	<div layout:fragment="content">
+	<div id="admin_content_bar">ユーザー情報変更画面（一般者）</div>
 	<p>更新したい項目を書き換えてください。</p>
 		<form action="/AdminUpdate/Check" th:action="@{/AdminUpdate/Check}"
 			method="post" th:object="${userInformationForm}">

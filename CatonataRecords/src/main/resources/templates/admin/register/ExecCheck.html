@@ -1,57 +1,59 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout/LayoutTest">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
-		<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
-		<title>新規会員登録確認画面（経営者）</title>
-	</head>
-	<body>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTest">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+<title>新規会員登録確認画面（経営者）</title>
+</head>
+<body>
 	<div class="container">
 		<div layout:fragment="content">
-		<h3>新規会員登録</h3>
+			<div id="admin_content_bar">新規会員登録確認画面（経営者）</div>
 			<p>以下の内容を確認の上、登録ボタンを押してください。</p>
-							<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered">
 
-							<th:block th:object="${session.eif}">
-								<tr>
-									<td>氏名</td>
-									<td><span th:text="*{name}"></span></td>
-								</tr>
-								<tr>
-									<td>レコード会社</td>
-									<td><span th:text="*{label}"></span></td>
+				<th:block th:object="${session.eif}">
+					<tr>
+						<td>氏名</td>
+						<td><span th:text="*{name}"></span></td>
+					</tr>
+					<tr>
+						<td>レコード会社</td>
+						<td><span th:text="*{label}"></span></td>
 
-								</tr>
-								<tr>
-									<td>パスワード</td>
-									<td><span th:text="*{password}"></span></td>
-								</tr>
-								<tr>
-									<td>メールアドレス</td>
-									<td><span th:text="*{mail}"></span></td>
-								</tr>
-								<tr>
-									<td>住所</td>
-									<td><span th:text="*{address}"></span></td>
-								</tr>
+					</tr>
+					<tr>
+						<td>パスワード</td>
+						<td><span th:text="*{password}"></span></td>
+					</tr>
+					<tr>
+						<td>メールアドレス</td>
+						<td><span th:text="*{mail}"></span></td>
+					</tr>
+					<tr>
+						<td>住所</td>
+						<td><span th:text="*{address}"></span></td>
+					</tr>
 
-							</th:block>
+				</th:block>
 
-							</table>
-							<form role="form" action="/AdminRegister/ExecComplete" th:action="@{/AdminRegister/ExecComplete}"
-						 	method="post">
-							<p>
-							<input type="submit" value="登録" class="btn btn-primary">
-							</p>
-						</form>
-						<p><button type="button" class="btn btn-primary"
-									onclick="location.href='/AdminRegister/ExecBack'">登録画面に戻る</button></p>
+			</table>
+			<form role="form" action="/AdminRegister/ExecComplete"
+				th:action="@{/AdminRegister/ExecComplete}" method="post">
+				<p>
+					<input type="submit" value="登録" class="btn btn-primary">
+				</p>
+			</form>
+			<p>
+				<button type="button" class="btn btn-primary"
+					onclick="location.href='/AdminRegister/ExecBack'">登録画面に戻る</button>
+			</p>
+		</div>
 	</div>
-	</div>
-	</body>
+</body>
 </html>
