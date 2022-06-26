@@ -61,6 +61,13 @@ div#footer {
 	margin-left: 15%;
 }
 
+#admin_content_bar{
+	background: #ff0000;
+	text-align: center;
+	border: solid 1px black;
+	margin-left: 15%;
+}
+
 .session_user {
 	position: relative;
 	left: auto;
