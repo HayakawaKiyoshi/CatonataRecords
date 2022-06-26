@@ -4,6 +4,7 @@
     layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
+		<script type="text/javascript" th:src="@{/js/script.js}"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
@@ -13,23 +14,33 @@
 <body>
     <div layout:fragment="content">
         <div style="border: solid 1px black; width: 500px; height: 250px; position: relative;">
+         <!-- このformの遷移先は商品一覧のコントローラのURLパターンです。よろしくお願いします。 -->
             <form role="form" action="/" th:action="@{/}" method="post">
                 <input type="submit" value="戻る">
             </form>
-
-        <p style="text-align: center; border: solid 1px black;">(商品タイトル)</p>
+		 <th:block th:object="${session.product}">
+        <p style="text-align: center; border: solid 1px black;" th:text="*{pro_name}">(商品タイトル)</p>
 
         <div style="border: solid 1px black; width: 150px; height: 80px;
           position: absolute; top: 120px; left: 30px;">(画像)</div>
 
         <div style="position: absolute; top: 120px; left: 250px;">
-          <span>価格：〇〇〇〇円</span><br>
+          <span>価格：<span th:text="*{price}"></span>円</span><br>
           <span>支払い：クレジットカード</span><br>
+          <!-- 伏字にする必要がある。 -->
           <span>番号：****-****-****-1111</span><br>
           <form role="form" action="/Purchase/PurchaseComplete" th:action="@{/Purchase/PurchaseComplete}" method="post">
+          <!-- 未入力チェックは行いません。 -->
+		購入数:<button id="down">-</button>
+			   <input type="text" id="textbox" name="purchase_number" value="1" readonly>
+			   <button id="up">+</button>
+		配送日:<select name="delivary">
+				<option th:each="items : ${delivary}" th:value="${items}" th:text="${items}">
+          		</select>
             <input type="submit" value="確定">
           </form>
         </div>
+        </th:block>
         </div>
     </div>
 </body>

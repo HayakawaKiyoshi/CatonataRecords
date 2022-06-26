@@ -70,13 +70,13 @@ public class ProductDetailController {
 		String [] delivaryDate = new String[7];
 		int date = 1;
 		for (int i = 1 ; i < delivaryDate.length + 1 ; i++) {
-			delivaryDate[i] = String.valueOf(calendar.get(Calendar.YEAR) + "年");
+			delivaryDate[i] = String.valueOf(calendar.get(Calendar.YEAR) + "/");
 			if((calendar.get(Calendar.DATE) + i ) < 32) {
-				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 1 )+ "月"
-									+ (calendar.get(Calendar.DATE) + i ) + "日");
+				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 1 )+ "/"
+									+ (calendar.get(Calendar.DATE) + i ));
 			} else if ((calendar.get(Calendar.DATE) + i) >= 32) {
-				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 2 )+ "月"
-						+ date + "日");
+				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 2 )+ "/"
+						+ date);
 				date++;
 			}
 		}
