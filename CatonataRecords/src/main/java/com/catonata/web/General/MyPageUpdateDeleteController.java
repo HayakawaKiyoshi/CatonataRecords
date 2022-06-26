@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.UserInfoDao;
+import com.catonata.validation.CreditCardInformationForm;
 import com.catonata.validation.UserInformationForm;
 
 @Controller
@@ -40,20 +41,24 @@ public class MyPageUpdateDeleteController {
 			return "general/mypage/UserUpdate";
 		}else {
 //			uif = UserInfoDao.find(name, password);
-			session.setAttribute("uif", uif);
-			return "general/mypage/UserUpdate";
+			UserInformationBean Uif = (UserInformationBean)session.getAttribute("uif");
+			session.setAttribute("uif", Uif);
+			return "general/mypage/CardUpdate";
 		}
 	}
 
 	@RequestMapping("/Check")
-	private String updateCheck (@Validated UserInformationForm uif, BindingResult result) {
+	private String updateCheck (@Validated CreditCardInformationForm form, BindingResult result) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
-			return "general/mypage/UserUpdate";
+			return "general/mypage/CardUpdate";
+		}else {
+			UserInformationBean Uif = (UserInformationBean)session.getAttribute("uif");
+			session.setAttribute("uif", Uif);
+			session.setAttribute("creditForm", form);
+			return "admin/update/GeneralCheck";
 		}
-		session.setAttribute("uif", uif);
-		return "admin/update/GeneralCheck";
 	}
 
 	@RequestMapping("/Complete")
