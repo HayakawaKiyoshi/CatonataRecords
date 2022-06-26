@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,8 +29,20 @@ public class MyPageUpdateDeleteController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = UserInfoDao.find(name, password);
-		model.addAttribute("userInformationForm", uif);
+		session.setAttribute("uif", uif);
 		return "general/mypage/UserUpdate";
+	}
+	@PostMapping("/creditCard")
+	private String updateCrdt(@Validated UserInformationForm uif, BindingResult result, Model model) {
+		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", LoginUser);
+		if (result.hasErrors()) {
+			return "general/mypage/UserUpdate";
+		}else {
+//			uif = UserInfoDao.find(name, password);
+			session.setAttribute("uif", uif);
+			return "general/mypage/UserUpdate";
+		}
 	}
 
 	@RequestMapping("/Check")
@@ -37,7 +50,7 @@ public class MyPageUpdateDeleteController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
-			return "admin/update/GeneralUpdate";
+			return "general/mypage/UserUpdate";
 		}
 		session.setAttribute("uif", uif);
 		return "admin/update/GeneralCheck";
