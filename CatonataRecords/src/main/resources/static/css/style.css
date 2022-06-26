@@ -16,9 +16,9 @@ div#header {
 	text-align: center;
 	color: black;
 	background-color: #BAD3FF;
-    /* font-family: 'Century Gothic', serif; */
-    padding: 1rem 2rem;
-    border: 3px dashed #136FFF;
+	/* font-family: 'Century Gothic', serif; */
+	padding: 1rem 2rem;
+	border: 3px dashed #136FFF;
 }
 
 div#navidation {
@@ -54,19 +54,19 @@ div#footer {
 	left: 20px;
 }
 
-#cotent_bar {
+#Exec_content_bar {
+	background: #00ff00;
 	text-align: center;
 	border: solid 1px black;
-	margin: auto;
+	margin-left: 15%;
 }
 
-.session_user{
-	position:relative;
-	left :auto;
-	top	:25px;
+.session_user {
+	position: relative;
+	left: auto;
+	top: 25px;
 }
 
 #btn01 {
-    font-family: 'Century Gothic', serif;
+	font-family: 'Century Gothic', serif;
 }
-
