@@ -4,11 +4,11 @@
 	layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
-<title>ユーザー変更画面（一般）</title>
+<title>ユーザー情報変更画面（一般）</title>
 </head>
 <body>
-	<h3>ユーザー情報変更</h3>
 	<div layout:fragment="content">
+	<div id="general_content_bar">ユーザー情報変更画面</div>
 	<p>更新したい項目を書き換えてください。</p>
 		<form action="/mypageUpdate/Check" th:action="@{/mypageUpdate/Check}"
 			method="post" th:object="${userInformationForm}">

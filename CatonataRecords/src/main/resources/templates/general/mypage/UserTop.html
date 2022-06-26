@@ -8,10 +8,11 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
         <link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
-<title>マイページ画面(一般ユーザー)</title>
+<title>マイページ</title>
 </head>
 <body>
     <div layout:fragment="content">
+    <div id="general_content_bar">マイページ</div>
     <div style="border: solid 1px black; width: 500px; height: 300px;">
         <p>ユーザー情報</p>
         <th:block th:object="${session.LoginUser}">

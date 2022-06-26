@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout/LayoutTest">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
-        <link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
-<title>ユーザー情報削除画面(退会)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+<title>退会確認画面</title>
 </head>
 <body>
-    <div layout:fragment="content">
-    <p style="text-align: center; border: solid 1px black;">ユーザー情報削除</p>
+	<div layout:fragment="content">
+		<div id="general_content_bar">退会確認画面</div>
 
-    <p>ユーザー情報を削除しますか？</p>
+		<p>ユーザー情報を削除しますか？</p>
 
-    <form role="form" action="/" th:action="@{/}" method="post">
-        <input type="submit" value="削除する">
-    </form>
-    </div>
+		<form role="form" action="/" th:action="@{/}" method="post">
+			<input type="submit" value="削除する">
+		</form>
+	</div>
 </body>
 </html>
