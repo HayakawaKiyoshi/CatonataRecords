@@ -69,18 +69,19 @@ public class ProductDetailController {
 	private String[] delivaryDateCreate (Calendar calendar) {
 		String [] delivaryDate = new String[7];
 		int date = 1;
-		for (int i = 1 ; i < delivaryDate.length + 1 ; i++) {
+		for (int i = 0 ; i < delivaryDate.length ; i++) {
 			delivaryDate[i] = String.valueOf(calendar.get(Calendar.YEAR) + "/");
 			if((calendar.get(Calendar.DATE) + i ) < 32) {
 				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 1 )+ "/"
-									+ (calendar.get(Calendar.DATE) + i ));
-			} else if ((calendar.get(Calendar.DATE) + i) >= 32) {
+									+ (calendar.get(Calendar.DATE) + ( i + 1 )));
+			} else if ((calendar.get(Calendar.DATE) + ( i + 1 )) > 31) {
 				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 2 )+ "/"
 						+ date);
 				date++;
 			}
 		}
 		//問題点：13月が存在してしまう可能性がある。
+		//どの月も31日が存在する体になってしまう。
 		return delivaryDate;
 	}
 
@@ -119,7 +120,7 @@ public class ProductDetailController {
 
 		//購入日時取得
 		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String purcahseDate = String.valueOf(sdf.format(calendar.getTime()));
 
 		//購入履歴テーブルに保存

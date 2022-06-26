@@ -97,5 +97,21 @@ public class TopPageController {
 		return mav;
 	}
 
+	@RequestMapping(path="/general/TopPageBack")
+	private ModelAndView topPageBack (ModelAndView mav,Model model) {
+
+		UserInformationBean user = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser",user);
+		//ここのsetViewNameは何が正しいのかを聞く
+		mav.setViewName("sitetop/SiteTop");
+		List<ProductBean> ap = CommonDao.allProduct();
+		session.setAttribute("allproduct", ap);
+		mav.addObject("allproduct",ap);
+		mav.addObject("LoginUser",user);
+		System.out.println(user.getName());
+		mav.addObject("send","/top/search");
+
+		return mav;
+	}
 
 }

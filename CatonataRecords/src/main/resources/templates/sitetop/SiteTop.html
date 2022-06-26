@@ -35,16 +35,18 @@
 				   	<th>在庫</th>
             </tr>
             <th:block th:each="item : ${allproduct}">
-            <tr>
-                   <td th:text="*{item.pro_id}"></td>
-							<td th:text="*{item.pro_name}"></td>
-							<td th:text="*{item.artist}"></td>
-							<td th:text="*{item.media}"></td>
-							<td th:text="*{item.price}"></td>
-							<td th:text="*{item.release_date}"></td>
-							<td th:text="*{item.label}"></td>
-							<td th:text="*{item.stock}"></td>
-              </tr>
+			<tr>
+					<!--  <td th:text="*{item.pro_id}"></td>-->
+					<td><a th:href="@{/Purchase/ProductDetail(pro_id=*{item.pro_id})}">
+						<span  th:text="*{item.pro_name}">商品名</span></a>
+					</td>
+					<td th:text="*{item.artist}"></td>
+					<td th:text="*{item.media}"></td>
+					<td th:text="*{item.price}"></td>
+					<td th:text="*{item.release_date}"></td>
+					<td th:text="*{item.label}"></td>
+					<td th:text="*{item.stock}"></td>
+             </tr>
         </th:block>
     </table>
     <form action ="/top/TopPage" method = "post" >
