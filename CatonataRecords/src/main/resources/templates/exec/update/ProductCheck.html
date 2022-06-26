@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
 <title>商品変更確認画面</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
 </head>
 <body>
-    <p style="text-align: center; border: solid 1px black;">商品変更確認</p>
+
+<div class="container">
+<div layout:fragment="content">
+<div id="Exec_content_bar">商品変更確認</div>
     以下の内容で変更します。よろしいですか？
 
     <form action="/exec/update/execute" method="post" th:object="${update}">
@@ -20,8 +29,10 @@
         <p><input type="submit" value="変更"></p>
     </form>
 
-    <form role="form" action="/exec/update/back" th:action="@{/exec/update/back}" method="">
+    <form role="form" action="/exec/update/back" th:action="@{/exec/update/back}" method="post">
         <input type="submit" value="戻る">
     </form>
+    </div>
+    </div>
 </body>
 </html>

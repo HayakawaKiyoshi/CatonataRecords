@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="layout/LayoutTest">
 <head>
 <meta charset="UTF-8">
 <title>自社商品変更入力画面</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
 </head>
 <body>
-    <p style="text-align: center; border: solid 1px black;">自社商品変更</p>
+<div class="container">
+<div layout:fragment="content">
+<div id="Exec_content_bar">自社商品変更</div>
 
     <form role="form" action="/exec/update" th:action="@{/exec/update}" th:object="${productForm}" method="post">
         商品名：<input type="text" th:field="*{pro_name}">
@@ -31,5 +39,7 @@
 
         <input type="submit" value="変更確認画面へ">
     </form>
+    </div>
+    </div>
 </body>
 </html>

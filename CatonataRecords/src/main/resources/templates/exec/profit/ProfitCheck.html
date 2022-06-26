@@ -5,12 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>商品売上確認画面</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
+
 </head>
 <body>
 	<div class="container">
 		<div layout:fragment="content">
-			<p style="text-align: center; border: solid 1px black;">売上確認</p>
-
+		<div id="Exec_content_bar">売上確認</div>
 			<p>区間検索</p>
 			<!--
     <form role="form" action="/" th:action="@{/}" method="post">
