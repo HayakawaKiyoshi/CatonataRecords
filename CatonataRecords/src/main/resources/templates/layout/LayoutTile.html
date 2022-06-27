@@ -14,31 +14,25 @@
 
 </head>
 <body>
-	<div id="container">
-		<div class="table-responsive">
-			<div class="LayoutTile">
-				<table class="table-sm">
-					<tr>
-						<td colspan="2">
+	<div class="container">
+		<div class="LayoutTile">
+			<table class="table table-responsive">
+				<tr>
+					<td colspan="2">
 						<div layout:include="layout/Header :: header"></div>
-						</td>
-					</tr>
-
-					<!-- <th:block th:unless="${step == '1'}"> -->
-					<!-- サイドメニュー -->
-
-					<tr>
-						<td>
-						<span layout:include="layout/Navigation :: navigation"></span>
-						</td>
-						<!-- メインコンテンツ -->
-						<td><span layout:fragment="content"></span></td>
-					</tr>
-
-					<!-- フッター -->
-				</table>
-				<div layout:include="layout/Footer :: footer"></div>
-			</div>
+					</td>
+				</tr>
+				<!-- <th:block th:unless="${step == '1'}"> -->
+				<!-- サイドメニュー -->
+				<tr>
+					<td><span layout:include="layout/Navigation :: navigation"></span>
+					</td>
+					<!-- メインコンテンツ -->
+					<td><span layout:fragment="content"></span></td>
+				</tr>
+			</table>
+				<!-- フッター -->
+			<div layout:include="layout/Footer :: footer"></div>
 		</div>
 	</div>
 	<script src="./design/js/bootstrap.min.js"></script>

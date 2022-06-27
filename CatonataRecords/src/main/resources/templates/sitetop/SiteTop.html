@@ -7,7 +7,6 @@
 <title>トップ画面</title>
 </head>
 <body>
-<div class="container">
 <div layout:fragment="content">
 
 <div th:if="${LoginUser} != null">
@@ -68,7 +67,6 @@
      <form action ="/mypage/top" method = "post" >
     <input type="submit" value="マイページ" class="btn btn-primary">
     </form>
-</div>
 </div>
 </body>
 </html>

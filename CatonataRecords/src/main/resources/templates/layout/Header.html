@@ -15,21 +15,23 @@
 				<th:block th:if="${session.LoginUser == null}">
 					<div id="header_beforelogin">
 						<form action="/login" method="get">
-							<input type="submit" value="ログイン" class="btn btn-primary">
+							<span class="text-end"><input type="submit" value="ログイン"></span>
 						</form>
 						<form action="" method="post">
-							<input type="submit" value="新規登録" class="btn btn-primary">
+							<span class="text-end"><input type="submit" value="新規登録"></span>
 						</form>
 					</div>
-	</th:block>
+				</th:block>
 
 				<th:block th:if="${session.LoginUser != null}">
 					<div id="header_afterlogin">
-						<form action ="/mypage/top" method = "post" >
-    					<input type="submit" value="マイページ" class="btn btn-primary">
-   						 </form>
+						<form action="/mypage/top" method="post">
+							<span class="text-end"> <input type="submit" value="マイページ">
+							</span>
+						</form>
 						<form action="/logout" method="post">
-							<input type="submit" value="ログアウト">
+							<span class="text-end"><input type="submit" value="ログアウト">
+							</span>
 						</form>
 					</div>
 			</div>
@@ -40,10 +42,14 @@
 		<div id="header">
 			～CATONATA RECORDS～
 			<th:block th:if="${session.LoginUser != null}">
-			<th:block th:object="${session.LoginUser}">
-				<div class="session_user">ようこそ<th:block th:text="*{name}"></th:block>さん</div>
-				<!--  ようこそ<span th:text="*{name}"></span>さん -->
-			</th:block>
+				<th:block th:object="${session.LoginUser}">
+					<div class="session_user">
+						<p class="text-end">
+							ようこそ <b><th:block th:text="*{name}"></th:block></b> さん
+						</p>
+					</div>
+					<!--  ようこそ<span th:text="*{name}"></span>さん -->
+				</th:block>
 			</th:block>
 		</div>
 	</div>
