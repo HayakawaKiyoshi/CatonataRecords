@@ -126,7 +126,6 @@ public class ProductDetailController {
 		//購入履歴テーブルに保存
 		System.out.println("ID:" + LoginUser.getId() + "\n商品ID:" + product.getPro_id()
 							+ "\n購入日" + purchaseDate + "\n配送日" + delivaryDate);
-		//コミット確認
 		ExecDao.purchaseHistory(LoginUser, product, purchaseDate, delivaryDate);
 
 		//商品テーブルの在庫数と販売数をUPDATE
