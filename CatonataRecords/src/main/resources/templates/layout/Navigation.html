@@ -11,7 +11,7 @@
 	<div layout:fragment="navigation">
 		<div id="navidation" >
 				<!-- ログインなし -->
-				<th:block th:if="${LoginUser == null}">
+				<th:block th:if="${session.LoginUser == null}">
 					<font size="4">商品カテゴリー</font>
 					<form action="/top/TopPage" method="post">
 						<input type="submit" value="一覧" class="btn btn-primary">
