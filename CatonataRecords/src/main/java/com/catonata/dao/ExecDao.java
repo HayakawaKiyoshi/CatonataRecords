@@ -345,9 +345,10 @@ public class ExecDao {
 				String price = rs.getString("PRICE");
 				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
 				String label = rs.getString("LABEL");
+				String sold = rs.getString("SOLD");
 				String stock = rs.getString("STOCK");
 				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
-						releasedate, label, stock);
+						releasedate, label, sold, stock);
 				empList.add(bean);
 			}
 		} catch (ClassNotFoundException e) {
@@ -504,9 +505,10 @@ public class ExecDao {
 				String price = rs.getString("PRICE");
 				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
 				String label = rs.getString("LABEL");
+				String sold = rs.getString("SOLD");
 				String stock = rs.getString("STOCK");
 				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
-						releasedate, label, stock);
+						releasedate, label,sold, stock);
 				empList.add(bean);
 			}
 		} catch (ClassNotFoundException e) {
