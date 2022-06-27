@@ -23,7 +23,7 @@ public class AdminTopController {
 
 //テスト
 	@RequestMapping("/Top")
-	private String admintop (@RequestParam("name")String name, @RequestParam("pass")String pass
+	private String admintop (@RequestParam("name")String name, @RequestParam("password")String pass
 			, Model model) {
 		UserInformationBean LoginUser = CommonDao.find(name,pass);
 		session.setAttribute("LoginUser", LoginUser);
