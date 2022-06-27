@@ -68,18 +68,19 @@
 							</table>
 							<form role="form" action="SignUp/SignUpComplete" th:action="@{${send}}"
 							 method="post">
-							<p>
-							<input type="submit" value="登録" class="btn btn-primary">
-							</p>
-						</form>
+
 						<th:block th:if="${session.LoginUser != null}">
-								<p><button type="button" class="btn btn-primary"
-									onclick="location.href='/AdminRegister/Back'">登録画面に戻る</button></p>
+								<button type="button" class="btn btn-primary"
+									onclick="location.href='/AdminRegister/Back'">登録画面に戻る</button>
 						</th:block>
 						<th:block th:if="${session.LoginUser == null}">
-							<p><button type="button" class="btn btn-primary"
-									onclick="location.href='/SignUp/SignUpBack'">登録画面に戻る</button></p>
+							<button type="button" class="btn btn-primary"
+									onclick="location.href='/SignUp/SignUpBack'">登録画面に戻る</button>
 						</th:block>
+						<input type="submit" value="登録" class="btn btn-primary">
+
+
+					</form>
 	</div>
 	</body>
 </html>
