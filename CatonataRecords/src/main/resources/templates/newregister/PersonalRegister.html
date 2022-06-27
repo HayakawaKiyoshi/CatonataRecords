@@ -18,7 +18,7 @@
 		<div id="common_content_bar">新規会員登録</div>
 		<form role="form" action="/AdminRegister" th:action="@{${send}}"
 			th:object="${userInformationForm}" method="post">
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered" id ="PRTable">
 				<tr>
 					<td>氏名</td>
 					<td>
