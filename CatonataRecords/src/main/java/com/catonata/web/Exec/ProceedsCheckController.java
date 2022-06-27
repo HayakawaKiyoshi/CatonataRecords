@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.catonata.bean.ProductBean;
+import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.ExecDao;
 
 @Controller
@@ -21,6 +22,9 @@ public class ProceedsCheckController {
 
 	@RequestMapping(path="")
 	private String proceedsCheck (@RequestParam("label")String label, Model model) {
+
+		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", LoginUser);
 
 		//labelで商品テーブルの検索を行う。
 		List<ProductBean> proceedsCheck = ExecDao.findAll(label);
