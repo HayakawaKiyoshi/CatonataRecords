@@ -61,9 +61,8 @@ public class MyPageUpdateDeleteController {
 			CreditCardInformationForm crdt = new CreditCardInformationForm();
 			System.out.println(bean.getCreditnumber());
 			crdt.setCreditnumber(bean.getCreditnumber());
-			crdt.setCreditspan(bean.getSecuritycode());
+			crdt.setCreditspan(bean.getCreditspan());
 			crdt.setSecurity(bean.getSecuritycode());
-			System.out.println(crdt.getCreditnumber());
 			session.setAttribute("card", crdt);
 			model.addAttribute("creditCardInformationForm",crdt);
 			return "general/mypage/CardUpdate";
