@@ -55,6 +55,7 @@ public class ProductRegisterController {
 
 		//入力内容をセッションから取得
 		ProductForm proForm = (ProductForm) session.getAttribute("proForm");
+		proForm.setLabel(user.getLabel());
 
 		//登録を実行するDaoを呼び出す
 		ExecDao.productRegister(proForm);
