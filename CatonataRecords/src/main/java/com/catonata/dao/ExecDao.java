@@ -42,7 +42,9 @@ public class ExecDao {
 			ps.setString(6, form.getLabel());
 			ps.setString(7, "0");
 			ps.setString(8, form.getStock());
-			ps.executeUpdate();
+			int cnt = ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件の商品データを登録しました。");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -79,6 +81,9 @@ public class ExecDao {
 			ps.setString(8, update.getStock());
 			ps.setString(9, update.getPro_id());
 			ps.executeUpdate();
+			int cnt = ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件の商品データを登録しました。");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
