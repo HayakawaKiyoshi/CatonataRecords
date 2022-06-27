@@ -118,19 +118,19 @@ public class MyPageUpdateDeleteController {
 		session.setAttribute("LoginUser", LoginUser);
 		UserInformationBean DeleteUser = CommonDao.find(name, pass);
 		model.addAttribute("delete", DeleteUser);
-		return "admin/delete/GeneralCheck";
+		return "general/mypage/ResignCheck";
 	}
 
 	@RequestMapping("delete/Complete")
-	private String deleteComplete(@RequestParam("name")String name, Model model) {
+	private String deleteComplete(@RequestParam("id")String id, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		UserInfoDao.adminDelete(name);
+		UserInfoDao.adminDelete(id);
 //		if (id.equals(au.getId())) {
 //			model.addAttribute("step", "1");
 //		}
 		model.addAttribute("msg","削除");
-		return "admin/complete/Complete";
+		return "general/mypage/ResignComplete";
 	}
 
 

@@ -1,25 +1,37 @@
 package com.catonata.validation;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.catonata.validation.ByteCheckValidation.ByteCheck;
 
 public class ProductForm {
 	private String pro_id;
 
 	@NotEmpty
+	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String pro_name;
 	@NotEmpty
+	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String artist;
 	@NotEmpty
+	@ByteCheck(charset="UTF-8",min=1, max=20)
 	private String media;
 	@NotEmpty
+	@Pattern(regexp ="^[0-9]+$", message="商品価格は半角数値で入力してください")
+	@ByteCheck(charset="UTF-8",min=1, max=10)
 	private String price;
 	@NotEmpty
 	private String release_date;
 	@NotEmpty
+	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String label;
 
 	private String sold;
 	@NotEmpty
+	@Pattern(regexp ="^[0-9]+$", message="在庫数は半角数値で入力してください")
+	@ByteCheck(charset="UTF-8",min=1, max=10)
 	private String stock;
 
 	public String getPro_name() {

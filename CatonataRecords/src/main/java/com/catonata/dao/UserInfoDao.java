@@ -229,6 +229,7 @@ public class UserInfoDao {
 		DBManager manager = new DBManager();
 		Connection conn = null;
 		PreparedStatement ps = null;
+		System.out.println(name);
 //		SqlTemplates sqls = new SqlTemplates();
 		try {
 			// 接続する
@@ -237,7 +238,7 @@ public class UserInfoDao {
 			ps.setString(1, name);
 			int cnt =ps.executeUpdate();
 			conn.commit();
-			System.out.println(cnt + "件のデータを登録しました。");
+			System.out.println(cnt + "件のデータを削除しました。");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
