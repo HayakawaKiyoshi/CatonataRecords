@@ -9,8 +9,7 @@
 <body>
 <div class="container">
 <div layout:fragment="content">
-<th:block th:unless="${LoginUser == null}">
-	<th:block th:text="*{name}"></th:block>
+
 <div th:if="${LoginUser} != null">
 <th:block th:object = "${LoginUser}">
 	<div th:text="*{name}"></div>
