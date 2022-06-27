@@ -27,11 +27,13 @@ public class MyPageController {
 	public ModelAndView index(LoginForm form, ModelAndView mav) {
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
-
-		List<PurchaseBean> bean = UserInfoDao.findPurchase(user.getId());
-		mav.addObject("purchase",bean);
-
-		mav.setViewName("general/mypage/UserTop");
+		if(user == null) {
+			mav.setViewName("redirect:/login");
+		}else {
+			List<PurchaseBean> bean = UserInfoDao.findPurchase(user.getId());
+			mav.addObject("purchase",bean);
+			mav.setViewName("general/mypage/UserTop");
+			}
 		return mav;
 	}
 
