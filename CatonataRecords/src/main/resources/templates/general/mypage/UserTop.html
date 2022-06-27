@@ -48,7 +48,7 @@
                     </tr>
                 </th:block>
             </table>
-            <!-- 退会ボタン -->
+            <!-- 退会ボタン  -->
             <form action="/myUpdate/delete/Check" method="post" th:object="${session.LoginUser}">
 				<input type="hidden" name="name" th:value="*{name}">
 				<input type="hidden" name="pass" th:value="*{password}">
