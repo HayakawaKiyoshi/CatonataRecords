@@ -300,7 +300,7 @@ public class UserInfoDao {
 		//DBManagerをインスタンス化
 		DBManager manager = new DBManager();
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		final String LOGIN_SQL = "SELECT * FROM USER_TABLE WHERE user_name = ? AND password = ?";
+		final String LOGIN_SQL = "SELECT ID,PASSWORD,USER_NAME,AGE,GENDER, TO_CHAR(birthday, 'YYYY/MM/DD') AS \"birth\",ADDRESS,EMAIL,AUTHORITY,CREDIT_NUMBER,SPAN,SECURITY_CODE,BANK_NUMBER,BANK_NAME,LABEL FROM USER_TABLE WHERE user_name = ? AND password = ?";
 
 		UserInformationForm user = new UserInformationForm();
 
@@ -318,7 +318,7 @@ public class UserInfoDao {
 				user.setName(rs.getString("user_name"));
 				user.setAge(rs.getString("age"));
 				user.setGender(rs.getString("gender"));
-				user.setBirthday(rs.getString("birthday"));
+				user.setBirthday(rs.getString("birth"));
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
 				user.setAuthority(rs.getString("authority"));

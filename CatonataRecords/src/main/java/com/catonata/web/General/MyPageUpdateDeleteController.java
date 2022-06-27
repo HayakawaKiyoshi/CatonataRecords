@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.catonata.bean.UserInformationBean;
+import com.catonata.dao.CommonDao;
 import com.catonata.dao.UserInfoDao;
 import com.catonata.validation.CreditCardInformationForm;
 import com.catonata.validation.UserInformationForm;
@@ -92,10 +93,11 @@ public class MyPageUpdateDeleteController {
 		uif = (UserInformationForm)session.getAttribute("uif");
 		uif.setId(LoginUser.getId());
 		CreditCardInformationForm form = (CreditCardInformationForm)session.getAttribute("card");
-		System.out.println(form.getCreditnumber());
-		session.setAttribute("creditForm", form);
 		UserInfoDao.generalUpdate(uif,form);
 		model.addAttribute("msg","更新");
+
+		session.removeAttribute("uif");
+		session.removeAttribute("card");
 
 		return  "general/mypage/UpdateComplete";
 
@@ -109,6 +111,28 @@ public class MyPageUpdateDeleteController {
 		model.addAttribute("userInformationForm", uif);
 		return "general/mypage/UserUpdate";
 	}
+
+	@RequestMapping("/delete/Check")
+	private String deleteCheck(@RequestParam("name")String name, @RequestParam("pass")String pass, Model model ) {
+		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", LoginUser);
+		UserInformationBean DeleteUser = CommonDao.find(name, pass);
+		model.addAttribute("delete", DeleteUser);
+		return "admin/delete/GeneralCheck";
+	}
+
+	@RequestMapping("delete/Complete")
+	private String deleteComplete(@RequestParam("name")String name, Model model) {
+		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", LoginUser);
+		UserInfoDao.adminDelete(name);
+//		if (id.equals(au.getId())) {
+//			model.addAttribute("step", "1");
+//		}
+		model.addAttribute("msg","削除");
+		return "admin/delete/Complete";
+	}
+
 
 
 }
