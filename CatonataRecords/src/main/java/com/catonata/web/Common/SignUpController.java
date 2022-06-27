@@ -69,6 +69,7 @@ public class SignUpController {
 			return "/newregister/CardRegister";
 		}
 		UserInformationForm uif = (UserInformationForm)session.getAttribute("uif");
+		//コミット確認
 		session.setAttribute("uif", uif);
 		session.setAttribute("ccif", ccif);
 		//基本情報の入力が正常であれば、登録内容確認画面へ
