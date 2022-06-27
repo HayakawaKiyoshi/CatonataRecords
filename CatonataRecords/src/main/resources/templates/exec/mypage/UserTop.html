@@ -11,45 +11,43 @@
 	rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-		<div layout:fragment="content">
+	<div layout:fragment="content">
 		<div id="Exec_content_bar">商品一覧</div>
-			<table>
+		<table>
+			<tr>
+				<th>商品ID</th>
+				<th>商品名</th>
+				<th>アーティスト</th>
+				<th>商品媒体</th>
+				<th>価格</th>
+				<th>発売日</th>
+				<th>レコード会社</th>
+				<th>在庫</th>
+				<th>変更</th>
+			</tr>
+			<th:block th:each="item : ${emplist}">
 				<tr>
-					<th>商品ID</th>
-					<th>商品名</th>
-					<th>アーティスト</th>
-					<th>商品媒体</th>
-					<th>価格</th>
-					<th>発売日</th>
-					<th>レコード会社</th>
-					<th>在庫</th>
-					<th>変更</th>
+					<td th:text="*{item.pro_id}"></td>
+					<td th:text="*{item.pro_name}"></td>
+					<td th:text="*{item.artist}"></td>
+					<td th:text="*{item.media}"></td>
+					<td th:text="*{item.price}"></td>
+					<td th:text="*{item.release_date}"></td>
+					<td th:text="*{item.label}"></td>
+					<td th:text="*{item.stock}"></td>
+					<td>
+						<form action="/exec/update" th:action="@{/exec/update}"
+							method="get">
+							<input type="hidden" name="id" th:value="*{item.pro_id}">
+							<input type="submit" value="変更">
+						</form>
+					</td>
 				</tr>
-				<th:block th:each="item : ${emplist}">
-					<tr>
-						<td th:text="*{item.pro_id}"></td>
-						<td th:text="*{item.pro_name}"></td>
-						<td th:text="*{item.artist}"></td>
-						<td th:text="*{item.media}"></td>
-						<td th:text="*{item.price}"></td>
-						<td th:text="*{item.release_date}"></td>
-						<td th:text="*{item.label}"></td>
-						<td th:text="*{item.stock}"></td>
-						<td>
-							<form action="/exec/update" th:action="@{/exec/update}"
-								method="get">
-								<input type="hidden" name="id" th:value="*{item.pro_id}">
-								<input type="submit" value="変更">
-							</form>
-						</td>
-					</tr>
-				</th:block>
-			</table>
-			<form action="/exec/select" th:action="@{/exec/select}" method="get">
-				<input type="submit" value="削除">
-			</form>
-		</div>
+			</th:block>
+		</table>
+		<form action="/exec/select" th:action="@{/exec/select}" method="get">
+			<input type="submit" value="削除">
+		</form>
 	</div>
 
 </body>
