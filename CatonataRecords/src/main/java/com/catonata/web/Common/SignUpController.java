@@ -68,7 +68,8 @@ public class SignUpController {
 		if (result.hasErrors()) {
 			return "/newregister/CardRegister";
 		}
-		UserInformationBean uif = (UserInformationBean)session.getAttribute("uif");
+		UserInformationForm uif = (UserInformationForm)session.getAttribute("uif");
+		//コミット確認
 		session.setAttribute("uif", uif);
 		session.setAttribute("ccif", ccif);
 		//基本情報の入力が正常であれば、登録内容確認画面へ
