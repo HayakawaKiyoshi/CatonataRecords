@@ -125,7 +125,7 @@ public class MyPageUpdateDeleteController {
 	private String deleteComplete(@RequestParam("id")String id, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		UserInfoDao.adminDelete(id);
+		UserInfoDao.execDelete(id);
 //		if (id.equals(au.getId())) {
 //			model.addAttribute("step", "1");
 //		}
