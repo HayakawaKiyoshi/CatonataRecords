@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.catonata.bean.UserInformationBean;
+import com.catonata.dao.UserInfoDao;
 import com.catonata.validation.CreditCardInformationForm;
 import com.catonata.validation.UserInformationForm;
 
@@ -92,7 +93,7 @@ public class SignUpController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		ccif = (CreditCardInformationForm)session.getAttribute("ccif");
-//		UserInfoDao.insert(uif,ccif);
+		UserInfoDao.insert(uif,ccif);
 		return "/newregister/RegisterComplete";
 	}
 
