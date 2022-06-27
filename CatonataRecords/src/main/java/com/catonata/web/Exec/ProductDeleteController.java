@@ -28,6 +28,7 @@ public class ProductDeleteController {
 	@RequestMapping(path = "/select", method = RequestMethod.GET)
 	public ModelAndView index(LoginForm form, ModelAndView mav) {
 		UserInformationBean user = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 		List<ProductBean> empList = ExecDao.findAll(user.getLabel());
 		mav.setViewName("exec/delete/Select");
 		mav.addObject("productForm",empList);
@@ -35,12 +36,12 @@ public class ProductDeleteController {
 	}
 
 	@RequestMapping(path = "/delete/select", method = RequestMethod.GET)
-	public ModelAndView get(@RequestParam("check") String[] check, ProductForm form,ModelAndView mav) {
+	public ModelAndView get(@RequestParam("check") String[] check, ProductForm form,UserInformationBean user,ModelAndView mav) {
 		mav.setViewName("exec/delete/Check");
 
-//		//ログイン情報を取得する
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
+		//ログイン情報を取得する
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 
 		//検索のDaoを呼び出す
 		ArrayList<ProductForm> delete = ExecDao.profind2(check);
@@ -60,13 +61,12 @@ public class ProductDeleteController {
 	 * @return
 	 */
 	@RequestMapping(path = "/delete", method = RequestMethod.GET)
-	public ModelAndView send(@RequestParam("name") String name, ProductForm form,ModelAndView mav) {
+	public ModelAndView send(@RequestParam("name") String name, ProductForm form,UserInformationBean user,ModelAndView mav) {
 		mav.setViewName("exec/delete/Check");
 
-//		//ログイン情報を取得する
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
-
+		//ログイン情報を取得する
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 
 		//検索のDaoを呼び出す
 		ProductForm delete = ExecDao.profind(name);
@@ -83,10 +83,10 @@ public class ProductDeleteController {
 	 * @return
 	 */
 	@RequestMapping(path = "delete/execute", method = RequestMethod.POST)
-	public ModelAndView send2(ModelAndView mav) {
+	public ModelAndView send2(UserInformationBean user,ModelAndView mav) {
 
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 		String[] check = (String[]) session.getAttribute("check");
 
 		//削除のDaoを呼び出す
@@ -105,6 +105,7 @@ public class ProductDeleteController {
 	public ModelAndView search(@RequestParam("msg") String msg,ModelAndView mav) {
 
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 
 		System.out.println(msg);
 		System.out.println(user.getLabel());

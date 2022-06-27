@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.ExecDao;
 import com.catonata.validation.ProductForm;
 
@@ -25,11 +26,12 @@ public class ProductUpdateController {
 
 
 	@RequestMapping(path = "/update", method = RequestMethod.GET)
-	public ModelAndView send(@RequestParam("id") String id,ProductForm form,ModelAndView mav) {
+	public ModelAndView send(@RequestParam("id") String id,ProductForm form,UserInformationBean user,ModelAndView mav) {
 
-//		//ログイン情報の取得
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
+		//ログイン情報の取得
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
+		System.out.println(user.getAuthority());
 
 		//社員情報をid検索するDAOを呼び出す
 		ProductForm update = ExecDao.profind(id);
@@ -50,9 +52,9 @@ public class ProductUpdateController {
 	 * @return
 	 */
 	@RequestMapping(path = "/update", method = RequestMethod.POST)
-	public ModelAndView send(@Validated ProductForm form, BindingResult result, ModelAndView mav) {
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
+	public ModelAndView send(@Validated ProductForm form, BindingResult result, UserInformationBean user,ModelAndView mav) {
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 
 		System.out.println(form.getPro_name());
 		//バリデーションエラーの確認
@@ -76,9 +78,9 @@ public class ProductUpdateController {
 	 * @return
 	 */
 	@RequestMapping(path = "update/execute", method = RequestMethod.POST)
-	public ModelAndView send(ModelAndView mav) {
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
+	public ModelAndView send(UserInformationBean user,ModelAndView mav) {
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 		//セッションに保存された情報を取得
 		ProductForm update = (ProductForm) session.getAttribute("update");
 		ExecDao.productUpdate(update);
@@ -98,11 +100,10 @@ public class ProductUpdateController {
 	 * @return
 	 */
 	@RequestMapping("update/back")
-	public ModelAndView back(ModelAndView mav) {
+	public ModelAndView back(UserInformationBean user,ModelAndView mav) {
 		//ログイン情報の取得
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
-
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 		 //セッションに保存した情報を取得
 		ProductForm update = (ProductForm) session.getAttribute("update");
 		 mav.addObject("productForm",update);

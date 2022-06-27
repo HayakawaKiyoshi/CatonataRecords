@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.ExecDao;
 import com.catonata.validation.ProductForm;
 
@@ -27,9 +28,9 @@ public class ProductRegisterController {
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
-	public ModelAndView index2(@Validated ProductForm form,BindingResult result, ModelAndView mav) {
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
+	public ModelAndView index2(@Validated ProductForm form,BindingResult result, UserInformationBean user,ModelAndView mav) {
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 
 		//バリデーションエラーの確認
 		if (result.hasErrors()) {
@@ -47,10 +48,10 @@ public class ProductRegisterController {
 	}
 
 	@RequestMapping(path = "/register/execute", method = RequestMethod.POST)
-	public ModelAndView insert(ModelAndView mav) {
+	public ModelAndView insert(UserInformationBean user,ModelAndView mav) {
 		mav.setViewName("exec/complete/Complete");
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 
 		//入力内容をセッションから取得
 		ProductForm proForm = (ProductForm) session.getAttribute("proForm");
@@ -72,9 +73,9 @@ public class ProductRegisterController {
 	 * @return
 	 */
 	@RequestMapping(path = "/register/back")
-	public ModelAndView back(ModelAndView mav) {
-//		InsertForm user = (InsertForm) session.getAttribute("user");
-//		mav.addObject("user", user);
+	public ModelAndView back(UserInformationBean user,ModelAndView mav) {
+		user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
 		mav.setViewName("exec/register/ProductRegister");
 
 		 //入力した内容を取得
