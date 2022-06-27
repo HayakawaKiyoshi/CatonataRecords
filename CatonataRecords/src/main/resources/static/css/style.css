@@ -69,7 +69,7 @@ div#footer {
 }
 
 #general_content_bar{
-	background: #ff0000;
+	background: blue;
 	text-align: center;
 	border: solid 1px black;
 	margin-left: 15%;
@@ -83,4 +83,8 @@ div#footer {
 
 #btn01 {
 	font-family: 'Century Gothic', serif;
+}
+
+.table {
+	width:80% ;
 }
