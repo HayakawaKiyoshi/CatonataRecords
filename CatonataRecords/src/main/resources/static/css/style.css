@@ -3,10 +3,14 @@
 	margin: 0px;
 }
 
+.LayoutTile {
+	overflow: hidden;
+}
+
 div#container {
 	margin: auto;
 	padding: 10px;
-	width: 900px;
+/*	width: 900px;*/
 	background-color: white;
 }
 
@@ -25,10 +29,10 @@ div#navidation {
 	padding: 10px;
 	margin: 5px;
 	float: left;
-	width: 100px;
-	height: 230px;
+/*	width: 100px; */
+	height: 400px;
 	background-color: #DDFFFF;
-	position: relative;
+
 }
 
 div#footer {
@@ -60,34 +64,34 @@ div#footer {
 	border: solid 1px black;
 	margin-left: 15%;
 	position: relative;
-	left : -10px;
+	left: -10px;
 }
 
-#admin_content_bar{
+#admin_content_bar {
 	background: #ff0000;
 	text-align: center;
 	border: solid 1px black;
 	margin-left: 15%;
 	position: relative;
-	left : -10px;
+	left: -10px;
 }
 
-#general_content_bar{
+#general_content_bar {
 	background: blue;
 	text-align: center;
 	border: solid 1px black;
 	margin-left: 15%;
 	position: relative;
-	left : -10px;
+	left: -10px;
 }
 
-#common_content_bar{
+#common_content_bar {
 	background: yellow;
 	text-align: center;
 	border: solid 1px black;
 	margin-left: 15%;
 	position: relative;
-	left : -10px;
+	left: -10px;
 }
 
 .session_user {
@@ -101,14 +105,14 @@ div#footer {
 }
 
 #PRTable {
-	width:85% ;
+	width: 85%;
 	position: relative;
 	top: 15px;
-	left: 10px ;
+	left: 10px;
+	overflow: hidden;
 }
 
-#next_button{
-	position : relative;
-	left : 400px;
+#next_button {
+	position: relative;
+	left: 400px;
 }
-
