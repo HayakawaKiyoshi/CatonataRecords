@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class UserInformationForm {
 
-	@NotEmpty
+
 	private String id;
 	@NotEmpty
 	private String password;

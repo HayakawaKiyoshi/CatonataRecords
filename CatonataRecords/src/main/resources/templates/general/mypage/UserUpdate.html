@@ -14,13 +14,7 @@
 			method="post" th:object="${userInformationForm}">
 			<input type="hidden" name="id" th:value="*{id}">
 				<table class="table table-striped table-bordered table-sm">
-					<tr>
-						<td>ID</td>
-						<td><input type="text" th:field="*{id}">
-						<span th:if="${#fields.hasErrors('id')}"
-							th:errors="*{id}" th:errorclass="error-field"></span>
-						</td>
-					</tr>
+
 					<tr>
 						<td>氏名</td>
 						<td><input type="text" th:field="*{name}">
