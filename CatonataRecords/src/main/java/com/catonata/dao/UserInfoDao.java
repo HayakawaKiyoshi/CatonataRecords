@@ -299,7 +299,7 @@ public class UserInfoDao {
 		ResultSet rs = null;
 		//DBManagerをインスタンス化
 		DBManager manager = new DBManager();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		final String LOGIN_SQL = "SELECT * FROM USER_TABLE WHERE user_name = ? AND password = ?";
 
 		UserInformationForm user = new UserInformationForm();
@@ -318,7 +318,7 @@ public class UserInfoDao {
 				user.setName(rs.getString("user_name"));
 				user.setAge(rs.getString("age"));
 				user.setGender(rs.getString("gender"));
-				user.setBirthday(sdf.format(rs.getDate("birthday")));
+				user.setBirthday(rs.getString("birthday"));
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
 				user.setAuthority(rs.getString("authority"));
@@ -569,6 +569,48 @@ public class UserInfoDao {
 				}
 			}
 		}
+	}
+
+	public static UserInformationBean findCard(String name, String pass) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		//DBManagerをインスタンス化
+		DBManager manager = new DBManager();
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		final String LOGIN_SQL = "SELECT * FROM USER_TABLE WHERE user_name = ? AND password = ?";
+
+		UserInformationBean user = new UserInformationBean();
+
+		try {
+			conn = manager.getConn();
+			ps = conn.prepareStatement(LOGIN_SQL);
+			//引数を?にバインド
+			ps.setString(1, name);
+			ps.setString(2, pass);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				user.setCreditnumber(rs.getString("CREDIT_NUMBER"));
+				user.setCreditspan(rs.getString("SPAN"));
+				user.setSecuritycode(rs.getString("SECURITY_CODE"));
+
+			} else {
+				return null;
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			manager.close(conn);
+		}
+		return user;
+
 	}
 
 }

@@ -31,8 +31,20 @@ public class MyPageUpdateDeleteController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = UserInfoDao.find(name, password);
 		session.setAttribute("uif", uif);
+		model.addAttribute("userInformationForm",uif);
 		return "general/mypage/UserUpdate";
 	}
+
+	@RequestMapping("/cardCheck")
+	private String updateUser (@ModelAttribute UserInformationBean uif, Model model) {
+		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", LoginUser);
+		UserInformationBean bean = UserInfoDao.findCard(LoginUser.getName(),LoginUser.getPassword());
+		session.setAttribute("card", bean);
+		model.addAttribute("creditCardInformationForm",bean);
+		return "general/mypage/CardUpdate";
+	}
+
 	@PostMapping("/creditCard")
 	private String updateCrdt(@Validated UserInformationForm uif, BindingResult result, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
@@ -41,8 +53,15 @@ public class MyPageUpdateDeleteController {
 			return "general/mypage/UserUpdate";
 		}else {
 //			uif = UserInfoDao.find(name, password);
-			UserInformationBean Uif = (UserInformationBean)session.getAttribute("uif");
+			UserInformationForm Uif = (UserInformationForm)session.getAttribute("uif");
 			session.setAttribute("uif", Uif);
+			UserInformationBean bean = UserInfoDao.findCard(LoginUser.getName(),LoginUser.getPassword());
+			CreditCardInformationForm crdt = new CreditCardInformationForm();
+			crdt.setCreditnumber(bean.getCreditnumber());
+			crdt.setCreditspan(bean.getSecuritycode());
+			crdt.setSecurity(bean.getSecuritycode());
+			session.setAttribute("card", crdt);
+			model.addAttribute("creditCardInformationForm",crdt);
 			return "general/mypage/CardUpdate";
 		}
 	}
@@ -54,9 +73,11 @@ public class MyPageUpdateDeleteController {
 		if (result.hasErrors()) {
 			return "general/mypage/CardUpdate";
 		}else {
-			UserInformationBean Uif = (UserInformationBean)session.getAttribute("uif");
+			CreditCardInformationForm cardinfo = (CreditCardInformationForm)session.getAttribute("card");
+			session.setAttribute("card", cardinfo);
+			UserInformationForm Uif = (UserInformationForm)session.getAttribute("uif");
 			session.setAttribute("uif", Uif);
-			session.setAttribute("creditForm", form);
+			session.setAttribute("card", form);
 			return "admin/update/GeneralCheck";
 		}
 	}
