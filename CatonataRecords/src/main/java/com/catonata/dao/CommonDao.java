@@ -20,7 +20,7 @@ public class CommonDao {
 		ResultSet rs = null;
 		//DBManagerをインスタンス化
 		DBManager manager = new DBManager();
-		final String LOGIN_SQL = "SELECT * FROM USER_TABLE WHERE user_name = ? AND password = ?";
+		final String LOGIN_SQL = "SELECT ID,PASSWORD,USER_NAME,AGE,GENDER, TO_CHAR(birthday, 'YYYY/MM/DD') AS \"birth\",ADDRESS,EMAIL,AUTHORITY,CREDIT_NUMBER,SPAN,SECURITY_CODE,BANK_NUMBER,BANK_NAME,LABEL FROM USER_TABLE WHERE user_name = ? AND password = ?";
 
 		UserInformationBean user = null;
 
@@ -38,7 +38,7 @@ public class CommonDao {
 				String username = rs.getString("USER_NAME");
 				String age = rs.getString("AGE");
 				String gender = rs.getString("GENDER");
-				String birthday = rs.getString("BIRTHDAY");
+				String birthday = rs.getString("birth");
 				String address = rs.getString("ADDRESS");
 				String email = rs.getString("EMAIL");
 				String authority = rs.getString("AUTHORITY");

@@ -578,7 +578,7 @@ public class UserInfoDao {
 		//DBManagerをインスタンス化
 		DBManager manager = new DBManager();
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		final String LOGIN_SQL = "SELECT * FROM USER_TABLE WHERE user_name = ? AND password = ?";
+		final String LOGIN_SQL = "SELECT ID,PASSWORD,USER_NAME,AGE,GENDER, BIRTHDAY,ADDRESS,EMAIL,AUTHORITY,CREDIT_NUMBER,TO_CHAR(SPAN, 'YYYY/MM/DD') AS \"spannew\",SECURITY_CODE,BANK_NUMBER,BANK_NAME,LABEL FROM USER_TABLE WHERE user_name = ? AND password = ?";
 
 		UserInformationBean user = new UserInformationBean();
 
@@ -592,7 +592,7 @@ public class UserInfoDao {
 
 			if (rs.next()) {
 				user.setCreditnumber(rs.getString("CREDIT_NUMBER"));
-				user.setCreditspan(rs.getString("SPAN"));
+				user.setCreditspan(rs.getString("spannew"));
 				user.setSecuritycode(rs.getString("SECURITY_CODE"));
 
 			} else {
