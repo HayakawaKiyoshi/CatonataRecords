@@ -24,10 +24,16 @@
 					th:errorclass="error-field">error!</span><br> アーティスト名：<input
 					type="text" th:field="*{artist}"> <span
 					th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}"
-					th:errorclass="error-field">error!</span><br> 商品媒体：<input
-					type="text" th:field="*{media}"> <span
-					th:if="${#fields.hasErrors('media')}" th:errors="*{media}"
-					th:errorclass="error-field">error!</span><br> 商品価格：<input
+					th:errorclass="error-field">error!</span><br> 商品媒体：
+                <select name="media">
+                    <option selected disabled>---</option>
+                    <option value="CD" th:selected="*{media == 'CD'}">CD</option>
+                    <option value="DVD" th:selected="*{media == 'DVD'}">DVD</option>
+                    <option value="本/書籍" th:selected="*{media == '本/書籍'}">本/書籍</option>
+                    <option value="グッズ" th:selected="*{media == 'グッズ'}">グッズ</option>
+                </select>
+                <span th:if="${#fields.hasErrors('media')}" th:errors="*{media}"
+                    th:errorclass="error-field">error!</span><br> 商品価格：<input
 					type="text" th:field="*{price}"> <span
 					th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
 					th:errorclass="error-field">error!</span><br> 発売日：<input
