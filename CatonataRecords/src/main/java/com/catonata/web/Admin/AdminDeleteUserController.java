@@ -18,6 +18,7 @@ public class AdminDeleteUserController {
 	@Autowired
 	HttpSession session;
 
+	//コミット確認
 	/*
 	 * 一般削除
 	 */
@@ -35,9 +36,6 @@ public class AdminDeleteUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		UserInfoDao.adminDelete(id);
-//		if (id.equals(au.getId())) {
-//			model.addAttribute("step", "1");
-//		}
 		model.addAttribute("msg","削除");
 		return "admin/delete/Complete";
 	}
@@ -59,9 +57,6 @@ public class AdminDeleteUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		UserInfoDao.execDelete(id);
-//		if (id.equals(au.getId())) {
-//			model.addAttribute("step", "1");
-//		}
 		model.addAttribute("msg","削除");
 		return "admin/delete/Complete";
 	}
