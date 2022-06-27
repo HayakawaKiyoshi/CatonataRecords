@@ -1,5 +1,6 @@
 package com.catonata.validation;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -32,8 +33,9 @@ public class UserInformationForm {
 	private String address;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=50)
-	@Pattern(regexp ="^[a-zA-Z0-9]+$", message="{0}は半角英数字で入力してください")
+	@Email(message="メールアドレスが正しい形で入力されていません。")
 	private String email;
+//	@Pattern(regexp ="^[a-zA-Z0-9]+$", message="{0}は半角英数字で入力してください")
 
 	private String authority;
 
