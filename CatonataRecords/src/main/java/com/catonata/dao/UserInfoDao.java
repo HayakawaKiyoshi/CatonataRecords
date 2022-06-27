@@ -336,14 +336,14 @@ public class UserInfoDao {
 			// 接続する
 			conn = manager.getConn();
 			//販売履歴テーブルから消去する処理
-			ps = conn.prepareStatement("DELETE FROM PURCHASE_TABLE WHERE USER_ID = ?");
+			ps = conn.prepareStatement("DELETE FROM PURCHASE_TABLE WHERE ID = ?");
 			ps.setString(1, id);
 			int cnt1 =ps.executeUpdate();
 			conn.commit();
 			System.out.println(cnt1 + "件のデータを販売履歴テーブルから削除しました。");
 			ps.close();
 			//ユーザーテーブルから消去する処理
-			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE USER_ID = ?");
+			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE ID = ?");
 			ps.setString(1, id);
 			int cnt =ps.executeUpdate();
 			conn.commit();
