@@ -551,7 +551,7 @@ public class UserInfoDao {
 			ps.setString(11, uif.getId());
 			int cnt =ps.executeUpdate();
 			conn.commit();
-			System.out.println(cnt + "件のデータを登録しました。");
+			System.out.println(cnt + "件のデータを更新しました。");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

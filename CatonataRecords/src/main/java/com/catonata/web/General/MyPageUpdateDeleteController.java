@@ -41,6 +41,7 @@ public class MyPageUpdateDeleteController {
 		session.setAttribute("LoginUser", LoginUser);
 		UserInformationBean bean = UserInfoDao.findCard(LoginUser.getName(),LoginUser.getPassword());
 		session.setAttribute("card", bean);
+		System.out.println(bean.getCreditnumber());
 		model.addAttribute("creditCardInformationForm",bean);
 		return "general/mypage/CardUpdate";
 	}
@@ -58,9 +59,11 @@ public class MyPageUpdateDeleteController {
 			session.setAttribute("uif", uif);
 			UserInformationBean bean = UserInfoDao.findCard(LoginUser.getName(),LoginUser.getPassword());
 			CreditCardInformationForm crdt = new CreditCardInformationForm();
+			System.out.println(bean.getCreditnumber());
 			crdt.setCreditnumber(bean.getCreditnumber());
 			crdt.setCreditspan(bean.getSecuritycode());
 			crdt.setSecurity(bean.getSecuritycode());
+			System.out.println(crdt.getCreditnumber());
 			session.setAttribute("card", crdt);
 			model.addAttribute("creditCardInformationForm",crdt);
 			return "general/mypage/CardUpdate";
@@ -89,12 +92,13 @@ public class MyPageUpdateDeleteController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		uif.setId(LoginUser.getId());
-		CreditCardInformationForm form = (CreditCardInformationForm)session.getAttribute("creditForm");
+		CreditCardInformationForm form = (CreditCardInformationForm)session.getAttribute("card");
+		System.out.println(form.getCreditnumber());
 		session.setAttribute("creditForm", form);
 		UserInfoDao.generalUpdate(uif,form);
 		model.addAttribute("msg","更新");
 
-		return  "admin/complete/Complete";
+		return  "general/mypage/UpdateComplete";
 
 	}
 
