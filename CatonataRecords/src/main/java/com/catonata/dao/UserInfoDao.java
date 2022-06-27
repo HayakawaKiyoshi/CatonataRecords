@@ -40,6 +40,52 @@ import com.catonata.validation.UserInformationForm;
  */
 public class UserInfoDao {
 
+	public static void insert (UserInformationForm uif, CreditCardInformationForm ccif) {
+		DBManager manager = new DBManager();
+		Connection conn = null;
+		PreparedStatement ps = null;
+//		SqlTemplates sqls = new SqlTemplates();
+		try {
+			// 接続する
+			conn = manager.getConn();
+			ps = conn.prepareStatement("INSERT INTO USER_TABLE VALUES (user_seq.nextval,"
+					+ "?, ? , ? , ? , ? , ? , ?, ?, ?, ? , ?, ?, ?, ?)");
+			ps.setString(1, uif.getPassword());
+			ps.setString(2, uif.getName());
+			ps.setString(3, uif.getAge());
+			ps.setString(4, uif.getGender());
+			ps.setString(5, uif.getBirthday());
+			ps.setString(6, uif.getAddress());
+			ps.setString(7, uif.getEmail());
+			ps.setString(8, "1");
+			ps.setString(9, ccif.getCreditnumber());
+			ps.setString(10, ccif.getCreditspan());
+			ps.setString(11, ccif.getSecurity());
+			ps.setString(12, "NULL");
+			ps.setString(13, "NULL");
+			ps.setString(14, "NULL");
+			int cnt =ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件のデータを登録しました。");
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
 	/**
 	 * 管理者用一般登録メソッド
 	 *
@@ -63,6 +109,12 @@ public class UserInfoDao {
 			ps.setString(6, uif.getAddress());
 			ps.setString(7, uif.getEmail());
 			ps.setString(8, "1");
+			ps.setString(9, "NULL");
+			ps.setString(10, "NULL");
+			ps.setString(11, "NULL");
+			ps.setString(12, "NULL");
+			ps.setString(13, "NULL");
+			ps.setString(14, "NULL");
 			int cnt =ps.executeUpdate();
 			conn.commit();
 			System.out.println(cnt + "件のデータを登録しました。");
@@ -225,20 +277,27 @@ public class UserInfoDao {
 	 * 管理者用一般削除メソッド
 	 * @param uif
 	 */
-	public static void adminDelete (String name) {
+	public static void adminDelete (String id) {
 		DBManager manager = new DBManager();
 		Connection conn = null;
 		PreparedStatement ps = null;
-		System.out.println(name);
 //		SqlTemplates sqls = new SqlTemplates();
 		try {
 			// 接続する
 			conn = manager.getConn();
-			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE USER_NAME = ?");
-			ps.setString(1, name);
+			//販売履歴テーブルから消去する処理
+			ps = conn.prepareStatement("DELETE FROM PURCHASE_TABLE WHERE USER_ID = ?");
+			ps.setString(1, id);
+			int cnt1 =ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt1 + "件のデータを販売履歴テーブルから削除しました。");
+			ps.close();
+			//ユーザーテーブルから消去する処理
+			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE USER_ID = ?");
+			ps.setString(1, id);
 			int cnt =ps.executeUpdate();
 			conn.commit();
-			System.out.println(cnt + "件のデータを削除しました。");
+			System.out.println(cnt + "件のデータをユーザーテーブルから削除しました。");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -262,7 +321,7 @@ public class UserInfoDao {
 	 * 管理者用経営者情報削除メソッド
 	 * @param uif
 	 */
-	public static void execDelete (String name) {
+	public static void execDelete (String id) {
 		DBManager manager = new DBManager();
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -270,11 +329,19 @@ public class UserInfoDao {
 		try {
 			// 接続する
 			conn = manager.getConn();
-			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE USER_NAME = ?");
-			ps.setString(1, name);
+			//販売履歴テーブルから消去する処理
+			ps = conn.prepareStatement("DELETE FROM PURCHASE_TABLE WHERE USER_ID = ?");
+			ps.setString(1, id);
+			int cnt1 =ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt1 + "件のデータを販売履歴テーブルから削除しました。");
+			ps.close();
+			//ユーザーテーブルから消去する処理
+			ps = conn.prepareStatement("DELETE FROM USER_TABLE WHERE USER_ID = ?");
+			ps.setString(1, id);
 			int cnt =ps.executeUpdate();
 			conn.commit();
-			System.out.println(cnt + "件のデータを登録しました。");
+			System.out.println(cnt + "件のデータをユーザーテーブルから削除しました。");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
