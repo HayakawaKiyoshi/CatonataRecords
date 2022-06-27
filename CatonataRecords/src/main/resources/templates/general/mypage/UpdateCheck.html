@@ -17,6 +17,7 @@
 									<td>氏名</td>
 									<td><span th:text="*{name}"></span></td>
 								</tr>
+								<th:block th:object = "${session.creditForm}">
 								<tr>
 									<td>クレジットカード番号</td>
 									<td><span th:text="*{creditnumber}"></span></td>
@@ -29,6 +30,7 @@
 									<td>セキュリティコード</td>
 									<td><span th:text="*{securitycode}"></span></td>
 								</tr>
+								</th:block>
 								<tr>
 									<td>パスワード</td>
 									<td><span th:text="*{password}"></span></td>
@@ -62,7 +64,7 @@
 							</th:block>
 
 							</table>
-							<form role="form" action="/AdminUpdate/Complete" th:action="@{/AdminUpdate/Complete}"
+							<form role="form" action="/mypageUpdate/Complete" th:action="@{/mypageUpdate/Complete}"
 						 	method="post">
 							<p>
 							<input type="submit" value="変更する" class="btn btn-primary">

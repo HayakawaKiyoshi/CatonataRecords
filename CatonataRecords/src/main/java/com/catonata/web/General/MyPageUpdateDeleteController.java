@@ -67,7 +67,9 @@ public class MyPageUpdateDeleteController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		uif.setId(LoginUser.getId());
-		UserInfoDao.adminUpdate(uif);
+		CreditCardInformationForm form = (CreditCardInformationForm)session.getAttribute("creditForm");
+		session.setAttribute("creditForm", form);
+		UserInfoDao.generalUpdate(uif,form);
 		model.addAttribute("msg","更新");
 
 		return  "admin/complete/Complete";

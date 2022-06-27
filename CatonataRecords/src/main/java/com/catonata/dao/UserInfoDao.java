@@ -11,6 +11,7 @@ import java.util.List;
 import com.catonata.bean.ExecInformationBean;
 import com.catonata.bean.PurchaseBean;
 import com.catonata.bean.UserInformationBean;
+import com.catonata.validation.CreditCardInformationForm;
 import com.catonata.validation.ExecInformationForm;
 import com.catonata.validation.UserInformationForm;
 
@@ -523,6 +524,51 @@ public class UserInfoDao {
 		}
 		return empList;
 
+	}
+
+	public static void generalUpdate (UserInformationForm uif,CreditCardInformationForm form) {
+		DBManager manager = new DBManager();
+		Connection conn = null;
+		PreparedStatement ps = null;
+//		SqlTemplates sqls = new SqlTemplates();
+		try {
+			// 接続する
+			conn = manager.getConn();
+			ps = conn.prepareStatement("UPDATE USER_TABLE SET PASSWORD = ?,"
+					+ "USER_NAME = ? , AGE = ? , GENDER = ? , BIRTHDAY = ? ,"
+					+ "ADDRESS = ? , EMAIL = ? , CREDIT_NUMBER = ?, SPAN = ?, SECURITY_CODE = ?"
+					+ " WHERE ID = ?");
+			ps.setString(1, uif.getPassword());
+			ps.setString(2, uif.getName());
+			ps.setString(3, uif.getAge());
+			ps.setString(4, uif.getGender());
+			ps.setString(5, uif.getBirthday());
+			ps.setString(6, uif.getAddress());
+			ps.setString(7, uif.getEmail());
+			ps.setString(8, form.getCreditnumber());
+			ps.setString(9, form.getCreditspan());
+			ps.setString(10, form.getSecurity());
+			ps.setString(11, uif.getId());
+			int cnt =ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件のデータを登録しました。");
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
 	}
 
 }
