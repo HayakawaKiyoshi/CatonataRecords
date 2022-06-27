@@ -14,7 +14,7 @@
     <div layout:fragment="content">
     <div id="general_content_bar">商品内容詳細画面</div>
 	   <!-- このformの遷移先は商品一覧のコントローラのURLパターンです。よろしくお願いします。 -->
-	       <form role="form" action="/" th:action="@{/}" method="post">
+	       <form role="form" action="/top/general/TopPage" th:action="@{/top/general/TopPage}" method="post">
 			 <input type="submit" value="戻る">
 		   </form>
 		 <th:block th:object="${session.product}">
