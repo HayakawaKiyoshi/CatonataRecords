@@ -55,7 +55,7 @@
 		<form action="/AdminDelete/ExecComplete"
 			th:action="@{/AdminDelete/ExecComplete}" method="post"
 			th:object="${delete}">
-			<input type="hidden" name="name" th:value="*{name}"> <input
+			<input type="hidden" name="id" th:value="*{id}"> <input
 				type="submit" value="ユーザーを削除する" class="btn btn-danger"><br>
 		</form>
 		<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post"
