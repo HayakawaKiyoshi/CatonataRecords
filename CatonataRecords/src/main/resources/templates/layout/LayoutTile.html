@@ -16,7 +16,7 @@
 <body>
 	<div class="container">
 		<div class="LayoutTile">
-			<table class="table table-responsive">
+			<table class="table table-responsive" style=margin:auto;>
 				<tr>
 					<td colspan="2">
 						<div layout:include="layout/Header :: header"></div>
@@ -25,10 +25,10 @@
 				<!-- <th:block th:unless="${step == '1'}"> -->
 				<!-- サイドメニュー -->
 				<tr>
-					<td><span layout:include="layout/Navigation :: navigation"></span>
+					<td style=width:15%;><span layout:include="layout/Navigation :: navigation"></span>
 					</td>
 					<!-- メインコンテンツ -->
-					<td><span layout:fragment="content"></span></td>
+					<td style=width:78%;><span layout:fragment="content"></span></td>
 				</tr>
 			</table>
 				<!-- フッター -->

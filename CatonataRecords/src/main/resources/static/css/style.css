@@ -45,9 +45,6 @@ div#footer {
 
 #header_beforelogin {
 	display: inline-flex;
-	position: relative;
-	top: 40px;
-	left: 50px;
 }
 
 #header_afterlogin {
@@ -88,7 +85,6 @@ div#footer {
 	border: solid 1px black;
 	margin: auto;
 	position: relative;
-	left: -10px;
 }
 
 .session_user {
@@ -109,3 +105,6 @@ div#footer {
 	overflow: hidden;
 }
 
+#error{
+	color:red;
+}
