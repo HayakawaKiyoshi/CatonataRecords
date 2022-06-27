@@ -9,7 +9,7 @@ import com.catonata.validation.ByteCheckValidation.ByteCheck;
 
 public class UserInformationForm {
 
-
+//コミット確認
 	private String id;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=20)
