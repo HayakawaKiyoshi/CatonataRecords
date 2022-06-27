@@ -28,7 +28,7 @@
     		<input type = "hidden" name = "password" th:value = "*{password}">
     		<input type="submit" value="変更" class="btn btn-primary">
     		</form>
-        </th:block>
+
         <p>購入履歴</p>
         <div style="border: solid 1px black; width: 450px;">
             <table>
@@ -48,7 +48,14 @@
                     </tr>
                 </th:block>
             </table>
+            <!-- 退会ボタン -->
+            <form action="/myUpdate/delete/Check" method="post">
+				<input type="hidden" name="name" th:value="*{name}">
+				<input type="hidden" name="pass" th:value="*{password}">
+				<input type="submit" value="退会" class="btn btn-danger">
+			</form>
         </div>
+         </th:block>
     </div>
     </div>
 </body>
