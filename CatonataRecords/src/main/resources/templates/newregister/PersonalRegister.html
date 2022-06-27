@@ -53,15 +53,16 @@
 				<tr>
 					<td>性別</td>
 					<td>
-						<div class="form-group">
-							<label class="control-label"></label>
-							<div class="radio" th:each="item : ${radioItems}">
-								<label> <input type="radio" name="fradio"
-									th:value="${item.value}" th:text="${item.key}"
-									th:field="*{fradio}" />
-								</label>
-							</div>
-						</div>
+						<label id="man">
+						<input type="radio" name="gender" id ="man"
+						th:value="1" th:checked="*{gender == '1'}">男
+						</label>
+						<label id="woman">
+						<input type="radio" name="gender" id="woman"
+						th:value="2" th:checked="*{gender == '2'}">女
+						</label>
+						<span th:if="${#fields.hasErrors('gender')}"
+						th:errors="*{gender}" th:errorclass="error-field">error!</span>
 					</td>
 				</tr>
 
