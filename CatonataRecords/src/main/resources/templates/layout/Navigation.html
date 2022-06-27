@@ -1,3 +1,4 @@
+Navigation
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -9,45 +10,45 @@
 <body>
 
 	<div layout:fragment="navigation">
-		<div id="navidation" >
-				<!-- ログインなし -->
-				<th:block th:if="${session.LoginUser == null}">
-					<font size="4">商品カテゴリー</font>
-					<form action="/top/TopPage" method="post">
-						<input type="submit" value="一覧" class="btn btn-primary">
-					</form>
-					<form action="/top/category/search" method="post">
-						<input type="hidden" name="category" value="CD"> <input
-							type="submit" value="CD" class="btn btn-primary">
-					</form>
-					<form action="/top/category/search" method="post">
-						<input type="hidden" name="category" value="DVD"> <input
-							type="submit" value="DVD" class="btn btn-primary">
-					</form>
-					<form action="" method="post">
-						<input type="submit" value="本/書籍" class="btn btn-primary">
-					</form>
-					<form action="" method="post">
-						<input type="submit" value="グッズ" class="btn btn-primary">
-					</form>
-				</th:block>
-				<th:block th:if="${session.LoginUser != null}">
-					<th:block th:object=${session.LoginUser}>
-						<th:block th:switch="*{authority}">
+		<div id="navidation">
+			<!-- ログインなし -->
+			<th:block th:if="${session.LoginUser == null}">
+				<font size="4">商品カテゴリー</font>
+				<form action="/top/TopPage" method="post">
+					<input type="submit" value="一覧" class="btn btn-primary">
+				</form>
+				<form action="/top/category/search" method="post">
+					<input type="hidden" name="category" value="CD"> <input
+						type="submit" value="CD" class="btn btn-primary">
+				</form>
+				<form action="/top/category/search" method="post">
+					<input type="hidden" name="category" value="DVD"> <input
+						type="submit" value="DVD" class="btn btn-primary">
+				</form>
+				<form action="" method="post">
+					<input type="submit" value="本/書籍" class="btn btn-primary">
+				</form>
+				<form action="" method="post">
+					<input type="submit" value="グッズ" class="btn btn-primary">
+				</form>
+			</th:block>
+			<th:block th:if="${session.LoginUser != null}">
+				<th:block th:object=${session.LoginUser}>
+					<th:block th:switch="*{authority}">
 						<!-- 一般者ユーザー -->
-							<th:block th:case="1">
-								<font size="4">商品カテゴリー</font>
-								<form action="/top/TopPage" method="post">
-									<input type="submit" value="一覧" class="btn btn-primary">
-								</form>
-								<form action="/top/category/search" method="post">
-									<input type="hidden" name="category" value="CD"> <input
-										type="submit" value="CD" class="btn btn-primary">
-								</form>
-								<form action="/top/category/search" method="post">
-									<input type="hidden" name="category" value="DVD"> <input
-										type="submit" value="DVD" class="btn btn-primary">
-								</form>
+						<th:block th:case="1">
+							<font size="4">商品カテゴリー</font>
+							<form action="/top/TopPage" method="post">
+								<input type="submit" value="一覧" class="btn btn-primary">
+							</form>
+							<form action="/top/category/search" method="post">
+								<input type="hidden" name="category" value="CD"> <input
+									type="submit" value="CD" class="btn btn-primary">
+							</form>
+							<form action="/top/category/search" method="post">
+								<input type="hidden" name="category" value="DVD"> <input
+									type="submit" value="DVD" class="btn btn-primary">
+							</form>
 							<!--
 						<form action="">
 							<input type="submit" value="本/書籍" class="btn btn-primary">
@@ -66,15 +67,17 @@
 							<input type="submit" value="メニュー" class="btn btn-primary">
 						</form>
 						 -->
-						<form action="/AdminRegister" th:action="@{/AdminRegister}" method="post">
-							<input type="submit" value="一般ユーザー新規登録" class="btn btn-primary">
-						</form>
-						<form action="/AdminRegister/Exec" th:action="@{/AdminRegister/Exec}" method="post">
-							<input type="submit" value="経営者ユーザー新規登録" class="btn btn-primary">
-						</form>
-						<form action="">
-							<input type="submit" value="商品削除" class="btn btn-primary">
-						</form>
+							<form action="/AdminRegister" th:action="@{/AdminRegister}"
+								method="post">
+								<input type="submit" value="一般ユーザー新規登録" class="btn btn-primary">
+							</form>
+							<form action="/AdminRegister/Exec"
+								th:action="@{/AdminRegister/Exec}" method="post">
+								<input type="submit" value="経営者ユーザー新規登録" class="btn btn-primary">
+							</form>
+							<form action="">
+								<input type="submit" value="商品削除" class="btn btn-primary">
+							</form>
 
 						</th:block>
 
@@ -82,31 +85,27 @@
 						<th:block th:case="3">
 					経営者ユーザー確認コメント
 
-						<form action="">
-							<input type="submit" value="メニュー" class="btn btn-primary">
-						</form>
-						<form action="exec/register" method = "get">
-							<input type="submit" value="商品登録" class="btn btn-primary">
-						</form>
-						<form action="">
-							<input type="submit" value="商品情報削除" class="btn btn-primary">
-							<input type="hidden" name="会社名" th:value="会社ID？">
-						</form>
-						<form action="">
-							<input type="submit" value="売上確認" class="btn btn-primary">
-						</form>
-
+						<form action="/exec/top">
+								<input type="submit" value="メニュー" class="btn btn-primary">
+							</form>
+							<form action="/exec/register" method="get">
+								<input type="submit" value="商品登録" class="btn btn-primary">
+							</form>
+							<form action="/exec/select" method="get">
+								<input type="submit" value="商品情報削除" class="btn btn-primary">
+							</form>
+							<form action="/ProeerdsCheck">
+								<input type="submit" value="売上確認" class="btn btn-primary">
+							</form>
+							<form action="/AdminUpdate/Exec">
+								<input type="submit" value="ユーザー情報更新" class="btn btn-primary">
+								<input type=hidden name="name" value=*{name}>
+								<input type=hidden name="password" value=*{password}>
+							</form>
 						</th:block>
-
-
-
-
-						<form action="">
-							<input type="submit" value="ユーザー情報更新" class="btn btn-primary">
-						</form>
-					</th:block>
 					</th:block>
 				</th:block>
+			</th:block>
 		</div>
 	</div>
 </body>
