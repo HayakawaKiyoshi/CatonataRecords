@@ -21,6 +21,7 @@
 					<td>氏名</td>
 					<td><span th:text="*{name}"></span></td>
 				</tr>
+				<th:block th:object="${session.card}">
 				<tr>
 					<td>クレジットカード番号</td>
 					<td><span th:text="*{creditnumber}"></span></td>
@@ -31,8 +32,9 @@
 				</tr>
 				<tr>
 					<td>セキュリティコード</td>
-					<td><span th:text="*{securitycode}"></span></td>
+					<td><span th:text="*{security}"></span></td>
 				</tr>
+				</th:block>
 				<tr>
 					<td>パスワード</td>
 					<td><span th:text="*{password}"></span></td>
