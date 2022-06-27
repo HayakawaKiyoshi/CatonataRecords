@@ -20,12 +20,14 @@
 								<tr>
 									<td>氏名</td>
 									<td><span th:text="*{name}"></span></td>
+
 									<td>クレジットカード番号</td>
 									<td><span th:text="*{creditnumber}"></span></td>
 								</tr>
 								<tr>
 									<td>パスワード</td>
 									<td><span th:text="*{password}"></span></td>
+
 									<td>有効期限</td>
 									<td><span th:text="*{creditspan}"></span></td>
 								</tr>
@@ -64,9 +66,9 @@
 							</p>
 						</form>
 						<th:block th:object="${session.LoginUser}">
-							<th:block th:if="*{authority == '2'}">
+							<!-- <th:block th:if="*{authority == '2'}">
 								<p><button type="button" class="btn btn-primary"
-									onclick="location.href='/AdminRegister/Back'">変更画面に戻る</button></p>
+									onclick="location.href='/AdminRegister/Back'">変更画面に戻る</button></p> -->
 							</th:block>
 						</th:block>
 	</div>
