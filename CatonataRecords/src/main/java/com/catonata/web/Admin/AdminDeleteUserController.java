@@ -31,10 +31,10 @@ public class AdminDeleteUserController {
 	}
 
 	@RequestMapping("/Complete")
-	private String deleteComplete(@RequestParam("name")String name, Model model) {
+	private String deleteComplete(@RequestParam("id")String id, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		UserInfoDao.adminDelete(name);
+		UserInfoDao.adminDelete(id);
 //		if (id.equals(au.getId())) {
 //			model.addAttribute("step", "1");
 //		}
@@ -55,10 +55,10 @@ public class AdminDeleteUserController {
 	}
 
 	@RequestMapping("/ExecComplete")
-	private String ExecdeleteComplete(@RequestParam("name")String name, Model model) {
+	private String ExecdeleteComplete(@RequestParam("id")String id, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		UserInfoDao.execDelete(name);
+		UserInfoDao.execDelete(id);
 //		if (id.equals(au.getId())) {
 //			model.addAttribute("step", "1");
 //		}
