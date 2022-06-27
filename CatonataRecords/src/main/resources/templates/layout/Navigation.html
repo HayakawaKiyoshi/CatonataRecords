@@ -10,9 +10,8 @@
 
 	<div layout:fragment="navigation">
 		<div id="navidation" >
-			<th:block th:object=${session.LoginUser}>
 				<!-- ログインなし -->
-				<th:block th:unless="${LoginUser != null}">
+				<th:block th:if="${LoginUser == null}">
 					<font size="4">商品カテゴリー</font>
 					<form action="/top/TopPage" method="post">
 						<input type="submit" value="一覧" class="btn btn-primary">
@@ -32,22 +31,23 @@
 						<input type="submit" value="グッズ" class="btn btn-primary">
 					</form>
 				</th:block>
-				<th:block th:unless="${LoginUser == null}">
-					<th:block th:switch="*{authority}">
+				<th:block th:if="${session.LoginUser != null}">
+					<th:block th:object=${session.LoginUser}>
+						<th:block th:switch="*{authority}">
 						<!-- 一般者ユーザー -->
-						<th:block th:case="1">
-							<font size="4">商品カテゴリー</font>
-							<form action="/top/TopPage" method="post">
-								<input type="submit" value="一覧" class="btn btn-primary">
-							</form>
-							<form action="/top/category/search" method="post">
-								<input type="hidden" name="category" value="CD"> <input
-									type="submit" value="CD" class="btn btn-primary">
-							</form>
-							<form action="/top/category/search" method="post">
-								<input type="hidden" name="category" value="DVD"> <input
-									type="submit" value="DVD" class="btn btn-primary">
-							</form>
+							<th:block th:case="1">
+								<font size="4">商品カテゴリー</font>
+								<form action="/top/TopPage" method="post">
+									<input type="submit" value="一覧" class="btn btn-primary">
+								</form>
+								<form action="/top/category/search" method="post">
+									<input type="hidden" name="category" value="CD"> <input
+										type="submit" value="CD" class="btn btn-primary">
+								</form>
+								<form action="/top/category/search" method="post">
+									<input type="hidden" name="category" value="DVD"> <input
+										type="submit" value="DVD" class="btn btn-primary">
+								</form>
 							<!--
 						<form action="">
 							<input type="submit" value="本/書籍" class="btn btn-primary">
@@ -103,6 +103,7 @@
 						<form action="">
 							<input type="submit" value="ユーザー情報更新" class="btn btn-primary">
 						</form>
+					</th:block>
 					</th:block>
 				</th:block>
 		</div>
