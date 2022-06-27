@@ -107,7 +107,7 @@ public class MyPageUpdateDeleteController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		model.addAttribute("userInformationForm", uif);
-		return "admin/register/GeneralRegister";
+		return "general/mypage/UserUpdate";
 	}
 
 

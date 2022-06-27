@@ -70,14 +70,13 @@
 		</table>
 		<form role="form" action="/mypageUpdate/Complete"
 			th:action="@{/mypageUpdate/Complete}" method="post">
-			<p>
 				<input type="submit" value="変更する" class="btn btn-primary">
-			</p>
 		</form>
-		<p>
+		<form role="form" action="/mypageUpdate/Back"
+			th:action="@{/mypageUpdate/Back}" method="post">
 			<button type="button" class="btn btn-primary"
-				onclick="location.href='/AdminUpdate/back'">変更画面に戻る</button>
-		</p>
+				onclick="location.href='/mypageUpdate/Back'">変更画面に戻る</button>
+				</form>
 
 	</div>
 </body>
