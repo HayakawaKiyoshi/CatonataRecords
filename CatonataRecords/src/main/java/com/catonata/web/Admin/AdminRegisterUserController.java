@@ -37,11 +37,11 @@ public class AdminRegisterUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
-			return "admin/register/GeneralRegister";
+			return "newregister/PersonalRegister";
 		}
 		session.setAttribute("uif", uif);
 		model.addAttribute("send","/AdminRegister/Complete");
-		return "admin/register/GeneralCheck";
+		return "newregister/RegisterCheck";
 	}
 
 	@RequestMapping("/Complete")
@@ -51,7 +51,7 @@ public class AdminRegisterUserController {
 		uif = (UserInformationForm)session.getAttribute("uif");
 		UserInfoDao.adminInsert(uif);
 		model.addAttribute("msg","登録");
-		return "admin/rcomplete/Complete";
+		return "admin/complete/Complete";
 	}
 
 	@RequestMapping("/Back")
