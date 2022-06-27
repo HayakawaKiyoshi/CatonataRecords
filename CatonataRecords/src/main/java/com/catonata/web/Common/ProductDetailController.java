@@ -71,7 +71,7 @@ public class ProductDetailController {
 		int date = 1;
 		for (int i = 0 ; i < delivaryDate.length ; i++) {
 			delivaryDate[i] = String.valueOf(calendar.get(Calendar.YEAR) + "/");
-			if((calendar.get(Calendar.DATE) + i ) < 32) {
+			if((calendar.get(Calendar.DATE) + i ) < 31) {
 				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 1 )+ "/"
 									+ (calendar.get(Calendar.DATE) + ( i + 1 )));
 			} else if ((calendar.get(Calendar.DATE) + ( i + 1 )) > 31) {
