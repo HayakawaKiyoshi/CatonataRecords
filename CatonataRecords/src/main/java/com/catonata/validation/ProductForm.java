@@ -19,7 +19,7 @@ public class ProductForm {
 	@ByteCheck(charset="UTF-8",min=1, max=20)
 	private String media;
 	@NotEmpty
-	@Pattern(regexp ="^[0-9]+$", message="商品価格は半角数値で入力してください")
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
 	@ByteCheck(charset="UTF-8",min=1, max=10)
 	private String price;
 	@NotEmpty
@@ -30,7 +30,7 @@ public class ProductForm {
 
 	private String sold;
 	@NotEmpty
-	@Pattern(regexp ="^[0-9]+$", message="在庫数は半角数値で入力してください")
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
 	@ByteCheck(charset="UTF-8",min=1, max=10)
 	private String stock;
 

@@ -35,7 +35,7 @@
 					th:if="${#fields.hasErrors('release_date')}"
 					th:errors="*{release_date}" th:errorclass="error-field">error!</span><br>
 
-				レコード会社名：<input type="text" th:field="*{label}"> <span
+				レコード会社名：<input type="text" th:field="*{label}" readonly><th:block th:text="*{label}"></th:block> <span
 					th:if="${#fields.hasErrors('label')}" th:errors="*{label}"
 					th:errorclass="error-field">error!</span><br> 在庫数：<input
 					type="text" th:field="*{stock}"> <span

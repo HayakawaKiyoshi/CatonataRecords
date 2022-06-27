@@ -1,24 +1,39 @@
 package com.catonata.validation;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.catonata.validation.ByteCheckValidation.ByteCheck;
 
 public class ExecInformationForm {
 //テスト
 
 	private String id;
 	@NotEmpty
+	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String name;
 	@NotEmpty
+	@ByteCheck(charset="UTF-8",min=1, max=20)
+	@Pattern(regexp ="^[a-zA-Z0-9]+$", message="{0}は半角英数字で入力してください")
 	private String password;
 	@NotEmpty
+	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String label;
 	@NotEmpty
+	@Pattern(regexp ="^[a-zA-Z0-9]+$", message="{0}は半角英数字で入力してください")
+	@ByteCheck(charset="UTF-8",min=1, max=50)
 	private String email;
 	@NotEmpty
+	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String address;
 	@NotEmpty
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
+	@ByteCheck(charset="UTF-8",min=1, max=8)
 	private String banknumber;
 	@NotEmpty
+	@Pattern(regexp ="^\\x01-\\x7E", message="{0}は全角文字で入力してください")
+	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String bankname;
 
 

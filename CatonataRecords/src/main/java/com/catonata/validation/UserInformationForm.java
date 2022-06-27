@@ -1,5 +1,7 @@
 package com.catonata.validation;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.catonata.validation.ByteCheckValidation.ByteCheck;
@@ -10,15 +12,18 @@ public class UserInformationForm {
 	private String id;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=20)
+	@Pattern(regexp ="^[a-zA-Z0-9]+$", message="{0}は半角英数字で入力してください")
 	private String password;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String name;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=3)
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
 	private String age;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=1)
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
 	private String gender;
 	@NotEmpty
 	private String birthday;
@@ -27,6 +32,7 @@ public class UserInformationForm {
 	private String address;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=50)
+	@Pattern(regexp ="^[a-zA-Z0-9]+$", message="{0}は半角英数字で入力してください")
 	private String email;
 
 	private String authority;
