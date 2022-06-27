@@ -49,7 +49,7 @@
                 </th:block>
             </table>
             <!-- 退会ボタン  -->
-            <form action="/myUpdate/delete/Check" method="post" th:object="${session.LoginUser}">
+            <form action="/mypageUpdate/delete/Check" method="post" th:object="${session.LoginUser}">
 				<input type="hidden" name="name" th:value="*{name}">
 				<input type="hidden" name="pass" th:value="*{password}">
 				<input type="submit" value="退会" class="btn btn-danger">

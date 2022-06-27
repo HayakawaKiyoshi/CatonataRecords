@@ -130,7 +130,7 @@ public class MyPageUpdateDeleteController {
 //			model.addAttribute("step", "1");
 //		}
 		model.addAttribute("msg","削除");
-		return "admin/delete/Complete";
+		return "admin/complete/Complete";
 	}
 
 
