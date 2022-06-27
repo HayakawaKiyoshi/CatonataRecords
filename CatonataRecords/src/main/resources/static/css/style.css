@@ -50,8 +50,8 @@ div#footer {
 #header_afterlogin {
 	display: inline-flex;
 	position: relative;
-	top: 40px;
-	left: 20px;
+	top: 45px;
+	left: 35px;
 }
 
 #Exec_content_bar {
@@ -111,3 +111,4 @@ div#footer {
 	position : relative;
 	left : 400px;
 }
+

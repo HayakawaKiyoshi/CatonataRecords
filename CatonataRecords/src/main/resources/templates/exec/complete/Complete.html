@@ -13,9 +13,9 @@
 </head>
 <body>
 <div layout:fragment="content">
-<div class="container">
+
 <div id="Exec_content_bar"><span th:text="${msg}"></span>完了</div>
-</div><span th:text="${msg}"></span>完了しました<br>
+<span th:text="${msg}"></span>完了しました<br>
 <form role="form" action="/exec/top" th:action="@{/exec/top}" method="get">
 <input type="submit" value="メイン画面へ戻る" class="btn btn-primary">
 </form>
