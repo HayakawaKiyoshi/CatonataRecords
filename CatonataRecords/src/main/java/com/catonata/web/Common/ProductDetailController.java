@@ -121,10 +121,13 @@ public class ProductDetailController {
 		//購入日時取得
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		String purcahseDate = String.valueOf(sdf.format(calendar.getTime()));
+		String purchaseDate = String.valueOf(sdf.format(calendar.getTime()));
 
 		//購入履歴テーブルに保存
-		ExecDao.purchaseHistory(LoginUser, product, purcahseDate, delivaryDate);
+		System.out.println("ID:" + LoginUser.getId() + "\n商品ID:" + product.getPro_id()
+							+ "\n購入日" + purchaseDate + "\n配送日" + delivaryDate);
+
+		ExecDao.purchaseHistory(LoginUser, product, purchaseDate, delivaryDate);
 
 		//商品テーブルの在庫数と販売数をUPDATE
 		String newStock = String.valueOf(stock -= purNumber);
