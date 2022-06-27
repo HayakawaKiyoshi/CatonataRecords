@@ -95,7 +95,7 @@ Navigation
 								<input type="submit" value="商品情報削除" class="btn btn-primary">
 							</form>
 							<form action="/ProceedsCheck">
-								<input type="hidden" th:value="*{label}">
+								<input type="hidden" name="label" th:value="*{label}">
 								<input type="submit" value="売上確認" class="btn btn-primary">
 							</form>
 							<form action="/AdminUpdate/Exec">
