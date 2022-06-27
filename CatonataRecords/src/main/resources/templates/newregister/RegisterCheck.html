@@ -20,16 +20,10 @@
 								<tr>
 									<td>氏名</td>
 									<td><span th:text="*{name}"></span></td>
-
-									<td>クレジットカード番号</td>
-									<td><span th:text="*{creditnumber}"></span></td>
 								</tr>
 								<tr>
 									<td>パスワード</td>
 									<td><span th:text="*{password}"></span></td>
-
-									<td>有効期限</td>
-									<td><span th:text="*{creditspan}"></span></td>
 								</tr>
 								<tr>
 									<td>年齢</td>
@@ -37,7 +31,8 @@
 								</tr>
 								<tr>
 									<td>性別</td>
-									<td><span th:text="*{gender}"></span></td>
+									<td><span th:text="(*{gender == 1} ? 男 : 女)"></span></td>
+									<!-- <td th:text="(*{e.Gender == 1} ? 男 : 女)"></td> -->
 								</tr>
 								<tr>
 									<td>住所</td>
@@ -51,25 +46,39 @@
 									<td>メールアドレス</td>
 									<td><span th:text="*{email}"></span></td>
 								</tr>
+								</th:block>
+
+									<th:block th:if = "${session.LoginUser == null}">
+
+									<th:block th:object = "${session.ccif}">
 								<tr>
+									<td>クレジットカード番号</td>
+									<td><span th:text="*{creditnumber}"></span></td>
 
 								</tr>
+								<tr>
+									<td>有効期限</td>
+									<td><span th:text="*{creditspan}"></span></td>
+								</tr>
 
+							</th:block>
 
 							</th:block>
 
 							</table>
-							<form role="form" action="/SignUpComplete" th:action="@{${send}}"
+							<form role="form" action="SignUp/SignUpComplete" th:action="@{${send}}"
 							 method="post">
 							<p>
 							<input type="submit" value="登録" class="btn btn-primary">
 							</p>
 						</form>
-						<th:block th:object="${session.LoginUser}">
-							<!-- <th:block th:if="*{authority == '2'}">
+						<th:block th:if="${session.LoginUser != null}">
 								<p><button type="button" class="btn btn-primary"
-									onclick="location.href='/AdminRegister/Back'">変更画面に戻る</button></p> -->
-							</th:block>
+									onclick="location.href='/AdminRegister/Back'">登録画面に戻る</button></p>
+						</th:block>
+						<th:block th:if="${session.LoginUser == null}">
+							<p><button type="button" class="btn btn-primary"
+									onclick="location.href='/SignUp/SignUpBack'">登録画面に戻る</button></p>
 						</th:block>
 	</div>
 	</body>
