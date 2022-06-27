@@ -37,7 +37,7 @@ public class ProductRegisterController {
 			mav.setViewName("exec/register/ProductRegister");
 
 		} else {
-
+			form.setLabel(user.getLabel());
 			//入力フォームをセッションに保存
 			session.setAttribute("proForm", form);
 			mav.setViewName("exec/register/ProductCheck");
@@ -55,7 +55,7 @@ public class ProductRegisterController {
 
 		//入力内容をセッションから取得
 		ProductForm proForm = (ProductForm) session.getAttribute("proForm");
-		proForm.setLabel(user.getLabel());
+//		proForm.setLabel(user.getLabel());
 
 		//登録を実行するDaoを呼び出す
 		ExecDao.productRegister(proForm);
