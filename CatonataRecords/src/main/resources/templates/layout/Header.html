@@ -39,9 +39,11 @@
 
 		<div id="header">
 			～CATONATA RECORDS～
-			<th:block th:object="${session.loginuser}">
-				<div class="session_user">ようこそ○○さん</div>
+			<th:block th:if="${session.LoginUser != null}">
+			<th:block th:object="${session.LoginUser}">
+				<div class="session_user">ようこそ<th:block th:text="*{name}"></th:block>さん</div>
 				<!--  ようこそ<span th:text="*{name}"></span>さん -->
+			</th:block>
 			</th:block>
 		</div>
 	</div>
