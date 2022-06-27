@@ -37,8 +37,14 @@
             <th:block th:each="item : ${allproduct}">
 			<tr>
 					<!--  <td th:text="*{item.pro_id}"></td>-->
-					<td><a th:href="@{/Purchase/ProductDetail(pro_id=*{item.pro_id})}">
-						<span  th:text="*{item.pro_name}">商品名</span></a>
+					<td>
+						<th:block th:if="*{item.stock >= '1'}">
+							<a th:href="@{/Purchase/ProductDetail(pro_id=*{item.pro_id})}">
+							<span  th:text="*{item.pro_name}">商品名</span></a>
+						</th:block>
+						<th:block th:if="*{item.stock == '0'}">
+							<span  th:text="*{item.pro_name}">商品名</span>
+						</th:block>
 					</td>
 					<td th:text="*{item.artist}"></td>
 					<td th:text="*{item.media}"></td>
