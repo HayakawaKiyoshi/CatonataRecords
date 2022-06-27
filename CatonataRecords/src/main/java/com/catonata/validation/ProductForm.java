@@ -24,8 +24,7 @@ public class ProductForm {
 	private String price;
 	@NotEmpty
 	private String release_date;
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=60)
+
 	private String label;
 
 	private String sold;
