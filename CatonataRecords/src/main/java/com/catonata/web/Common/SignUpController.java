@@ -27,8 +27,8 @@ public class SignUpController {
 	 */
 	@RequestMapping("")
 	private String SignupUser (@ModelAttribute UserInformationForm uif,Model model) {
-		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
-		session.setAttribute("LoginUser", LoginUser);
+//		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+//		session.setAttribute("LoginUser", LoginUser);
 		model.addAttribute("send","/SignUp/CreditRegister");
 		return "/newregister/PersonalRegister";
 	}
@@ -44,8 +44,8 @@ public class SignUpController {
 	@RequestMapping("/CreditRegister")
 	private String SignupCheck (@Validated UserInformationForm uif, BindingResult result
 			, @ModelAttribute CreditCardInformationForm ccif) {
-		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
-		session.setAttribute("LoginUser", LoginUser);
+//		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+//		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
 			return "/newregister/PersonalRegister";
 		}
@@ -62,16 +62,18 @@ public class SignUpController {
 	 * @return
 	 */
 	@RequestMapping("/SignUpCheck")
-	private String SignupComplete (@Validated  CreditCardInformationForm ccif, BindingResult result) {
-		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
-		session.setAttribute("LoginUser", LoginUser);
+	private String SignupComplete (@Validated  CreditCardInformationForm ccif, BindingResult result, Model model) {
+//		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+//		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
 			return "/newregister/CardRegister";
 		}
 		UserInformationForm uif = (UserInformationForm)session.getAttribute("uif");
 		//コミット確認
+		System.out.println(ccif.getCreditnumber());
 		session.setAttribute("uif", uif);
 		session.setAttribute("ccif", ccif);
+		model.addAttribute("send","/SignUp/SignUpComplete");
 		//基本情報の入力が正常であれば、登録内容確認画面へ
 		return "/newregister/RegisterCheck";
 	}
@@ -106,8 +108,9 @@ public class SignUpController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
-		model.addAttribute("UserInformationForm", uif);
-		return "admin/register/GeneralRegister";
+		model.addAttribute("userInformationForm", uif);
+		model.addAttribute("send","/SignUp/CreditRegister");
+		return "/newregister/PersonalRegister";
 	}
 
 }
