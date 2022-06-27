@@ -8,11 +8,11 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
 		<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
-		<title>新規会員登録（一般）</title>
+		<title>新規会員登録完了画面（一般）</title>
 	</head>
 	<body>
 	<div layout:fragment="content">
-		<h3>新規会員登録</h3>
+	<div id="common_content_bar">新規会員登録完了画面</div>
 		<p>登録が完了しました。</p>
 		<p>ログイン画面でログインしてください。</p>
 		<form action="/login" th:action="@{/login}"
