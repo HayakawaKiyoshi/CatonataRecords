@@ -60,7 +60,7 @@ public class AdminRegisterUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		model.addAttribute("userInformationForm", uif);
-		return "newregister/PersonalRegister";
+		return "admin/register/GeneralRegister";
 	}
 
 	/*
@@ -88,7 +88,7 @@ public class AdminRegisterUserController {
 	private String registerExecComplete (ExecInformationForm eif, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
-		eif = (ExecInformationForm)session.getAttribute("uif");
+		eif = (ExecInformationForm)session.getAttribute("eif");
 		UserInfoDao.execInsert(eif);
 		model.addAttribute("msg","登録");
 		return "admin/complete/Complete";
