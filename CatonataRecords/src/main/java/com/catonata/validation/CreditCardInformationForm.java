@@ -9,7 +9,7 @@ import com.catonata.validation.ByteCheckValidation.ByteCheck;
 public class CreditCardInformationForm {
 
 	@NotEmpty
-	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
+//	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
 	@ByteCheck(charset="UTF-8",min=1, max=19)
 	private String creditnumber;
 	@NotEmpty
