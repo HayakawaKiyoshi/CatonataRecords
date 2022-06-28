@@ -55,8 +55,8 @@ public class MyPageUpdateDeleteController {
 			return "general/mypage/UserUpdate";
 		}else {
 //			uif = UserInfoDao.find(name, password);
-			UserInformationForm Uif = (UserInformationForm)session.getAttribute("uif");
-			session.setAttribute("uif", Uif);
+//			UserInformationForm Uif = (UserInformationForm)session.getAttribute("uif");
+//			session.setAttribute("uif", Uif);
 			session.setAttribute("uif", uif);
 			UserInformationBean bean = UserInfoDao.findCard(LoginUser.getName(),LoginUser.getPassword());
 			CreditCardInformationForm crdt = new CreditCardInformationForm();

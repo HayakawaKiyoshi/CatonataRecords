@@ -118,6 +118,19 @@ public class ProductDeleteController {
 		return mav;
 	}
 
+	@RequestMapping("/back")
+	public ModelAndView back(ModelAndView mav) {
+		//ログイン情報の取得
+		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
+		session.setAttribute("LoginUser", user);
+		 //セッションに保存した情報を取得
+		ProductForm delete = (ProductForm) session.getAttribute("delete");
+		session.setAttribute("delete",delete );
+
+		return mav;
+	}
+
+
 }
 
 
