@@ -1,5 +1,6 @@
 package com.catonata.validation;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -22,6 +23,7 @@ public class ExecInformationForm {
 	private String label;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=50)
+	@Email
 	private String email;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=60)
