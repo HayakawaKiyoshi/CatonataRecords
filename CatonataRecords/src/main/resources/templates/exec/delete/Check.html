@@ -11,51 +11,47 @@
 <title>情報削除確認画面</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <script type="text/javascript" th:src="@{/js/script.js}"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
-
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
 	<div layout:fragment="content">
-			<div id="Exec_content_bar">自社商品削除確認</div>
+		<div id="Exec_content_bar">自社商品削除確認</div>
 
-			<p>以下の商品情報を削除します。よろしいですか？</p>
+		<p>以下の商品情報を削除します。よろしいですか？</p>
 
-			<form action="/exec/delete/execute" method="post">
-
-				<table border="1">
+		<form action="/exec/delete/execute" method="post">
+			<table border="1">
+				<tr>
+					<th>商品ID</th>
+					<th>商品名</th>
+					<th>アーティスト</th>
+					<th>商品媒体</th>
+					<th>価格</th>
+					<th>発売日</th>
+					<th>レコード会社</th>
+					<th>在庫</th>
+				</tr>
+				<th:block th:each="item : ${delete}">
 					<tr>
-						<th>商品ID</th>
-						<th>商品名</th>
-						<th>アーティスト</th>
-						<th>商品媒体</th>
-						<th>価格</th>
-						<th>発売日</th>
-						<th>レコード会社</th>
-						<th>在庫</th>
+						<td th:text="*{item.pro_id}"></td>
+						<td th:text="*{item.pro_name}"></td>
+						<td th:text="*{item.artist}"></td>
+						<td th:text="*{item.media}"></td>
+						<td th:text="*{item.price}"></td>
+						<td th:text="*{item.release_date}"></td>
+						<td th:text="*{item.label}"></td>
+						<td th:text="*{item.stock}"></td>
 					</tr>
-					<th:block th:each="item : ${delete}">
-						<tr>
-							<td th:text="*{item.pro_id}"></td>
-							<td th:text="*{item.pro_name}"></td>
-							<td th:text="*{item.artist}"></td>
-							<td th:text="*{item.media}"></td>
-							<td th:text="*{item.price}"></td>
-							<td th:text="*{item.release_date}"></td>
-							<td th:text="*{item.label}"></td>
-							<td th:text="*{item.stock}"></td>
-						</tr>
-				</table>
-				<p>
-					<input type="submit" value="削除する">
-				</p>
-
-			</form>
-
-			<!-- <form role="form" action="/" method="">
+				</th:block>
+			</table>
+			<p>
+				<input type="submit" value="削除する">
+			</p>
+		</form>
+		<!-- <form role="form" action="/" method="">
 				<input type="submit" value="戻る">
 
 			</form> -->
-		</div>
+	</div>
 </body>
 </html>

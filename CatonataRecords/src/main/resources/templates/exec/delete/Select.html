@@ -17,12 +17,13 @@
 </head>
 <body>
 	<div layout:fragment="content">
-	<div id="Exec_content_bar">商品削除確認画面</div>
+		<div id="Exec_content_bar">商品削除確認画面</div>
 		<form action="/exec/delete/search" method="post">
-			<input type=text name="msg" value = "商品名またはアーティスト名を入力してください"> <input type="submit" value="検索"
-				class="btn btn-primary"><br>
+			<input type=text name="msg" value="商品名またはアーティスト名を入力してください">
+			<input type="submit" value="検索" class="btn btn-primary"><br>
 		</form>
-		削除する商品を選択してください。<br> <font size="4">＜商品一覧＞</font>
+		削除する商品を選択してください。<br>
+		<font size="4">＜商品一覧＞</font>
 		<form action="/exec/delete/select" method="get">
 			<table border="1">
 				<tr>
@@ -38,8 +39,9 @@
 				</tr>
 				<th:block th:each="item : ${productForm}">
 					<tr>
-						<td><input type="checkbox" name="check"
-							th:value="*{item.pro_id}"></td>
+						<td>
+						  <input type="checkbox" name="check" th:value="*{item.pro_id}">
+						</td>
 						<td th:text="*{item.pro_id}"></td>
 						<td th:text="*{item.pro_name}"></td>
 						<td th:text="*{item.artist}"></td>

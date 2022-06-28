@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout/LayoutTile">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTile">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,15 +11,13 @@
 <title>商品売上確認画面</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <script type="text/javascript" th:src="@{/js/script.js}"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
-
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
-		<div layout:fragment="content">
+	<div layout:fragment="content">
 		<div id="Exec_content_bar">売上確認</div>
-			<p>区間検索</p>
-			<!--
+		<p>区間検索</p>
+<!--
     <form role="form" action="/" th:action="@{/}" method="post">
         <input type="text" name="from_period" id="inputFrom_period" th:field="*{from_period}" th:errorclass="fieldError">
          ～
@@ -27,27 +25,26 @@
         <input type="submit" value="検索">
     </form>
 -->
-
-			<table>
+		<table>
+			<tr>
+				<!-- <th>No</th> -->
+				<th>商品名</th>
+				<th>価格</th>
+				<th>販売総売上</th>
+				<th>販売総数</th>
+				<!-- <th>税区分</th> -->
+			</tr>
+			<th:block th:each="items : ${proceeds}">
 				<tr>
-					<!-- <th>No</th> -->
-					<th>商品名</th>
-					<th>価格</th>
-					<th>販売総売上</th>
-					<th>販売総数</th>
-					<!-- <th>税区分</th> -->
+					<!-- <td><span th:text="${items.}">1</span></td> -->
+					<td><span th:text="${items.pro_name}">2</span></td>
+					<td><span th:text="${items.price}">3</span></td>
+					<td><span th:text="${items.price} * ${items.sold}">4</span></td>
+					<td><span th:text="${items.sold}">5</span></td>
+					<!-- <td><span th:text="${items.}">内税</span></td> -->
 				</tr>
-				<th:block th:each="items : ${proceeds}">
-					<tr>
-						<!-- <td><span th:text="${items.}">1</span></td> -->
-						<td><span th:text="${items.pro_name}">2</span></td>
-						<td><span th:text="${items.price}">3</span></td>
-						<td><span th:text="${items.price} * ${items.sold}">4</span></td>
-						<td><span th:text="${items.sold}">5</span></td>
-						<!-- <td><span th:text="${items.}">内税</span></td> -->
-					</tr>
-				</th:block>
-			</table>
-		</div>
+			</th:block>
+		</table>
+	</div>
 </body>
 </html>

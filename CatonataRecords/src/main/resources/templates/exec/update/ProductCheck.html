@@ -11,32 +11,27 @@
 <title>商品変更確認画面</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <script type="text/javascript" th:src="@{/js/script.js}"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
 	<div layout:fragment="content">
 		<div id="Exec_content_bar">商品変更確認</div>
 		以下の内容で変更します。よろしいですか？
-
-		<form action="/exec/update/execute" method="post"
-			th:object="${update}">
-			商品名：<span th:text="*{pro_name}"></span><br> アーティスト名：<span
-				th:text="*{artist}"></span><br> 商品媒体：<span th:text="*{media}"></span><br>
-			商品価格：<span th:text="*{price}"></span><br> 発売日：<span
-				th:text="*{release_date}"></span><br> レコード会社名：<span
-				th:text="*{label}"></span><br> 在庫数：<span th:text="*{stock}"></span><br>
-
+		<form action="/exec/update/execute" method="post" th:object="${update}">
+			商品名：<span th:text="*{pro_name}"></span><br>
+			アーティスト名：<span th:text="*{artist}"></span><br>
+			商品媒体：<span th:text="*{media}"></span><br>
+			商品価格：<span th:text="*{price}"></span><br>
+			発売日：<span th:text="*{release_date}"></span><br>
+			レコード会社名：<span th:text="*{label}"></span><br>
+			在庫数：<span th:text="*{stock}"></span><br>
 			<p>
 				<input type="submit" value="変更">
 			</p>
 		</form>
-
-		<form role="form" action="/exec/update/back"
-			th:action="@{/exec/update/back}" method="post">
+		<form role="form" action="/exec/update/back" th:action="@{/exec/update/back}" method="post">
 			<input type="submit" value="戻る">
 		</form>
 	</div>
-
 </body>
 </html>

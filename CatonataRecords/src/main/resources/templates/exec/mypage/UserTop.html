@@ -11,8 +11,7 @@
 <title>経営者トップページ(商品管理画面)</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <script type="text/javascript" th:src="@{/js/script.js}"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
 	<div layout:fragment="content">
@@ -40,8 +39,7 @@
 					<td th:text="*{item.label}"></td>
 					<td th:text="*{item.stock}"></td>
 					<td>
-						<form action="/exec/update" th:action="@{/exec/update}"
-							method="get">
+						<form action="/exec/update" th:action="@{/exec/update}" method="get">
 							<input type="hidden" name="id" th:value="*{item.pro_id}">
 							<input type="submit" value="変更">
 						</form>
@@ -53,6 +51,5 @@
 			<input type="submit" value="削除">
 		</form>
 	</div>
-
 </body>
 </html>

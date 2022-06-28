@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="layout/LayoutTile">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTile">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,41 +15,38 @@ layout:decorate="layout/LayoutTile">
 	rel="stylesheet">
 </head>
 <body>
-<div layout:fragment="content">
-<div id="Exec_content_bar">自社商品情報変更</div>
-
-    <form role="form" action="/exec/update" th:action="@{/exec/update}" th:object="${productForm}" method="post">
-        商品名：<input type="text" th:field="*{pro_name}">
-        <span th:if="${#fields.hasErrors('pro_name')}" th:errors="*{pro_name}" th:errorclass="error-field">error!</span><br>
-
-        アーティスト名：<input type="text"  th:field="*{artist}">
-        <span th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}" th:errorclass="error-field">error!</span><br>
-
-        商品媒体：
-                <select name="media">
-                    <option selected disabled>---</option>
-                    <option value="CD" th:selected="*{media == 'CD'}">CD</option>
-                    <option value="DVD" th:selected="*{media == 'DVD'}">DVD</option>
-                    <option value="本/書籍" th:selected="*{media == '本/書籍'}">本/書籍</option>
-                    <option value="グッズ" th:selected="*{media == 'グッズ'}">グッズ</option>
-                </select>
-                <span th:if="${#fields.hasErrors('media')}" th:errors="*{media}"
-                    th:errorclass="error-field">error!</span><br>
-
-        商品価格：<input type="text"  th:field="*{price}">
-        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" th:errorclass="error-field">error!</span><br>
-
-        発売日：<input type="text"  th:field="*{release_date}">
-        <span th:if="${#fields.hasErrors('release_date')}" th:errors="*{release_date}" th:errorclass="error-field">error!</span><br>
-
-        レコード会社名：<input type="text"  th:field="*{label}" readonly>
-        <span th:if="${#fields.hasErrors('label')}" th:errors="*{label}" th:errorclass="error-field">error!</span><br>
-
-        在庫数：<input type="text"  th:field="*{stock}">
-        <span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}" th:errorclass="error-field">error!</span><br>
-
-        <input type="submit" value="変更確認画面へ">
-    </form>
-    </div>
+	<div layout:fragment="content">
+		<div id="Exec_content_bar">自社商品情報変更</div>
+		<form role="form" action="/exec/update" th:action="@{/exec/update}" th:object="${productForm}" method="post">
+			商品名：<input type="text" th:field="*{pro_name}">
+			<span th:if="${#fields.hasErrors('pro_name')}" th:errors="*{pro_name}"
+				th:errorclass="error-field">error!</span><br>
+			アーティスト名：<input type="text" th:field="*{artist}">
+			<span th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}"
+				th:errorclass="error-field">error!</span><br>
+			商品媒体： <select name="media">
+				<option selected disabled>---</option>
+				<option value="CD" th:selected="*{media == 'CD'}">CD</option>
+				<option value="DVD" th:selected="*{media == 'DVD'}">DVD</option>
+				<option value="本/書籍" th:selected="*{media == '本/書籍'}">本/書籍</option>
+				<option value="グッズ" th:selected="*{media == 'グッズ'}">グッズ</option>
+			</select>
+			<span th:if="${#fields.hasErrors('media')}" th:errors="*{media}"
+				th:errorclass="error-field">error!</span><br>
+			商品価格：<input type="text" th:field="*{price}">
+			<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
+				th:errorclass="error-field">error!</span><br>
+			発売日：<input type="text" th:field="*{release_date}">
+			<span th:if="${#fields.hasErrors('release_date')}"
+				th:errors="*{release_date}" th:errorclass="error-field">error!</span><br>
+			レコード会社名：<input type="text" th:field="*{label}" readonly>
+			<span th:if="${#fields.hasErrors('label')}" th:errors="*{label}"
+				th:errorclass="error-field">error!</span><br>
+			在庫数：<input type="text" th:field="*{stock}">
+			<span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"
+				th:errorclass="error-field">error!</span><br>
+			<input type="submit" value="変更確認画面へ">
+		</form>
+	</div>
 </body>
 </html>

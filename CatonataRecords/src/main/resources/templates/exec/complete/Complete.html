@@ -13,16 +13,16 @@
 <script type="text/javascript" th:src="@{/js/script.js}"></script>
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
 	rel="stylesheet">
-
 </head>
 <body>
-<div layout:fragment="content">
-
-<div id="Exec_content_bar"><span th:text="${msg}"></span>完了</div>
-<span th:text="${msg}"></span>完了しました<br>
-<form role="form" action="/exec/top" th:action="@{/exec/top}" method="get">
-<input type="submit" value="メイン画面へ戻る" class="btn btn-primary">
-</form>
-</div>
+	<div layout:fragment="content">
+		<div id="Exec_content_bar">
+			<span th:text="${msg}"></span>
+		</div>
+		<span th:text="${msg}"></span><br>
+		<form role="form" action="/exec/top" th:action="@{/exec/top}" method="get">
+			<input type="submit" value="メイン画面へ戻る" class="btn btn-primary">
+		</form>
+	</div>
 </body>
 </html>
