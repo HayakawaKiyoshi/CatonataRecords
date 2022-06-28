@@ -55,10 +55,11 @@ div#footer {
 }
 
 
-#Exec_content_bar {
-	background: #00ff00;
+#content_bar {
+	background: #009cc0;
+	color: white;
+	font-weight:bold;
 	text-align: center;
-	border: solid 1px black;
 	margin: auto;
 }
 
