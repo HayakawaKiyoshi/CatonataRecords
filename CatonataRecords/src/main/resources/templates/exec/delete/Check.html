@@ -20,7 +20,7 @@
 		<p>以下の商品情報を削除します。よろしいですか？</p>
 
 		<form action="/exec/delete/execute" method="post">
-			<table border="1">
+			<table class="table table-striped table-bordered">
 				<tr>
 					<th>商品ID</th>
 					<th>商品名</th>
@@ -45,11 +45,11 @@
 				</th:block>
 			</table>
 			<p>
-				<input type="submit" value="削除する">
+				<input type="submit" value="削除する" class="btn btn-outline-danger">
 			</p>
 		</form>
 		<form action="/exec/select" method="get">
-                                <input type="submit" value="戻る" class="btn btn-primary">
+                                <input type="submit" value="戻る" class="btn btn-outline-primary">
                             </form>
 	</div>
 </body>

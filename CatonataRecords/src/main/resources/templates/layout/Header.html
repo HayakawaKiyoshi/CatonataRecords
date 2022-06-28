@@ -15,10 +15,10 @@
 					<th:block th:if="${session.LoginUser == null}">
 						<div id="header_beforelogin">
 							<form action="/login" method="get">
-								<span class="text-end"><input type="submit" value="ログイン"></span>
+								<span class="text-end"><input type="submit" value="ログイン" class="btn btn-primary"></span>
 							</form>
 							<form action="/SignUp" method="post">
-								<span class="text-end"><input type="submit" value="新規登録"></span>
+								<span class="text-end"><input type="submit" value="新規登録" class="btn btn-primary"></span>
 							</form>
 						</div>
 					</th:block>
@@ -30,25 +30,27 @@
 						<div id="header_afterlogin">
 							<form action="/mypage/top" method="post">
 								<span class="text-end">
-								    <input type="submit" value="マイページ">
+								    <input type="submit" value="マイページ" class="btn btn-primary">
 								</span>
 							</form>
 							<form action="/logout" method="post">
-								<span class="text-end"><input type="submit" value="ログアウト"></span>
+								<span class="text-end">
+								    <input type="submit" value="ログアウト" class="btn btn-primary">
+								</span>
 							</form>
 						</div>
 					</th:block>
 					<th:block th:case="2">
 						<div id="header_afterlogin">
 							<form action="/logout" method="post">
-								<span class="text-end"><input type="submit" value="ログアウト"></span>
+								<span class="text-end"><input type="submit" value="ログアウト" class="btn btn-primary"></span>
 							</form>
 						</div>
 					</th:block>
 					<th:block th:case="3">
 						<div id="header_afterlogin">
 							<form action="/logout" method="post">
-								<span class="text-end"><input type="submit" value="ログアウト"></span>
+								<span class="text-end"><input type="submit" value="ログアウト" class="btn btn-primary"></span>
 							</form>
 						</div>
 					</th:block>
