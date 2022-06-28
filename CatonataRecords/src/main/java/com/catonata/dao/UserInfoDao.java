@@ -18,6 +18,7 @@ import com.catonata.validation.UserInformationForm;
 /**
  * ユーザー情報を処理するDAOのクラス
  *
+ *
  * 目次
  * >登録
  * insert 引き数二つの登録
