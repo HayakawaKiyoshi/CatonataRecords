@@ -96,10 +96,12 @@ public class ProductDeleteController {
 
 		//削除のDaoを呼び出す
 		ExecDao.productDelete(check);
-
-		mav.setViewName("exec/complete/Complete");
 		mav.addObject("msg", "削除が完了しました");
-
+		if(user.getAuthority().equals("3")) {
+			mav.setViewName("exec/complete/Complete");
+		}else if(user.getAuthority().equals("2")){
+			mav.setViewName("admin/complete/Complete");
+		}
 		//セッションインスタンスの削除
 		session.removeAttribute("delete");
 
