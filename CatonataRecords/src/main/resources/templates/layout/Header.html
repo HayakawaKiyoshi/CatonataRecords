@@ -24,6 +24,9 @@
 					</th:block>
 
 					<th:block th:if="${session.LoginUser != null}">
+					<th:block th:object=${session.LoginUser}>
+                    <th:block th:switch="*{authority}">
+                     <th:block th:case="1">
 						<div id="header_afterlogin">
 							<form action="/mypage/top" method="post">
 								<span class="text-end">
@@ -34,6 +37,23 @@
 								<span class="text-end"><input type="submit" value="ログアウト"></span>
 							</form>
 						</div>
+					</th:block>
+					<th:block th:case="2">
+						<div id="header_afterlogin">
+							<form action="/logout" method="post">
+								<span class="text-end"><input type="submit" value="ログアウト"></span>
+							</form>
+						</div>
+					</th:block>
+					<th:block th:case="3">
+						<div id="header_afterlogin">
+							<form action="/logout" method="post">
+								<span class="text-end"><input type="submit" value="ログアウト"></span>
+							</form>
+						</div>
+					</th:block>
+					</th:block>
+					</th:block>
 					</th:block>
 				</div>
 				<h1>CATONATA RECORDS</h1>

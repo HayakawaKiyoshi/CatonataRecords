@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="Exec_content_bar">自社商品削除確認</div>
+		<div id="Exec_content_bar">商品削除確認</div>
 
 		<p>以下の商品情報を削除します。よろしいですか？</p>
 
@@ -48,10 +48,9 @@
 				<input type="submit" value="削除する">
 			</p>
 		</form>
-		<form role="form" action="/exec/back" method="post">
-				<input type="submit" value="戻る">
-
-			</form>
+		<form action="/exec/select" method="get">
+                                <input type="submit" value="戻る" class="btn btn-primary">
+                            </form>
 	</div>
 </body>
 </html>
