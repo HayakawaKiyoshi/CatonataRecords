@@ -29,7 +29,12 @@ public class ProductDeleteController {
 	public ModelAndView index(LoginForm form, ModelAndView mav) {
 		UserInformationBean user = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
-		List<ProductBean> empList = ExecDao.findAll(user.getLabel());
+		List<ProductBean> empList = null;
+		if(user.getAuthority().equals("3")) {
+			empList = ExecDao.findAll(user.getLabel());
+		}else if(user.getAuthority().equals("2")) {
+			empList = ExecDao.adminFindAll();
+		}
 		mav.setViewName("exec/delete/Select");
 		mav.addObject("productForm",empList);
 		return mav;

@@ -362,7 +362,7 @@ public class ExecDao {
 
 	}
 
-	public static List<ProductBean> adminFindAll(String labelname) {
+	public static List<ProductBean> adminFindAll() {
 
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -373,15 +373,12 @@ public class ExecDao {
 		//ArrayListを初期化
 		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
 
-		System.out.println(labelname);
-
 		try {
 			conn = manager.getConn();
 
 			final String SQL = "SELECT * FROM PRODUCT_TABLE";
 			ps = conn.prepareStatement(SQL);
 			//引数を?にバインド
-			ps.setString(1, labelname);
 			rs = ps.executeQuery();
 
 			//結果をuserインスタンスに設定し、
