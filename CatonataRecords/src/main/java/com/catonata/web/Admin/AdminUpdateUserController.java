@@ -44,6 +44,8 @@ public class AdminUpdateUserController {
 		}
 		session.setAttribute("uif", uif);
 		return "admin/update/GeneralCheck";
+
+
 	}
 
 	@RequestMapping("/Complete")

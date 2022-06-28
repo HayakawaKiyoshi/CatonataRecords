@@ -33,22 +33,24 @@
 				<td><span th:text="${items.gender}">5</span></td>
 				<td><span th:text="${items.authority}">6</span></td>
 				<td>
-				    <a href="/AdminUpdate" th:href="@{/AdminUpdate}">
+				    <form action="/AdminUpdate" th:action="@{/AdminUpdate}">
 				    	<input type="hidden" name="name" th:value="${items.name}">
 				    	<input type="hidden" name="password" th:value="${items.password}">
 						<input type="submit" value="変更">
-				    </a>
+				    </form>
 			    </td>
 				<td>
-				    <a href="/AdminDelete" th:href="@{/AdminDelete}">
-				    	<input type="hidden" name="name" th:value="${items.name}">
+				    <form action="/AdminDelete" th:action="@{/AdminDelete}" method = "post">
+				    	<input type="hidden" name="id" th:value="${items.id}">
 				    	<input type="hidden" name="password" th:value="${items.password}">
 						<input type="submit" value="削除">
-				    </a>
+				    </form>
                 </td>
 			</tr>
 		</th:block>
 	</table>
+
+
 
 	<p>経営者ユーザー一覧</p>
     <table>
