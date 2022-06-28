@@ -3,20 +3,17 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8">
-<title layout:title-pattern="$LAYOUT_TITLE$CONTENT_TITLE">
-	sample</title>
+<title layout:title-pattern="$LAYOUT_TITLE$CONTENT_TITLE">レイアウトタイル</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <script type="text/javascript" th:src="@{/js/script.js}"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" /> -->
-
 </head>
 <body>
 	<div class="container">
 		<div class="LayoutTile">
-			<table class="table table-responsive" style=margin:auto;>
+			<table class="table table-responsive" style="margin: auto;">
 				<tr>
 					<td colspan="2">
 						<div layout:include="layout/Header :: header"></div>
@@ -25,13 +22,14 @@
 				<!-- <th:block th:unless="${step == '1'}"> -->
 				<!-- サイドメニュー -->
 				<tr>
-					<td style=width:15%;><span layout:include="layout/Navigation :: navigation"></span>
+					<td style="width: 15%;">
+					   <span layout:include="layout/Navigation :: navigation"></span>
 					</td>
 					<!-- メインコンテンツ -->
-					<td style=width:78%;><span layout:fragment="content"></span></td>
+					<td style="width: 78%;"><span layout:fragment="content"></span></td>
 				</tr>
 			</table>
-				<!-- フッター -->
+			<!-- フッター -->
 			<div layout:include="layout/Footer :: footer"></div>
 		</div>
 	</div>

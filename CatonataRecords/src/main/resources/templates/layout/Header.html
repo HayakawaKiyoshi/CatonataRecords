@@ -5,14 +5,13 @@
 <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet" th:href="@{/css/style.css}">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ヘッダー</title>
 </head>
 <body>
 	<div layout:fragment="header">
 		<div class="container">
 			<div id="header">
 				<div style="margin-left: 80%">
-
 					<th:block th:if="${session.LoginUser == null}">
 						<div id="header_beforelogin">
 							<form action="/login" method="get">
@@ -27,18 +26,17 @@
 					<th:block th:if="${session.LoginUser != null}">
 						<div id="header_afterlogin">
 							<form action="/mypage/top" method="post">
-								<span class="text-end"> <input type="submit"
-									value="マイページ">
+								<span class="text-end">
+								    <input type="submit" value="マイページ">
 								</span>
 							</form>
 							<form action="/logout" method="post">
-								<span class="text-end"><input type="submit" value="ログアウト">
-								</span>
+								<span class="text-end"><input type="submit" value="ログアウト"></span>
 							</form>
 						</div>
 					</th:block>
 				</div>
-				<h1>～CATONATA RECORDS～</h1>
+				<h1>CATONATA RECORDS</h1>
 				<th:block th:if="${session.LoginUser != null}">
 					<th:block th:object="${session.LoginUser}">
 						<div class="session_user">
@@ -46,7 +44,6 @@
 								ようこそ <b><th:block th:text="*{name}"></th:block></b> さん
 							</p>
 						</div>
-						<!--  ようこそ<span th:text="*{name}"></span>さん -->
 					</th:block>
 				</th:block>
 			</div>
