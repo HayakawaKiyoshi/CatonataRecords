@@ -62,27 +62,6 @@ h1{
 	margin: auto;
 }
 
-#general_content_bar {
-	background: #81cac4;
-	color: white;
-	font-weight:bold;
-	text-align: center;
-	margin: auto;
-}
-
-#common_content_bar {
-	background: yellow;
-	text-align: center;
-	border: solid 1px black;
-	margin: auto;
-
-}
-
-.session_user {
-	position: relative;
-	left: auto;
-	top: 25px;
-}
 
 #PRTable {
 	width: 85%;
