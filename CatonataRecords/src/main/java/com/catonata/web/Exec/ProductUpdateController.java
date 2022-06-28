@@ -62,7 +62,7 @@ public class ProductUpdateController {
 		if (result.hasErrors()) {
 			mav.setViewName("exec/update/ProductUpdate");
 		} else {
-			ProductForm update = (ProductForm) session.getAttribute("update");
+			ProductBean update = (ProductBean) session.getAttribute("update");
 			form.setPro_id(update.getPro_id());
 			form.setSold(update.getSold());
 			session.setAttribute("update", form);
