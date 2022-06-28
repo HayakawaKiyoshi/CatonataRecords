@@ -28,7 +28,7 @@ public class ExecInformationForm {
 	private String address;
 	@NotEmpty
 	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
-	@ByteCheck(charset="UTF-8",min=1, max=8)
+	@ByteCheck(charset="UTF-8",min=1, max=7)
 	private String banknumber;
 	@NotEmpty
 	@Pattern(regexp ="[^ -~｡-ﾟ]+", message="{0}は全角文字で入力してください")
