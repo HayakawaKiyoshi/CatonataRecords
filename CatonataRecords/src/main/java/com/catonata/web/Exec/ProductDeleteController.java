@@ -50,7 +50,7 @@ public class ProductDeleteController {
 		session.setAttribute("LoginUser", user);
 
 		//検索のDaoを呼び出す
-		ArrayList<ProductForm> delete = ExecDao.profind2(check);
+		ArrayList<ProductBean> delete = ExecDao.profind2(check);
 
 		session.setAttribute("delete", delete);
 		session.setAttribute("check", check);
@@ -76,7 +76,7 @@ public class ProductDeleteController {
 		session.setAttribute("LoginUser", user);
 
 		//検索のDaoを呼び出す
-		ProductForm delete = ExecDao.profind(name);
+		ProductBean delete = ExecDao.profind(name);
 
 		session.setAttribute("delete", delete);
 		mav.addObject("delete", delete);

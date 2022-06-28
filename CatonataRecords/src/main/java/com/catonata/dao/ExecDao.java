@@ -155,7 +155,7 @@ public class ExecDao {
 	 * @param id
 	 * @return
 	 */
-	public static ProductForm profind(String id) {
+	public static ProductBean profind(String id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -164,7 +164,7 @@ public class ExecDao {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		final String PROD_NAME_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_ID = ?";
 
-		ProductForm form = null;
+		ProductBean form = null;
 
 		try {
 			System.out.println(id);
@@ -176,7 +176,7 @@ public class ExecDao {
 
 			if (rs.next()) {
 
-				form = new ProductForm();
+				form = new ProductBean();
 				form.setPro_id(rs.getString("PROD_ID"));
 				form.setPro_name(rs.getString("PROD_NAME"));
 				form.setArtist(rs.getString("ARTIST"));
@@ -462,7 +462,7 @@ public class ExecDao {
 //
 //	}
 
-	public static ArrayList<ProductForm> profind2(String[] id) {
+	public static ArrayList<ProductBean> profind2(String[] id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -471,8 +471,8 @@ public class ExecDao {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		final String PROD_NAME_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_ID = ?";
 
-		ArrayList<ProductForm> productList = new ArrayList<ProductForm>();
-		ProductForm form = null;
+		ArrayList<ProductBean> productList = new ArrayList<ProductBean>();
+		ProductBean form = null;
 
 		try {
 			System.out.println(id);
@@ -487,7 +487,7 @@ public class ExecDao {
 
 			while (rs.next()) {
 
-				form = new ProductForm();
+				form = new ProductBean();
 				form.setPro_id(rs.getString("PROD_ID"));
 				form.setPro_name(rs.getString("PROD_NAME"));
 				form.setArtist(rs.getString("ARTIST"));
