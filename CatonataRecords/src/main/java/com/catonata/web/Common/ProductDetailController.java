@@ -31,6 +31,7 @@ public class ProductDetailController {
 	@Autowired
 	HttpSession session;
 
+	//コミット確認
 	/**
 	 * 商品一覧から商品詳細画面に遷移するメソッド
 	 * @param name 商品名
