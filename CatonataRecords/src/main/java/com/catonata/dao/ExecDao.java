@@ -42,7 +42,9 @@ public class ExecDao {
 			ps.setString(6, form.getLabel());
 			ps.setString(7, "0");
 			ps.setString(8, form.getStock());
-			ps.executeUpdate();
+			int cnt = ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件の商品データを登録しました。");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -79,6 +81,9 @@ public class ExecDao {
 			ps.setString(8, update.getStock());
 			ps.setString(9, update.getPro_id());
 			ps.executeUpdate();
+			int cnt = ps.executeUpdate();
+			conn.commit();
+			System.out.println(cnt + "件の商品データを登録しました。");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -340,9 +345,10 @@ public class ExecDao {
 				String price = rs.getString("PRICE");
 				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
 				String label = rs.getString("LABEL");
+				String sold = rs.getString("SOLD");
 				String stock = rs.getString("STOCK");
 				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
-						releasedate, label, stock);
+						releasedate, label, sold, stock);
 				empList.add(bean);
 			}
 		} catch (ClassNotFoundException e) {
@@ -499,9 +505,10 @@ public class ExecDao {
 				String price = rs.getString("PRICE");
 				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
 				String label = rs.getString("LABEL");
+				String sold = rs.getString("SOLD");
 				String stock = rs.getString("STOCK");
 				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
-						releasedate, label, stock);
+						releasedate, label,sold, stock);
 				empList.add(bean);
 			}
 		} catch (ClassNotFoundException e) {
