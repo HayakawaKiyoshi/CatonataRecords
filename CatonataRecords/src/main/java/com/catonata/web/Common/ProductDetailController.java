@@ -57,6 +57,11 @@ public class ProductDetailController {
 	private String purchaseCheck (Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
+		if(LoginUser == null) {
+			return "redirect:/login";
+		}else {
+
+
 		//セッションから商品情報を取得、再度セッションに保存
 		ProductBean product = (ProductBean)session.getAttribute("product");
 		session.setAttribute("product", product);
@@ -68,6 +73,7 @@ public class ProductDetailController {
 		model.addAttribute("cre_number",cre_number);
 		model.addAttribute("delivary", delivaryDate);
 		return "general/product/PurchaseCheck";
+		}
 	}
 
 	//配送日の変数作成メソッド

@@ -108,8 +108,15 @@ public class AdminUpdateUserController {
 		eif = (ExecInformationForm)session.getAttribute("eif");
 		UserInfoDao.execUpdate(eif);
 		model.addAttribute("msg","更新");
-		return "admin/complete/Complete";
+		String rtrn = null;
+		if(LoginUser.getAuthority().equals("2")) {
+			rtrn = "admin/complete/Complete";
+		}else if(LoginUser.getAuthority().equals("3")){
+			rtrn = "exec/complete/Complete";
+		}
+		return rtrn;
 	}
+
 
 	@RequestMapping("/ExecBack")
 	private String updateExecBack(ExecInformationForm eif, Model model) {
