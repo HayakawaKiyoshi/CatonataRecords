@@ -43,7 +43,7 @@ public class ProductDetailController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		//商品名で商品詳細を検索→セッションに保存
-		ProductBean product = ExecDao.pro_find(id);
+		ProductBean product = ExecDao.profind(id);
 		session.setAttribute("product", product);
 		return "general/product/ProductDetail";
 	}
