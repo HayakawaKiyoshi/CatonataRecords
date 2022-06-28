@@ -76,9 +76,9 @@
 							<input type="hidden" name="password" th:value="${items.password}">
 							<input type="submit" value="変更">
 					</form></td>
-					<td><form action="/AdminDelete/Exec" th:action="@{/AdminDelete/Exec}">
+					<td><form action="/AdminDelete/ExecCheck" th:action="@{/AdminDelete/ExecCheck}">
 							<input type="hidden" name="name" th:value="${items.name}">
-							<input type="hidden" name="password" th:value="${items.password}">
+							<input type="hidden" name="pass" th:value="${items.pass}">
 							<input type="submit" value="削除">
 					</form></td>
 				</tr>
