@@ -60,7 +60,7 @@ public class AdminRegisterUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		model.addAttribute("userInformationForm", uif);
-		return "admin/register/GeneralRegister";
+		return "newregister/PersonalRegister";
 	}
 
 	/*
