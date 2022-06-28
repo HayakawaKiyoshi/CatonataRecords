@@ -11,25 +11,25 @@
         <div id="navidation">
             <!-- ログインなし -->
             <th:block th:if="${session.LoginUser == null}">
-                <font size="4">商品カテゴリー (セッションなし)</font>
+                <p align="center"><b>商品カテゴリー</b></p>
                 <form action="/top/TopPage" method="post">
-                    <input type="submit" value="一覧" id="navi-button" class="btn btn-outline-primary">
+                    <input type="submit" value="一覧" class="btn btn-outline-primary" id="navi-button">
                 </form>
                 <form action="/top/category/search" method="post">
                     <input type="hidden" name="category" value="CD">
-                    <input type="submit" value="CD" class="btn btn-outline-primary">
+                    <input type="submit" value="CD" class="btn btn-outline-primary" id="navi-button">
                 </form>
                 <form action="/top/category/search" method="post">
                     <input type="hidden" name="category" value="DVD">
-                    <input type="submit" value="DVD" class="btn btn-outline-primary">
+                    <input type="submit" value="DVD" class="btn btn-outline-primary" id="navi-button">
                 </form>
                 <form action="/top/category/search" method="post">
                 <input type="hidden" name="category" value="本/書籍">
-                    <input type="submit" value="本/書籍" class="btn btn-outline-primary">
+                    <input type="submit" value="本/書籍" class="btn btn-outline-primary" id="navi-button">
                 </form>
                <form action="/top/category/search" method="post">
                     <input type="hidden" name="category" value="グッズ">
-                    <input type="submit" value="グッズ" class="btn btn-outline-primary">
+                    <input type="submit" value="グッズ" class="btn btn-outline-primary" id="navi-button">
                 </form>
             </th:block>
             <th:block th:if="${session.LoginUser != null}">
@@ -39,65 +39,65 @@
                         <th:block th:case="1">
                             <font size="4">商品カテゴリー</font>
                             <form action="/top/TopPage" method="post">
-                                <input type="submit" value="一覧" class="btn btn-outline-primary">
+                                <input type="submit" value="一覧" class="btn btn-outline-primary" id="navi-button">
                             </form>
                             <form action="/top/category/search" method="post">
                                 <input type="hidden" name="category" value="CD">
-                                <input type="submit" value="CD" class="btn btn-outline-primary">
+                                <input type="submit" value="CD" class="btn btn-outline-primary" id="navi-button">
                             </form>
                             <form action="/top/category/search" method="post">
                                 <input type="hidden" name="category" value="DVD">
-                                <input type="submit" value="DVD" class="btn btn-outline-primaryy">
+                                <input type="submit" value="DVD" class="btn btn-outline-primary" id="navi-button">
                             </form>
                             <form action="/top/category/search" method="post">
                 <input type="hidden" name="category" value="本/書籍">
-                    <input type="submit" value="本/書籍" class="btn btn-outline-primary">
+                    <input type="submit" value="本/書籍" class="btn btn-outline-primary" id="navi-button">
                 </form>
                <form action="/top/category/search" method="post">
                     <input type="hidden" name="category" value="グッズ">
-                    <input type="submit" value="グッズ" class="btn btn-outline-primary">
+                    <input type="submit" value="グッズ" class="btn btn-outline-primary" id="navi-button">
                 </form>
                         </th:block>
                         <!-- 管理者ユーザー -->
                         <th:block th:case="2">
                             管理者メニュー
                             <form action="/Admin/Top">
-                                <input type="submit" value="メニュー" class="btn btn-outline-danger">
+                                <input type="submit" value="メニュー" class="btn btn-outline-primary" id="navi-button">
                                 <input type=hidden name="name" value=*{name}>
                                 <input type=hidden name="password" value=*{password}>
                             </form>
                             <b>～新規登録～</b>
                             <form action="/AdminRegister" th:action="@{/AdminRegister}" method="post">
-                                <input type="submit" value="一般ユーザー" class="btn btn-outline-danger">
+                                <input type="submit" value="一般ユーザー" class="btn btn-outline-primary" id="navi-button">
                             </form>
                             <form action="/AdminRegister/Exec" th:action="@{/AdminRegister/Exec}" method="post">
-                                <input type="submit" value="経営者ユーザー" class="btn btn-outline-danger">
+                                <input type="submit" value="経営者ユーザー" class="btn btn-outline-primary" id="navi-button">
                             </form>
                             <b>～情報削除～</b>
                             <form action="/exec/select">
-                                <input type="submit" value="商品" class="btn btn-outline-danger">
+                                <input type="submit" value="商品" class="btn btn-outline-primary" id="navi-button">
                             </form>
                         </th:block>
                         <!-- 経営者ユーザー -->
                         <th:block th:case="3">
                             経営者メニュー
                             <form action="/exec/top">
-                                <input type="submit" value="メニュー" class="btn btn-outline-success">
+                                <input type="submit" value="メニュー" class="btn btn-outline-primary" id="navi-button">
                             </form>
                             <form action="/exec/register" method="get">
-                                <input type="submit" value="商品登録" class="btn btn-outline-successy">
+                                <input type="submit" value="商品登録" class="btn btn-outline-primary" id="navi-button">
                             </form>
                             <form action="/exec/select" method="get">
-                                <input type="submit" value="商品情報削除" class="btn btn-outline-success">
+                                <input type="submit" value="商品情報削除" class="btn btn-outline-primary" id="navi-button">
                             </form>
                             <form action="/ProceedsCheck">
                                 <input type="hidden" name="label" th:value="*{label}">
-                                <input type="submit" value="売上確認" class="btn btn-outline-success">
+                                <input type="submit" value="売上確認" class="btn btn-outline-primary" id="navi-button">
                             </form>
                             <form action="/AdminUpdate/Exec" th:object="${session.LoginUser}">
                                 <input type="hidden" name="name" th:value="*{name}">
                                 <input type="hidden" name="password" th:value="*{password}">
-                                <input type="submit" value="ユーザー情報更新" class="btn btn-outline-success">
+                                <input type="submit" value="ユーザー情報更新" class="btn btn-outline-primary" id="navi-button">
                             </form>
                         </th:block>
                     </th:block>
