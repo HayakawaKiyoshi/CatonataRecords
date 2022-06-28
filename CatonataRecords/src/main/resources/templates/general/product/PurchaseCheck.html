@@ -15,11 +15,13 @@
     <div layout:fragment="content">
     <div id="general_content_bar">商品購入確認画面</div>
         <div style="border: solid 1px black; width: 500px; height: 250px; position: relative;">
+        <th:block th:object="${session.product}">
          <!-- このformの遷移先は商品詳細のコントローラのURLパターンです。よろしくお願いします。 -->
             <form role="form" action="/Purchase/ProductDetail" th:action="@{/Purchase/ProductDetail}" method="post">
+            	<input type="hidden" name="pro_id" th:value="*{pro_id}">
                 <input type="submit" value="戻る">
             </form>
-		 <th:block th:object="${session.product}">
+
         <p style="text-align: center; border: solid 1px black;" th:text="*{pro_name}">(商品タイトル)</p>
 
         <div style="border: solid 1px black; width: 150px; height: 80px;
