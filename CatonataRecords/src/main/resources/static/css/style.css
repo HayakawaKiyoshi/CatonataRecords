@@ -24,14 +24,14 @@ div#header {
 	background-color: #BAD3FF;
 	/* font-family: 'Century Gothic', serif; */
 	padding: 1rem 2rem;
-	border: 3px dashed #136FFF;
+
 }
 
 div#navidation {
 	padding: 10px;
 	margin: 5px;
 	float: left;
-	width: 100%;
+	width: 210px;
 	height: 400px;
 	background-color: #DDFFFF;
 
@@ -72,9 +72,10 @@ div#footer {
 }
 
 #general_content_bar {
-	background: blue;
+	background: #81cac4;
+	color: white;
+	font-weight:bold;
 	text-align: center;
-	border: solid 1px black;
 	margin: auto;
 
 }
@@ -103,4 +104,9 @@ div#footer {
 
 #error{
 	color:red;
+}
+
+#navi-button{
+	width: 180px !important;
+	margin: 5px;
 }
