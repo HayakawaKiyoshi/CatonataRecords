@@ -1,8 +1,3 @@
-* {
-	padding: 0px;
-	margin: 0px;
-}
-
 h1{
 	font-family:'Sacramento', cursive;
 }
@@ -10,14 +5,14 @@ h1{
 	overflow: hidden;
 }
 
-div#container {
+#container {
 	margin: auto;
 	padding: 10px;
 	width: 900px;
 	background-color: white;
 }
 
-div#header {
+#header {
 	padding: 30px;
 	text-align: center;
 	color: black;
@@ -27,7 +22,7 @@ div#header {
 
 }
 
-div#navidation {
+#navidation {
 	padding: 10px;
 	margin: 5px;
 	float: left;
@@ -37,13 +32,17 @@ div#navidation {
 
 }
 
-div#footer {
+#footer {
 	padding: 20px;
-	margin: 10px;
+	margin: 0px;
 	clear: both;
 	height: 10px;
 	text-align: center;
 	background-color: #C2EEFF;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #header_beforelogin {
@@ -109,4 +108,9 @@ div#footer {
 #navi-button{
 	width: 180px !important;
 	margin: 5px;
+}
+
+#navi-name{
+	font-weight:bold;
+	text-align :center;
 }
