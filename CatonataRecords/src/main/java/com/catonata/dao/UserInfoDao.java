@@ -648,16 +648,16 @@ public class UserInfoDao {
 		}
 	}
 
-	public static UserInformationBean findCard(String name, String pass) {
+	public static CreditCardInformationForm findCard(String name, String pass) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		//DBManagerをインスタンス化
 		DBManager manager = new DBManager();
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		final String LOGIN_SQL = "SELECT ID,PASSWORD,USER_NAME,AGE,GENDER, BIRTHDAY,ADDRESS,EMAIL,AUTHORITY,CREDIT_NUMBER,TO_CHAR(SPAN, 'YYYY/MM/DD') AS \"spannew\",SECURITY_CODE,BANK_NUMBER,BANK_NAME,LABEL FROM USER_TABLE WHERE user_name = ? AND password = ?";
+		final String LOGIN_SQL = "SELECT CREDIT_NUMBER,SPAN,SECURITY_CODE FROM USER_TABLE WHERE user_name = ? AND password = ?";
 
-		UserInformationBean user = new UserInformationBean();
+		CreditCardInformationForm ccif = new CreditCardInformationForm();
 
 		try {
 			conn = manager.getConn();
@@ -668,9 +668,9 @@ public class UserInfoDao {
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				user.setCreditnumber(rs.getString("CREDIT_NUMBER"));
-				user.setCreditspan(rs.getString("spannew"));
-				user.setSecuritycode(rs.getString("SECURITY_CODE"));
+				ccif.setCreditnumber(rs.getString("CREDIT_NUMBER"));
+				ccif.setCreditspan(rs.getString("SPAN"));
+				ccif.setSecurity(rs.getString("SECURITY_CODE"));
 
 			} else {
 				return null;
@@ -686,7 +686,7 @@ public class UserInfoDao {
 		}finally {
 			manager.close(conn);
 		}
-		return user;
+		return ccif;
 
 	}
 
