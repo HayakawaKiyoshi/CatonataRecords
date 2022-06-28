@@ -116,9 +116,6 @@ public class ProductDeleteController {
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 
-		System.out.println(msg);
-		System.out.println(user.getLabel());
-
 		if (user.getAuthority().equals("3")) {
 			List<ProductBean> proname = ExecDao.proSearch(msg, user.getLabel());
 			mav.addObject("productForm", proname);
@@ -139,9 +136,9 @@ public class ProductDeleteController {
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 		//セッションに保存した情報を取得
-		ProductForm delete = (ProductForm) session.getAttribute("delete");
-		session.setAttribute("delete", delete);
 		String[] check = (String[]) session.getAttribute("check");
+		ArrayList<ProductBean> delete = ExecDao.profind2(check);
+		session.setAttribute("delete", delete);
 		session.setAttribute("check", check);
 		mav.setViewName("exec/delete/Select");
 
