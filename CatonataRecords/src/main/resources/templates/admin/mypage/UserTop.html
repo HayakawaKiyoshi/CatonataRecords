@@ -19,7 +19,7 @@
 	    </form>
 -->
 		<!-- 一般ユーザー一覧と経営者ユーザー一覧を別々に表示 -->
-		<div id="admin_content_bar">ユーザー一覧</div>
+		<div id="admin_content_bar">一般ユーザー一覧</div>
 		<table>
 			<tr>
 				<th>No</th>
@@ -27,30 +27,28 @@
 				<th>メールアドレス</th>
 				<th>住所</th>
 				<th>性別</th>
-				<th>権限</th>
 				<th>変更</th>
 				<th>削除</th>
 			</tr>
 			<th:block th:each="items : ${session.AllGeneralUser}">
 				<tr>
-					<td><span th:text="${items.id}">1</span></td>
-					<td><span th:text="${items.name}">2</span></td>
-					<td><span th:text="${items.email}">3</span></td>
-					<td><span th:text="${items.address}">4</span></td>
-					<td><span th:text="${items.gender}">5</span></td>
-					<td><span th:text="${items.authority}">6</span></td>
+					<td><span th:text="${items.id}">ID</span></td>
+					<td><span th:text="${items.name}">ユーザー名</span></td>
+					<td><span th:text="${items.email}">メールアドレス</span></td>
+					<td><span th:text="${items.address}">住所</span></td>
+					<td><span th:text="${items.gender}">性別</span></td>
 					<td>
 						<form action="/AdminUpdate" th:action="@{/AdminUpdate}">
 							<input type="hidden" name="name" th:value="${items.name}">
 							<input type="hidden" name="password" th:value="${items.password}">
-							<input type="submit" value="変更">
+							<input type="submit" value="変更" class="btn btn-primary">
 						</form>
 					</td>
 					<td>
 						<form action="/AdminDelete" th:action="@{/AdminDelete}" method="post">
 							<input type="hidden" name="id" th:value="${items.id}">
 							<input type="hidden" name="password" th:value="${items.password}">
-							<input type="submit" value="削除">
+							<input type="submit" value="削除" class="btn btn-danger">
 						</form>
 					</td>
 				</tr>
@@ -64,17 +62,15 @@
 				<th>ユーザー名</th>
 				<th>レコード会社名</th>
 				<th>メールアドレス</th>
-				<th>権限</th>
 				<th>変更</th>
 				<th>削除</th>
 			</tr>
 			<th:block th:each="items : ${session.AllExecUser}">
 				<tr>
-					<!-- <td><span th:text="${items.id}">1</span></td> -->
-					<td><span th:text="${items.name}">2</span></td>
-					<td><span th:text="${items.label}">3</span></td>
-					<td><span th:text="${items.email}">4</span></td>
-					<td><span th:text="${items.authority}">5</span></td>
+					<td><span th:text="${items.id}">ID</span></td>
+					<td><span th:text="${items.name}">ユーザー名</span></td>
+					<td><span th:text="${items.label}">レコード会社</span></td>
+					<td><span th:text="${items.email}">メールアドレス</span></td>
 					<td><a href="/AdminUpdate/Exec" th:href="@{/AdminUpdate/Exec}">
 							<input type="hidden" name="name" th:value="${items.name}">
 							<input type="hidden" name="password" th:value="${items.password}">
@@ -88,15 +84,6 @@
 				</tr>
 			</th:block>
 		</table>
-
-		<!-- テストの際に使用 -->
-		<!--
-    <th:block th:object="${session.LoginUser}">
-       氏名：<span th:text="*{name}"></span><br>
-       パスワード：<span th:text="*{password}"></span><br>
-       権限：<span th:text="*{authority}"></span>
-    </th:block>
-    -->
 	</div>
 </body>
 </html>
