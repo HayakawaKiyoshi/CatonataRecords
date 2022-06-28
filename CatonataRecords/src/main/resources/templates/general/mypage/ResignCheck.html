@@ -13,14 +13,13 @@
 <body>
 	<div layout:fragment="content">
 		<div id="general_content_bar">退会確認画面</div>
-
-		<p>退会します？</p>
-
+		<p>退会しますか？</p>
 		<th:block th:object="${session.LoginUser}">
-		<form role="form" action="/mypageUpdate/delete/Complete" th:action="@{/mypageUpdate/delete/Complete}" method="post">
-			<input type = "hidden" name = "id" th:value = "*{id}">
-			<input type="submit" value="削除する">
-		</form>
+			<form role="form" action="/mypageUpdate/delete/Complete"
+			     th:action="@{/mypageUpdate/delete/Complete}" method="post">
+			     <input type="hidden" name="id" th:value="*{id}">
+			     <input type="submit" value="削除する">
+			</form>
 		</th:block>
 	</div>
 </body>

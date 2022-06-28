@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout/LayoutTile">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTile">
 <head>
 <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
-        <link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
-        <script type="text/javascript" th:src="@{/js/script.js}"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
 <title>商品購入確認画面</title>
 </head>
 <body>
-    <div layout:fragment="content">
-    <div id="general_content_bar">商品購入確認画面</div>
-        <div style="border: solid 1px black; width: 500px; height: 250px; position: relative;">
-        <th:block th:object="${session.product}">
-         <!-- このformの遷移先は商品詳細のコントローラのURLパターンです。よろしくお願いします。 -->
-            <form role="form" action="/Purchase/ProductDetail" th:action="@{/Purchase/ProductDetail}" method="post">
-            	<input type="hidden" name="pro_id" th:value="*{pro_id}">
-                <input type="submit" value="戻る">
-            </form>
-
-        <p style="text-align: center; border: solid 1px black;" th:text="*{pro_name}">(商品タイトル)</p>
-
-        <div style="border: solid 1px black; width: 150px; height: 80px;
-          position: absolute; top: 120px; left: 30px;">(画像)</div>
-
-        <div style="position: absolute; top: 120px; left: 250px;">
-          <span>価格：<span th:text="*{price}"></span>円</span><br>
-          <span>支払い：クレジットカード</span><br>
-          <!-- 伏字にする必要がある。 -->
-          番号：<th:block th:each="items : ${cre_number}">
-          		<span th:text="${items}"></span>
-          		</th:block><br>
-          <form role="form" action="/Purchase/PurchaseComplete" th:action="@{/Purchase/PurchaseComplete}" method="post">
-          <!-- 未入力チェックは行いません。 -->
-		購入数:<button type="button" id="down" onclick="cntdown()">-</button>
-			   <input type="text" id="textbox" name="purchase_number" value="1" size="3" readonly>
-			   <button type="button" id="up" onclick="cntup()">+</button><br>
-		配送日:<select name="delivary">
-				<option th:each="items : ${delivary}" th:value="${items}" th:text="${items}">
-          		</select>
-            <input type="submit" value="確定">
-          </form>
-        </div>
-        </th:block>
-        </div>
-    </div>
+	<div layout:fragment="content">
+		<div id="general_content_bar">商品購入確認画面</div>
+		<div style="border: solid 1px black; width: 500px; height: 250px; position: relative;">
+			<th:block th:object="${session.product}">
+				<!-- このformの遷移先は商品詳細のコントローラのURLパターンです。よろしくお願いします。 -->
+				<form role="form" action="/Purchase/ProductDetail" th:action="@{/Purchase/ProductDetail}" method="post">
+					<input type="hidden" name="pro_id" th:value="*{pro_id}">
+					<input type="submit" value="戻る">
+				</form>
+				<p style="text-align: center; border: solid 1px black;" th:text="*{pro_name}">(商品タイトル)</p>
+				<div style="border: solid 1px black;">(画像)</div>
+				<div>
+					<span>価格：<span th:text="*{price}"></span>円</span><br>
+					<span>支払い：クレジットカード</span><br>
+					<!-- 伏字にする必要がある。 -->
+					番号：
+					<th:block th:each="items : ${cre_number}">
+						<span th:text="${items}"></span>
+					</th:block><br>
+					<form role="form" action="/Purchase/PurchaseComplete" th:action="@{/Purchase/PurchaseComplete}" method="post">
+						<!-- 未入力チェックは行いません。 -->
+						購入数：
+						<button type="button" id="down" onclick="cntdown()">-</button>
+						<input type="text" id="textbox" name="purchase_number" value="1" size="3" readonly>
+						<button type="button" id="up" onclick="cntup()">+</button><br>
+						配送日：
+						<select name="delivary">
+							<option th:each="items : ${delivary}" th:value="${items}" th:text="${items}">
+						</select>
+						<input type="submit" value="確定">
+					</form>
+				</div>
+			</th:block>
+		</div>
+	</div>
 </body>
 </html>

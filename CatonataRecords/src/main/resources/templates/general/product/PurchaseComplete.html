@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout/LayoutTile">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTile">
 <head>
 <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
-        <link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
 <title>商品購入確定画面</title>
 </head>
 <body>
-    <div layout:fragment="content">
-    <div id="general_content_bar">商品購入確定画面</div>
-        <div style="border: solid 1px black; width: 500px; height: 250px; text-align: center;">
-
-            <p>購入が完了しました。</p>
-
+	<div layout:fragment="content">
+		<div id="general_content_bar">商品購入確定画面</div>
+		<div style="border: solid 1px black; width: 500px; height: 250px; text-align: center;">
+			<p>購入が完了しました。</p>
 			<!-- 商品一覧画面へ -->
-            <form role="form" action="/top/general/TopPageBack" th:action="@{/top/general/TopPageBack}" method="post">
-                <input type="submit" value="一覧へ戻る">
-            </form>
-
+			<form role="form" action="/top/general/TopPageBack" th:action="@{/top/general/TopPageBack}" method="post">
+				<input type="submit" value="一覧へ戻る">
+			</form>
 			<!-- マイページへ -->
-            <form role="form" action="/" th:action="@{/}" method="post">
-                <input type="submit" value="購入履歴へ">
-            </form>
-        </div>
-    </div>
+			<form role="form" action="/mypage/top" th:action="@{/mypage/top}" method="post">
+				<input type="submit" value="購入履歴へ">
+			</form>
+		</div>
+	</div>
 </body>
 </html>

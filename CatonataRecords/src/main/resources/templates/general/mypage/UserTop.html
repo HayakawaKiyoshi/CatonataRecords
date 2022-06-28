@@ -1,61 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout/LayoutTile">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTile">
 <head>
 <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
-        <link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
 <title>マイページ</title>
 </head>
 <body>
-    <div layout:fragment="content">
-    <div id="general_content_bar">マイページ</div>
-    <div style="border: solid 1px black; width: 500px; height: 300px;">
-        <p>ユーザー情報</p>
-        <th:block th:object="${session.LoginUser}">
-        	氏名:<span th:text="*{name}"></span><br>
-            ID：<span th:text="*{id}"></span>&emsp;&emsp;
-            年齢：<span th:text="*{age}"></span><br>
-            性別：<span th:text="*{gender}"></span>&emsp;&emsp;
-            生年月日：<span th:text="*{birthday}"></span><br>
-            住所：<span th:text="*{address}"></span>&emsp;&emsp;
-            メールアドレス：<span th:text="*{email}"></span>&emsp;&emsp;&emsp;
-            <form action ="/mypageUpdate" method = "post" >
-    		<input type = "hidden" name = "name" th:value = "*{name}">
-    		<input type = "hidden" name = "password" th:value = "*{password}">
-    		<input type="submit" value="変更" class="btn btn-primary">
-    		</form>
-		 </th:block>
-        <p>購入履歴</p>
-        <div style="border: solid 1px black; width: 450px;">
-            <table>
-                <tr>
-                    <th>購入日</th><th>配送日</th><th>商品名</th><th>アーティスト</th>
-                    <th>商品媒体</th><th>価格</th><th>レコード会社</th>
-                </tr>
-                <th:block th:each="items : ${purchase}">
-                    <tr>
-                    	<td><span th:text="${items.purchase_date}">2</span></td>
-                        <td><span th:text="${items.delivery_date}">3</span></td>
-                        <td><span th:text="${items.pro_name}">1</span></td>
-                        <td><span th:text="${items.artist}">2</span></td>
-                        <td><span th:text="${items.media}">3</span></td>
-                        <td><span th:text="${items.price}">4</span></td>
-                        <td><span th:text="${items.label}">4</span></td>
-                    </tr>
-                </th:block>
-            </table>
-            <!-- 退会ボタン  -->
-            <form action="/mypageUpdate/delete/Check" method="post" th:object="${session.LoginUser}">
-				<input type="hidden" name="name" th:value="*{name}">
-				<input type="hidden" name="pass" th:value="*{password}">
-				<input type="submit" value="退会" class="btn btn-danger">
-			</form>
-        </div>
-    </div>
-    </div>
+	<div layout:fragment="content">
+		<div id="general_content_bar">マイページ</div>
+		<div style="border: solid 1px black; width: 500px; height: 300px;">
+			<p>ユーザー情報</p>
+			<th:block th:object="${session.LoginUser}">
+        	   氏名:<span th:text="*{name}"></span><br>
+                ID：<span th:text="*{id}"></span>&emsp;&emsp;
+                年齢：<span th:text="*{age}"></span><br>
+                性別：<span th:text="*{gender}"></span>&emsp;&emsp;
+                生年月日：<span th:text="*{birthday}"></span><br>
+                住所：<span th:text="*{address}"></span>&emsp;&emsp;
+                メールアドレス：<span th:text="*{email}"></span>&emsp;&emsp;&emsp;
+			    <form action="/mypageUpdate" method="post">
+				    <input type="hidden" name="name" th:value="*{name}">
+				    <input type="hidden" name="password" th:value="*{password}">
+				    <input type="submit" value="変更" class="btn btn-primary">
+			    </form>
+			</th:block>
+			<p>購入履歴</p>
+			<div style="border: solid 1px black; width: 450px;">
+				<table>
+					<tr>
+						<th>購入日</th>
+						<th>配送日</th>
+						<th>商品名</th>
+						<th>アーティスト</th>
+						<th>商品媒体</th>
+						<th>価格</th>
+						<th>レコード会社</th>
+					</tr>
+					<th:block th:each="items : ${purchase}">
+						<tr>
+							<td><span th:text="${items.purchase_date}">1</span></td>
+							<td><span th:text="${items.delivery_date}">2</span></td>
+							<td><span th:text="${items.pro_name}">3</span></td>
+							<td><span th:text="${items.artist}">4</span></td>
+							<td><span th:text="${items.media}">5</span></td>
+							<td><span th:text="${items.price}">6</span></td>
+							<td><span th:text="${items.label}">7</span></td>
+						</tr>
+					</th:block>
+				</table>
+			</div>
+				<!-- 退会ボタン  -->
+				<form action="/mypageUpdate/delete/Check" method="post" th:object="${session.LoginUser}">
+					<input type="hidden" name="name" th:value="*{name}">
+					<input type="hidden" name="pass" th:value="*{password}">
+					<input type="submit" value="退会" class="btn btn-danger">
+				</form>
+		</div>
+	</div>
 </body>
 </html>
