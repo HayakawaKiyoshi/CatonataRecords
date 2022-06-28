@@ -329,7 +329,7 @@ public class ExecDao {
 		try {
 			conn = manager.getConn();
 
-			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE LABEL = ?";
+			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE LABEL = ? ORDER BY prod_id ASC";
 			ps = conn.prepareStatement(SQL);
 			//引数を?にバインド
 			ps.setString(1, labelname);
