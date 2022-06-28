@@ -21,7 +21,6 @@ public class ExecInformationForm {
 	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String label;
 	@NotEmpty
-	@Pattern(regexp ="^[a-zA-Z0-9]+$", message="{0}は半角英数字で入力してください")
 	@ByteCheck(charset="UTF-8",min=1, max=50)
 	private String email;
 	@NotEmpty
