@@ -31,9 +31,10 @@ public class ExecInformationForm {
 	@ByteCheck(charset="UTF-8",min=1, max=8)
 	private String banknumber;
 	@NotEmpty
+	@Pattern(regexp ="[^ -~｡-ﾟ]+", message="{0}は全角文字で入力してください")
 	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String bankname;
-//	@Pattern(regexp ="[^\\x01-\\x7E]", message="{0}は全角文字で入力してください")
+
 
 	public String getId() {
 		return id;
