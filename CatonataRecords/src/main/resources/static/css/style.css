@@ -59,16 +59,14 @@ div#footer {
 	background: #00ff00;
 	text-align: center;
 	border: solid 1px black;
-	margin-left: 15%;
-	position: relative;
-	left: -10px;
+	margin: auto;
 }
 
 #admin_content_bar {
 	background: #ff0000;
 	text-align: center;
 	border: solid 1px black;
-	margin-left: 15%;
+	margin: auto;
 
 }
 
@@ -76,7 +74,7 @@ div#footer {
 	background: blue;
 	text-align: center;
 	border: solid 1px black;
-	margin-left: 15%;
+	margin: auto;
 
 }
 
