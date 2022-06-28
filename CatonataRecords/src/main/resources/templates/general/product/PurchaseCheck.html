@@ -4,11 +4,11 @@
     layout:decorate="layout/LayoutTile">
 <head>
 <meta charset="UTF-8">
-		<script type="text/javascript" th:src="@{/js/script.js}"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
         <link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+        <script type="text/javascript" th:src="@{/js/script.js}"></script>
 <title>商品購入確認画面</title>
 </head>
 <body>
@@ -34,9 +34,9 @@
           		</th:block><br>
           <form role="form" action="/Purchase/PurchaseComplete" th:action="@{/Purchase/PurchaseComplete}" method="post">
           <!-- 未入力チェックは行いません。 -->
-		購入数:<button id="down">-</button>
-			   <input type="text" id="textbox" name="purchase_number" value="1" readonly>
-			   <button id="up">+</button>
+		購入数:<button type="button" id="down" onclick="cntdown()">-</button>
+			   <input type="text" id="textbox" name="purchase_number" value="1" size="3" readonly>
+			   <button type="button" id="up" onclick="cntup()">+</button><br>
 		配送日:<select name="delivary">
 				<option th:each="items : ${delivary}" th:value="${items}" th:text="${items}">
           		</select>
