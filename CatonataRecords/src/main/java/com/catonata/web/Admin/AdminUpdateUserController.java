@@ -32,6 +32,7 @@ public class AdminUpdateUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = UserInfoDao.find(name, password);
 		model.addAttribute("userInformationForm", uif);
+		session.setAttribute("uif", uif);
 		return "admin/update/GeneralUpdate";
 	}
 
@@ -42,6 +43,7 @@ public class AdminUpdateUserController {
 		if (result.hasErrors()) {
 			return "admin/update/GeneralUpdate";
 		}
+		uif =  (UserInformationForm)session.getAttribute("uif");
 		session.setAttribute("uif", uif);
 		return "admin/update/GeneralCheck";
 

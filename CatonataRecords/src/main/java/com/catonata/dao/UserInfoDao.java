@@ -396,6 +396,9 @@ public class UserInfoDao {
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
 				user.setAuthority(rs.getString("authority"));
+				user.setCreditnumber(rs.getString("credit_number"));
+				user.setCreditspan(rs.getString("span"));
+				user.setSecurity(rs.getString("security_code"));
 
 
 			} else {

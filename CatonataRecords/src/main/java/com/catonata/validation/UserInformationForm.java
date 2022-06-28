@@ -39,6 +39,11 @@ public class UserInformationForm {
 
 	private String authority;
 
+	private String creditnumber;
+	private String creditspan;
+	private String security;
+
+
 	public String getId() {
 		return id;
 	}
@@ -81,19 +86,37 @@ public class UserInformationForm {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getAuthority() {
-		return authority;
-	}
-	public void setAuthority(String authority) {
-		this.authority = authority;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+	public String getCreditnumber() {
+		return creditnumber;
+	}
+	public void setCreditnumber(String creditnumber) {
+		this.creditnumber = creditnumber;
+	}
+	public String getCreditspan() {
+		return creditspan;
+	}
+	public void setCreditspan(String creditspan) {
+		this.creditspan = creditspan;
+	}
+	public String getSecurity() {
+		return security;
+	}
+	public void setSecurity(String security) {
+		this.security = security;
+	}
+
 
 
 
