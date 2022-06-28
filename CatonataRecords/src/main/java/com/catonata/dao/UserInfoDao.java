@@ -486,8 +486,9 @@ public class UserInfoDao {
 				uib.setPassword(rs.getString("password"));
 				uib.setName(rs.getString("user_name"));
 				uib.setGender(rs.getString("gender"));
-				uib.setAddress(rs.getString("birthday"));
-				uib.setBirthday(rs.getString("address"));
+				uib.setBirthday(rs.getString("birthday"));
+				uib.setAddress(rs.getString("address"));
+				uib.setEmail(rs.getString("email"));
 				uib.setAuthority(rs.getString("authority"));
 				uib.setCreditnumber(rs.getString("credit_number"));
 				uib.setCreditspan(rs.getString("span"));
