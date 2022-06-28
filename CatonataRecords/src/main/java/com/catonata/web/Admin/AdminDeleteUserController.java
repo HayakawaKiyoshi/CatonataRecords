@@ -37,7 +37,7 @@ public class AdminDeleteUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		UserInfoDao.adminDelete(id);
 		model.addAttribute("msg","削除");
-		return "admin/delete/Complete";
+		return "admin/complete/Complete";
 	}
 
 	/*
@@ -58,6 +58,6 @@ public class AdminDeleteUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		UserInfoDao.execDelete(id);
 		model.addAttribute("msg","削除");
-		return "admin/delete/Complete";
+		return "admin/complete/Complete";
 	}
 }

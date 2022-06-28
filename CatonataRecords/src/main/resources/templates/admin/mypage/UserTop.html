@@ -46,8 +46,8 @@
 					</td>
 					<td>
 						<form action="/AdminDelete/Check" th:action="@{/AdminDelete/Check}" method="post">
-							<input type="hidden" name="id" th:value="${items.id}">
-							<input type="hidden" name="password" th:value="${items.password}">
+							<input type="hidden" name="name" th:value="${items.name}">
+							<input type="hidden" name="pass" th:value="${items.password}">
 							<input type="submit" value="削除" class="btn btn-danger">
 						</form>
 					</td>

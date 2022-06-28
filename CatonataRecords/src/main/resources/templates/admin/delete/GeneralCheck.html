@@ -55,7 +55,7 @@
 			<input type="submit" value="ユーザーを削除する" class="btn btn-danger"><br>
 		</form>
 		<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post" th:object="${session.LoginUser}">
-			<input type="hidden" name="name" th:value="*{name}">
+			<!-- <input type="hidden" name="name" th:value="*{name}">
 			<input type="hidden" name="pass" th:value="*{password}"> -->
 			<input type="submit" value="管理者トップに戻る" class="btn btn-warning">
 		</form>
