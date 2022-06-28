@@ -63,10 +63,7 @@ public class ProductDetailController {
 		Calendar calendar = Calendar.getInstance();
 		String[] delivaryDate = delivaryDateCreate(calendar);
 		//クレジットカード伏字編集
-		String[] cre_number = LoginUser.getCreditnumber().split("-");
-		for (int i = 0 ; i < 3 ; i++) {
-				cre_number[i] = cre_number[i].replace(cre_number[i],"****-");
-		}
+		String[] cre_number = cre_number(LoginUser.getCreditnumber());
 		model.addAttribute("cre_number",cre_number);
 		model.addAttribute("delivary", delivaryDate);
 		return "general/product/PurchaseCheck";
@@ -100,7 +97,7 @@ public class ProductDetailController {
 	 * 日付が正しいかのチェック
 	 * 存在しない日付の場合には戻り値でfalseを返す。
 	 */
-	public static boolean isDate(String value) {
+	private boolean isDate(String value) {
 	    boolean result = false;
 	    if (value != null) {
 	        try {
@@ -113,6 +110,16 @@ public class ProductDetailController {
 	    }
 	    return result;
 	}
+
+	//クレジットカード番号伏字変換
+	private String[] cre_number (String crenumber) {
+		String[] cre_number = crenumber.split("-");
+		for (int i = 0 ; i < 3 ; i++) {
+				cre_number[i] = cre_number[i].replace(cre_number[i],"****-");
+		}
+		return cre_number;
+	}
+
 
 	/**
 	 * 購入確認から購入完了画面に遷移するメソッド
