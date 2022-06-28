@@ -77,16 +77,16 @@ public class ProductDetailController {
 		for (int i = 0 ; i < delivaryDate.length ; i++) {
 			delivaryDate[i] = String.valueOf(calendar.get(Calendar.YEAR) + "/");
 			if((calendar.get(Calendar.DATE) + i ) < 31) {
-				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 1 )+ "/"
+				delivaryDate[i] +=  String.valueOf("0" + (calendar.get(Calendar.MONTH) + 1 )+ "/"
 									+ (calendar.get(Calendar.DATE) + ( i + 1 )));
 				if (isDate(delivaryDate[i]) == false) {
 					delivaryDate[i] =  String.valueOf(calendar.get(Calendar.YEAR) + "/"
-							+(calendar.get(Calendar.MONTH) + 2 )+ "/"
+							+"0" + (calendar.get(Calendar.MONTH) + 2 )+ "/"
 							+ date);
 					date++;
 				}
 			} else if ((calendar.get(Calendar.DATE) + ( i + 1 )) > 31) {
-				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 2 )+ "/"
+				delivaryDate[i] +=  String.valueOf("0" + (calendar.get(Calendar.MONTH) + 2 )+ "/"
 						+ date);
 				date++;
 			}
