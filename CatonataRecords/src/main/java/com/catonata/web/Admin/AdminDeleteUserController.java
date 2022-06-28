@@ -23,7 +23,7 @@ public class AdminDeleteUserController {
 	 * 一般削除
 	 */
 	@RequestMapping("/Check")
-	private String deleteCheck(@RequestParam("name")String name, @RequestParam("pass")String pass, Model model ) {
+	private String deleteCheck(@RequestParam("name")String name, @RequestParam("password")String pass, Model model ) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		UserInformationBean DeleteUser = CommonDao.find(name, pass);
@@ -44,7 +44,7 @@ public class AdminDeleteUserController {
 	 * 経営者削除
 	 */
 	@RequestMapping("/ExecCheck")
-	private String ExecdeleteCheck(@RequestParam("name")String name, @RequestParam("pass")String pass, Model model ) {
+	private String ExecdeleteCheck(@RequestParam("name")String name, @RequestParam("password")String pass, Model model ) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		UserInformationBean DeleteUser = CommonDao.find(name, pass);
