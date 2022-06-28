@@ -94,10 +94,10 @@
                                 <input type="hidden" name="label" th:value="*{label}">
                                 <input type="submit" value="売上確認" class="btn btn-primary">
                             </form>
-                            <form action="/AdminUpdate/Exec">
+                            <form action="/AdminUpdate/Exec" th:object="${session.LoginUser}">
+                                <input type=hidden name="name" th:value=*{name}>
+                                <input type=hidden name="password" th:value=*{password}>
                                 <input type="submit" value="ユーザー情報更新" class="btn btn-primary">
-                                <input type=hidden name="name" value=*{name}>
-                                <input type=hidden name="password" value=*{password}>
                             </form>
                         </th:block>
                     </th:block>
