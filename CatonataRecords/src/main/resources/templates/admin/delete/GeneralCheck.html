@@ -52,7 +52,7 @@
 		</table>
 		<form action="/AdminDelete/Complete" th:action="@{/AdminDelete/Complete}" method="post" th:object="${delete}">
 			<input type="hidden" name="id" th:value="*{id}">
-			<input type="submit" value="ユーザーを削除する" class="btn btn-outline-danger"><br>
+			<input type="submit" value="ユーザーを削除する" class="btn btn-outline-danger">
 		</form>
 		<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post" th:object="${session.LoginUser}">
 			<input type="submit" value="管理者トップに戻る" class="btn btn-outline-warning">

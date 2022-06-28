@@ -16,7 +16,7 @@
 		<!-- このformの遷移先は商品一覧のコントローラのURLパターンです。よろしくお願いします。 -->
 		<form role="form" action="/top/general/TopPageBack"
 			th:action="@{/top/general/TopPageBack}" method="post">
-			<input type="submit" value="戻る">
+			<input type="submit" value="戻る" class="btn btn-outline-warning">
 		</form>
 		<th:block th:object="${session.product}">
 			<p style="text-align: center; border: solid 1px black;" th:text="*{pro_name}">商品タイトル</p>
@@ -26,7 +26,7 @@
 				<span>アーティスト：<span th:text="*{artist}"></span></span><br>
 				<span>発売日：<span th:text="*{release_date}"></span></span><br>
 				<form role="form" action="/Purchase/PurchaseCheck" th:action="@{/Purchase/PurchaseCheck}" method="post">
-					<input type="submit" value="購入する">
+					<input type="submit" value="購入する" class="btn btn-outline-success">
 				</form>
 			</div>
 		</th:block>

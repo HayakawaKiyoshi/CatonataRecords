@@ -19,13 +19,15 @@
 			<div id="admin_content_bar">
 				<span th:text="${msg}"></span>
 			</div>
+			<!--
 			<p>
 				<span th:text="${msg}"></span>
 			</p>
+			-->
 			<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post" th:object="${session.LoginUser}">
 				<input type="hidden" name="name" th:value="*{name}">
 				<input type="hidden" name="password" th:value="*{password}">
-				<input type="submit" value="管理者メイン画面へ" class="btn btn-primary">
+				<input type="submit" value="管理者メイン画面へ" class="btn btn-outline-success">
 			</form>
 		</div>
 	</div>

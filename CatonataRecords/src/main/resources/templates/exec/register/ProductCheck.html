@@ -26,11 +26,11 @@
 			レコード会社名：<span th:text="*{label}"></span><br>
 			在庫数：<span th:text="*{stock}"></span><br>
 			<p>
-				<input type="submit" value="登録">
+				<input type="submit" value="登録" class="btn btn-outline-primary">
 			</p>
 		</form>
 		<form role="form" action="/exec/register/back" th:action="@{/exec/register/back}" method="post">
-			<input type="submit" value="戻る">
+			<input type="submit" value="戻る" class="btn btn-outline-warning">
 		</form>
 	</div>
 </body>

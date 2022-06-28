@@ -1,9 +1,13 @@
 h1{
-	font-family:'Sacramento', cursive;
+	/* font-family:'Sacramento', cursive; */
+	color: #000066;
 }
+
+/*
 .LayoutTile {
 	overflow: hidden;
 }
+*/
 
 #container {
 	margin: auto;
@@ -60,6 +64,7 @@ h1{
 	font-weight:bold;
 	text-align: center;
 	margin: auto;
+	color: #1e5862;
 
 }
 
@@ -84,4 +89,8 @@ h1{
 #navi-name{
 	font-weight:bold;
 	text-align :center;
+}
+
+a {
+	text-decoration: none;
 }

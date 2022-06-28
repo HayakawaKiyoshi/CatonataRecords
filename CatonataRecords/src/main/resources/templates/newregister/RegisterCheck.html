@@ -60,14 +60,14 @@
 		</table>
 		<form role="form" action="SignUp/SignUpComplete" th:action="@{${send}}" method="post">
 			<th:block th:if="${session.LoginUser != null}">
-				<button type="button" class="btn btn-primary"
+				<button type="button" class="btn btn-outline-warning"
 					onclick="location.href='/AdminRegister/Back'">登録画面に戻る</button>
 			</th:block>
 			<th:block th:if="${session.LoginUser == null}">
-				<button type="button" class="btn btn-primary"
+				<button type="button" class="btn btn-outline-warning"
 					onclick="location.href='/SignUp/SignUpBack'">登録画面に戻る</button>
 			</th:block>
-			<input type="submit" value="登録" class="btn btn-primary">
+			<input type="submit" value="登録" class="btn btn-outline-primary">
 		</form>
 	</div>
 </body>
