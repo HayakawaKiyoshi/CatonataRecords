@@ -14,7 +14,7 @@
 		<div id="common_content_bar">新規会員登録完了画面</div>
 		<p>登録が完了しました。</p>
 		<p>ログイン画面でログインしてください。</p>
-		<form action="/login" th:action="@{/login}" method="post" th:object="${session.LoginUser}">
+		<form action="/login" th:action="@{/login}" method="get" th:object="${session.LoginUser}">
 			<input type="submit" value="ログイン画面へ" class="btn btn-primary">
 		</form>
 	</div>
