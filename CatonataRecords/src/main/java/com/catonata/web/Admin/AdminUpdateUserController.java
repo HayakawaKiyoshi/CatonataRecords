@@ -43,7 +43,11 @@ public class AdminUpdateUserController {
 		if (result.hasErrors()) {
 			return "admin/update/GeneralUpdate";
 		}
-		uif =  (UserInformationForm)session.getAttribute("uif");
+		UserInformationForm suif =  (UserInformationForm)session.getAttribute("uif");
+		uif.setCreditnumber(suif.getCreditnumber());
+		uif.setCreditspan(suif.getCreditspan());
+		uif.setSecurity(suif.getSecurity());
+		uif.setId(suif.getId());
 		session.setAttribute("uif", uif);
 		return "admin/update/GeneralCheck";
 
@@ -55,7 +59,6 @@ public class AdminUpdateUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
-		uif.setId(LoginUser.getId());
 		UserInfoDao.adminUpdate(uif);
 		model.addAttribute("msg","更新");
 
@@ -69,7 +72,7 @@ public class AdminUpdateUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		model.addAttribute("userInformationForm", uif);
-		return "admin/register/GeneralRegister";
+		return "admin/update/GeneralUpdate";
 	}
 
 	/*
