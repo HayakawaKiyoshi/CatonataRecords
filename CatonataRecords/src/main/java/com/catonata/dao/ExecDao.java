@@ -362,6 +362,56 @@ public class ExecDao {
 
 	}
 
+	public static List<ProductBean> adminFindAll(String labelname) {
+
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+
+		//ArrayListを初期化
+		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
+
+		System.out.println(labelname);
+
+		try {
+			conn = manager.getConn();
+
+			final String SQL = "SELECT * FROM PRODUCT_TABLE";
+			ps = conn.prepareStatement(SQL);
+			//引数を?にバインド
+			ps.setString(1, labelname);
+			rs = ps.executeQuery();
+
+			//結果をuserインスタンスに設定し、
+			//ArrayListインスタンスに追加
+			while (rs.next()) {
+				String proid = rs.getString("PROD_ID");
+				String proname = rs.getString("PROD_NAME");
+				String artist = rs.getString("ARTIST");
+				String media = rs.getString("MEDIA");
+				String price = rs.getString("PRICE");
+				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
+				String label = rs.getString("LABEL");
+				String sold = rs.getString("SOLD");
+				String stock = rs.getString("STOCK");
+				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
+						releasedate, label, sold, stock);
+				empList.add(bean);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return empList;
+
+	}
+
+
 //	/**
 //	 * 区間検索
 //	 * @param labelname
