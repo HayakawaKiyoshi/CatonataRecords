@@ -583,7 +583,7 @@ public class ExecDao {
 		try {
 			conn = manager.getConn();
 
-			final String SQL = "SELECT * FROM PRODUCT_TABLE OR ARTIST LIKE ? OR PROD_NAME LIKE ? OR LABEL LIKE ?";
+			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE ARTIST LIKE ? OR PROD_NAME LIKE ? OR LABEL LIKE ?";
 			ps = conn.prepareStatement(SQL);
 			//引数を?にバインド
 			ps.setString(1,"%" + msg + "%");
