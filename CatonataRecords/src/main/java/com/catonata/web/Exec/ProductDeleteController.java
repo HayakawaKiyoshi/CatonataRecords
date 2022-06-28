@@ -143,6 +143,7 @@ public class ProductDeleteController {
 		session.setAttribute("delete", delete);
 		String[] check = (String[]) session.getAttribute("check");
 		session.setAttribute("check", check);
+		mav.setViewName("exec/delete/Select");
 
 		return mav;
 	}
