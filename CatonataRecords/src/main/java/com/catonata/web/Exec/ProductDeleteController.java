@@ -27,21 +27,22 @@ public class ProductDeleteController {
 
 	@RequestMapping(path = "/select", method = RequestMethod.GET)
 	public ModelAndView index(LoginForm form, ModelAndView mav) {
-		UserInformationBean user = (UserInformationBean)session.getAttribute("LoginUser");
+		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 		List<ProductBean> empList = null;
-		if(user.getAuthority().equals("3")) {
+		if (user.getAuthority().equals("3")) {
 			empList = ExecDao.findAll(user.getLabel());
-		}else if(user.getAuthority().equals("2")) {
+		} else if (user.getAuthority().equals("2")) {
 			empList = ExecDao.adminFindAll();
 		}
 		mav.setViewName("exec/delete/Select");
-		mav.addObject("productForm",empList);
+		mav.addObject("productForm", empList);
 		return mav;
 	}
 
 	@RequestMapping(path = "/delete/select", method = RequestMethod.GET)
-	public ModelAndView get(@RequestParam("check") String[] check, ProductForm form,UserInformationBean user,ModelAndView mav) {
+	public ModelAndView get(@RequestParam("check") String[] check, ProductForm form, UserInformationBean user,
+			ModelAndView mav) {
 		mav.setViewName("exec/delete/Check");
 
 		//ログイン情報を取得する
@@ -66,7 +67,8 @@ public class ProductDeleteController {
 	 * @return
 	 */
 	@RequestMapping(path = "/delete", method = RequestMethod.GET)
-	public ModelAndView send(@RequestParam("name") String name, ProductForm form,UserInformationBean user,ModelAndView mav) {
+	public ModelAndView send(@RequestParam("name") String name, ProductForm form, UserInformationBean user,
+			ModelAndView mav) {
 		mav.setViewName("exec/delete/Check");
 
 		//ログイン情報を取得する
@@ -88,7 +90,7 @@ public class ProductDeleteController {
 	 * @return
 	 */
 	@RequestMapping(path = "delete/execute", method = RequestMethod.POST)
-	public ModelAndView send2(UserInformationBean user,ModelAndView mav) {
+	public ModelAndView send2(UserInformationBean user, ModelAndView mav) {
 
 		user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
@@ -97,9 +99,9 @@ public class ProductDeleteController {
 		//削除のDaoを呼び出す
 		ExecDao.productDelete(check);
 		mav.addObject("msg", "削除が完了しました");
-		if(user.getAuthority().equals("3")) {
+		if (user.getAuthority().equals("3")) {
 			mav.setViewName("exec/complete/Complete");
-		}else if(user.getAuthority().equals("2")){
+		} else if (user.getAuthority().equals("2")) {
 			mav.setViewName("admin/complete/Complete");
 		}
 		//セッションインスタンスの削除
@@ -109,14 +111,23 @@ public class ProductDeleteController {
 	}
 
 	@RequestMapping(path = "delete/search", method = RequestMethod.POST)
-	public ModelAndView search(@RequestParam("msg") String msg,ModelAndView mav) {
+	public ModelAndView search(@RequestParam("msg") String msg, ModelAndView mav) {
 
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 
-		List<ProductBean> proname = ExecDao.proSearch(msg,user.getLabel());
+		System.out.println(msg);
+		System.out.println(user.getLabel());
 
-		mav.addObject("productForm",proname);
+		if (user.getAuthority().equals("3")) {
+			List<ProductBean> proname = ExecDao.proSearch(msg, user.getLabel());
+			mav.addObject("productForm", proname);
+		} else if (user.getAuthority().equals("2")) {
+			List<ProductBean> proname2 = ExecDao.adminProSearch(msg);
+			mav.addObject("productForm", proname2);
+		}
+
+
 		mav.setViewName("exec/delete/Select");
 
 		return mav;
@@ -127,17 +138,11 @@ public class ProductDeleteController {
 		//ログイン情報の取得
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
-		 //セッションに保存した情報を取得
+		//セッションに保存した情報を取得
 		ProductForm delete = (ProductForm) session.getAttribute("delete");
-		session.setAttribute("delete",delete );
-		String[] check = (String[]) session.getAttribute("check");
-		session.setAttribute("delete",check );
+		session.setAttribute("delete", delete);
 
 		return mav;
 	}
 
-
 }
-
-
-
