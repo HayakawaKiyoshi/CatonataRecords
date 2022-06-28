@@ -2,6 +2,7 @@ package com.catonata.bean;
 
 public class ExecInformationBean {
 
+	private String id;
 	private String name;
 	private String label;
 	private String password;
@@ -11,6 +12,8 @@ public class ExecInformationBean {
 	private String bankname;
 	private String authority;
 
+	public String getId() {return id;}
+	public void setId(String id) {this.id = id;}
 	public String getLabel() {return label;}
 	public void setLabel(String label) {this.label = label;}
 	public String getPassword() {return password;}

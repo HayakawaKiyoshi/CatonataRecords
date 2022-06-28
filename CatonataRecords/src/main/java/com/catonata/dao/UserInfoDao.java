@@ -531,6 +531,7 @@ public class UserInfoDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ExecInformationBean eib = new ExecInformationBean();
+				eib.setId(rs.getString("user_id"));
 				eib.setName(rs.getString("user_name"));
 				eib.setLabel(rs.getString("label"));
 				eib.setPassword(rs.getString("password"));
