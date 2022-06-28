@@ -38,7 +38,7 @@
 					<td><span th:text="${items.address}">住所</span></td>
 					<td><span th:text="${items.gender}">性別</span></td>
 					<td>
-						<form action="/AdminUpdate/Check" th:action="@{/AdminUpdate/Check}">
+						<form action="/AdminUpdate" th:action="@{/AdminUpdate}">
 							<input type="hidden" name="name" th:value="${items.name}">
 							<input type="hidden" name="password" th:value="${items.password}">
 							<input type="submit" value="変更" class="btn btn-primary">
@@ -47,7 +47,7 @@
 					<td>
 						<form action="/AdminDelete/Check" th:action="@{/AdminDelete/Check}" method="post">
 							<input type="hidden" name="name" th:value="${items.name}">
-							<input type="hidden" name="pass" th:value="${items.password}">
+							<input type="hidden" name="password" th:value="${items.password}">
 							<input type="submit" value="削除" class="btn btn-danger">
 						</form>
 					</td>
@@ -78,7 +78,7 @@
 					</form></td>
 					<td><form action="/AdminDelete/ExecCheck" th:action="@{/AdminDelete/ExecCheck}">
 							<input type="hidden" name="name" th:value="${items.name}">
-							<input type="hidden" name="pass" th:value="${items.pass}">
+							<input type="hidden" name="pass" th:value="${items.password}">
 							<input type="submit" value="削除">
 					</form></td>
 				</tr>
