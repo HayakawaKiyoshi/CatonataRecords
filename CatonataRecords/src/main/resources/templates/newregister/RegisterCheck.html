@@ -1,86 +1,74 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout/LayoutTile">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
-		<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
-		<title>新規会員登録確認画面（一般）</title>
-	</head>
-	<body>
-		<div layout:fragment="content">
-<div id="common_content_bar">新規会員登録確認画面</div>
-			<p>以下の内容を確認の上、登録ボタンを押してください。</p>
-							<table class="table table-striped table-bordered">
-
-							<th:block th:object="${session.uif}">
-								<tr>
-									<td>氏名</td>
-									<td><span th:text="*{name}"></span></td>
-								</tr>
-								<tr>
-									<td>パスワード</td>
-									<td><span th:text="*{password}"></span></td>
-								</tr>
-								<tr>
-									<td>年齢</td>
-									<td><span th:text="*{age}"></span></td>
-								</tr>
-								<tr>
-									<td>性別</td>
-									<td><span th:text="(*{gender == 1} ? 男 : 女)"></span></td>
-									<!-- <td th:text="(*{e.Gender == 1} ? 男 : 女)"></td> -->
-								</tr>
-								<tr>
-									<td>住所</td>
-									<td><span th:text="*{address}"></span></td>
-								</tr>
-								<tr>
-									<td>生年月日</td>
-									<td><span th:text="*{birthday}"></span></td>
-								</tr>
-								<tr>
-									<td>メールアドレス</td>
-									<td><span th:text="*{email}"></span></td>
-								</tr>
-								</th:block>
-
-									<th:block th:if = "${session.LoginUser == null}">
-
-									<th:block th:object = "${session.ccif}">
-								<tr>
-									<td>クレジットカード番号</td>
-									<td><span th:text="*{creditnumber}"></span></td>
-
-								</tr>
-								<tr>
-									<td>有効期限</td>
-									<td><span th:text="*{creditspan}"></span></td>
-								</tr>
-
-							</th:block>
-
-							</th:block>
-
-							</table>
-							<form role="form" action="SignUp/SignUpComplete" th:action="@{${send}}"
-							 method="post">
-
-						<th:block th:if="${session.LoginUser != null}">
-								<button type="button" class="btn btn-primary"
-									onclick="location.href='/AdminRegister/Back'">登録画面に戻る</button>
-						</th:block>
-						<th:block th:if="${session.LoginUser == null}">
-							<button type="button" class="btn btn-primary"
-									onclick="location.href='/SignUp/SignUpBack'">登録画面に戻る</button>
-						</th:block>
-						<input type="submit" value="登録" class="btn btn-primary">
-
-
-					</form>
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTile">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+<title>新規会員登録確認画面（一般）</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div id="common_content_bar">新規会員登録確認画面</div>
+		<p>以下の内容を確認の上、登録ボタンを押してください。</p>
+		<table class="table table-striped table-bordered">
+			<th:block th:object="${session.uif}">
+				<tr>
+					<td>氏名</td>
+					<td><span th:text="*{name}"></span></td>
+				</tr>
+				<tr>
+					<td>パスワード</td>
+					<td><span th:text="*{password}"></span></td>
+				</tr>
+				<tr>
+					<td>年齢</td>
+					<td><span th:text="*{age}"></span></td>
+				</tr>
+				<tr>
+					<td>性別</td>
+					<td><span th:text="(*{gender == 1} ? 男 : 女)"></span></td>
+				</tr>
+				<tr>
+					<td>住所</td>
+					<td><span th:text="*{address}"></span></td>
+				</tr>
+				<tr>
+					<td>生年月日</td>
+					<td><span th:text="*{birthday}"></span></td>
+				</tr>
+				<tr>
+					<td>メールアドレス</td>
+					<td><span th:text="*{email}"></span></td>
+				</tr>
+			</th:block>
+			<th:block th:if="${session.LoginUser == null}">
+				<th:block th:object="${session.ccif}">
+					<tr>
+						<td>クレジットカード番号</td>
+						<td><span th:text="*{creditnumber}"></span></td>
+					</tr>
+					<tr>
+						<td>有効期限</td>
+						<td><span th:text="*{creditspan}"></span></td>
+					</tr>
+				</th:block>
+			</th:block>
+		</table>
+		<form role="form" action="SignUp/SignUpComplete" th:action="@{${send}}" method="post">
+			<th:block th:if="${session.LoginUser != null}">
+				<button type="button" class="btn btn-primary"
+					onclick="location.href='/AdminRegister/Back'">登録画面に戻る</button>
+			</th:block>
+			<th:block th:if="${session.LoginUser == null}">
+				<button type="button" class="btn btn-primary"
+					onclick="location.href='/SignUp/SignUpBack'">登録画面に戻る</button>
+			</th:block>
+			<input type="submit" value="登録" class="btn btn-primary">
+		</form>
 	</div>
-	</body>
+</body>
 </html>
