@@ -248,8 +248,8 @@ public class UserInfoDao {
 			// 接続する
 			conn = manager.getConn();
 			ps = conn.prepareStatement("UPDATE USER_TABLE SET PASSWORD = ? ,"
-					+ "USER_NAME = ? , ADDRESS = ? , EMAIL = ? , BANKNUMBER = ? ,"
-					+ "BANKNAME = ? , LABEL = ? , ID = ?");
+					+ "USER_NAME = ? , ADDRESS = ? , EMAIL = ? , BANK_NUMBER = ? ,"
+					+ "BANK_NAME = ? , LABEL = ? WHERE ID = ?");
 			ps.setString(1, eif.getPassword());
 			ps.setString(2, eif.getName());
 			ps.setString(3, eif.getAddress());
@@ -260,7 +260,7 @@ public class UserInfoDao {
 			ps.setString(8, eif.getId());
 			int cnt =ps.executeUpdate();
 			conn.commit();
-			System.out.println(cnt + "件のデータを登録しました。");
+			System.out.println(cnt + "件のデータを更新しました。");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -440,13 +440,13 @@ public class UserInfoDao {
 
 			if (rs.next()) {
 				user.setId(rs.getString("id"));
-				user.setName(rs.getString("name"));
+				user.setName(rs.getString("user_name"));
 				user.setPassword(rs.getString("password"));
 				user.setLabel(rs.getString("label"));
 				user.setEmail(rs.getString("email"));
 				user.setAddress(rs.getString("address"));
-				user.setBanknumber(rs.getString("banknumber"));
-				user.setBankname(rs.getString("bankname"));
+				user.setBanknumber(rs.getString("bank_number"));
+				user.setBankname(rs.getString("bank_name"));
 
 			} else {
 				return null;
