@@ -55,19 +55,11 @@ h1{
 
 
 #content_bar {
-	background: #009cc0;
+	background: #81cac4;
 	color: white;
 	font-weight:bold;
 	text-align: center;
 	margin: auto;
-}
-
-#admin_content_bar {
-	background: #ff0000;
-	text-align: center;
-	border: solid 1px black;
-	margin: auto;
-
 }
 
 #general_content_bar {
@@ -76,7 +68,6 @@ h1{
 	font-weight:bold;
 	text-align: center;
 	margin: auto;
-
 }
 
 #common_content_bar {
