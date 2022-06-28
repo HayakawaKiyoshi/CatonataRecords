@@ -187,7 +187,7 @@ public class ExecDao {
 				form.setSold(rs.getString("SOLD"));
 				form.setStock(rs.getString("STOCK"));
 
-				System.out.println(form.getArtist());
+				System.out.println(form.getMedia());
 			} else {
 				return null;
 			}
@@ -491,7 +491,7 @@ public class ExecDao {
 		ProductBean form = null;
 
 		try {
-			System.out.println(id);
+
 			conn = manager.getConn();
 			for(int i = 0; i < id.length; i++) {
 
@@ -515,7 +515,7 @@ public class ExecDao {
 				form.setStock(rs.getString("STOCK"));
 				productList.add(form);
 
-				System.out.println(form.getArtist());
+				System.out.println(form.getMedia());
 			}
 			}
 
