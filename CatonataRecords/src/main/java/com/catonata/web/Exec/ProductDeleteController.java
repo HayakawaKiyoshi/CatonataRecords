@@ -141,6 +141,8 @@ public class ProductDeleteController {
 		//セッションに保存した情報を取得
 		ProductForm delete = (ProductForm) session.getAttribute("delete");
 		session.setAttribute("delete", delete);
+		String[] check = (String[]) session.getAttribute("check");
+		session.setAttribute("check", check);
 
 		return mav;
 	}
