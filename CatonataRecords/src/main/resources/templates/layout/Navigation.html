@@ -12,8 +12,7 @@
 		<div id="navidation">
 			<!-- ログインなし -->
 			<th:block th:if="${session.LoginUser == null}">
-				<font size="4">商品カテゴリー
-				(セッションなし)</font>
+				<font size="4">商品カテゴリー (セッションなし)</font>
 				<form action="/top/TopPage" method="post">
 					<input type="submit" value="一覧" class="btn btn-primary">
 				</form>
@@ -25,11 +24,13 @@
 					<input type="hidden" name="category" value="DVD"> <input
 						type="submit" value="DVD" class="btn btn-primary">
 				</form>
-				<form action="" method="post">
-					<input type="submit" value="本/書籍" class="btn btn-primary">
+				<form action="/top/category/search" method="post">
+					<input type="hidden" name="category" value="本/書籍"> <input
+						type="submit" value="本/書籍" class="btn btn-primary">
 				</form>
-				<form action="" method="post">
-					<input type="submit" value="グッズ" class="btn btn-primary">
+				<form action="/top/category/search" method="post">
+					<input type="hidden" name="category" value="グッズ"> <input
+						type="submit" value="グッズ" class="btn btn-primary">
 				</form>
 			</th:block>
 			<th:block th:if="${session.LoginUser != null}">
@@ -49,14 +50,16 @@
 								<input type="hidden" name="category" value="DVD"> <input
 									type="submit" value="DVD" class="btn btn-primary">
 							</form>
-							<!--
-						<form action="">
-							<input type="submit" value="本/書籍" class="btn btn-primary">
-						</form>
-						<form action="">
-							<input type="submit" value="グッズ" class="btn btn-primary">
-						</form>
-						 -->
+
+							<form action="/top/category/search">
+								<input type="hidden" name="category" value="本/書籍"> <input
+									type="submit" value="本/書籍" class="btn btn-primary">
+							</form>
+							<form action="/top/category/search">
+								<input type="hidden" name="category" value="グッズ"> <input
+									type="submit" value="グッズ" class="btn btn-primary">
+							</form>
+
 						</th:block>
 
 						<!-- 管理者ユーザー -->
@@ -64,8 +67,8 @@
 					管理者メニュー
 						<form action="/Admin/Top">
 								<input type="submit" value="メニュー" class="btn btn-primary">
-								<input type=hidden name="name" value=*{name}>
-								<input type=hidden name="password" value=*{password}>
+								<input type=hidden name="name" value=*{name}> <input
+									type=hidden name="password" value=*{password}>
 							</form>
 							<b>～新規登録～</b>
 							<form action="/AdminRegister" th:action="@{/AdminRegister}"
@@ -100,8 +103,8 @@
 							</form>
 							<form action="/AdminUpdate/Exec">
 								<input type="submit" value="ユーザー情報更新" class="btn btn-primary">
-								<input type=hidden name="name" value=*{name}>
-								<input type=hidden name="password" value=*{password}>
+								<input type=hidden name="name" value=*{name}> <input
+									type=hidden name="password" value=*{password}>
 							</form>
 						</th:block>
 					</th:block>
