@@ -1,6 +1,9 @@
 package com.catonata.web.Common;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.Calendar;
 
 import javax.servlet.http.HttpSession;
@@ -74,15 +77,37 @@ public class ProductDetailController {
 			if((calendar.get(Calendar.DATE) + i ) < 31) {
 				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 1 )+ "/"
 									+ (calendar.get(Calendar.DATE) + ( i + 1 )));
+				if (isDate(delivaryDate[i]) == false) {
+					delivaryDate[i] =  String.valueOf(calendar.get(Calendar.YEAR) + "/"
+							+(calendar.get(Calendar.MONTH) + 2 )+ "/"
+							+ date);
+					date++;
+				}
 			} else if ((calendar.get(Calendar.DATE) + ( i + 1 )) > 31) {
 				delivaryDate[i] +=  String.valueOf((calendar.get(Calendar.MONTH) + 2 )+ "/"
 						+ date);
 				date++;
 			}
 		}
-		//問題点：13月が存在してしまう可能性がある。
-		//どの月も31日が存在する体になってしまう。
 		return delivaryDate;
+	}
+
+	/*
+	 * 日付が正しいかのチェック
+	 * 存在しない日付の場合には戻り値でfalseを返す。
+	 */
+	public static boolean isDate(String value) {
+	    boolean result = false;
+	    if (value != null) {
+	        try {
+	        	LocalDate.parse(value,
+	        	DateTimeFormatter.ofPattern("uuuu/MM/dd").withResolverStyle(ResolverStyle.STRICT));
+	            result = true;
+	        } catch (Exception e) {
+	            result = false;
+	        }
+	    }
+	    return result;
 	}
 
 	/**
