@@ -13,10 +13,10 @@
 <body>
 	<div layout:fragment="content">
 		<div id="general_content_bar">マイページ</div>
-		<div style="border: solid 1px black; width: 500px; height: 300px;">
+		<div>
 			<p>ユーザー情報</p>
 			<th:block th:object="${session.LoginUser}">
-        	   氏名:<span th:text="*{name}"></span><br>
+        	   氏名：<span th:text="*{name}"></span><br>
                 ID：<span th:text="*{id}"></span>&emsp;&emsp;
                 年齢：<span th:text="*{age}"></span><br>
                 性別：<span th:text="*{gender}"></span>&emsp;&emsp;
@@ -26,12 +26,12 @@
 			    <form action="/mypageUpdate" method="post">
 				    <input type="hidden" name="name" th:value="*{name}">
 				    <input type="hidden" name="password" th:value="*{password}">
-				    <input type="submit" value="変更" class="btn btn-primary">
+				    <input type="submit" value="変更" class="btn btn-outline-primary">
 			    </form>
 			</th:block>
 			<p>購入履歴</p>
-			<div style="border: solid 1px black; width: 450px;">
-				<table>
+			<div>
+				<table class="table table-striped table-bordered">
 					<tr>
 						<th>購入日</th>
 						<th>配送日</th>
@@ -58,7 +58,7 @@
 				<form action="/mypageUpdate/delete/Check" method="post" th:object="${session.LoginUser}">
 					<input type="hidden" name="name" th:value="*{name}">
 					<input type="hidden" name="pass" th:value="*{password}">
-					<input type="submit" value="退会" class="btn btn-danger">
+					<input type="submit" value="退会" class="btn btn-outline-danger">
 				</form>
 		</div>
 	</div>
