@@ -11,25 +11,21 @@
 <title>完了画面</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <script type="text/javascript" th:src="@{/js/script.js}"></script>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-	rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div layout:fragment="content">
-
 			<div id="admin_content_bar">
-				<span th:text="${msg}"></span>完了
+				<span th:text="${msg}"></span>
 			</div>
-
 			<p>
-				<span th:text="${msg}"></span>が完了しました
+				<span th:text="${msg}"></span>
 			</p>
-			<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post"
-				th:object="${session.LoginUser}">
-				<input type="hidden" name="name" th:value="*{name}"> <input
-					type="hidden" name="password" th:value="*{password}"> <input
-					type="submit" value="管理者メイン画面へ" class="btn btn-primary">
+			<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post" th:object="${session.LoginUser}">
+				<input type="hidden" name="name" th:value="*{name}">
+				<input type="hidden" name="password" th:value="*{password}">
+				<input type="submit" value="管理者メイン画面へ" class="btn btn-primary">
 			</form>
 		</div>
 	</div>

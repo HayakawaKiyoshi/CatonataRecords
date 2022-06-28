@@ -18,9 +18,7 @@
 	<div layout:fragment="content">
 		<div id="admin_content_bar">ユーザー情報削除画面（経営者）</div>
 		<p>以下のユーザーを削除します。よろしいですか？</p>
-
 		<table class="table table-striped table-bordered table-sm">
-
 			<th:block th:object="${delete}">
 				<tr>
 					<td>氏名</td>
@@ -50,25 +48,16 @@
 					<td>メールアドレス</td>
 					<td><span th:text="*{email}"></span></td>
 				</tr>
-				<tr>
-
-				</tr>
-
-
 			</th:block>
-
 		</table>
-		<form action="/AdminDelete/Complete"
-			th:action="@{/AdminDelete/Complete}" method="post"
-			th:object="${delete}">
-			<input type="hidden" name="id" th:value="*{id}"> <input
-				type="submit" value="ユーザーを削除する" class="btn btn-danger"><br>
+		<form action="/AdminDelete/Complete" th:action="@{/AdminDelete/Complete}" method="post" th:object="${delete}">
+			<input type="hidden" name="id" th:value="*{id}">
+			<input type="submit" value="ユーザーを削除する" class="btn btn-danger"><br>
 		</form>
-		<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post"
-			th:object="${session.LoginUser}">
-			<input type="hidden" name="name" th:value="*{name}"> <input
-				type="hidden" name="pass" th:value="*{password}"> --> <input
-				type="submit" value="管理者トップに戻る" class="btn btn-warning">
+		<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post" th:object="${session.LoginUser}">
+			<input type="hidden" name="name" th:value="*{name}">
+			<input type="hidden" name="pass" th:value="*{password}"> -->
+			<input type="submit" value="管理者トップに戻る" class="btn btn-warning">
 		</form>
 	</div>
 </body>

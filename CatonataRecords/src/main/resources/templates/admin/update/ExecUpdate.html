@@ -14,57 +14,57 @@
 	<div layout:fragment="content">
 		<div id="admin_content_bar">ユーザー情報変更画面（経営者）</div>
 		<p>更新したい項目を書き換えてください。</p>
-		<form action="/AdminUpdate/Check"
-			th:action="@{/AdminUpdate/ExecCheck}" method="post"
-			th:object="${execInformationForm}">
+		<form action="/AdminUpdate/Check" th:action="@{/AdminUpdate/ExecCheck}" method="post" th:object="${execInformationForm}">
 			<input type="hidden" name="id" th:value="*{id}">
 			<table class="table table-striped table-bordered table-sm">
 				<tr>
 					<td>氏名</td>
-					<td><input type="text" name="name" th:value="*{name}">
-						<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-						th:errorclass="error-field"></span></td>
+					<td>
+					   <input type="text" name="name" th:value="*{name}">
+						<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="error-field"></span>
+					</td>
 				</tr>
 				<tr>
 					<td>レコード会社</td>
-					<td><input type="text" name="label" th:value="*{label}">
-						<span th:if="${#fields.hasErrors('label')}" th:errors="*{label}"
-						th:errorclass="error-field"></span></td>
+					<td>
+					   <input type="text" name="label" th:value="*{label}">
+						<span th:if="${#fields.hasErrors('label')}" th:errors="*{label}" th:errorclass="error-field"></span>
+					</td>
 				</tr>
 				<tr>
 					<td>パスワード</td>
-					<td><input type="password" name="password"
-						th:value="*{password}"> <span
-						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-						th:errorclass="error-field"></span></td>
+					<td>
+					   <input type="password" name="password" th:value="*{password}">
+					   <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="error-field"></span>
+					</td>
 				</tr>
-
 				<tr>
 					<td>メールアドレス</td>
-					<td><input type="text" name="mail" th:value="*{mail}">
-						<span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"
-						th:errorclass="error-field"></span></td>
+					<td>
+					   <input type="text" name="mail" th:value="*{mail}">
+						<span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" th:errorclass="error-field"></span>
+					</td>
 				</tr>
 				<tr>
 					<td>住所</td>
-					<td><input type="text" name="address" th:value="*{address}">
-						<span th:if="${#fields.hasErrors('address')}"
-						th:errors="*{address}" th:errorclass="error-field"></span></td>
+					<td>
+					   <input type="text" name="address" th:value="*{address}">
+						<span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" th:errorclass="error-field"></span>
+					</td>
 				</tr>
 				<tr>
 					<td>振込先口座番号</td>
-					<td><input type="text" name="banknumber"
-						th:value="*{banknumber}"> <span
-						th:if="${#fields.hasErrors('banknumber')}"
-						th:errors="*{banknumber}" th:errorclass="error-field"></span></td>
+					<td>
+					   <input type="text" name="banknumber" th:value="*{banknumber}">
+					   <span th:if="${#fields.hasErrors('banknumber')}" th:errors="*{banknumber}" th:errorclass="error-field"></span>
+					</td>
 				</tr>
 				<tr>
 					<td>支店名</td>
 					<td>
 						<div class="form-group">
 							<input type="text" name="bankname" th:value="*{bankname}">
-							<span th:if="${#fields.hasErrors('bankname')}"
-								th:errors="*{bankname}" th:errorclass="error-field"></span>
+							<span th:if="${#fields.hasErrors('bankname')}" th:errors="*{bankname}" th:errorclass="error-field"></span>
 						</div>
 					</td>
 				</tr>
