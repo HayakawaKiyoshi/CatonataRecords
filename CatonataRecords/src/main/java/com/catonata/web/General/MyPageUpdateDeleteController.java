@@ -36,36 +36,17 @@ public class MyPageUpdateDeleteController {
 		return "general/mypage/UserUpdate";
 	}
 
-	@RequestMapping("/cardCheck")
-	private String updateUser (@ModelAttribute UserInformationBean uif, Model model) {
-		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
-		session.setAttribute("LoginUser", LoginUser);
-		UserInformationBean bean = UserInfoDao.findCard(LoginUser.getName(),LoginUser.getPassword());
-		session.setAttribute("card", bean);
-		System.out.println(bean.getCreditnumber());
-		model.addAttribute("creditCardInformationForm",bean);
-		return "general/mypage/CardUpdate";
-	}
-
 	@PostMapping("/creditCard")
-	private String updateCrdt(@Validated UserInformationForm uif, BindingResult result, Model model) {
+	private String updateCrdt(@Validated UserInformationForm uif, BindingResult result, Model model,
+								@ModelAttribute CreditCardInformationForm form) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
 			return "general/mypage/UserUpdate";
 		}else {
-//			uif = UserInfoDao.find(name, password);
-//			UserInformationForm Uif = (UserInformationForm)session.getAttribute("uif");
-//			session.setAttribute("uif", Uif);
 			session.setAttribute("uif", uif);
-			UserInformationBean bean = UserInfoDao.findCard(LoginUser.getName(),LoginUser.getPassword());
-			CreditCardInformationForm crdt = new CreditCardInformationForm();
-			System.out.println(bean.getCreditnumber());
-			crdt.setCreditnumber(bean.getCreditnumber());
-			crdt.setCreditspan(bean.getCreditspan());
-			crdt.setSecurity(bean.getSecuritycode());
-			session.setAttribute("card", crdt);
-			model.addAttribute("creditCardInformationForm",crdt);
+			form = UserInfoDao.findCard(LoginUser.getName(),LoginUser.getPassword());
+			model.addAttribute("creditCardInformationForm", form);
 			return "general/mypage/CardUpdate";
 		}
 	}
@@ -77,12 +58,10 @@ public class MyPageUpdateDeleteController {
 		if (result.hasErrors()) {
 			return "general/mypage/CardUpdate";
 		}else {
-			CreditCardInformationForm cardinfo = (CreditCardInformationForm)session.getAttribute("card");
-			session.setAttribute("card", cardinfo);
 			UserInformationForm Uif = (UserInformationForm)session.getAttribute("uif");
 			session.setAttribute("uif", Uif);
 			session.setAttribute("card", form);
-			return "admin/update/GeneralCheck";
+			return "general/mypage/UpdateCheck";
 		}
 	}
 
@@ -95,10 +74,8 @@ public class MyPageUpdateDeleteController {
 		CreditCardInformationForm form = (CreditCardInformationForm)session.getAttribute("card");
 		UserInfoDao.generalUpdate(uif,form);
 		model.addAttribute("msg","更新");
-
 		session.removeAttribute("uif");
 		session.removeAttribute("card");
-
 		return  "general/mypage/UpdateComplete";
 
 	}
@@ -126,13 +103,7 @@ public class MyPageUpdateDeleteController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		UserInfoDao.execDelete(id);
-//		if (id.equals(au.getId())) {
-//			model.addAttribute("step", "1");
-//		}
 		model.addAttribute("msg","削除");
 		return "general/mypage/ResignComplete";
 	}
-
-
-
 }
