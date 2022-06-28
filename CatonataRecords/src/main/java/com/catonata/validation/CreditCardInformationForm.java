@@ -26,5 +26,4 @@ public class CreditCardInformationForm {
 	public void setCreditspan(String creditspan) {this.creditspan = creditspan;}
 	public String getSecurity() {return security;}
 	public void setSecurity(String security) {this.security = security;}
-
 }
