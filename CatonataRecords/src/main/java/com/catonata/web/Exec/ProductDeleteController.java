@@ -114,9 +114,6 @@ public class ProductDeleteController {
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 
-		System.out.println(msg);
-		System.out.println(user.getLabel());
-
 		List<ProductBean> proname = ExecDao.proSearch(msg,user.getLabel());
 
 		mav.addObject("productForm",proname);
