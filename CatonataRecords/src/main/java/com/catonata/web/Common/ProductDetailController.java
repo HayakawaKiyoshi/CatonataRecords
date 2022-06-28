@@ -62,8 +62,12 @@ public class ProductDetailController {
 		//日時取得
 		Calendar calendar = Calendar.getInstance();
 		String[] delivaryDate = delivaryDateCreate(calendar);
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-//		String delivaryDate = String.valueOf(sdf.format(calendar.getTime()));
+		//クレジットカード伏字編集
+		String[] cre_number = LoginUser.getCreditnumber().split("-");
+		for (int i = 0 ; i < 3 ; i++) {
+				cre_number[i] = cre_number[i].replace(cre_number[i],"****-");
+		}
+		model.addAttribute("cre_number",cre_number);
 		model.addAttribute("delivary", delivaryDate);
 		return "general/product/PurchaseCheck";
 	}
