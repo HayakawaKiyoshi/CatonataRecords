@@ -295,24 +295,40 @@ public class ExecDao {
 
 		try {
 			conn = manager.getConn();
+			for(int i = 0; i < id.length; i++) {
+				ps = conn.prepareStatement("DELETE FROM PURCHASE_TABLE WHERE PROD_ID = ?");
+				//引数を?にバインド
+				ps.setString(1, id[i]);
+				int cnt1 = ps.executeUpdate();
+				System.out.println(cnt1 + "件のデータを販売履歴テーブルから削除しました。");
+				}
 			final String PRO_DELETE_SQL = "DELETE FROM PRODUCT_TABLE WHERE PROD_ID = ? ";
 
 			for(int i = 0; i < id.length; i++) {
 			ps = conn.prepareStatement(PRO_DELETE_SQL);
 			//引数を?にバインド
 			ps.setString(1, id[i]);
-			ps.executeUpdate();
+			int cnt2 = ps.executeUpdate();
+			System.out.println(cnt2 + "件のデータを販売履歴テーブルから削除しました。");
 			}
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-
 		} catch (SQLException e) {
+			System.err.println("Oracleエラーコード:" + e.getErrorCode());
+			System.err.println("SQLStateコード:" + e.getSQLState());
+			System.err.println("エラーメッセージ:" + e.getMessage());
 			e.printStackTrace();
-
+		} finally {
+			// 切断処理
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+				}
+			}
 		}
 	}
-
 	public static List<ProductBean> findAll(String labelname) {
 
 		Connection conn = null;
