@@ -14,6 +14,12 @@ import com.catonata.bean.UserInformationBean;
 
 public class CommonDao {
 
+	/**
+	 * 名前とパスワードからユーザー情報を検索するメソッド
+	 * @param name
+	 * @param password
+	 * @return
+	 */
 	public static UserInformationBean find(String name,String password) {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -69,6 +75,13 @@ public class CommonDao {
 		return user;
 
 	}
+	/**
+	 * ID,名前,パスワードからユーザー情報を検索するメソッド
+	 * @param userid
+	 * @param name
+	 * @param password
+	 * @return
+	 */
 
 	public static UserInformationBean findId(String userid,String name,String password) {
 		Connection conn = null;
@@ -126,51 +139,58 @@ public class CommonDao {
 		return user;
 
 	}
+	/**
+	 * 商品情報の全件表示
+	 */
 
-	public static List<ProductBean> findAll() {
-
-		Connection conn = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		DBManager manager = new DBManager();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-
-		//ArrayListを初期化
-		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
-
-		try {
-			conn = manager.getConn();
-
-			final String SQL = "SELECT * FROM PRODUCT_TABLE";
-			ps = conn.prepareStatement(SQL);
-			rs = ps.executeQuery();
-
-			//結果をuserインスタンスに設定し、
-			//ArrayListインスタンスに追加
-			while (rs.next()) {
-				String proid = rs.getString("PROD_ID");
-				String proname = rs.getString("PROD_NAME");
-				String artist = rs.getString("ARTIST");
-				String media = rs.getString("MEDIA");
-				String price = rs.getString("PRICE");
-				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
-				String label = rs.getString("LABEL");
-				String sold = rs.getString("SOLD");
-				String stock = rs.getString("STOCK");
-				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
-						releasedate, label, sold, stock);
-				empList.add(bean);
-			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return empList;
-
-	}
+//	public static List<ProductBean> findAll() {
+//
+//		Connection conn = null;
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//		DBManager manager = new DBManager();
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+//
+//		//ArrayListを初期化
+//		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
+//
+//		try {
+//			conn = manager.getConn();
+//
+//			final String SQL = "SELECT * FROM PRODUCT_TABLE";
+//			ps = conn.prepareStatement(SQL);
+//			rs = ps.executeQuery();
+//
+//			//結果をuserインスタンスに設定し、
+//			//ArrayListインスタンスに追加
+//			while (rs.next()) {
+//				String proid = rs.getString("PROD_ID");
+//				String proname = rs.getString("PROD_NAME");
+//				String artist = rs.getString("ARTIST");
+//				String media = rs.getString("MEDIA");
+//				String price = rs.getString("PRICE");
+//				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
+//				String label = rs.getString("LABEL");
+//				String sold = rs.getString("SOLD");
+//				String stock = rs.getString("STOCK");
+//				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
+//						releasedate, label, sold, stock);
+//				empList.add(bean);
+//			}
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//		return empList;
+//
+//	}
+	/**
+	 * 商品情報の全件表示
+	 * @return
+	 */
 
 	public static List<ProductBean> allProduct() {
 
@@ -218,29 +238,12 @@ public class CommonDao {
 
 	}
 
+	/**
+	 * アーティスト名と商品名から商品情報を検索
+	 * @param msg
+	 * @return
+	 */
 	public static List<ProductBean> proSearch(String msg) {
-		List <ProductBean> empList = new ArrayList<ProductBean>();
-		final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE ARTIST LIKE ? OR PROD_NAME LIKE ?";
-		 empList = executeTwo(SQL,msg);
-		 return empList;
-	}
-	public static List<ProductBean> proSearchCategory(String msg) {
-		List <ProductBean> empList = new ArrayList<ProductBean>();
-		System.out.println(msg);
-		final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE MEDIA LIKE ?";
-		 empList = executeOne(SQL,msg);
-		 return empList;
-	}
-	public static List<ProductBean> proCategory(String msg,String category) {
-		List <ProductBean> empList = new ArrayList<ProductBean>();
-		System.out.println(msg);
-		final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE MEDIA = ? AND (ARTIST LIKE ? OR PROD_NAME LIKE ?)";
-		 empList = executeThree(SQL,msg,category);
-		 return empList;
-	}
-
-	public static List<ProductBean> executeOne(String sql,String msg) {
-
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -252,53 +255,8 @@ public class CommonDao {
 
 		try {
 			conn = manager.getConn();
-			ps = conn.prepareStatement(sql);
-			//引数を?にバインド
-			ps.setString(1,"%" + msg + "%");
-			rs = ps.executeQuery();
-			rs = ps.executeQuery();
-
-			//結果をuserインスタンスに設定し、
-			//ArrayListインスタンスに追加
-			while (rs.next()) {
-				String proid = rs.getString("PROD_ID");
-				String proname = rs.getString("PROD_NAME");
-				String artist = rs.getString("ARTIST");
-				String media = rs.getString("MEDIA");
-				String price = rs.getString("PRICE");
-				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
-				String label = rs.getString("LABEL");
-				String sold = rs.getString("SOLD");
-				String stock = rs.getString("STOCK");
-				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
-						releasedate, label, sold,stock);
-				empList.add(bean);
-			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return empList;
-
-	}
-
-	public static List<ProductBean> executeTwo(String sql,String msg) {
-
-		Connection conn = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		DBManager manager = new DBManager();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-
-		//ArrayListを初期化
-		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
-
-		try {
-			conn = manager.getConn();
-			ps = conn.prepareStatement(sql);
+			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE ARTIST LIKE ? OR PROD_NAME LIKE ?";
+			ps = conn.prepareStatement(SQL);
 			//引数を?にバインド
 			ps.setString(1,"%" + msg + "%");
 			ps.setString(2,"%" + msg + "%");
@@ -331,8 +289,13 @@ public class CommonDao {
 		return empList;
 
 	}
-	public static List<ProductBean> executeThree(String sql,String msg,String category) {
 
+	/**
+	 * 商品媒体から商品情報を検索
+	 * @param msg
+	 * @return
+	 */
+	public static List<ProductBean> proSearchCategory(String msg) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -344,7 +307,60 @@ public class CommonDao {
 
 		try {
 			conn = manager.getConn();
-			ps = conn.prepareStatement(sql);
+			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE MEDIA LIKE ?";
+			ps = conn.prepareStatement(SQL);
+			//引数を?にバインド
+			ps.setString(1,"%" + msg + "%");
+			rs = ps.executeQuery();
+			rs = ps.executeQuery();
+
+			//結果をuserインスタンスに設定し、
+			//ArrayListインスタンスに追加
+			while (rs.next()) {
+				String proid = rs.getString("PROD_ID");
+				String proname = rs.getString("PROD_NAME");
+				String artist = rs.getString("ARTIST");
+				String media = rs.getString("MEDIA");
+				String price = rs.getString("PRICE");
+				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
+				String label = rs.getString("LABEL");
+				String sold = rs.getString("SOLD");
+				String stock = rs.getString("STOCK");
+				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
+						releasedate, label, sold,stock);
+				empList.add(bean);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return empList;
+
+	}
+
+	/**
+	 * 商品情報とアーティスト名と商品名から商品情報の検索
+	 * @param msg
+	 * @param category
+	 * @return
+	 */
+	public static List<ProductBean> proCategory(String msg,String category) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+
+		//ArrayListを初期化
+		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
+
+		try {
+			conn = manager.getConn();
+			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE MEDIA = ? AND (ARTIST LIKE ? OR PROD_NAME LIKE ?)";
+			ps = conn.prepareStatement(SQL);
 			//引数を?にバインド
 			ps.setString(1,category);
 			ps.setString(2,"%" + msg + "%");
@@ -378,6 +394,152 @@ public class CommonDao {
 		return empList;
 
 	}
-
-
 }
+
+
+
+//	public static List<ProductBean> executeOne(String sql,String msg) {
+//
+//		Connection conn = null;
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//		DBManager manager = new DBManager();
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+//
+//		//ArrayListを初期化
+//		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
+//
+//		try {
+//			conn = manager.getConn();
+//			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE MEDIA LIKE ?";
+//			ps = conn.prepareStatement(SQL);
+//			//引数を?にバインド
+//			ps.setString(1,"%" + msg + "%");
+//			rs = ps.executeQuery();
+//			rs = ps.executeQuery();
+//
+//			//結果をuserインスタンスに設定し、
+//			//ArrayListインスタンスに追加
+//			while (rs.next()) {
+//				String proid = rs.getString("PROD_ID");
+//				String proname = rs.getString("PROD_NAME");
+//				String artist = rs.getString("ARTIST");
+//				String media = rs.getString("MEDIA");
+//				String price = rs.getString("PRICE");
+//				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
+//				String label = rs.getString("LABEL");
+//				String sold = rs.getString("SOLD");
+//				String stock = rs.getString("STOCK");
+//				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
+//						releasedate, label, sold,stock);
+//				empList.add(bean);
+//			}
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//		return empList;
+//
+//	}
+//
+//	public static List<ProductBean> executeTwo(String sql,String msg) {
+//
+//		Connection conn = null;
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//		DBManager manager = new DBManager();
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+//
+//		//ArrayListを初期化
+//		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
+//
+//		try {
+//			conn = manager.getConn();
+//			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE ARTIST LIKE ? OR PROD_NAME LIKE ?";
+//			ps = conn.prepareStatement(SQL);
+//			//引数を?にバインド
+//			ps.setString(1,"%" + msg + "%");
+//			ps.setString(2,"%" + msg + "%");
+//			rs = ps.executeQuery();
+//			rs = ps.executeQuery();
+//
+//			//結果をuserインスタンスに設定し、
+//			//ArrayListインスタンスに追加
+//			while (rs.next()) {
+//				String proid = rs.getString("PROD_ID");
+//				String proname = rs.getString("PROD_NAME");
+//				String artist = rs.getString("ARTIST");
+//				String media = rs.getString("MEDIA");
+//				String price = rs.getString("PRICE");
+//				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
+//				String label = rs.getString("LABEL");
+//				String sold = rs.getString("SOLD");
+//				String stock = rs.getString("STOCK");
+//				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
+//						releasedate, label, sold, stock);
+//				empList.add(bean);
+//			}
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//		return empList;
+//
+//	}
+//	public static List<ProductBean> executeThree(String sql,String msg,String category) {
+//
+//		Connection conn = null;
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//		DBManager manager = new DBManager();
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+//
+//		//ArrayListを初期化
+//		ArrayList<ProductBean> empList = new ArrayList<ProductBean>();
+//
+//		try {
+//			conn = manager.getConn();
+//			final String SQL = "SELECT * FROM PRODUCT_TABLE WHERE MEDIA = ? AND (ARTIST LIKE ? OR PROD_NAME LIKE ?)";
+//			ps = conn.prepareStatement(SQL);
+//			//引数を?にバインド
+//			ps.setString(1,category);
+//			ps.setString(2,"%" + msg + "%");
+//			ps.setString(3,"%" + msg + "%");
+//			rs = ps.executeQuery();
+//			rs = ps.executeQuery();
+//
+//			//結果をuserインスタンスに設定し、
+//			//ArrayListインスタンスに追加
+//			while (rs.next()) {
+//				String proid = rs.getString("PROD_ID");
+//				String proname = rs.getString("PROD_NAME");
+//				String artist = rs.getString("ARTIST");
+//				String media = rs.getString("MEDIA");
+//				String price = rs.getString("PRICE");
+//				String releasedate = sdf.format(rs.getDate("RELEASE_DATE"));
+//				String label = rs.getString("LABEL");
+//				String sold = rs.getString("SOLD");
+//				String stock = rs.getString("STOCK");
+//				ProductBean bean = new ProductBean(proid, proname, artist, media, price,
+//						releasedate, label, sold, stock);
+//				empList.add(bean);
+//			}
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//		return empList;
+//
+//	}
+//
+//
+//}
