@@ -7,6 +7,7 @@ import com.catonata.validation.Group.ValidationGroups.passSecond;
 import com.catonata.validation.Group.ValidationGroups.passThird;
 
 public class PasswordCheck {
+
 	@GroupSequence({passFirst.class,passSecond.class,passThird.class})
 	public interface passCheck{}
 }
