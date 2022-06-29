@@ -71,7 +71,7 @@ public class ProductDetailController {
 		//クレジットカード伏字編集
 		String[] cre_number = cre_number(LoginUser.getCreditnumber());
 		model.addAttribute("cre_number",cre_number);
-		model.addAttribute("delivary", delivaryDate);
+		session.setAttribute("delivary", delivaryDate);
 		return "general/product/PurchaseCheck";
 		}
 	}
@@ -158,6 +158,8 @@ public class ProductDetailController {
 		if ((stock - purNumber) < 0) {
 			String msg = "現在品薄で在庫が足りません。\n在庫数より多い数は選択できません。";
 			model.addAttribute("msg",msg);
+			String[] delivary = (String[])session.getAttribute("delivary");
+			session.setAttribute("delivary", delivary);
 			return "general/product/PurchaseCheck";
 		}
 
