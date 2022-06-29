@@ -17,6 +17,16 @@ import com.catonata.dao.CommonDao;
 import com.catonata.dao.UserInfoDao;
 import com.catonata.validation.CreditCardInformationForm;
 import com.catonata.validation.UserInformationForm;
+import com.catonata.validation.Group.AddressCheck;
+import com.catonata.validation.Group.AgeCheck;
+import com.catonata.validation.Group.BirthdayCheck;
+import com.catonata.validation.Group.CreditnumberCheck;
+import com.catonata.validation.Group.CreditspanCheck;
+import com.catonata.validation.Group.EmailCheck;
+import com.catonata.validation.Group.GenderCheck;
+import com.catonata.validation.Group.NameCheck;
+import com.catonata.validation.Group.PasswordCheck;
+import com.catonata.validation.Group.SecurityCheck;
 
 @Controller
 @RequestMapping("/mypageUpdate")
@@ -39,8 +49,9 @@ public class MyPageUpdateDeleteController {
 	}
 
 	@PostMapping("/creditCard")
-	private String updateCrdt(@Validated UserInformationForm uif, BindingResult result, Model model,
-								@ModelAttribute CreditCardInformationForm form) {
+	private String updateCrdt(@Validated({NameCheck.class,PasswordCheck.class,AgeCheck.class,GenderCheck.class
+		,AddressCheck.class,BirthdayCheck.class,EmailCheck.class}) UserInformationForm uif,
+			BindingResult result, Model model,@ModelAttribute CreditCardInformationForm form) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
@@ -54,7 +65,8 @@ public class MyPageUpdateDeleteController {
 	}
 
 	@RequestMapping("/Check")
-	private String updateCheck (@Validated CreditCardInformationForm form, BindingResult result, Model model) {
+	private String updateCheck (@Validated({CreditnumberCheck.class,CreditspanCheck.class,SecurityCheck.class})
+	CreditCardInformationForm form, BindingResult result, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
