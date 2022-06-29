@@ -41,6 +41,11 @@ import com.catonata.validation.UserInformationForm;
  */
 public class UserInfoDao {
 
+	/**
+	 * ユーザー情報の登録メソッド
+	 * @param uif
+	 * @param ccif
+	 */
 	public static void insert (UserInformationForm uif, CreditCardInformationForm ccif) {
 		DBManager manager = new DBManager();
 		Connection conn = null;
@@ -368,6 +373,12 @@ public class UserInfoDao {
 		}
 	}
 
+	/**
+	 * ユーザー名とパスワードから一般ユーザー情報の検索メソッド
+	 * @param name
+	 * @param password
+	 * @return
+	 */
 	public static UserInformationForm find(String name,String password) {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -422,6 +433,12 @@ public class UserInfoDao {
 
 	}
 
+	/**
+	 * ユーザー名とパスワードから経営者ユーザー情報の検索メソッド
+	 * @param name
+	 * @param password
+	 * @return
+	 */
 	public static ExecInformationForm execFind(String name,String password) {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -565,6 +582,11 @@ public class UserInfoDao {
 		return execList;
 	}
 
+	/**
+	 * ユーザーIDによって購入履歴を検索
+	 * @param id
+	 * @return
+	 */
 	public static List<PurchaseBean> findPurchase(String id) {
 
 		Connection conn = null;
@@ -608,6 +630,11 @@ public class UserInfoDao {
 
 	}
 
+	/**
+	 * 一般ユーザー情報更新
+	 * @param uif
+	 * @param form
+	 */
 	public static void generalUpdate (UserInformationForm uif,CreditCardInformationForm form) {
 		DBManager manager = new DBManager();
 		Connection conn = null;
@@ -653,6 +680,12 @@ public class UserInfoDao {
 		}
 	}
 
+	/**
+	 * 一般ユーザーのクレジットカード情報検索
+	 * @param name
+	 * @param pass
+	 * @return
+	 */
 	public static CreditCardInformationForm findCard(String name, String pass) {
 		Connection conn = null;
 		PreparedStatement ps = null;
