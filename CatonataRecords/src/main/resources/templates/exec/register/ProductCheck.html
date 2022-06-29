@@ -19,19 +19,42 @@
 		<div id="content_bar">自社商品登録</div>
 		<p>以下の内容で登録します。よろしいですか？</p>
 		<form action="/exec/register/execute" method="post" th:object="${session.proForm}">
-			商品名：<span th:text="*{pro_name}"></span><br>
-			アーティスト名：<span th:text="*{artist}"></span><br>
-			商品媒体：<span th:text="*{media}"></span><br>
-			商品価格：<span th:text="*{price}"></span><br>
-			レコード会社名：<span th:text="*{label}"></span><br>
-			在庫数：<span th:text="*{stock}"></span><br>
+		<table class="table table-striped table-bordered table-sm table-responsive">
+		  <tr>
+		      <td>商品名</td>
+		      <td><span th:text="*{pro_name}"></span></td>
+		  </tr>
+		  <tr>
+		      <td>アーティスト名</td>
+		      <td><span th:text="*{artist}"></span></td>
+		  </tr>
+		  <tr>
+			<td>商品媒体</td>
+			<td><span th:text="*{media}"></span></td>
+		</tr>
+		<tr>
+			<td>商品価格</td>
+			<td><span th:text="*{price}"></span></td>
+		</tr>
+		<tr>
+			<td>レコード会社名</td>
+			<td><span th:text="*{label}"></span></td>
+		</tr>
+		<tr>
+			<td>在庫数</td>
+			<td><span th:text="*{stock}"></span></td>
+		</tr>
+		</table>
+		<div id="header_beforelogin">
 			<p>
 				<input type="submit" value="登録" class="btn btn-outline-primary">
 			</p>
 		</form>
+		&emsp;
 		<form role="form" action="/exec/register/back" th:action="@{/exec/register/back}" method="post">
 			<input type="submit" value="戻る" class="btn btn-outline-warning">
 		</form>
+		</div>
 	</div>
 </body>
 </html>

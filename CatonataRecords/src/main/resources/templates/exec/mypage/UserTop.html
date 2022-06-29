@@ -41,15 +41,18 @@
 					<td>
 						<form action="/exec/update" th:action="@{/exec/update}" method="get">
 							<input type="hidden" name="id" th:value="*{item.pro_id}">
-							<input type="submit" value="変更">
+							<input type="submit" value="変更" class="btn btn-outline-primary">
 						</form>
 					</td>
 				</tr>
 			</th:block>
 		</table>
+		<!-- テスト用 -->
+<!--
 		<form action="/exec/select" th:action="@{/exec/select}" method="get">
 			<input type="submit" value="削除" class="btn btn-outline-danger">
 		</form>
+-->
 	</div>
 </body>
 </html>
