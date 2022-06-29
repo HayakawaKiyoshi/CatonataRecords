@@ -39,7 +39,7 @@
 						<button type="button" id="up" onclick="cntup()">+</button><br>
 						配送日：
 						<select name="delivary">
-							<option th:each="items : ${delivary}" th:value="${items}" th:text="${items}">
+							<option th:each="items : ${session.delivary}" th:value="${items}" th:text="${items}">
 						</select>
 						<input type="submit" value="確定">
 					</form>
