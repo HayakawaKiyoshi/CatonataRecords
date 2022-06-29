@@ -13,6 +13,7 @@ import com.catonata.validation.Group.ValidationGroups.ageSecond;
 import com.catonata.validation.Group.ValidationGroups.ageThird;
 import com.catonata.validation.Group.ValidationGroups.birthdayFirst;
 import com.catonata.validation.Group.ValidationGroups.birthdaySecond;
+import com.catonata.validation.Group.ValidationGroups.birthdayThird;
 import com.catonata.validation.Group.ValidationGroups.emailFirst;
 import com.catonata.validation.Group.ValidationGroups.emailSecond;
 import com.catonata.validation.Group.ValidationGroups.emailThird;
@@ -45,7 +46,9 @@ public class UserInformationForm {
 	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください" , groups=genderThird.class)
 	private String gender;
 	@NotEmpty(groups=birthdayFirst.class)
-	@DateCheck(message="正しい日付を入力してください。" , groups=birthdaySecond.class)
+	@Pattern(regexp="((19|[2-9][0-9])[0-9]{2})/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])"
+	,message="生年月日はYYYY/MM/DDの形式で入力してください。", groups=birthdaySecond.class)
+	@DateCheck(message="正しい日付を入力してください。" , groups=birthdayThird.class)
 	private String birthday;
 	@NotEmpty(groups=addressFirst.class)
 	@ByteCheck(charset="UTF-8",min=1, max=60 , groups=addressSecond.class)

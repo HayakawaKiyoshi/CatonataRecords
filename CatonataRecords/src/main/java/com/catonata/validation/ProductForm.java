@@ -16,6 +16,7 @@ import com.catonata.validation.Group.ValidationGroups.pro_nameFirst;
 import com.catonata.validation.Group.ValidationGroups.pro_nameSecond;
 import com.catonata.validation.Group.ValidationGroups.release_dateFirst;
 import com.catonata.validation.Group.ValidationGroups.release_dateSecond;
+import com.catonata.validation.Group.ValidationGroups.release_dateThird;
 import com.catonata.validation.Group.ValidationGroups.stockFirst;
 import com.catonata.validation.Group.ValidationGroups.stockSecond;
 import com.catonata.validation.Group.ValidationGroups.stockThird;
@@ -37,7 +38,9 @@ public class ProductForm {
 	@ByteCheck(charset="UTF-8",min=1, max=10 , groups=priceThird.class)
 	private String price;
 	@NotEmpty(groups=release_dateFirst.class)
-	@DateCheck (groups=release_dateSecond.class)
+	@Pattern(regexp="((19|[2-9][0-9])[0-9]{2})/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])"
+	,message="生年月日はYYYY/MM/DDの形式で入力してください。", groups=release_dateSecond.class)
+	@DateCheck (groups=release_dateThird.class)
 	private String release_date;
 
 	private String label;

@@ -22,6 +22,7 @@ public class ValidationGroups {
 	public interface genderThird{}
 	public interface birthdayFirst{}
 	public interface birthdaySecond{}
+	public interface birthdayThird{}
 	public interface addressFirst{}
 	public interface addressSecond{}
 	public interface emailFirst{}
@@ -40,6 +41,7 @@ public class ValidationGroups {
 	public interface priceThird{}
 	public interface release_dateFirst{}
 	public interface release_dateSecond{}
+	public interface release_dateThird{}
 	public interface stockFirst{}
 	public interface stockSecond{}
 	public interface stockThird{}
