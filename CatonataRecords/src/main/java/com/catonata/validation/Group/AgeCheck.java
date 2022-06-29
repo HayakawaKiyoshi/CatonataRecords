@@ -6,8 +6,7 @@ import com.catonata.validation.Group.ValidationGroups.ageFirst;
 import com.catonata.validation.Group.ValidationGroups.ageSecond;
 import com.catonata.validation.Group.ValidationGroups.ageThird;
 
-public class AgeCheck {
+@GroupSequence({ageFirst.class,ageSecond.class,ageThird.class})
+public interface AgeCheck {
 
-	@GroupSequence({ageFirst.class,ageSecond.class,ageThird.class})
-	public interface ageCheck{}
 }

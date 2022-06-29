@@ -14,6 +14,13 @@ import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.UserInfoDao;
 import com.catonata.validation.ExecInformationForm;
 import com.catonata.validation.UserInformationForm;
+import com.catonata.validation.Group.AddressCheck;
+import com.catonata.validation.Group.AgeCheck;
+import com.catonata.validation.Group.BirthdayCheck;
+import com.catonata.validation.Group.EmailCheck;
+import com.catonata.validation.Group.GenderCheck;
+import com.catonata.validation.Group.NameCheck;
+import com.catonata.validation.Group.PasswordCheck;
 
 @Controller
 @RequestMapping("/AdminRegister")
@@ -33,7 +40,8 @@ public class AdminRegisterUserController {
 	}
 
 	@RequestMapping("/Check")
-	private String registerCheck (@Validated UserInformationForm uif, BindingResult result,Model model) {
+	private String registerCheck (@Validated({NameCheck.class,PasswordCheck.class,AgeCheck.class,GenderCheck.class
+		,AddressCheck.class,BirthdayCheck.class,EmailCheck.class}) UserInformationForm uif, BindingResult result,Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
