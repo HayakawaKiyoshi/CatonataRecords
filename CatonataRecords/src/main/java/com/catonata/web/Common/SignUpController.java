@@ -107,6 +107,8 @@ public class SignUpController {
 		uif = (UserInformationForm)session.getAttribute("uif");
 		ccif = (CreditCardInformationForm)session.getAttribute("ccif");
 		UserInfoDao.insert(uif,ccif);
+		UserInformationForm suif = UserInfoDao.find(uif.getName(),uif.getPassword());
+		session.setAttribute("uif", suif);
 		return "/newregister/RegisterComplete";
 	}
 
