@@ -43,19 +43,32 @@ public class ProductDeleteController {
 	@RequestMapping(path = "/delete/select", method = RequestMethod.GET)
 	public ModelAndView get(@RequestParam("check") String[] check, ProductForm form, UserInformationBean user,
 			ModelAndView mav) {
-		mav.setViewName("exec/delete/Check");
+
 
 		//ログイン情報を取得する
 		user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 
+		if (check == null) {
+			List<ProductBean> empList = null;
+			if (user.getAuthority().equals("3")) {
+				empList = ExecDao.findAll(user.getLabel());
+			} else if (user.getAuthority().equals("2")) {
+				empList = ExecDao.adminFindAll();
+			}
+			mav.addObject("productForm", empList);
+			String msg = "削除する商品にチェックを入れてください。";
+			mav.addObject("msg", msg);
+			mav.setViewName("exec/delete/Select");
+		} else {
 		//検索のDaoを呼び出す
 		ArrayList<ProductBean> delete = ExecDao.profind2(check);
 
 		session.setAttribute("delete", delete);
 		session.setAttribute("check", check);
 		mav.addObject("delete", delete);
-
+		mav.setViewName("exec/delete/Check");
+		}
 		return mav;
 	}
 
