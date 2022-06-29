@@ -24,6 +24,11 @@ import com.catonata.validation.ProductForm;
  */
 
 public class ExecDao {
+
+	/**
+	 * 商品情報の登録
+	 * @param form
+	 */
 	public static void productRegister(ProductForm form) {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -56,6 +61,11 @@ public class ExecDao {
 			manager.close(conn);
 		}
 	}
+
+	/**
+	 * 商品情報の更新
+	 * @param update
+	 */
 
 	public static void productUpdate(ProductForm update) {
 		Connection conn = null;
@@ -275,6 +285,11 @@ public class ExecDao {
 			}
 		}
 	}
+	/**
+	 * LABELごとの商品情報一覧表示
+	 * @param labelname
+	 * @return
+	 */
 	public static List<ProductBean> findAll(String labelname) {
 
 		Connection conn = null;
@@ -324,6 +339,10 @@ public class ExecDao {
 
 	}
 
+	/**
+	 * 商品情報一覧表示
+	 * @return
+	 */
 	public static List<ProductBean> adminFindAll() {
 
 		Connection conn = null;
@@ -424,6 +443,11 @@ public class ExecDao {
 //
 //	}
 
+	/**
+	 * 商品IDで商品検索
+	 * @param id
+	 * @return
+	 */
 	public static ArrayList<ProductBean> profind2(String[] id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -479,6 +503,12 @@ public class ExecDao {
 
 	}
 
+	/**
+	 * レコード会社と商品名とアーティスト名から商品検索
+	 * @param msg
+	 * @param labelname
+	 * @return
+	 */
 	public static List<ProductBean> proSearch(String msg,String labelname) {
 
 		Connection conn = null;
@@ -531,6 +561,11 @@ public class ExecDao {
 
 	}
 
+	/**
+	 * レコード会社と商品名とアーティスト名から商品検索
+	 * @param msg
+	 * @return
+	 */
 	public static List<ProductBean> adminProSearch(String msg) {
 
 		Connection conn = null;
