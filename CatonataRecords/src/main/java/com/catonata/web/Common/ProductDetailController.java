@@ -66,7 +66,7 @@ public class ProductDetailController {
 			String msg = "クレジットカード情報が登録されていません。"
 					+ "\nクレジットカード情報を登録してから購入を行ってください。";
 			redirect.addFlashAttribute("msg", msg);
-			return "redirect:/mypage/errpr/top";
+			return "redirect:/mypage/error/top";
 		}
 
 		//セッションから商品情報を取得、再度セッションに保存

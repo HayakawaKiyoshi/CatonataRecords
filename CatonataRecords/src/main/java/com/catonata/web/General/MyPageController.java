@@ -39,7 +39,7 @@ public class MyPageController {
 		return mav;
 	}
 
-	@PostMapping("/error/top")
+	@RequestMapping("/error/top")
 	public ModelAndView errorMypage(LoginForm form, ModelAndView mav, Model model) {
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
