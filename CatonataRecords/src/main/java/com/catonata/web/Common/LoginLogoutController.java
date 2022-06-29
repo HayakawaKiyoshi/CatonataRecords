@@ -15,6 +15,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.CommonDao;
 import com.catonata.validation.LoginForm;
+import com.catonata.validation.Group.IdCheck;
+import com.catonata.validation.Group.NameCheck;
+import com.catonata.validation.Group.PasswordCheck;
 
 @Controller
 public class LoginLogoutController {
@@ -28,7 +31,7 @@ public class LoginLogoutController {
 	}
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
-	public ModelAndView index2(@Validated LoginForm form, BindingResult bindingResult,
+	public ModelAndView index2(@Validated({IdCheck.class,NameCheck.class,PasswordCheck.class}) LoginForm form, BindingResult bindingResult,
 			RedirectAttributes redirect, ModelAndView mav) {
 
 		//バリデーションエラ-
