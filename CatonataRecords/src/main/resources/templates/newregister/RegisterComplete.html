@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="content_bar">新規会員登録完了画面</div>
+		<div id="content_bar">新規会員登録完了画面</div><br>
 		<p>登録が完了しました。</p>
 		<p>ログイン画面でログインしてください。</p>
 		<form action="/login" th:action="@{/login}" method="get" th:object="${session.LoginUser}">

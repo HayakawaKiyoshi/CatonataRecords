@@ -21,11 +21,17 @@
 
 				<table class="table table-striped table-bordered table-sm">
 					<tr>
+						<td colspan=2>クレジットカード番号は0123-4567-8910-1112の形式で入力してください。</td>
+					</tr>
+					<tr>
 						<td>クレジットカード番号</td>
 						<td><input type="text" th:field="*{creditnumber}">
 						<span th:if="${#fields.hasErrors('creditnumber')}"
 							th:errors="*{creditnumber}" th:errorclass="error-field"></span>
 						</td>
+					</tr>
+					<tr>
+						<td colspan=2>有効期限は年/月の形式で入力してください。</td>
 					</tr>
 					<tr>
 						<td>有効期限</td>
@@ -34,6 +40,9 @@
 							<span th:if="${#fields.hasErrors('creditspan')}"
 							th:errors="*{creditspan}" th:errorclass="error-field"></span>
 						</td>
+					</tr>
+					<tr>
+						<td colspan=2>セキュリティコードは3桁の数字を入力してください。</td>
 					</tr>
 					<tr>
 						<td>セキュリティコード</td>
