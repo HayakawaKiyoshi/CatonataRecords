@@ -72,7 +72,7 @@ public class AdminUpdateUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		UserInfoDao.adminUpdate(uif);
-		model.addAttribute("msg","更新");
+		model.addAttribute("msg","更新が完了しました。");
 
 		return  "admin/complete/Complete";
 
@@ -124,7 +124,7 @@ public class AdminUpdateUserController {
 			LoginUser = CommonDao.find(eif.getName(),eif.getPassword());
 			session.setAttribute("LoginUser", LoginUser);
 		}
-		model.addAttribute("msg","更新");
+		model.addAttribute("msg","更新が完了しました。");
 		String rtrn = null;
 		if(LoginUser.getAuthority().equals("2")) {
 			rtrn = "admin/complete/Complete";
