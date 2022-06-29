@@ -162,6 +162,58 @@ public class ExecDao {
 
 	}
 
+	public static ProductForm pro_find(String id) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		//DBManagerをインスタンス化
+		DBManager manager = new DBManager();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		final String PROD_NAME_SQL = "SELECT * FROM PRODUCT_TABLE WHERE PROD_ID = ?";
+
+		ProductForm form = null;
+
+		try {
+			System.out.println(id);
+			conn = manager.getConn();
+			ps = conn.prepareStatement(PROD_NAME_SQL);
+			//引数を?にバインド
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				form = new ProductForm();
+				form.setPro_id(rs.getString("PROD_ID"));
+				form.setPro_name(rs.getString("PROD_NAME"));
+				form.setArtist(rs.getString("ARTIST"));
+				form.setMedia(rs.getString("MEDIA"));
+				form.setPrice(rs.getString("PRICE"));
+				form.setRelease_date(sdf.format(rs.getDate("RELEASE_DATE")));
+				form.setLabel(rs.getString("LABEL"));
+				form.setSold(rs.getString("SOLD"));
+				form.setStock(rs.getString("STOCK"));
+
+				System.out.println(form.getMedia());
+			} else {
+				return null;
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			manager.close(conn);
+		}
+		return form;
+
+	}
+
+
 	/**
 	 * 商品購入処理
 	 * 購入履歴テーブルにデータセット
