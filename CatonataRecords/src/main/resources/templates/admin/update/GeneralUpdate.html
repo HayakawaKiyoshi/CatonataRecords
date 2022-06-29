@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="content_bar">ユーザー情報変更画面（一般者）</div>
+		<div id="content_bar">ユーザー情報変更画面（一般者）</div><br>
 		<p>更新したい項目を書き換えてください。</p>
 		<form action="/AdminUpdate/Check" th:action="@{/AdminUpdate/Check}" method="post" th:object="${userInformationForm}">
 			<input type="hidden" name="id" th:value="*{id}">
