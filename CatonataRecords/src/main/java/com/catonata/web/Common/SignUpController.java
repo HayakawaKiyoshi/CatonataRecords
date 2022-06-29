@@ -72,7 +72,7 @@ public class SignUpController {
 		return "/newregister/RegisterCheck";
 	}
 
-	//クレジットカード番号伏字変換
+	//クレジットカード番号伏字変換処理
 	private String[] cre_number (String crenumber) {
 		String[] cre_number = crenumber.split("-");
 		for (int i = 0 ; i < 3 ; i++) {
