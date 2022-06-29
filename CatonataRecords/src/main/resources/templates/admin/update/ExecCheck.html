@@ -48,12 +48,12 @@
 			</th:block>
 		</table>
         <div id="header_beforelogin">
-		<form role="form" action="/AdminUpdate/ExecBack" th:action="@{/AdminUpdate/ExecBack}" method="post">
-				<input type="submit" value="変更画面に戻る" class="btn btn-outline-warning">
-		</form>
-		&emsp;
 		<form role="form" action="/AdminUpdate/ExecComplete" th:action="@{/AdminUpdate/ExecComplete}" method="post">
 				<input type="submit" value="変更する" class="btn btn-outline-primary">
+		</form>
+		&emsp;
+		<form role="form" action="/AdminUpdate/ExecBack" th:action="@{/AdminUpdate/ExecBack}" method="post">
+				<input type="submit" value="変更画面に戻る" class="btn btn-outline-warning">
 		</form>
 		</div>
 	</div>
