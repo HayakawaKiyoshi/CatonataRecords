@@ -36,7 +36,7 @@
 						<td><span th:text="*{email}"></span></td>
 					</tr>
 			</table>
-			        <form action="/mypageUpdate" method="post">
+			        <form action="/mypageUpdate" method="post" th:object="${session.LoginUser}">
 				        <input type="hidden" name="name" th:value="*{name}">
 				        <input type="hidden" name="password" th:value="*{password}">
 				        <input type="submit" value="変更" class="btn btn-outline-primary">
