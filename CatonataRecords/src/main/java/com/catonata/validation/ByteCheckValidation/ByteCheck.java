@@ -30,7 +30,7 @@ public @interface ByteCheck {
 	String charset() default "UTF-8";
 
 	String message() default
-	"{min}バイトから{max}バイトで入力してください。";
+	"入力文字数制限を超えています。";
 
 	Class<?>[] groups() default {};
 
