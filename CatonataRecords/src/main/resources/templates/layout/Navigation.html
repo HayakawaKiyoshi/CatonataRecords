@@ -38,10 +38,10 @@
                     <th:block th:switch="*{authority}">
                         <!-- 一般者ユーザー -->
                         <th:block th:case="1">
-                            <div id="navi-name">商品カテゴリー</div>
                             <form action="/top/TopPage" method="post">
                                 <input type="submit" value="トップページ" class="btn btn-outline-primary" id="navi-button">
                             </form>
+                            <div id="navi-name">商品カテゴリー</div>
                             <form action="/top/category/search" method="post">
                                 <input type="hidden" name="category" value="CD">
                                 <input type="submit" value="CD" class="btn btn-outline-primary" id="navi-button">
