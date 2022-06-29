@@ -23,7 +23,7 @@
 			<input type="submit" value="検索" class="btn btn-outline-primary"><br>
 		</form>
 		削除する商品を選択してください。<br>
-		<font size="4">＜商品一覧＞</font>
+		<div id="sub_content_bar">商品一覧</div>
 		<form action="/exec/delete/select" method="get">
 			<table class="table table-striped table-bordered">
 				<tr>
@@ -53,6 +53,7 @@
 					</tr>
 				</th:block>
 			</table>
+			<p th:text="${msg}"></p>
 			<input type="submit" value="削除確認画面へ" class="btn btn-outline-danger">
 		</form>
 	</div>

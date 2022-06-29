@@ -39,15 +39,18 @@
 					</tr>
 				</th:block>
 			</table>
+			<div id="header_beforelogin">
+			<p>
+				<button type="button" class="btn btn-outline-warning"
+					onclick="location.href='/AdminRegister/ExecBack'">登録画面に戻る</button>
+			</p>
+			&emsp;
 			<form role="form" action="/AdminRegister/ExecComplete" th:action="@{/AdminRegister/ExecComplete}" method="post">
 				<p>
 					<input type="submit" value="登録" class="btn btn-outline-primary">
 				</p>
 			</form>
-			<p>
-				<button type="button" class="btn btn-outline-warning"
-					onclick="location.href='/AdminRegister/ExecBack'">登録画面に戻る</button>
-			</p>
+			</div>
 		</div>
 	</div>
 </body>

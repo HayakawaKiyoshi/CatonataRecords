@@ -15,14 +15,26 @@
 		<div id="content_bar">商品内容詳細画面</div><br>
 		<!-- このformの遷移先は商品一覧のコントローラのURLパターンです。よろしくお願いします。 -->
 		<th:block th:object="${session.product}">
-			<p style="text-align: center; border: solid 1px black;" th:text="*{pro_name}">商品タイトル</p>
-			<div style="float: left; width: 50%; text-align: center;">
+			<p style="text-align: center; border: solid 1px black;"
+			     id="sub_content_bar" th:text="*{pro_name}">商品タイトル</p>
+			<div style="float: left; width: 40%; text-align: center;">
 				<img src="/image/5.jpg" width="220px" height="220px" alt="画像">
 			</div>
-			<div style="float: right; width: 50%;">
-				<span>価格：<span th:text="*{price}"></span>円</span><br>
-				<span>アーティスト：<span th:text="*{artist}"></span></span><br>
-				<span>発売日：<span th:text="*{release_date}"></span></span><br>
+			<div style="float: right; width: 60%;">
+			<table class="table table-striped table-bordered table-sm table-responsive">
+				<tr>
+				    <td>価格</td>
+				    <td><span th:text="*{price}"></span>円</td>
+				</tr>
+				<tr>
+				    <td>アーティスト</td>
+				    <td><span th:text="*{artist}"></span></td>
+				</tr>
+				<tr>
+				    <td>発売日</td>
+				    <td><span th:text="*{release_date}"></span></td>
+				</tr>
+			</table>
 			</div>
 			<div id="header_beforelogin">
 				<form role="form" action="/top/general/TopPageBack" th:action="@{/top/general/TopPageBack}" method="post">
