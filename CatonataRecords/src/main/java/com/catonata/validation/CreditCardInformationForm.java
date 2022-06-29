@@ -18,7 +18,7 @@ public class CreditCardInformationForm {
 
 	@NotEmpty(groups=creditnumberFirst.class)
 	@Pattern(regexp ="([0-9]{4})-([0-9]{4})-([0-9]{4})-([0-9]{4})",
-				message="{0}は半角数値で入力してください" , groups=creditnumberSecond.class)
+				message="{0}は0123-4567-8910-1112の形式で入力してください" , groups=creditnumberSecond.class)
 	@ByteCheck(charset="UTF-8",min=1, max=19 , groups=creditnumberThird.class)
 	private String creditnumber;
 	@NotEmpty(groups=creditspanFirst.class)
