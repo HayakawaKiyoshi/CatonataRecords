@@ -49,7 +49,9 @@
 				<th:block th:object="${session.ccif}">
 					<tr>
 						<td>クレジットカード番号</td>
-						<td><span th:text="*{creditnumber}"></span></td>
+						<td><th:block th:each="items : ${cre_number}">
+										<span th:text="${items}"></span>
+										</th:block></td>
 					</tr>
 					<tr>
 						<td>有効期限</td>

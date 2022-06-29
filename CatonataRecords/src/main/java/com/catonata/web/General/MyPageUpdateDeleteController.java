@@ -54,7 +54,7 @@ public class MyPageUpdateDeleteController {
 	}
 
 	@RequestMapping("/Check")
-	private String updateCheck (@Validated CreditCardInformationForm form, BindingResult result) {
+	private String updateCheck (@Validated CreditCardInformationForm form, BindingResult result, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
@@ -63,8 +63,20 @@ public class MyPageUpdateDeleteController {
 			UserInformationForm Uif = (UserInformationForm)session.getAttribute("uif");
 			session.setAttribute("uif", Uif);
 			session.setAttribute("card", form);
+			//クレジットカード伏字編集
+			String[] cre_number = cre_number(form.getCreditnumber());
+			model.addAttribute("cre_number",cre_number);
 			return "general/mypage/UpdateCheck";
 		}
+	}
+
+	//クレジットカード番号伏字変換
+	private String[] cre_number (String crenumber) {
+		String[] cre_number = crenumber.split("-");
+		for (int i = 0 ; i < 3 ; i++) {
+				cre_number[i] = cre_number[i].replace(cre_number[i],"****-");
+		}
+		return cre_number;
 	}
 
 	@RequestMapping("/Complete")
