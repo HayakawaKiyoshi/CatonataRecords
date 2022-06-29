@@ -25,7 +25,7 @@ public class CreditCardInformationForm {
 	@Pattern(regexp="([0-9]{4})/([0-9]{2})", message="有効期限はyyyy/MMの形式で入力してください。" , groups=creditspanSecond.class)
 	private String creditspan;
 	@NotEmpty(groups=securityFirst.class)
-	@ByteCheck(charset="UTF-8",min=3, max=3 , groups=securitySecond.class)
+	@ByteCheck(charset="UTF-8",min=3, max=3 , groups=securitySecond.class,message ="三桁で入力してください。")
 	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください" , groups=securityThird.class)
 	private String security;
 
