@@ -61,7 +61,7 @@ public class AdminRegisterUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		uif = (UserInformationForm)session.getAttribute("uif");
 		UserInfoDao.adminInsert(uif);
-		model.addAttribute("msg","登録");
+		model.addAttribute("msg","登録が完了しました。");
 		return "admin/complete/Complete";
 	}
 
@@ -103,7 +103,7 @@ public class AdminRegisterUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		eif = (ExecInformationForm)session.getAttribute("eif");
 		UserInfoDao.execInsert(eif);
-		model.addAttribute("msg","登録");
+		model.addAttribute("msg","登録が完了しました。");
 		return "admin/complete/Complete";
 	}
 
