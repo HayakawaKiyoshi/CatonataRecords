@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.catonata.bean.ProductBean;
 import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.ExecDao;
+import com.catonata.validation.DeleteCheck;
 import com.catonata.validation.LoginForm;
 import com.catonata.validation.ProductForm;
 
@@ -26,7 +29,7 @@ public class ProductDeleteController {
 	HttpSession session;
 
 	@RequestMapping(path = "/select", method = RequestMethod.GET)
-	public ModelAndView index(LoginForm form, ModelAndView mav) {
+	public ModelAndView index(DeleteCheck check,LoginForm form, ModelAndView mav) {
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 		List<ProductBean> empList = null;
@@ -36,12 +39,12 @@ public class ProductDeleteController {
 			empList = ExecDao.adminFindAll();
 		}
 		mav.setViewName("exec/delete/Select");
-		mav.addObject("productForm", empList);
+		mav.addObject("deleteCheck", empList);
 		return mav;
 	}
 
 	@RequestMapping(path = "/delete/select", method = RequestMethod.GET)
-	public ModelAndView get(@RequestParam("check") String[] check, ProductForm form, UserInformationBean user,
+	public ModelAndView get(@Validated DeleteCheck check, BindingResult bindingResult, ProductForm form, UserInformationBean user,
 			ModelAndView mav) {
 
 
@@ -49,23 +52,24 @@ public class ProductDeleteController {
 		user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 
-		if (check == null) {
+		//エラーチェック
+		if (bindingResult.hasErrors()) {
 			List<ProductBean> empList = null;
 			if (user.getAuthority().equals("3")) {
 				empList = ExecDao.findAll(user.getLabel());
 			} else if (user.getAuthority().equals("2")) {
 				empList = ExecDao.adminFindAll();
 			}
-			mav.addObject("productForm", empList);
-			String msg = "削除する商品にチェックを入れてください。";
-			mav.addObject("msg", msg);
+			mav.addObject("msg","削除する商品を選択してください");
 			mav.setViewName("exec/delete/Select");
+			mav.addObject("deleteCheck", empList);
+
 		} else {
 		//検索のDaoを呼び出す
-		ArrayList<ProductBean> delete = ExecDao.profind2(check);
+		ArrayList<ProductBean> delete = ExecDao.profind2(check.getCheck());
 
 		session.setAttribute("delete", delete);
-		session.setAttribute("check", check);
+		session.setAttribute("check", check.getCheck());
 		mav.addObject("delete", delete);
 		mav.setViewName("exec/delete/Check");
 		}
