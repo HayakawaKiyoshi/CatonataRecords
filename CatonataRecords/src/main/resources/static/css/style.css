@@ -61,11 +61,12 @@ h1{
 
 #content_bar {
 	background: #81cac4;
-	color: white;
 	font-weight:bold;
 	text-align: center;
 	margin: auto;
 	color: #1e5862;
+	height:40px;
+	font-size: 25px;
 }
 
 
@@ -97,4 +98,11 @@ a {
 
 .error-field {
 	color: red;
+}
+
+#sub_content_bar {
+	background: #80ff80;
+	color: white;
+	text-align: center;
+	margin: auto;
 }
