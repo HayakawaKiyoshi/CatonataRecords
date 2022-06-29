@@ -6,35 +6,53 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.catonata.validation.ByteCheckValidation.ByteCheck;
+import com.catonata.validation.Group.ValidationGroups.addressFirst;
+import com.catonata.validation.Group.ValidationGroups.addressSecond;
+import com.catonata.validation.Group.ValidationGroups.ageFirst;
+import com.catonata.validation.Group.ValidationGroups.ageSecond;
+import com.catonata.validation.Group.ValidationGroups.ageThird;
+import com.catonata.validation.Group.ValidationGroups.birthdayFirst;
+import com.catonata.validation.Group.ValidationGroups.birthdaySecond;
+import com.catonata.validation.Group.ValidationGroups.emailFirst;
+import com.catonata.validation.Group.ValidationGroups.emailSecond;
+import com.catonata.validation.Group.ValidationGroups.emailThird;
+import com.catonata.validation.Group.ValidationGroups.genderFirst;
+import com.catonata.validation.Group.ValidationGroups.genderSecond;
+import com.catonata.validation.Group.ValidationGroups.genderThird;
+import com.catonata.validation.Group.ValidationGroups.nameFirst;
+import com.catonata.validation.Group.ValidationGroups.nameSecond;
+import com.catonata.validation.Group.ValidationGroups.passFirst;
+import com.catonata.validation.Group.ValidationGroups.passSecond;
+import com.catonata.validation.Group.ValidationGroups.passThird;
 
 public class UserInformationForm {
 
 //コミット確認
 	private String id;
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=20)
-	@Pattern(regexp ="^[a-zA-Z0-9]+$", message="{0}は半角英数字で入力してください")
+	@NotEmpty(groups=passFirst.class)
+	@ByteCheck(charset="UTF-8",min=1, max=20 , groups=passSecond.class)
+	@Pattern(regexp ="^[a-zA-Z0-9]+$", message="{0}は半角英数字で入力してください", groups=passThird.class)
 	private String password;
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=60)
+	@NotEmpty(groups=nameFirst.class)
+	@ByteCheck(charset="UTF-8",min=1, max=60 , groups=nameSecond.class)
 	private String name;
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=3)
-	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
+	@NotEmpty(groups=ageFirst.class)
+	@ByteCheck(charset="UTF-8",min=1, max=3 , groups=ageSecond.class)
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください" , groups=ageThird.class)
 	private String age;
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=1)
-	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
+	@NotEmpty(groups=genderFirst.class)
+	@ByteCheck(charset="UTF-8",min=1, max=1 , groups=genderSecond.class)
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください" , groups=genderThird.class)
 	private String gender;
-	@NotEmpty
-	@DateCheck(message="正しい日付を入力してください。")
+	@NotEmpty(groups=birthdayFirst.class)
+	@DateCheck(message="正しい日付を入力してください。" , groups=birthdaySecond.class)
 	private String birthday;
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=60)
+	@NotEmpty(groups=addressFirst.class)
+	@ByteCheck(charset="UTF-8",min=1, max=60 , groups=addressSecond.class)
 	private String address;
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=50)
-	@Email(message="メールアドレスが正しい形で入力されていません。")
+	@NotEmpty(groups=emailFirst.class)
+	@ByteCheck(charset="UTF-8",min=1, max=50 , groups=emailSecond.class)
+	@Email(message="メールアドレスが正しい形で入力されていません。" , groups=emailThird.class)
 	private String email;
 
 	private String authority;
