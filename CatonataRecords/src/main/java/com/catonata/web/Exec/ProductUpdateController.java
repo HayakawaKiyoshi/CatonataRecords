@@ -16,6 +16,12 @@ import com.catonata.bean.ProductBean;
 import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.ExecDao;
 import com.catonata.validation.ProductForm;
+import com.catonata.validation.Group.ArtistCheck;
+import com.catonata.validation.Group.MediaCheck;
+import com.catonata.validation.Group.PriceCheck;
+import com.catonata.validation.Group.Pro_nameCheck;
+import com.catonata.validation.Group.Release_dateCheck;
+import com.catonata.validation.Group.StockCheck;
 
 
 @Controller
@@ -53,7 +59,9 @@ public class ProductUpdateController {
 	 * @return
 	 */
 	@RequestMapping(path = "/update", method = RequestMethod.POST)
-	public ModelAndView send(@Validated ProductForm form, BindingResult result, UserInformationBean user,ModelAndView mav) {
+	public ModelAndView send(@Validated({Pro_nameCheck.class,
+		ArtistCheck.class,MediaCheck.class,PriceCheck.class,Release_dateCheck.
+		class,StockCheck.class}) ProductForm form, BindingResult result, UserInformationBean user,ModelAndView mav) {
 		user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 

@@ -13,6 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.catonata.bean.UserInformationBean;
 import com.catonata.dao.ExecDao;
 import com.catonata.validation.ProductForm;
+import com.catonata.validation.Group.ArtistCheck;
+import com.catonata.validation.Group.MediaCheck;
+import com.catonata.validation.Group.PriceCheck;
+import com.catonata.validation.Group.Pro_nameCheck;
+import com.catonata.validation.Group.Release_dateCheck;
+import com.catonata.validation.Group.StockCheck;
 
 
 
@@ -28,7 +34,9 @@ public class ProductRegisterController {
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
-	public ModelAndView index2(@Validated ProductForm form,BindingResult result, UserInformationBean user,ModelAndView mav) {
+	public ModelAndView index2(@Validated({Pro_nameCheck.class,
+		ArtistCheck.class,MediaCheck.class,PriceCheck.class,Release_dateCheck.
+		class,StockCheck.class}) ProductForm form,BindingResult result, UserInformationBean user,ModelAndView mav) {
 		user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 
