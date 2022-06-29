@@ -13,7 +13,7 @@
 <body>
     <div layout:fragment="content">
 	<th:block th:text = *{msg}></th:block>
-	<form role="form" action="/login" th:action="@{/login}" th:object="${loginForm}" method="post">
+	<form role="form" action="/login" th:action="@{/login}" th:object="${loginForm}" method="post" style="text-align: center">
 		氏名：
 		  <input type="text" th:field="*{name}">
 		  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="error-field">error!</span><br>
