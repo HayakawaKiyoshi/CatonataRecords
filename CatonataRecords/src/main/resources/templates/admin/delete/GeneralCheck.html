@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td>性別</td>
-					<td><span th:text="*{gender}"></span></td>
+					<td><span th:text="*{gender == '1'} ? '男' : '女'"></span></td>
 				</tr>
 				<tr>
 					<td>住所</td>
