@@ -107,3 +107,9 @@ a {
 #login_box {
 	width: auto;
 }
+
+#product_title_bar {
+	text-align: center;
+	border: solid 1px black;
+	height: 30px;
+}

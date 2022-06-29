@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="content_bar">Catonata Recordsへようこそ！</div>
+		<div id="content_bar">Catonata Recordsへようこそ！</div><br>
 		<th:block th:text=*{msg}></th:block>
 		<form role="form" action="/login" th:action="@{/login}"
 			th:object="${loginForm}" method="post" style="text-align: center">
