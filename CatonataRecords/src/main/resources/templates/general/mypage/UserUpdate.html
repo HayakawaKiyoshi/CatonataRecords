@@ -15,7 +15,9 @@
 		<div id="content_bar">ユーザー情報変更画面</div>
 		<p>更新したい項目を書き換えてください。</p>
 		<form action="/mypageUpdate/creditCard" th:action="@{/mypageUpdate/creditCard}" method="post" th:object="${userInformationForm}">
+
 			<input type="hidden" name="id" th:value="*{id}">
+
 			<table class="table table-striped table-bordered table-sm">
 				<tr>
 					<td>氏名</td>

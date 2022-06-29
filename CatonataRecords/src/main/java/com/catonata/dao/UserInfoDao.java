@@ -401,6 +401,8 @@ public class UserInfoDao {
 				user.setCreditspan(rs.getString("span"));
 				user.setSecurity(rs.getString("security_code"));
 
+				System.out.println(user.getId());
+
 
 			} else {
 				return null;

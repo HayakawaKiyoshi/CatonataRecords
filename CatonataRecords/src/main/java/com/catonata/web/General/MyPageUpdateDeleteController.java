@@ -29,6 +29,8 @@ public class MyPageUpdateDeleteController {
 	private String updateUser (@RequestParam("name")String name,@RequestParam("password")String password,
 			@ModelAttribute UserInformationForm uif, Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
+		System.out.println(name);
+		System.out.println(password);
 		session.setAttribute("LoginUser", LoginUser);
 		uif = UserInfoDao.find(name, password);
 		session.setAttribute("uif", uif);
