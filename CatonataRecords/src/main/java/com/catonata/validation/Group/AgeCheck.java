@@ -9,5 +9,5 @@ import com.catonata.validation.Group.ValidationGroups.ageThird;
 public class AgeCheck {
 
 	@GroupSequence({ageFirst.class,ageSecond.class,ageThird.class})
-	public interface nameCheck{}
+	public interface ageCheck{}
 }

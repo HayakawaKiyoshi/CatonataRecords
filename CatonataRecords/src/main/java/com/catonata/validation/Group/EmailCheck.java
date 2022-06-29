@@ -9,5 +9,5 @@ import com.catonata.validation.Group.ValidationGroups.emailThird;
 public class EmailCheck {
 
 	@GroupSequence({emailFirst.class,emailSecond.class,emailThird.class})
-	public interface nameCheck{}
+	public interface emailCheck{}
 }
