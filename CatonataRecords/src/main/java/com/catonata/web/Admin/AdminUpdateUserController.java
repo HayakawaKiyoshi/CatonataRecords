@@ -108,7 +108,7 @@ public class AdminUpdateUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
-			return "admin/register/ExecRegister";
+			return "admin/update/ExecUpdate";
 		}
 		session.setAttribute("eif", eif);
 		return "admin/update/ExecCheck";
