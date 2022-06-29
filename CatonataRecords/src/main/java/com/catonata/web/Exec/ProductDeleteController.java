@@ -131,15 +131,16 @@ public class ProductDeleteController {
 	@RequestMapping(path = "delete/search", method = RequestMethod.POST)
 	public ModelAndView search(@RequestParam("msg") String msg, ModelAndView mav) {
 
+		System.out.println(msg);
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 
 		if (user.getAuthority().equals("3")) {
 			List<ProductBean> proname = ExecDao.proSearch(msg, user.getLabel());
-			mav.addObject("productForm", proname);
+			mav.addObject("deleteCheck", proname);
 		} else if (user.getAuthority().equals("2")) {
 			List<ProductBean> proname2 = ExecDao.adminProSearch(msg);
-			mav.addObject("productForm", proname2);
+			mav.addObject("deleteCheck", proname2);
 		}
 
 
