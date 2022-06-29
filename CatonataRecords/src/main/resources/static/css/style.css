@@ -93,3 +93,7 @@ h1{
 a {
 	text-decoration: none;
 }
+
+.error-field {
+	color: red;
+}
