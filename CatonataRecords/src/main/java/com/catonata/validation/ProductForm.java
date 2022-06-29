@@ -5,33 +5,47 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.catonata.validation.ByteCheckValidation.ByteCheck;
+import com.catonata.validation.Group.ValidationGroups.artistFirst;
+import com.catonata.validation.Group.ValidationGroups.artistSecond;
+import com.catonata.validation.Group.ValidationGroups.mediaFirst;
+import com.catonata.validation.Group.ValidationGroups.mediaSecond;
+import com.catonata.validation.Group.ValidationGroups.priceFirst;
+import com.catonata.validation.Group.ValidationGroups.priceSecond;
+import com.catonata.validation.Group.ValidationGroups.priceThird;
+import com.catonata.validation.Group.ValidationGroups.pro_nameFirst;
+import com.catonata.validation.Group.ValidationGroups.pro_nameSecond;
+import com.catonata.validation.Group.ValidationGroups.release_dateFirst;
+import com.catonata.validation.Group.ValidationGroups.release_dateSecond;
+import com.catonata.validation.Group.ValidationGroups.stockFirst;
+import com.catonata.validation.Group.ValidationGroups.stockSecond;
+import com.catonata.validation.Group.ValidationGroups.stockThird;
 
 public class ProductForm {
 	private String pro_id;
 
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=60)
+	@NotEmpty(groups=pro_nameFirst.class)
+	@ByteCheck(charset="UTF-8",min=1, max=60 , groups=pro_nameSecond.class)
 	private String pro_name;
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=60)
+	@NotEmpty(groups=artistFirst.class)
+	@ByteCheck(charset="UTF-8",min=1, max=60 , groups=artistSecond.class)
 	private String artist;
-	@NotEmpty
-	@ByteCheck(charset="UTF-8",min=1, max=20)
+	@NotEmpty(groups=mediaFirst.class)
+	@ByteCheck(charset="UTF-8",min=1, max=20 , groups=mediaSecond.class)
 	private String media;
-	@NotEmpty
-	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
-	@ByteCheck(charset="UTF-8",min=1, max=10)
+	@NotEmpty(groups=priceFirst.class)
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください" , groups=priceSecond.class)
+	@ByteCheck(charset="UTF-8",min=1, max=10 , groups=priceThird.class)
 	private String price;
-	@NotEmpty
-	@DateCheck
+	@NotEmpty(groups=release_dateFirst.class)
+	@DateCheck (groups=release_dateSecond.class)
 	private String release_date;
 
 	private String label;
 
 	private String sold;
-	@NotEmpty
-	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
-	@ByteCheck(charset="UTF-8",min=1, max=10)
+	@NotEmpty(groups=stockFirst.class)
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください" , groups=stockSecond.class)
+	@ByteCheck(charset="UTF-8",min=1, max=10 , groups=stockThird.class)
 	private String stock;
 
 	public String getPro_name() {
