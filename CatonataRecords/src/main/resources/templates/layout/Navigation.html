@@ -11,10 +11,10 @@
         <div id="navidation">
             <!-- ログインなし -->
 
+			<th:block th:if="${session.LoginUser == null}">
                 <form action="/top/TopPage" method="post">
                     <input type="submit" value="トップページ" class="btn btn-outline-primary" id="navi-button">
                 </form>
-			<th:block th:if="${session.LoginUser == null}">
 				<div id="navi-name">商品カテゴリー</div>
 				<form action="/top/category/search" method="post">
 					<input type="hidden" name="category" value="CD"> <input
