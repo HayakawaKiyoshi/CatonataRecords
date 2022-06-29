@@ -12,18 +12,19 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="content_bar">商品購入確定画面</div>
-		<div style="border: solid 1px black; width: 500px; height: 250px; text-align: center;">
+		<div id="content_bar">購入確定</div>
 			<p>購入が完了しました。</p>
 			<!-- 商品一覧画面へ -->
+			<div id="header_beforelogin">
 			<form role="form" action="/top/general/TopPageBack" th:action="@{/top/general/TopPageBack}" method="post">
-				<input type="submit" value="一覧へ戻る">
+				<input type="submit" value="一覧へ戻る" class="btn btn-outline-warning">
 			</form>
+			&emsp;
 			<!-- マイページへ -->
 			<form role="form" action="/mypage/top" th:action="@{/mypage/top}" method="post">
-				<input type="submit" value="購入履歴へ">
+				<input type="submit" value="購入履歴へ" class="btn btn-outline-success">
 			</form>
-		</div>
+			</div>
 	</div>
 </body>
 </html>
