@@ -92,14 +92,15 @@
                             <form action="/exec/select" method="get">
                                 <input type="submit" value="削除" class="btn btn-outline-primary" id="navi-button">
                             </form>
-                            <form action="/AdminUpdate/Exec" th:object="${session.LoginUser}">
-                                <input type="hidden" name="name" th:value="*{name}">
-                                <input type="hidden" name="password" th:value="*{password}">
-                                <input type="submit" value="ユーザー情報更新" class="btn btn-outline-primary" id="navi-button">
-                            </form>
                             <form action="/ProceedsCheck">
                                 <input type="hidden" name="label" th:value="*{label}">
                                 <input type="submit" value="売上確認" class="btn btn-outline-primary" id="navi-button">
+                            </form>
+                            <div id="navi-name">ユーザー情報</div>
+                            <form action="/AdminUpdate/Exec" th:object="${session.LoginUser}">
+                                <input type="hidden" name="name" th:value="*{name}">
+                                <input type="hidden" name="password" th:value="*{password}">
+                                <input type="submit" value="更新" class="btn btn-outline-primary" id="navi-button">
                             </form>
                         </th:block>
                     </th:block>
