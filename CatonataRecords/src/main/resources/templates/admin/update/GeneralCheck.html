@@ -45,20 +45,15 @@
 					<td>メールアドレス</td>
 					<td><span th:text="*{email}"></span></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td>クレジットカード番号</td>
-					<td>
-					<th:block th:if="*{creditnumber != null}">
-						<th:block th:each="items : ${cre_number}">
-							<span th:text="${items}"></span>
-						</th:block>
-					</th:block>
+					<td><span th:text="*{creditnumber}"></span>
 					</td>
 				</tr>
 				<tr>
 					<td>有効期限</td>
 					<td><span th:text="*{creditspan}"></span></td>
-				</tr>
+				</tr> -->
 			</th:block>
 		</table>
         <div id="header_beforelogin">

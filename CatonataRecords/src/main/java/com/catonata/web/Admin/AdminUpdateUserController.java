@@ -56,21 +56,8 @@ public class AdminUpdateUserController {
 			return "admin/update/GeneralUpdate";
 		}
 		UserInformationForm suif =  (UserInformationForm)session.getAttribute("uif");
-		if (suif != null) {
-			String[] cre_number = cre_number(suif.getCreditnumber());
-			model.addAttribute("cre_number", cre_number);
-		}
 		session.setAttribute("uif", uif);
 		return "admin/update/GeneralCheck";
-	}
-
-	//クレジットカード番号伏字変換処理
-	private String[] cre_number (String crenumber) {
-		String[] cre_number = crenumber.split("-");
-		for (int i = 0 ; i < 3 ; i++) {
-				cre_number[i] = cre_number[i].replace(cre_number[i],"****-");
-		}
-		return cre_number;
 	}
 
 	@RequestMapping("/Complete")
