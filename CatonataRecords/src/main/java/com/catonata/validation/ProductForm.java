@@ -23,6 +23,7 @@ public class ProductForm {
 	@ByteCheck(charset="UTF-8",min=1, max=10)
 	private String price;
 	@NotEmpty
+	@DateCheck
 	private String release_date;
 
 	private String label;

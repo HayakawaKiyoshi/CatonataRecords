@@ -14,6 +14,7 @@ public class CreditCardInformationForm {
 	@ByteCheck(charset="UTF-8",min=1, max=19)
 	private String creditnumber;
 	@NotEmpty
+	@Pattern(regexp="([0-9]{4})/([0-9]{2})", message="有効期限はyyyy/MMの形式で入力してください。")
 	private String creditspan;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=3)

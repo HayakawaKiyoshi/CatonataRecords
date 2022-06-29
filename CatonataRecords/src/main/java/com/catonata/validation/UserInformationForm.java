@@ -27,6 +27,7 @@ public class UserInformationForm {
 	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください")
 	private String gender;
 	@NotEmpty
+	@DateCheck(message="正しい日付を入力してください。")
 	private String birthday;
 	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=60)
