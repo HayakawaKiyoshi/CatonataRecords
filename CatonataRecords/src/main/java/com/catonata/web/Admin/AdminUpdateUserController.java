@@ -16,6 +16,16 @@ import com.catonata.dao.CommonDao;
 import com.catonata.dao.UserInfoDao;
 import com.catonata.validation.ExecInformationForm;
 import com.catonata.validation.UserInformationForm;
+import com.catonata.validation.Group.AddressCheck;
+import com.catonata.validation.Group.AgeCheck;
+import com.catonata.validation.Group.BanknameCheck;
+import com.catonata.validation.Group.BanknumberCheck;
+import com.catonata.validation.Group.BirthdayCheck;
+import com.catonata.validation.Group.EmailCheck;
+import com.catonata.validation.Group.GenderCheck;
+import com.catonata.validation.Group.LabelCheck;
+import com.catonata.validation.Group.NameCheck;
+import com.catonata.validation.Group.PasswordCheck;
 
 @Controller
 @RequestMapping("/AdminUpdate")
@@ -38,7 +48,8 @@ public class AdminUpdateUserController {
 	}
 
 	@RequestMapping("/Check")
-	private String updateCheck (@Validated UserInformationForm uif, BindingResult result) {
+	private String updateCheck (@Validated({NameCheck.class,PasswordCheck.class,AgeCheck.class,GenderCheck.class
+		,AddressCheck.class,BirthdayCheck.class,EmailCheck.class}) UserInformationForm uif, BindingResult result) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
@@ -92,7 +103,8 @@ public class AdminUpdateUserController {
 	}
 
 	@RequestMapping("/ExecCheck")
-	private String updateExecCheck (@Validated ExecInformationForm eif, BindingResult result) {
+	private String updateExecCheck (@Validated({NameCheck.class,LabelCheck.class,PasswordCheck.class,EmailCheck.class
+		,AddressCheck.class,BanknumberCheck.class,BanknameCheck.class})  ExecInformationForm eif, BindingResult result) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {

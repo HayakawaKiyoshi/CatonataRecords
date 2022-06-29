@@ -16,6 +16,8 @@ import com.catonata.validation.ExecInformationForm;
 import com.catonata.validation.UserInformationForm;
 import com.catonata.validation.Group.AddressCheck;
 import com.catonata.validation.Group.AgeCheck;
+import com.catonata.validation.Group.BanknameCheck;
+import com.catonata.validation.Group.BanknumberCheck;
 import com.catonata.validation.Group.BirthdayCheck;
 import com.catonata.validation.Group.EmailCheck;
 import com.catonata.validation.Group.GenderCheck;
@@ -84,8 +86,8 @@ public class AdminRegisterUserController {
 	}
 
 	@RequestMapping("/ExecCheck")
-	private String registerExecCheck (@Validated({NameCheck.class,LabelCheck.class,AgeCheck.class,GenderCheck.class
-		,AddressCheck.class,BirthdayCheck.class,EmailCheck.class}) ExecInformationForm eif, BindingResult result) {
+	private String registerExecCheck (@Validated({NameCheck.class,LabelCheck.class,PasswordCheck.class,EmailCheck.class
+		,AddressCheck.class,BanknumberCheck.class,BanknameCheck.class}) ExecInformationForm eif, BindingResult result) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
