@@ -51,13 +51,13 @@
 			</th:block>
 		</table>
 		<div id="header_beforelogin">
+		<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post" th:object="${session.LoginUser}">
+			<input type="submit" value="管理者トップに戻る" class="btn btn-outline-warning">
+		</form>
+		&emsp;
 		<form action="/AdminDelete/ExecComplete" th:action="@{/AdminDelete/ExecComplete}" method="post" th:object="${delete}">
 			<input type="hidden" name="id" th:value="*{id}">
 			<input type="submit" value="ユーザーを削除する" class="btn btn-outline-danger"><br>
-		</form>
-		&emsp;
-		<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post" th:object="${session.LoginUser}">
-			<input type="submit" value="管理者トップに戻る" class="btn btn-outline-warning">
 		</form>
 		</div>
 	</div>
