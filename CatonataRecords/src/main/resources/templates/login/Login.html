@@ -14,6 +14,9 @@
     <div layout:fragment="content">
 	<th:block th:text = *{msg}></th:block>
 	<form role="form" action="/login" th:action="@{/login}" th:object="${loginForm}" method="post" style="text-align: center">
+		ID:
+		<input type="text" th:field="*{id}">
+		  <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" th:errorclass="error-field">error!</span><br>
 		氏名：
 		  <input type="text" th:field="*{name}">
 		  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="error-field">error!</span><br>
