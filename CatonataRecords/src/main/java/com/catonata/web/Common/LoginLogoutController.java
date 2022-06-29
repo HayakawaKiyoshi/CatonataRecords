@@ -78,6 +78,7 @@ public class LoginLogoutController {
 		session.invalidate();
 		session.removeAttribute("LoginUser");
 		session.removeAttribute("card");
+		session.removeAttribute("check");
 		return "redirect:/top";
 	}
 }
