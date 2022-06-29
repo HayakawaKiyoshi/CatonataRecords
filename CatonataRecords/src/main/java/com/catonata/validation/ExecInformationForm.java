@@ -41,14 +41,14 @@ public class ExecInformationForm {
 	private String label;
 	@NotEmpty(groups=emailFirst.class)
 	@ByteCheck(charset="UTF-8",min=1, max=50 , groups=emailSecond.class)
-	@Email (groups=emailThird.class)
+	@Email (message="メールアドレスが正しい形で入力されていません。",groups=emailThird.class)
 	private String email;
 	@NotEmpty(groups=addressFirst.class)
 	@ByteCheck(charset="UTF-8",min=1, max=60 , groups=addressSecond.class)
 	private String address;
 	@NotEmpty(groups=banknumberFirst.class)
 	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください" , groups=banknumberSecond.class)
-	@ByteCheck(charset="UTF-8",min=1, max=7 , groups=banknumberThird.class)
+	@ByteCheck(charset="UTF-8",min=7, max=8 , message = "{0}は7桁か8桁で入力してください。",groups=banknumberThird.class)
 	private String banknumber;
 	@NotEmpty(groups=banknameFirst.class)
 	@Pattern(regexp ="[^ -~｡-ﾟ]+", message="{0}は全角文字で入力してください" , groups=banknameSecond.class)
