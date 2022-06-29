@@ -36,7 +36,7 @@ public class AdminDeleteUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		UserInfoDao.adminDelete(id);
-		model.addAttribute("msg","削除");
+		model.addAttribute("msg","削除が完了しました。");
 		return "admin/complete/Complete";
 	}
 
@@ -57,7 +57,7 @@ public class AdminDeleteUserController {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		UserInfoDao.execDelete(id);
-		model.addAttribute("msg","削除");
+		model.addAttribute("msg","削除が完了しました。");
 		return "admin/complete/Complete";
 	}
 }
