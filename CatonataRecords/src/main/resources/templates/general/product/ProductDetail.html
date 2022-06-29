@@ -12,21 +12,29 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="content_bar">商品内容詳細画面</div>
+		<div id="content_bar">商品内容詳細画面</div><br>
 		<!-- このformの遷移先は商品一覧のコントローラのURLパターンです。よろしくお願いします。 -->
-		<form role="form" action="/top/general/TopPageBack"
-			th:action="@{/top/general/TopPageBack}" method="post">
-			<input type="submit" value="戻る" class="btn btn-outline-warning">
-		</form>
 		<th:block th:object="${session.product}">
 			<p style="text-align: center; border: solid 1px black;" th:text="*{pro_name}">商品タイトル</p>
-			<div>(画像)</div>
-			<div>
+			<div style="float: left; width: 50%; text-align: center;">
+				<img src="/image/5.jpg" width="220px" height="220px" alt="画像">
+			</div>
+			<div style="float: right; width: 50%;">
 				<span>価格：<span th:text="*{price}"></span>円</span><br>
 				<span>アーティスト：<span th:text="*{artist}"></span></span><br>
 				<span>発売日：<span th:text="*{release_date}"></span></span><br>
+			</div>
+			<div id="header_beforelogin">
+				<form role="form" action="/top/general/TopPageBack" th:action="@{/top/general/TopPageBack}" method="post">
+					<span>
+					   <input type="submit" value="戻る" class="btn btn-outline-warning">
+					</span>
+				</form>
+				&emsp;
 				<form role="form" action="/Purchase/PurchaseCheck" th:action="@{/Purchase/PurchaseCheck}" method="post">
-					<input type="submit" value="購入する" class="btn btn-outline-success">
+				    <span>
+					   <input type="submit" value="購入する" class="btn btn-outline-success">
+					</span>
 				</form>
 			</div>
 		</th:block>

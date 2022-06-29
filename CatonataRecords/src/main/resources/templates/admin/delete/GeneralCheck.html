@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="content_bar">ユーザー情報削除画面（経営者）</div>
+		<div id="content_bar">ユーザー情報削除画面（管理者）</div>
 		<p>以下のユーザーを削除します。よろしいですか？</p>
 		<table class="table table-striped table-bordered table-sm">
 			<th:block th:object="${delete}">
@@ -50,13 +50,16 @@
 				</tr>
 			</th:block>
 		</table>
+		<div id="header_beforelogin">
 		<form action="/AdminDelete/Complete" th:action="@{/AdminDelete/Complete}" method="post" th:object="${delete}">
 			<input type="hidden" name="id" th:value="*{id}">
 			<input type="submit" value="ユーザーを削除する" class="btn btn-outline-danger">
 		</form>
+		&emsp;
 		<form action="/Admin/Top" th:action="@{/Admin/Top}" method="post" th:object="${session.LoginUser}">
 			<input type="submit" value="管理者トップに戻る" class="btn btn-outline-warning">
 		</form>
+		</div>
 	</div>
 </body>
 </html>
