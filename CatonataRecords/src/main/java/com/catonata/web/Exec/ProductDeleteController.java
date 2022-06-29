@@ -33,6 +33,7 @@ public class ProductDeleteController {
 		UserInformationBean user = (UserInformationBean) session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", user);
 		List<ProductBean> empList = null;
+		//ユーザーによる分岐
 		if (user.getAuthority().equals("3")) {
 			empList = ExecDao.findAll(user.getLabel());
 		} else if (user.getAuthority().equals("2")) {
