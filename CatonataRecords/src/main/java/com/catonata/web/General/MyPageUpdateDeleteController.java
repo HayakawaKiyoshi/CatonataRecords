@@ -80,6 +80,7 @@ public class MyPageUpdateDeleteController {
 		session.removeAttribute("card");
 		return  "general/mypage/UpdateComplete";
 
+
 	}
 
 	@RequestMapping("/Back")
