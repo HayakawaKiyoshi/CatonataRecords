@@ -36,7 +36,7 @@
 					<td><span th:text="${items.name}">ユーザー名</span></td>
 					<td><span th:text="${items.email}">メールアドレス</span></td>
 					<td><span th:text="${items.address}">住所</span></td>
-					<td><span th:text="${items.gender}">性別</span></td>
+					<td><span th:text="(${items.gender == '1'} ? 男 : 女)">性別</span></td>
 					<td>
 						<form action="/AdminUpdate" th:action="@{/AdminUpdate}">
 							<input type="hidden" name="name" th:value="${items.name}">
