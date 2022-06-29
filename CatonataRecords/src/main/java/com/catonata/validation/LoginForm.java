@@ -8,6 +8,8 @@ import com.catonata.validation.ByteCheckValidation.ByteCheck;
 
 public class LoginForm {
 	@NotEmpty
+	private String id;
+	@NotEmpty
 	@ByteCheck(charset="UTF-8",min=1, max=60)
 	private String name;
 	@NotEmpty
