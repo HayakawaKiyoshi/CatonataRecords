@@ -10,9 +10,9 @@ import com.catonata.validation.Group.ValidationGroups.creditnumberSecond;
 import com.catonata.validation.Group.ValidationGroups.creditnumberThird;
 import com.catonata.validation.Group.ValidationGroups.creditspanFirst;
 import com.catonata.validation.Group.ValidationGroups.creditspanSecond;
-import com.catonata.validation.Group.ValidationGroups.genderThird;
 import com.catonata.validation.Group.ValidationGroups.securityFirst;
 import com.catonata.validation.Group.ValidationGroups.securitySecond;
+import com.catonata.validation.Group.ValidationGroups.securityThird;
 
 public class CreditCardInformationForm {
 
@@ -26,7 +26,7 @@ public class CreditCardInformationForm {
 	private String creditspan;
 	@NotEmpty(groups=securityFirst.class)
 	@ByteCheck(charset="UTF-8",min=1, max=3 , groups=securitySecond.class)
-	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください" , groups=genderThird.class)
+	@Pattern(regexp ="^[0-9]+$", message="{0}は半角数値で入力してください" , groups=securityThird.class)
 	private String security;
 
 	public String getCreditnumber() {return creditnumber;}
