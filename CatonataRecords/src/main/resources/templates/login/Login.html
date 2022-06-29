@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout/LayoutTile">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutTile">
 <head>
 <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
-        <link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" media="all" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
 <title>ログイン画面</title>
 </head>
 <body>
-    <div layout:fragment="content">
-	<th:block th:text = *{msg}></th:block>
-	<form role="form" action="/login" th:action="@{/login}" th:object="${loginForm}" method="post" style="text-align: center">
-		ID:
-		<input type="text" th:field="*{id}">
-		  <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" th:errorclass="error-field">error!</span><br>
-		氏名：
-		  <input type="text" th:field="*{name}">
-		  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="error-field">error!</span><br>
-		パスワード：
-		  <input type="password" th:field="*{password}">
-		  <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="error-field">error!</span><br>
-		  <input type="submit" value="ログイン画面へ" class="btn btn-outline-success">
-	</form>
-</div>
+	<div layout:fragment="content">
+		<div id="content_bar">Catonata Recordsへようこそ！</div>
+		<th:block th:text=*{msg}></th:block>
+		<form role="form" action="/login" th:action="@{/login}"
+			th:object="${loginForm}" method="post" style="text-align: center">
+			<table class="table table-striped table-bordered align:middle">
+				<tr>
+					<td><b>ID</b></td>
+					<td style="text-align: left;"><input type="text"
+						th:field="*{id}"><span th:if="${#fields.hasErrors('id')}"
+						th:errors="*{id}" th:errorclass="error-field">error!</span></td>
+				</tr>
+				<tr>
+					<td><b>氏名</b></td>
+					<td style="text-align: left;"><input type="text"
+						th:field="*{name}"> <span
+						th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+						th:errorclass="error-field">error!</span></td>
+				</tr>
+				<tr>
+					<td><b>パスワード</b></td>
+					<td style="text-align: left;"><input type="password"
+						th:field="*{password}"> <span
+						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+						th:errorclass="error-field">error!</span></td>
+				</tr>
+			</table>
+
+			<input type="submit" value="ログイン" class="btn btn-outline-success">
+
+		</form>
+	</div>
 </body>
 </html>
