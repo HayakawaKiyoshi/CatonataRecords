@@ -33,7 +33,7 @@
 	<th:block th:each="item : ${allproduct}">
 		<tr>
 			<td>
-						<th:block th:if="*{item.stock >= '1'}">
+			<th:block th:if="*{item.stock >= '1'}">
 							<a th:href="@{/Purchase/ProductDetail(pro_id=*{item.pro_id})}">
 							<span  th:text="*{item.pro_name}">商品名</span></a>
 						</th:block>
