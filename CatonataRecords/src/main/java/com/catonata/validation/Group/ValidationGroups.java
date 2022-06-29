@@ -8,7 +8,7 @@ package com.catonata.validation.Group;
  *
  */
 public class ValidationGroups {
-	//UserInfomationForm,LoginForm
+	//UserInfomationForm
 	public interface passFirst{}
 	public interface passSecond{}
 	public interface passThird{}
@@ -43,6 +43,9 @@ public class ValidationGroups {
 	public interface stockFirst{}
 	public interface stockSecond{}
 	public interface stockThird{}
+
+	//LoginForm
+	public interface idFirst{}
 
 	//ExecInfomationForm
 	public interface labelFirst{}
