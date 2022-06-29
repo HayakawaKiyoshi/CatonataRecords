@@ -28,12 +28,9 @@ public class SignUpController {
 	 */
 	@RequestMapping("")
 	private String SignupUser (@ModelAttribute UserInformationForm uif,Model model) {
-//		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
-//		session.setAttribute("LoginUser", LoginUser);
 		model.addAttribute("send","/SignUp/CreditRegister");
 		return "/newregister/PersonalRegister";
 	}
-
 
 	/**
 	 * 基本情報の入力チェック及びクレジットカード情報入力画面に遷移するメソッド
@@ -45,8 +42,6 @@ public class SignUpController {
 	@RequestMapping("/CreditRegister")
 	private String SignupCheck (@Validated UserInformationForm uif, BindingResult result
 			, @ModelAttribute CreditCardInformationForm ccif) {
-//		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
-//		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
 			return "/newregister/PersonalRegister";
 		}
@@ -64,19 +59,26 @@ public class SignUpController {
 	 */
 	@RequestMapping("/SignUpCheck")
 	private String SignupComplete (@Validated  CreditCardInformationForm ccif, BindingResult result, Model model) {
-//		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
-//		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
 			return "/newregister/CardRegister";
 		}
 		UserInformationForm uif = (UserInformationForm)session.getAttribute("uif");
-		//コミット確認
-		System.out.println(ccif.getCreditnumber());
 		session.setAttribute("uif", uif);
 		session.setAttribute("ccif", ccif);
+		String[] cre_number = cre_number(ccif.getCreditnumber());
 		model.addAttribute("send","/SignUp/SignUpComplete");
+		model.addAttribute("cre_number", cre_number);
 		//基本情報の入力が正常であれば、登録内容確認画面へ
 		return "/newregister/RegisterCheck";
+	}
+
+	//クレジットカード番号伏字変換
+	private String[] cre_number (String crenumber) {
+		String[] cre_number = crenumber.split("-");
+		for (int i = 0 ; i < 3 ; i++) {
+				cre_number[i] = cre_number[i].replace(cre_number[i],"****-");
+		}
+		return cre_number;
 	}
 
 	/**
