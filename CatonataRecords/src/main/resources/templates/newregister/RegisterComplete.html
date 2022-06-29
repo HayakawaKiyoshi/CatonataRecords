@@ -12,7 +12,7 @@
 <body>
 	<div layout:fragment="content">
 		<div id="content_bar">新規会員登録完了画面</div><br>
-		<form action="/login" th:action="@{/login}" method="get" th:object="${session.LoginUser}">
+		<form action="/login" th:action="@{/login}" method="get" th:object="${session.uif}">
 		<p><span th:text="*{name}"></span>さん登録が完了しました。</p>
 
 		<p>ログイン画面でログインしてください。</p>
