@@ -10,30 +10,34 @@
     <div layout:fragment="navigation">
         <div id="navidation">
             <!-- ログインなし -->
-            <th:block th:if="${session.LoginUser == null}">
-            <div id="navi-name">商品カテゴリー</div>
 
                 <form action="/top/TopPage" method="post">
                     <input type="submit" value="トップページ" class="btn btn-outline-primary" id="navi-button">
                 </form>
-                <form action="/top/category/search" method="post">
-                    <input type="hidden" name="category" value="CD">
-                    <input type="submit" value="CD" class="btn btn-outline-primary" id="navi-button">
-                </form>
-                <form action="/top/category/search" method="post">
-                    <input type="hidden" name="category" value="DVD">
-                    <input type="submit" value="DVD" class="btn btn-outline-primary" id="navi-button">
-                </form>
-                <form action="/top/category/search" method="post">
-                <input type="hidden" name="category" value="本/書籍">
-                    <input type="submit" value="本/書籍" class="btn btn-outline-primary" id="navi-button">
-                </form>
-               <form action="/top/category/search" method="post">
-                    <input type="hidden" name="category" value="グッズ">
-                    <input type="submit" value="グッズ" class="btn btn-outline-primary" id="navi-button">
-                </form>
-            </th:block>
-            <th:block th:if="${session.LoginUser != null}">
+			<th:block th:if="${session.LoginUser == null}">
+				<div id="navi-name">商品カテゴリー</div>
+				<form action="/top/category/search" method="post">
+					<input type="hidden" name="category" value="CD"> <input
+						type="submit" value="CD" class="btn btn-outline-primary"
+						id="navi-button">
+				</form>
+				<form action="/top/category/search" method="post">
+					<input type="hidden" name="category" value="DVD"> <input
+						type="submit" value="DVD" class="btn btn-outline-primary"
+						id="navi-button">
+				</form>
+				<form action="/top/category/search" method="post">
+					<input type="hidden" name="category" value="本/書籍"> <input
+						type="submit" value="本/書籍" class="btn btn-outline-primary"
+						id="navi-button">
+				</form>
+				<form action="/top/category/search" method="post">
+					<input type="hidden" name="category" value="グッズ"> <input
+						type="submit" value="グッズ" class="btn btn-outline-primary"
+						id="navi-button">
+				</form>
+			</th:block>
+			<th:block th:if="${session.LoginUser != null}">
                 <th:block th:object=${session.LoginUser}>
                     <th:block th:switch="*{authority}">
                         <!-- 一般者ユーザー -->
