@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.catonata.bean.UserInformationBean;
+import com.catonata.dao.CommonDao;
 import com.catonata.dao.UserInfoDao;
 import com.catonata.validation.ExecInformationForm;
 import com.catonata.validation.UserInformationForm;
@@ -107,6 +108,10 @@ public class AdminUpdateUserController {
 		session.setAttribute("LoginUser", LoginUser);
 		eif = (ExecInformationForm)session.getAttribute("eif");
 		UserInfoDao.execUpdate(eif);
+		if(LoginUser.getAuthority().equals("3")){
+			LoginUser = CommonDao.find(eif.getName(),eif.getPassword());
+			session.setAttribute("LoginUser", LoginUser);
+		}
 		model.addAttribute("msg","更新");
 		String rtrn = null;
 		if(LoginUser.getAuthority().equals("2")) {
@@ -114,6 +119,7 @@ public class AdminUpdateUserController {
 		}else if(LoginUser.getAuthority().equals("3")){
 			rtrn = "exec/complete/Complete";
 		}
+
 		return rtrn;
 	}
 
