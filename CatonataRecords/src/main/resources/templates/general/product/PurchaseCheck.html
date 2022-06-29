@@ -37,6 +37,7 @@
 						<button type="button" id="down" onclick="cntdown()">-</button>
 						<input type="text" id="textbox" name="purchase_number" value="1" size="3" readonly>
 						<button type="button" id="up" onclick="cntup()">+</button><br>
+						<p th:text="${msg}" style="color:red"></p>
 						配送日：
 						<select name="delivary">
 							<option th:each="items : ${session.delivary}" th:value="${items}" th:text="${items}">
