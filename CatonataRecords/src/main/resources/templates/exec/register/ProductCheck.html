@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="Exec_content_bar">自社商品登録</div>
+		<div id="content_bar">自社商品登録</div>
 		<p>以下の内容で登録します。よろしいですか？</p>
 		<form action="/exec/register/execute" method="post" th:object="${session.proForm}">
 			商品名：<span th:text="*{pro_name}"></span><br>

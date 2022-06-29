@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="Exec_content_bar">自社商品登録</div>
+		<div id="content_bar">自社商品登録</div>
 		<form role="form" action="/exec/register" th:action="@{/exec/register}" th:object="${productForm}" method="post">
 			商品名： <input type="text" th:field="*{pro_name}">
 			<span th:if="${#fields.hasErrors('pro_name')}" th:errors="*{pro_name}"

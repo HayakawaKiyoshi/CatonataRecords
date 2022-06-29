@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<div id="Exec_content_bar">商品変更確認</div>
+		<div id="content_bar">商品変更確認</div>
 		以下の内容で変更します。よろしいですか？
 		<form action="/exec/update/execute" method="post" th:object="${update}">
 			商品名：<span th:text="*{pro_name}"></span><br>
