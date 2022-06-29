@@ -73,8 +73,10 @@ public class MyPageUpdateDeleteController {
 		uif.setId(LoginUser.getId());
 		CreditCardInformationForm form = (CreditCardInformationForm)session.getAttribute("card");
 		UserInfoDao.generalUpdate(uif,form);
+		UserInformationBean loginuser = CommonDao.find(uif.getName(), uif.getPassword());
+		session.setAttribute("LoginUser", loginuser);
 		model.addAttribute("msg","更新");
-		session.removeAttribute("uif");
+
 		session.removeAttribute("card");
 		return  "general/mypage/UpdateComplete";
 

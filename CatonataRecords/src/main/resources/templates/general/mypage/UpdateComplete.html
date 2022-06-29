@@ -14,7 +14,9 @@
 	<div layout:fragment="content">
 		<div id="content_bar">ユーザー情報更新完了画面</div>
 		<p>変更が完了しました。</p>
-		<form role="form" action="/mypage/top" th:action="@{/mypage/top}" method="post">
+		<form role="form" action="/mypage/top" th:action="@{/mypage/top}" method="post" th:object = "${session.LoginUser}">
+			<input type = "hidden" name = "name" th:value = "*{name}">
+			<input type = "hidden" name = "password" th:value = "*{password}">
 			<input type="submit" value="マイページへ" class="btn btn-outline-success">
 		</form>
 	</div>
