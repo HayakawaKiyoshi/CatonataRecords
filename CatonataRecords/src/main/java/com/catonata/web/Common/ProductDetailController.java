@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.catonata.bean.ProductBean;
 import com.catonata.bean.UserInformationBean;
@@ -54,13 +55,19 @@ public class ProductDetailController {
 	 * @return 遷移先
 	 */
 	@RequestMapping("/PurchaseCheck")
-	private String purchaseCheck (Model model) {
+	private String purchaseCheck (Model model, RedirectAttributes redirect) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if(LoginUser == null) {
 			return "redirect:/login";
-		}else {
-
+		}
+		//クレジットカード情報がなかった時の処理
+		if (LoginUser.getCreditnumber() == null) {
+			String msg = "クレジットカード情報が登録されていません。"
+					+ "\nクレジットカード情報を登録してから購入を行ってください。";
+			redirect.addFlashAttribute("msg", msg);
+			return "redirect:/mypage/errpr/top";
+		}
 
 		//セッションから商品情報を取得、再度セッションに保存
 		ProductBean product = (ProductBean)session.getAttribute("product");
@@ -73,7 +80,6 @@ public class ProductDetailController {
 		model.addAttribute("cre_number",cre_number);
 		session.setAttribute("delivary", delivaryDate);
 		return "general/product/PurchaseCheck";
-		}
 	}
 
 	//配送日の変数作成メソッド
