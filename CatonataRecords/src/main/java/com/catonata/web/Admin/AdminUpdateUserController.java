@@ -49,21 +49,28 @@ public class AdminUpdateUserController {
 
 	@RequestMapping("/Check")
 	private String updateCheck (@Validated({NameCheck.class,PasswordCheck.class,AgeCheck.class,GenderCheck.class
-		,AddressCheck.class,BirthdayCheck.class,EmailCheck.class}) UserInformationForm uif, BindingResult result) {
+		,AddressCheck.class,BirthdayCheck.class,EmailCheck.class}) UserInformationForm uif, BindingResult result,Model model) {
 		UserInformationBean LoginUser = (UserInformationBean)session.getAttribute("LoginUser");
 		session.setAttribute("LoginUser", LoginUser);
 		if (result.hasErrors()) {
 			return "admin/update/GeneralUpdate";
 		}
 		UserInformationForm suif =  (UserInformationForm)session.getAttribute("uif");
-		uif.setCreditnumber(suif.getCreditnumber());
-		uif.setCreditspan(suif.getCreditspan());
-		uif.setSecurity(suif.getSecurity());
-		uif.setId(suif.getId());
+		if (suif != null) {
+			String[] cre_number = cre_number(suif.getCreditnumber());
+			model.addAttribute("cre_number", cre_number);
+		}
 		session.setAttribute("uif", uif);
 		return "admin/update/GeneralCheck";
+	}
 
-
+	//クレジットカード番号伏字変換処理
+	private String[] cre_number (String crenumber) {
+		String[] cre_number = crenumber.split("-");
+		for (int i = 0 ; i < 3 ; i++) {
+				cre_number[i] = cre_number[i].replace(cre_number[i],"****-");
+		}
+		return cre_number;
 	}
 
 	@RequestMapping("/Complete")
