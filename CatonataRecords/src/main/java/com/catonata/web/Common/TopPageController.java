@@ -22,6 +22,12 @@ public class TopPageController {
 	@Autowired
 	HttpSession session;
 
+	@RequestMapping(path="")
+	private String  toppage () {
+		session.invalidate();
+		return "redirect:/top/TopPage";
+	}
+
 	@RequestMapping(path="/TopPage")
 	private ModelAndView  toppage (ModelAndView mav) {
 		//表示するものは商品全件表示
