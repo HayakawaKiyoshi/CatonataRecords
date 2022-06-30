@@ -14,7 +14,8 @@
 <body>
 	<div layout:fragment="content">
 		<div id="content_bar">購入確認</div><br>
-		<form role="form" action="/Purchase/ProductDetail" th:action="@{/Purchase/ProductDetail}" method="post">
+		<form role="form" action="/Purchase/ProductDetail" th:action="@{/Purchase/ProductDetail}" method="post"
+		th:object="${session.product}">
 			<input type="hidden" name="pro_id" th:value="*{pro_id}">
 			<input type="submit" value="戻る" class="btn btn-outline-warning">
 		</form>
